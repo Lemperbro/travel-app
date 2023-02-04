@@ -8,6 +8,8 @@
 
 @yield('container')
 
+@include('partials.dropdowntext')
+
 </div>
 
 </body>
