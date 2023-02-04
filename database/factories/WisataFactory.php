@@ -24,7 +24,7 @@ class WisataFactory extends Factory
             'deskripsi' => fake()->paragraph(100),
             'group_size' => fake()->randomDigit(),
             'nama_wisata' => fake()->sentence(),
-            'image' => 'pp.jpg',
+            'image' => 'post-image/pp.jpg',
             'location' => fake()->city(),
             'harga' => 1000,
             'diboking' => 400

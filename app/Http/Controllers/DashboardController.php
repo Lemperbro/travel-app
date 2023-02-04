@@ -17,9 +17,9 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('coba', [
+        return view('dashboard', [
 
-            'coba' => Wisata::orderBy('diboking', 'DESC')->limit(2)->get(),
+            'coba' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
             'kota' => Kota::all(),
             'cobalagi' => 'berhasil'
         
