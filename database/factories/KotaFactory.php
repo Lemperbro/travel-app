@@ -19,7 +19,8 @@ class KotaFactory extends Factory
         return [
             //
             'nama_kota' => fake()->city(),
-            'image' => 'pp.jpg',
+            'image' => 'post-image/pp.jpg',
+            'popularitas' => fake()->randomDigitNotZero()
         ];
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kota');
             $table->text('image');
+            $table->integer('popularitas');
             $table->timestamps();
         });
     }

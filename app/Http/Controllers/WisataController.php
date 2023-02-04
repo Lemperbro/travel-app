@@ -16,6 +16,9 @@ class WisataController extends Controller
     public function index()
     {
         //
+        return view('dashboard',[
+            'data' => Wisata::all()
+        ]);
     }
 
     /**

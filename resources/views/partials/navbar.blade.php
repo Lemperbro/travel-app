@@ -1,5 +1,5 @@
 
-    <div class='fixed z-40 w-full py-4 backdrop-blur-sm bg-black/10'>
+    <div class='fixed z-40 w-full py-4 backdrop-blur-sm bg-black/10 top-0'>
         <div class="container">
           <div class='flex justify-between'>
           <img src='/img/logo.png' class='w-22 h-14 my-auto '/>

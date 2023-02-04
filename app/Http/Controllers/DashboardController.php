@@ -19,7 +19,8 @@ class DashboardController extends Controller
         //
         return view('dashboard', [
 
-            'coba' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
+            'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
+            'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
             'kota' => Kota::all(),
             'cobalagi' => 'berhasil'
         
