@@ -8,6 +8,4 @@
     <title>Ini dari head</title>
 </head>
 
-<body> 
-    
-</body>
+
