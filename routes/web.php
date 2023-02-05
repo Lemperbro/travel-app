@@ -29,3 +29,7 @@ Route::get('/admin', function(){
 Route::get('/login', function(){
     return view('masuk');
 });
+
+Route::get('/kota', function(){
+    return view('admin.kota.index');
+});
