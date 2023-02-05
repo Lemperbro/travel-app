@@ -45,6 +45,6 @@
     </a>
 @endforeach
 </div>
-
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptatibus quos vel hic esse vitae laboriosam, ipsa distinctio amet est, in commodi minima maxime dolorem earum cupiditate aut ex molestias?</p>
 
 @endsection
