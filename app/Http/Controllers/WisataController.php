@@ -62,7 +62,7 @@ class WisataController extends Controller
             return $data;
         }
         
-        return view('wisata',[
+        return view('view',[
             "data" => $data,
         ]);
     }

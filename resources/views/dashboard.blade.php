@@ -35,7 +35,7 @@
     @endforeach
 </div>
 
-
+@include('partials.dropdowntext')
 <div class="grid grid-cols-4">
     @foreach ($best as $data)
     <a href="/wisata/{{ $data->id }}" class="hadow-md p-2 h-96 overflow-hidden inline-block">

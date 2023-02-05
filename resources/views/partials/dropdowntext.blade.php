@@ -29,7 +29,7 @@
           class="
             dropdown-menu
             min-w-max
-            absolute
+            relative
             bg-white
             text-base
             z-50
