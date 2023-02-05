@@ -23,5 +23,9 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
 Route::get('/admin', function(){
-    return view('admin.index');
+    return view('admin.index');                                                                                                                             
+});
+
+Route::get('/login', function(){
+    return view('masuk');
 });
