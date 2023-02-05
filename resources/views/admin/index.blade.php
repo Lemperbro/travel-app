@@ -5,8 +5,8 @@
 <div>
   @include('admin.partials.sidebar')
   
-      <div class="bg-gray-900 opacity-50   inset-0 z-10" id="sidebarBackdrop"></div>
-      <div id="main-content" class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+      <div class="bg-gray-900 opacity-50   inset-0 z-10 border border-red-600" id="sidebarBackdrop"></div>
+      <div id="main-content" class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64 border border-blue-600">
          <main>
             <div class="pt-6 px-4">
                <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
@@ -428,6 +428,7 @@
          <p class="text-center text-sm text-gray-500 my-10">
             &copy; 2019-2021 <a href="#" class="hover:underline" target="_blank">Themesberg</a>. All rights reserved.
          </p>
+         <p></p>
       </div>
    </div>
 

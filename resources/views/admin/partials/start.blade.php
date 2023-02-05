@@ -7,4 +7,4 @@
     @vite('resources/css/app.css')
 
 </head>
-<body class=" overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+<body class=" flex items-center justify-center" style="background: #edf2f7;">
