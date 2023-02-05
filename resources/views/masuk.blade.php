@@ -2,7 +2,7 @@
 
 
 @section('container')
-<div class="bg-gradient-to-bl from-orange-600/40 to-blue-600/40 absolute inset-0 -z-50"></div>
+<div class="bg-gradient-to-bl from-orange-600/50 to-blue-600/50 absolute inset-0 -z-50 backdrop-blur-md"></div>
 <div class='my-10 flex min-h-100vh gap-x-4 mx-auto  shadow-best4 bg-white'>
 
     <div class='w-[50%] mx-auto py-32'>
@@ -22,7 +22,7 @@
           <div class='flex justify-between'>
 
           <h1 class='text-xl font-normal'>Password</h1>
-          <h1 class='opacity-40'> forgot Password?</h1>
+          <a href="" class='text-orange-600'> forgot Password?</a>
           </div>
         <input type="password" placeholder='Password' class='rounded-md w-full border h-12 p-2 mt-2' />
       </div>
