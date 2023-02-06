@@ -19,6 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/masuk', function () {
+    return view('masuk');
+});
+
+Route::get('/opentrip', function () {
+    return view('opentrip');
+});
+
+
+
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);

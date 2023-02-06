@@ -5,7 +5,7 @@ module.exports = {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     './node_modules/tw-elements/dist/js/**/*.js',
-    
+    './public/icons/*.css'
   ],
   theme: {
     container: {

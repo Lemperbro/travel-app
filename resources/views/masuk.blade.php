@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.two')
 
 
@@ -16,6 +17,23 @@
         <div class="w-full">
         <h1 class='text-xl font-normal'>Email</h1>
         <input type="email" placeholder='Andhi@gmail.com' class='rounded-md w-full border h-12 p-2 mt-2' />
+=======
+@extends('layouts.main')
+
+<div class='my-10 flex min-h-100vh gap-x-4'>
+    <div class='w-[50%] mx-auto'>
+      <img src="/gambar/logo.png" class='w-[60%] mx-auto' />
+      <h1 class='text-4xl font-bold text-center mt-4'>Log in</h1>
+      <div class='mx-9 flex flex-col'>
+      <h1 class='text-xl font-normal'>Email</h1>
+        <input type="email" placeholder='Andhi@gmail.com' class='rounded-xl' />
+        <br/>
+        <div class='flex justify-between'>
+        <h1 class='text-xl font-normal'>Password</h1>
+        <h1 class='opacity-40'> forgot Password?</h1>
+        </div>
+        <input type="password" placeholder='Password' class='rounded-xl' />
+>>>>>>> revisi
       </div>
 
         <div class="w-full mt-4">
@@ -33,7 +51,11 @@
       </div>
     </div>
     <div class='w-[50%]'>
+<<<<<<< HEAD
     <img src='/img/pp.jpg' class='w-full h-full object-cover'/>  
+=======
+    <img src='/gambar/login.png' class='w-[60%]'/>  
+>>>>>>> revisi
     </div>  
     
   </div>
