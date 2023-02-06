@@ -27,13 +27,20 @@ Route::get('/opentrip', function () {
     return view('opentrip');
 });
 
-
+Route::get('/daftar', function(){
+    return view('register');
+});
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
+
 Route::get('/admin', function(){
     return view('admin.index');                                                                                                                             
+});
+
+Route::get('/admin/user', function(){
+    return view('admin.user');                                                                                                                             
 });
 
 Route::get('/login', function(){
@@ -43,6 +50,11 @@ Route::get('/login', function(){
 Route::get('/kota', function(){
     return view('admin.kota.index');
 });
+
 Route::get('/kota/add', function(){
     return view('admin.kota.add');
+});
+
+Route::get('/home', function(){
+    return view('home');                                                                                                                             
 });
