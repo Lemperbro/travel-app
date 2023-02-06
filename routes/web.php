@@ -33,3 +33,6 @@ Route::get('/login', function(){
 Route::get('/kota', function(){
     return view('admin.kota.index');
 });
+Route::get('/kota/add', function(){
+    return view('admin.kota.add');
+});

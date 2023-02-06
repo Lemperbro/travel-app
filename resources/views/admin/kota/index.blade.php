@@ -3,13 +3,12 @@
 
    @section('container')
 <div>
-  @include('admin.partials.sidebar')
   
-      <div class="bg-gray-900 opacity-50   inset-0 z-10 " id="sidebarBackdrop"></div>
-      <div id="main-content" class="w-full bg-gray-50 relative overflow-y-auto lg:ml-64 pt-10">
+
          <div class="flex">
-            <a href="" class="bg-orange-600 text-white p-2 rounded-md">Tambah Kota</a>
+            <a href="/kota/add" class="bg-orange-600 text-white p-2 rounded-md">Tambah Kota</a>
          </div>
+
          <div class="grid grid-cols-4 gap-4 mt-8">
 
             <div class="rounded-md shadow-best p-2">
@@ -47,7 +46,6 @@
             
          </div>
       
-      </div>
    </div>
 
 
