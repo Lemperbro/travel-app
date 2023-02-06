@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Wisata::factory(10)->create();
         \App\Models\Supir::factory(10)->create();
         \App\Models\Kendaraan::factory(10)->create();
+        \App\Models\Jemput::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

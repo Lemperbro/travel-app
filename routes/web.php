@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -36,9 +38,7 @@ Route::get('/admin', function(){
     return view('admin.index');                                                                                                                             
 });
 
-Route::get('/login', function(){
-    return view('masuk');
-});
+Route::get('/login', [LoginController::class, 'index']);
 
 Route::get('/kota', function(){
     return view('admin.kota.index');
@@ -46,3 +46,7 @@ Route::get('/kota', function(){
 Route::get('/kota/add', function(){
     return view('admin.kota.add');
 });
+
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
+
