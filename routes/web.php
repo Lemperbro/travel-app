@@ -41,7 +41,6 @@ Route::get('/admin', function(){
     return view('admin.index');                                                                                                                             
 });
 
-<<<<<<< HEAD
 Route::get('/admin/user', function(){
     return view('admin.user');                                                                                                                             
 });
@@ -49,9 +48,7 @@ Route::get('/admin/user', function(){
 Route::get('/login', function(){
     return view('masuk');
 });
-=======
 Route::get('/login', [LoginController::class, 'index']);
->>>>>>> c4c1c20ffe984e18ab2fbb977768b3ace709e769
 
 Route::get('/kota', function(){
     return view('admin.kota.index');
@@ -61,12 +58,9 @@ Route::get('/kota/add', function(){
     return view('admin.kota.add');
 });
 
-<<<<<<< HEAD
 Route::get('/home', function(){
     return view('home');                                                                                                                             
 });
-=======
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 
->>>>>>> c4c1c20ffe984e18ab2fbb977768b3ace709e769
