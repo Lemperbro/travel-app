@@ -6,7 +6,7 @@
   
 
          <div class="flex">
-            <a href="/user/user" class="bg-orange-600 text-white p-2 rounded-md">Edit user</a>
+            <a href="/user/add" class="bg-orange-600 text-white p-2 rounded-md">kelola user</a>
          </div>
 
          <div class="grid grid-cols-4 gap-4 mt-8">
@@ -15,14 +15,14 @@
                <img src="img/pp.jpg" alt="">
 
                <div class="mt-4">
-                  <h1 class="font-semibold font-mono text-center text-xl">User</h1>
+                  <h1 class="font-semibold font-mono text-center text-xl">Profil</h1>
 
                   <div class="flex gap-x-4">
 
                   <div class=" justify-between  ">
                      <h1 class="font-mono ">Nama</h1>
-                     <h1 class="font-mono ">Alamat</h1>
-                     <h1 class="font-mono ">No Hp</h1>
+                     <h1 class="font-mono ">Email</h1>
+                     <h1 class="font-mono ">NoTlp</h1>
                   </div>
                   
                   <div class="justify-between  ">
@@ -32,9 +32,9 @@
                   </div>
 
                   <div class=" justify-between  ">
-                     <h1>40</h1>
-                     <h1>bromo</h1>
-                     <h1>082231719219</h1>
+                     <h1>konok</h1>
+                     <h1>mboh@gmail.com</h1>
+                     <h1>-082231719213</h1>
                   </div>
 
                </div>

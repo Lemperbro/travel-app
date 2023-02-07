@@ -43,13 +43,14 @@ Route::get('/admin', function(){
 
 
 
+
 Route::get('/login', function(){
     return view('masuk');
 });
 
+Route::get('/login', [LoginController::class, 'index']);
 
-//kontrol kota admin
-
+//kontrol kota
 Route::get('/kota', function(){
     return view('admin.kota.index');
 });
@@ -58,11 +59,18 @@ Route::get('/kota/add', function(){
     return view('admin.kota.add');
 });
 
-//kontrol user admin
-Route::get('/user/add', function(){
-    return view('admin.user.user');                                                                                                                             
+//kontrol user
+Route::get('/user', function(){
+    return view('admin.user.index');
 });
 
-Route::get('/user', function(){
-    return view('admin.user.index');                                                                                                                             
+Route::get('/user/add', function(){
+    return view('admin.user.add');
 });
+
+Route::get('/home', function(){
+    return view('home');                                                                                                                             
+});
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
+

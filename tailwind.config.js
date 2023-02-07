@@ -5,7 +5,8 @@ module.exports = {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     './node_modules/tw-elements/dist/js/**/*.js',
-    './public/icons/*.css'
+    './public/icons/*.css',
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     container: {
@@ -61,7 +62,7 @@ module.exports = {
   },
   plugins: [
 
-
+    require('flowbite/plugin')
 
   ],
 }
