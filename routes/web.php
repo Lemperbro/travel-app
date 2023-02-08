@@ -46,22 +46,42 @@ Route::get('/view/{id}', [WisataController::class, 'show']);
     });
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
 
 Route::get('/login', function(){
     return view('masuk');
 });
+<<<<<<< HEAD
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+=======
 
+Route::get('/login', [LoginController::class, 'index']);
+>>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
+
+//kontrol kota
 Route::get('/kota', function(){
     return view('admin.kota.index');
 });
 
 Route::get('/kota/add', function(){
     return view('admin.kota.add');
+});
+
+//kontrol user
+Route::get('/user', function(){
+    return view('admin.user.index');
+});
+
+Route::get('/user/add', function(){
+    return view('admin.user.add');
 });
 
 Route::get('/home', function(){
