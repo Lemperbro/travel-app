@@ -1,11 +1,14 @@
 @extends('layouts.main')
 
 
+
+@include('partials.carousel')
+@include('partials.contain')
+
 @section('container')
 
 
 
-@include('partials.carousel')
 <div class="grid grid-cols-3 mx-auto border justify-between w-full ">
 
     @foreach ($best_kota as $data)

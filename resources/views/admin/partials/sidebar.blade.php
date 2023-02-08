@@ -18,8 +18,15 @@
                       </form>
                    </li>
                    <li>
+<<<<<<< HEAD
+
+                      <a href="/admin" class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
+                         <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+
+=======
                       <a href="#" class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
                          <svg class="w-6 h-6 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+>>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
                             <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                          </svg>
@@ -28,7 +35,7 @@
                    </li>
                    <li>
                       <a href="#" target="_blank" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 flex-shrink-0 " fill="currentColor" viewBox="0 0 20 20"><path d="M6 42V14.1h12.35V9.5L24 4l5.65 5.5v12.9H42V42Zm3-3h5.3v-5.3H9Zm0-8.3h5.3v-5.3H9Zm0-8.3h5.3v-5.3H9ZM21.35 39h5.3v-5.3h-5.3Zm0-8.3h5.3v-5.3h-5.3Zm0-8.3h5.3v-5.3h-5.3Zm0-8.3h5.3V8.8h-5.3ZM33.7 39H39v-5.3h-5.3Zm0-8.3H39v-5.3h-5.3Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 flex-shrink-0 " fill="currentColor" viewBox="0 0 45 45"><path d="M6 42V14.1h12.35V9.5L24 4l5.65 5.5v12.9H42V42Zm3-3h5.3v-5.3H9Zm0-8.3h5.3v-5.3H9Zm0-8.3h5.3v-5.3H9ZM21.35 39h5.3v-5.3h-5.3Zm0-8.3h5.3v-5.3h-5.3Zm0-8.3h5.3v-5.3h-5.3Zm0-8.3h5.3V8.8h-5.3ZM33.7 39H39v-5.3h-5.3Zm0-8.3H39v-5.3h-5.3Z"/></svg>
                          <span class="ml-3 flex-1 whitespace-nowrap">Kelola Kota</span>
                       </a>
                    </li>
@@ -76,19 +83,29 @@
                         <img src="/icons/guide.svg" alt="" class="w-6 h-6 ">
                         <span class="ml-3 flex-1 whitespace-nowrap">Guide</span>
                      </a>
-                  </li>                   <li>
+                  </li>                   
+                  <li>
                      <a href="#" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                         <img src="/icons/laporan.svg" alt="" class="w-6 h-6 ">
                         <span class="ml-3 flex-1 whitespace-nowrap">Laporan</span>
                      </a>
                   </li>
                   <li>
-                     <a href="#" class="text-base text-gray-900 font-normal rounded-lg hover:bg-red-500 flex items-center p-2 group bg-red-600">
+                     <a href="/" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                        <img src="/icons/laporan.svg" alt="" class="w-6 h-6 ">
+                        <span class="ml-3 flex-1 whitespace-nowrap">Dashboard Client</span>
+                     </a>
+                  </li>
+                  <li>
+                     <form action="/logout" method="post">
+                        @csrf
+                     <button type="submit" class="text-base text-gray-900 font-normal rounded-lg hover:bg-red-500 flex items-center p-2 group bg-red-600">
                         <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                            <path fill-rule="evenodd" fill="#ffffff" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
                         </svg>
                         <span class="ml-3 flex-1 whitespace-nowrap text-white">Logout</span>
-                     </a>
+                     </button>
+                  </form>
                   </li>
                 </ul>
              </div>
