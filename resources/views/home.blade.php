@@ -1,10 +1,11 @@
 @extends('layouts.main')
 
 
+
 @section('container')
 
 
-<div className=''>
+<div classs=''>
    @include('partials.carousel')
  
     <div>

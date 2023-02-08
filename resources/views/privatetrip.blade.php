@@ -1,4 +1,4 @@
-
+@extends('layouts.main')
 <div class='relative'>
   <img src='/img/pt.png' class=''/>
   <h1 class='absolute top-40 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>Private Trip</h1>

@@ -29,9 +29,6 @@ Route::get('/opentrip', function () {
     return view('opentrip');
 });
 
-Route::get('/daftar', function(){
-    return view('register');
-});
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
@@ -46,25 +43,15 @@ Route::get('/view/{id}', [WisataController::class, 'show']);
     });
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
 
 Route::get('/about', function(){
     return view('about');
 });
-<<<<<<< HEAD
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
-=======
-
-Route::get('/login', [LoginController::class, 'index']);
->>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
 
 //kontrol kota
 Route::get('/kota', function(){

@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
     <div class="flex justify-center">
 <div>
   <div class="dropdown relative">
@@ -20,7 +20,7 @@
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      Tour
+      halo
       <svg
         aria-hidden="true"
         focusable="false"
@@ -75,7 +75,7 @@
             hover:bg-gray-100
           "
           href="#"
-          >Action</a>
+          >Privet Trip</a>
       </li>
       <li>
         <a
@@ -93,7 +93,7 @@
             hover:bg-gray-100
           "
           href="#"
-          >Another action</a>
+          >Single Trip</a>
       </li>
       <li>
         <a
@@ -111,10 +111,10 @@
             hover:bg-gray-100
           "
           href="#"
-          >Something else here</a>
+          >Open Trip</a>
       </li>
     </ul>
   </div>
 </div>
 </div>
-  </div>
+  </div> --}}
