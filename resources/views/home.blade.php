@@ -6,14 +6,7 @@
 
 <div className=''>
    @include('partials.carousel')
-    phoneNumber="https://wa.me/6285784171192"
-    accountName="admin"
-    allowEsc
-    allowClickAway
-    notification
-    notificationSound
-    />
-    
+ 
     <div>
       <div class='container mt-8 mb-9 flex justify-between'>
         <div class=' mt-4'>

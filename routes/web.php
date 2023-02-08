@@ -44,8 +44,8 @@ Route::get('/admin', function(){
 
 
 
-Route::get('/login', function(){
-    return view('masuk');
+Route::get('/about', function(){
+    return view('about');
 });
 
 Route::get('/login', [LoginController::class, 'index']);
@@ -68,8 +68,8 @@ Route::get('/user/add', function(){
     return view('admin.user.add');
 });
 
-Route::get('/home', function(){
-    return view('home');                                                                                                                             
+Route::get('/blog', function(){
+    return view('blog');                                                                                                                             
 });
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
