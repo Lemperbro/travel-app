@@ -17,9 +17,9 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/masuk', function () {
     return view('masuk');
@@ -33,22 +33,28 @@ Route::get('/daftar', function(){
     return view('register');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
 
-Route::get('/admin', function(){
-    return view('admin.index');                                                                                                                             
-});
+    Route::get('/admin', function(){
+        return view('admin.index')  ;                                                                                                                             
+    })->middleware('admin');
+    
+    Route::get('/admin/user', function(){
+        return view('admin.user');                                                                                                                             
+    });
 
-Route::get('/admin/user', function(){
-    return view('admin.user');                                                                                                                             
-});
+
 
 Route::get('/login', function(){
     return view('masuk');
 });
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/kota', function(){
     return view('admin.kota.index');
@@ -61,6 +67,5 @@ Route::get('/kota/add', function(){
 Route::get('/home', function(){
     return view('home');                                                                                                                             
 });
-Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/register', [RegisterController::class, 'store']);
+
 

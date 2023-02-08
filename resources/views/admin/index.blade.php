@@ -1,4 +1,4 @@
-{{-- @extends('admin.layouts.main')
+@extends('admin.layouts.main')
     <!-- This is an example component -->
 
    @section('container')
@@ -293,4 +293,4 @@
 
 
 
-   @endsection --}}
+   @endsection

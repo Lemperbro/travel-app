@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+
 class RegisterController extends Controller
 {
     //
@@ -23,10 +24,12 @@ class RegisterController extends Controller
             'alamat' => 'required'
         ]);
 
-        $validasi['password'] = bcrypt($validasi['password']);  
+
+        $validasi['password'] = bcrypt($validasi['password']); 
+        
 
         User::create($validasi);
-        $this->$request->session()->flash('success', 'Registration successfull! Please login');
+        $request->session()->flash('success', 'Registration successfull! Please login');
  
         return redirect('/login');
     }
