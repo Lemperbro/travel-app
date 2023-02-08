@@ -5,6 +5,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\KotaController;
+use App\Models\Kota;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,38 +37,34 @@ Route::get('/daftar', function(){
     return view('register');
 });
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
 
-    Route::get('/admin', function(){
-        return view('admin.index')  ;                                                                                                                             
-    })->middleware('admin');
+Route::middleware('admin')->group(function(){
+    Route::get('/admin', [AdminDashboardController::class, 'index']);
+    Route::get('/admin/kota', [KotaController::class, 'index']);
+
     
-    Route::get('/admin/user', function(){
-        return view('admin.user');                                                                                                                             
-    });
+    // Route::get('/admin/user', function(){
+    //     return view('admin.user');                                                                                                                             
+    // });
+});
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
+
 
 Route::get('/login', function(){
     return view('masuk');
 });
-<<<<<<< HEAD
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
-=======
 
-Route::get('/login', [LoginController::class, 'index']);
->>>>>>> 2ed84d9b0f2e35717d062e37ff9506548ebae08e
 
 //kontrol kota
 Route::get('/kota', function(){

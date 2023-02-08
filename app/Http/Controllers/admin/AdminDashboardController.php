@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Kota;
-use App\Models\Wisata;
 use Illuminate\Http\Request;
+use App\Models\AdminDashboard;
 use Illuminate\Routing\Controller;
 
-class DashboardController extends Controller
+class AdminDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('dashboard', [
-
-            'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
-            'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
-            'kota' => Kota::all(),
-            'cobalagi' => 'berhasil'
-        
-        ]);
+        return view('admin.index');
     }
 
     /**
@@ -51,10 +43,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\AdminDashboard  $adminDashboard
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AdminDashboard $adminDashboard)
     {
         //
     }
@@ -62,10 +54,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\AdminDashboard  $adminDashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(AdminDashboard $adminDashboard)
     {
         //
     }
@@ -74,10 +66,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\AdminDashboard  $adminDashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, AdminDashboard $adminDashboard)
     {
         //
     }
@@ -85,10 +77,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\AdminDashboard  $adminDashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AdminDashboard $adminDashboard)
     {
         //
     }
