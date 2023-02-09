@@ -9,15 +9,15 @@
       </div>
       <div class='mt-9'>
       <h1 class='border shadow-md px-3 py-1 rounded-md bg-[#FF2E00] text-white font-semibold text-center'>
-      Travel with Whom ever. When ever. Welcome to private and custom <br></br>
+      Travel with Whom ever. When ever. Welcome to private and custom 
       travel with Growin Travel Indonesia
       </h1>
       </div>
       <div class='mt-9'>
-        <p class='text-center text-lg font-semibold'>Take one of our private tours, exclusively with your inner circle.<br></br> 
-            Discover the full beauty and variety of East Java, Indonesia,<br></br> 
-            which includes some best destinations such as Mount Bromo Sunrise<br></br>
-            Mount Ijen Crater Lake & Blue Fire, Tumpak Sewu Waterfall, Madakaripura Waterfall,<br></br> 
+        <p class='text-center text-lg font-semibold'>Take one of our private tours, exclusively with your inner circle. 
+            Discover the full beauty and variety of East Java, Indonesia, 
+            which includes some best destinations such as Mount Bromo Sunrise
+            Mount Ijen Crater Lake & Blue Fire, Tumpak Sewu Waterfall, Madakaripura Waterfall, 
             Malang Rainbow Village and Red Island Beach
         </p>
       </div>
