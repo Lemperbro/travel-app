@@ -102,9 +102,35 @@ class AdminKotaController extends Controller
      * @param  \App\Models\AdminKota  $adminKota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminKota $adminKota)
+    public function update(Request $request, $id)
     {
         //
+        $gambar = Kota::findOrFail($id);     
+        $input=$request->all();
+
+        $image=array();
+
+        if($files=$request->file('image')){
+            foreach($files as $file){
+                $name=$file->getClientOriginalName();
+                $file->move('image',$name);
+                $image[]=$name;
+            }
+        }else{
+            $image[] = $gambar->image;
+        }
+        /*Insert your data*/
+    
+        Kota::find($id)->update( [
+            'image'=>  implode("|",$image),
+            'nama_kota' => $input['nama'],
+            //you can put other insertion here
+        ]);
+    
+    
+        return redirect('/admin/kota');
+
+
     }
 
     /**

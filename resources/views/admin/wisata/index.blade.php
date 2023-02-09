@@ -78,7 +78,7 @@
           <div class="mt-4">
              <h1 class="font-semibold font-mono text-center text-xl">Bromo</h1>
 
-            <h2 class="font-semibold">Kota Malang</h2>
+            <h2 class="font-semibold ">Kota Malang</h2>
             <p class="line-clamp-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis incidunt tempore repellendus vitae aliquid? Repellendus nobis magnam consequatur quod est corporis maxime, officiis libero dolorum repellat ipsum, cupiditate voluptate tempora.</p>
 
           <div class="flex gap-x-4 justify-between mt-4">
@@ -92,4 +92,8 @@
     </div>
  
 </div>
+
+
+
+
 @endsection

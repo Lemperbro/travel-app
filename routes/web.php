@@ -44,6 +44,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/kota', [AdminKotaController::class, 'index']);
     Route::get('/admin/kota/add', [AdminKotaController::class, 'show']);
     Route::post('/admin/kota/add', [AdminKotaController::class, 'store']);
+    Route::post('/admin/kota/edit/{id}', [AdminKotaController::class, 'update']);
 
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
     Route::get('/admin/wisata/add', [AdminWisataController::class, 'show']);
