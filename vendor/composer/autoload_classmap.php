@@ -53,6 +53,7 @@ return array(
     'App\\Http\\Requests\\UpdateSupirRequest' => $baseDir . '/app/Http/Requests/UpdateSupirRequest.php',
     'App\\Http\\Requests\\UpdateTestiRequest' => $baseDir . '/app/Http/Requests/UpdateTestiRequest.php',
     'App\\Http\\Requests\\UpdateWisataRequest' => $baseDir . '/app/Http/Requests/UpdateWisataRequest.php',
+    'App\\Models\\AdminDashboard' => $baseDir . '/app/Models/AdminDashboard.php',
     'App\\Models\\Fasilitas' => $baseDir . '/app/Models/Fasilitas.php',
     'App\\Models\\Guide' => $baseDir . '/app/Models/Guide.php',
     'App\\Models\\Itenerary' => $baseDir . '/app/Models/Itenerary.php',

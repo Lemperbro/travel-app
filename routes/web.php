@@ -5,6 +5,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\KotaController;
+use App\Models\Kota;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +38,18 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
 
-    Route::get('/admin', function(){
-        return view('admin.index')  ;                                                                                                                             
-    })->middleware('admin');
+Route::middleware('admin')->group(function(){
+    Route::get('/admin', [AdminDashboardController::class, 'index']);
+    Route::get('/admin/kota', [KotaController::class, 'index']);
+
     
-    Route::get('/admin/user', function(){
-        return view('admin.user');                                                                                                                             
-    });
+    // Route::get('/admin/user', function(){
+    //     return view('admin.user');                                                                                                                             
+    // });
+});
+
+
+
 
 
 

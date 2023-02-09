@@ -561,6 +561,7 @@ class ComposerStaticInitcbb9edb7b367cccfcf4be97dbe4cc9bb
         'App\\Http\\Requests\\UpdateSupirRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateSupirRequest.php',
         'App\\Http\\Requests\\UpdateTestiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateTestiRequest.php',
         'App\\Http\\Requests\\UpdateWisataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateWisataRequest.php',
+        'App\\Models\\AdminDashboard' => __DIR__ . '/../..' . '/app/Models/AdminDashboard.php',
         'App\\Models\\Fasilitas' => __DIR__ . '/../..' . '/app/Models/Fasilitas.php',
         'App\\Models\\Guide' => __DIR__ . '/../..' . '/app/Models/Guide.php',
         'App\\Models\\Itenerary' => __DIR__ . '/../..' . '/app/Models/Itenerary.php',

@@ -20,7 +20,7 @@ class isAdmin
         if(auth()->user()->posisi == 1){
         return $next($request);
      }
-    return redirect('dashboard');
+        return redirect('/');
 
     }
 }
