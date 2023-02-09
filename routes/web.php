@@ -91,3 +91,6 @@ Route::get('/blog', function(){
 });
 
 
+Route::get('/isi', function(){
+    return view('isi');                                                                                                                             
+});
