@@ -6,12 +6,12 @@
 <div>
   @include('admin.partials.sidebar')
     
-    <form action="/admin/kota/add" method="POST" class="w-full px-4" enctype="multipart/form-data">
+    <form action="" method="POST" class="w-full px-4">
         <h1 class="text-center font-semibold text-2xl">ADD KOTA</h1>
-        @csrf
+
         <div class="w-full">
             <label for="image">Gambar</label>
-            <input type="file" name="image[]" class="w-full border object-cover block rounded-md mt-4" multiple>
+            <input type="file" name="image[]" class="w-full border object-cover block rounded-md mt-4">
            
         </div>
         <div class="mt-4">
@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex gap-x-4 mt-4">
-        <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>
+        <button class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>
         <a href="/kota" class="bg-red-600 px-4 py-2 text-white rounded-md">Batal</a>
     </div>
     </form>

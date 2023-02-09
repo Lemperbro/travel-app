@@ -63,7 +63,13 @@ module.exports = {
   plugins: [
 
     require('flowbite/plugin'),
+<<<<<<< HEAD
     require('tw-elements/dist/plugin')
+=======
+    require('@tailwindcss/forms'),
+    require('tw-elements/dist/plugin'),
+    require('@tailwindcss/line-clamp')
+>>>>>>> d93c39d (ryan)
 
   ],
 }

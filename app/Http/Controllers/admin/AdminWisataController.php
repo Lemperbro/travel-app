@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\admin\AdminWisata;
 use Illuminate\Http\Request;
-use App\Models\admin\AdminDashboard;
 use Illuminate\Routing\Controller;
 
-class AdminDashboardController extends Controller
+class AdminWisataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class AdminDashboardController extends Controller
     public function index()
     {
         //
-        return view('admin.index');
+        return view('admin.wisata.index');
     }
 
     /**
@@ -43,21 +43,22 @@ class AdminDashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminWisata  $adminWisata
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminDashboard $adminDashboard)
+    public function show(AdminWisata $adminWisata)
     {
         //
+        return view('admin.wisata.add');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminWisata  $adminWisata
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminDashboard $adminDashboard)
+    public function edit(AdminWisata $adminWisata)
     {
         //
     }
@@ -66,10 +67,10 @@ class AdminDashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminWisata  $adminWisata
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminDashboard $adminDashboard)
+    public function update(Request $request, AdminWisata $adminWisata)
     {
         //
     }
@@ -77,10 +78,10 @@ class AdminDashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminWisata  $adminWisata
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminDashboard $adminDashboard)
+    public function destroy(AdminWisata $adminWisata)
     {
         //
     }
