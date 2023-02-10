@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\admin\AdminWisata;
+use App\Models\Supir;
 use Illuminate\Http\Request;
+use App\Models\admin\AdminWisata;
 use Illuminate\Routing\Controller;
 
-class AdminWisataController extends Controller
+class AdminSupirController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,9 @@ class AdminWisataController extends Controller
     public function index()
     {
         //
-        return view('admin.wisata.index',[
-            'tittle' => 'Kelola Wisata'
+        return view('admin.supir.index',[
+           'data' => Supir::all(),
+            'tittle' => 'Kelola Supir'
         ]);
     }
 
@@ -40,6 +42,16 @@ class AdminWisataController extends Controller
     public function store(Request $request)
     {
         //
+        $validasi = $request->validate([
+            'nama' => 'required|max:255',
+            'no_tlpn' => 'required|min:11',
+            'alamat' => 'required',
+            'umur' => 'required',
+        ]);
+
+        Supir::create($validasi);
+        return redirect('/supir');
+
     }
 
     /**
@@ -72,9 +84,19 @@ class AdminWisataController extends Controller
      * @param  \App\Models\AdminWisata  $adminWisata
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminWisata $adminWisata)
+    public function update(Request $request, AdminWisata $adminWisata, $id)
     {
         //
+
+        Supir::find($id)->update([
+            'nama' => $request['nama'],
+            'no_tlpn' => $request['no_tlpn'],
+            'alamat' => $request['alamat'],
+            'umur' => $request['umur']
+        ]);
+
+        return redirect('/supir');
+
     }
 
     /**
@@ -83,8 +105,12 @@ class AdminWisataController extends Controller
      * @param  \App\Models\AdminWisata  $adminWisata
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminWisata $adminWisata)
+    public function destroy($id)
     {
         //
+
+        Supir::find($id)->delete();
+
+        return redirect('/supir');
     }
 }

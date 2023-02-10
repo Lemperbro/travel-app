@@ -26,6 +26,7 @@ class AdminKotaController extends Controller
         
         return view('admin.kota.index',[
             'data' => Kota::with('wisata')->get(),
+            'tittle' => 'Kelola Kota'
             // 'best' => Kota::with('wisata')->join('wisatas', 'wisatas.kota_id', '=', 'kotas.id')->orderBy('wisatas.diboking', 'DESC')->get(),
             // 'best' => Wisata::where('kota_id')->orderBy('diboking', 'DESC')->limit(1)->get()
             // 'best' => Wisata::where('kota_id', )
@@ -119,7 +120,7 @@ class AdminKotaController extends Controller
         }else{
             $image[] = $gambar->image;
         }
-        /*Insert your data*/
+       
     
         Kota::find($id)->update( [
             'image'=>  implode("|",$image),
@@ -139,8 +140,12 @@ class AdminKotaController extends Controller
      * @param  \App\Models\AdminKota  $adminKota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminKota $adminKota)
+    public function destroy($id)
     {
         //
+
+        Kota::find($id)->delete();
+
+        return redirect('/admin/kota');
     }
 }

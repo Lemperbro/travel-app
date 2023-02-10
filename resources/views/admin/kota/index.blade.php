@@ -51,7 +51,10 @@
                data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $query->id }}">
                Edit
                </button>
-                  <button class="bg-red-600 p-2 rounded-md text-white font-semibold  w-full text-center">Hapus</button>
+               <form action="/kota/delete/{{ $query->id }}" method="POST">
+                  @csrf
+                  <button type="submit" class="bg-red-600 p-2 rounded-md text-white font-semibold  w-full text-center">Hapus</button>
+               </form>
                </div>
             </div>
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\admin\AdminDashboard;
+use App\Models\admin\AdminUser;
 use Illuminate\Routing\Controller;
 
-class AdminDashboardController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,12 @@ class AdminDashboardController extends Controller
     public function index()
     {
         //
-        return view('admin.index',[
-            'tittle' => 'Dashboard'
+        return view('admin.user.index', [
+           'data' => User::where('posisi', 0)->get(),
+           'tittle' => 'User'
+
         ]);
+      
     }
 
     /**
@@ -45,10 +49,10 @@ class AdminDashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminDashboard $adminDashboard)
+    public function show(AdminUser $adminUser)
     {
         //
     }
@@ -56,10 +60,10 @@ class AdminDashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminDashboard $adminDashboard)
+    public function edit(AdminUser $adminUser)
     {
         //
     }
@@ -68,10 +72,10 @@ class AdminDashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminDashboard $adminDashboard)
+    public function update(Request $request, AdminUser $adminUser)
     {
         //
     }
@@ -79,11 +83,14 @@ class AdminDashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdminDashboard  $adminDashboard
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminDashboard $adminDashboard)
+    public function destroy($id)
     {
         //
+        User::find($id)->delete();
+
+        return redirect('/user');
     }
 }

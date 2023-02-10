@@ -7,8 +7,11 @@ use App\Http\Controllers\WisataController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\AdminKotaController;
+use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminKendaraanController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -45,9 +48,30 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/kota/add', [AdminKotaController::class, 'show']);
     Route::post('/admin/kota/add', [AdminKotaController::class, 'store']);
     Route::post('/admin/kota/edit/{id}', [AdminKotaController::class, 'update']);
+    Route::post('/kota/delete/{id}', [AdminKotaController::class, 'destroy']);
 
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
     Route::get('/admin/wisata/add', [AdminWisataController::class, 'show']);
+
+
+
+    Route::get('/user', [AdminUserController::class, 'index']);
+    Route::post('/user/delete/{id}', [AdminUserController::class, 'destroy']);
+
+
+    Route::get('/supir', [AdminSupirController::class, 'index']);
+    Route::post('/supir/delete/{id}', [AdminSupirController::class, 'destroy']);
+    Route::post('/admin/supir/edit/{id}', [AdminSupirController::class, 'update']);
+    Route::post('/admin/supir/add', [AdminSupirController::class, 'store']);
+
+    Route::get('/kendaraan', [AdminKendaraanController::class, 'index']);
+    Route::post('/kendaraan/delete/{id}', [AdminKendaraanController::class, 'destroy']);
+    Route::post('/kendaraan/edit/{id}', [AdminKendaraanController::class, 'update']);
+    Route::post('/kendaraan/add', [AdminKendaraanController::class, 'store']);
+
+
+
+
 
     
     // Route::get('/admin/user', function(){
@@ -78,14 +102,14 @@ Route::post('/register', [RegisterController::class, 'store']);
 //     return view('admin.kota.add');
 // });
 
-//kontrol user
-Route::get('/user', function(){
-    return view('admin.user.index');
-});
+// //kontrol user
+// // Route::get('/user', function(){
+// //     return view('admin.user.index');
+// // });
 
-Route::get('/user/add', function(){
-    return view('admin.user.add');
-});
+// Route::get('/user/add', function(){
+//     return view('admin.user.add');
+// });
 
 Route::get('/blog', function(){
     return view('blog');                                                                                                                             
