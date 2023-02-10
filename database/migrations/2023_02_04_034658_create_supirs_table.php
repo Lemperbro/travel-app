@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->id();
             $table->string('nama');
-            $table->integer('no_tlpn');
+            $table->bigInteger('no_tlpn');
             $table->text('alamat');
             $table->integer('umur');
             $table->timestamps();

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->id();
             $table->string('merek');
             $table->integer('kapasitas');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

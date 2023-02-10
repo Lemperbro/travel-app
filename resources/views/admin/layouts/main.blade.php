@@ -5,9 +5,7 @@
 <div>
   @include('admin.partials.sidebar')
 
-  <div class="bg-gray-900 opacity-50   inset-0 z-10 border border-red-600" id="sidebarBackdrop"></div>
-  <div id="main-content" class="w-full  relative  lg:ml-64 border pt-10">
-    <div class="bg-red-600 absolute -z-10 h-screen w-full"></div>
+  <div id="main-content" class="w-full relative  lg:ml-64  pt-10">
 @yield('container')
 
   </div>
