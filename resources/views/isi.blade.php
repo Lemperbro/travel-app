@@ -117,5 +117,131 @@
     @include('partials.dropdowntext')
     @include('partials.barang')
 
+    
+    <div class="mt-8">
+        <h1 class="text-center font-bold text-2xl">We can tell you everything about Mount Bromo</h1>
+    </div>
+
+    <div class='mt-1 border bg-[#FD522C]'>
+        <h1 class="text-center font-semibold text-white text-2xl">
+            About Mount Bromo
+        </h1>
+    </div>
+
+    <div class="mt-4">
+        <details class="text-justify text-sm font-semibold">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+               where is mount bromo located and how does the landscape look like ?
+            </summary>
+           <p class="p-2">
+            Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
+            </p> 
+        </details>
+    </div>
+
+    <div>
+        <details class="text-justify text-sm font-semibold">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+               what is the best time to visit mount bromo? can i visit during the festivals ?
+            </summary>
+            <p class="p-2">
+                Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
+            </p>
+        </details>
+    </div>
+
+    <div>
+        <details class="text-justify text-sm font-semibold border">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2">
+                how difficult is the trek?
+            </summary>
+            <p class="p-2">
+                Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
+            </p>
+            
+        </details>
+    </div>
+
+    <div>
+        <details class="text-justify text-sm font-semibold">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+                can i camp at mount bromo?
+            </summary>
+            Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
+        </details>
+    </div>
+
+    <div class='my-4 border bg-[#FD522C]'>
+        <h1 class="text-center font-semibold text-white text-2xl">
+            About Tour Packages
+        </h1>
+    </div>
+
+    <div class="mt-4">
+        <details class="text-justify text-sm font-semibold p-2">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+                what kind of acommodations do we provide?
+            </summary>
+            We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.
+        </details>
+    </div>
+
+    <div class="">
+        <details class="text-justify text-sm font-semibold">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+                how much is the horse ride at mount bromo?
+            </summary>
+            We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.
+        </details>
+    </div>
+
+    <div class="">
+        <details class="text-justify text-sm font-semibold">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+                how much many do i need during the trip?
+            </summary>
+            We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.
+        </details>
+    </div>
+
+
+    <div class="my-8">
+        <div class="text-center">
+            <h1 class="text-2xl font-bold ">
+                Enquiry Form
+            </h1>
+            <h1 class=" text-lg font-semibold justify-center flex">
+                If you are looking for other tours or do some customisation,<br>
+                just leave your information and message below.
+            </h1>
+        </div>
+    </div>
+
+  
+        <div class="w-full ">
+            <div class="flex">
+                <input type="text" class="mx-auto rounded-xl w-[65%]" placeholder="Your Name">
+            </div>
+            
+            <div class="flex my-9">
+                <input type="text" class="mx-auto rounded-xl w-[65%]" placeholder="Phone Number">
+            </div>
+
+            <div class="flex my-9">
+                <input type="Email" class="mx-auto rounded-xl w-[65%]" placeholder="Agungadnhita@gmail.com">
+            </div>
+
+            <div class="flex my-9">
+                <input type="text area" class="mx-auto rounded-xl w-[65%] border-2 px-4 py-12" placeholder="Leave Your Massage Here">
+            </div>
+        </div>
+
+        <div class='flex my-8'>
+            <button class='border shadow-md px-6 py-4 rounded-xl bg-[#FF2E00] text-white font-semibold mx-auto'>
+              Submit
+            </button>
+        </div>
+
+        
 
 @endsection

@@ -20,7 +20,7 @@
     <summary class="bg-[#FD522C] py-2 text-white text-center font-semibold rounded-xl text-3xl">
         Day 1
     </summary>
-      <div class="absolute my-8">
+      <div class="absolute my-8 mr-28">
         <h1 class="border p-2 shadow-best4 inline">Day 1 : Surabaya - Bromo Area</h1>
         <div class="text-justify">
         <p class="mt-8">• Pick up from Surabaya Juanda International Airport or Surabaya Train Station on your arrival time. If you are already at Surabaya, we will pick up at your hotel in Surabaya at 9am</p>

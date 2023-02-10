@@ -39,7 +39,6 @@
         <button class='border shadow-md px-3   py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
           View More
         </button>
-        
       </div>
     </div>
     <div class='w-[50%] mt-4'>
