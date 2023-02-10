@@ -38,6 +38,7 @@ Route::get('/opentrip', function () {
 });
 
 
+
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
