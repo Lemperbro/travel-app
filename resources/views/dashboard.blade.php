@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<div class='flex mx-auto'>
+<div class='flex mx-auto my-12'>
     <h1 class='text-2xl font-bold 
      border-black mx-auto'>Growin Travel Indonesia 
      <span class='border-r-2 border-black mx-3'></span> Travel Destination</h1>

@@ -39,6 +39,10 @@ Route::get('/opentrip', function () {
 
 
 
+Route::get('pdf', [PdfController::class, 'index']);
+
+
+
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata/{id}', [WisataController::class, 'show']);
 Route::get('/view/{id}', [WisataController::class, 'show']);
