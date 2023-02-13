@@ -1,4 +1,4 @@
-<!-- component -->
+{{-- <!-- component -->
 <style>
 	.barcode {
 		left: 50%;
@@ -6,7 +6,7 @@
 		display: inline-block;
 		transform: translateX(-90px);
 	}
-</style>
+</style> --}}
 <div class="flex flex-col items-center justify-center min-h-screen bg-center bg-cover"
 	style="background-image: url(https://images.unsplash.com/photo-1519666336592-e225a99dcd2f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80);">
 	<div class="absolute bg-blue-900 opacity-80 inset-0 z-0"></div>
@@ -36,7 +36,7 @@
 							</div>
 							<div class="ml-auto text-blue-800">A380</div>
 						</div>
-						<div class="border-dashed border-b-2 my-5"></div>
+						<div class="border-bold border-dashed border-b-2 my-5"></div>
 						<div class="flex items-center">
 							<div class="flex flex-col">
 								<div class="flex-auto text-xs text-gray-400 my-1">
@@ -92,7 +92,7 @@
 
 								</div>
 							</div>
-							<div class=" border-dashed border-b-2 my-5 pt-5">
+							<div class="border-bold border-dashed border-b-2 my-5 pt-5">
 								<div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -left-2"></div>
 								<div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -right-2"></div>
 							</div>

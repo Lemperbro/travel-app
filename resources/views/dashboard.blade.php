@@ -125,6 +125,8 @@
     </div>
    </div>
 
+@include('partials.most')
+
 
 </div>
 <div class='mt-8'>
@@ -135,9 +137,9 @@
   Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso, 
   <p class="text-center">Kabupaten Malang, Jawa Timur 65152</p>
   </p>
-  <div class='mt-6 ml-20'>
+  <div class='mt-6'>
 
-  <iframe class="text-center"
+  <iframe class="text-center mx-auto"
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.9521455537024!2d112.60469731418937!3d-7.900068680794963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7881c2c4637501%3A0x10433eaf1fb2fb4c!2sHummasoft%20Technology!5e0!3m2!1sid!2sid!4v1674017713271!5m2!1sid!2sid"
   width="1024",
   height="512",

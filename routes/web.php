@@ -37,9 +37,11 @@ Route::get('/opentrip', function () {
     return view('opentrip');
 });
 
+Route::get('/pdf', function () {
+    return view('pdf');
+});
 
 
-Route::get('pdf', [PdfController::class, 'index']);
 
 
 
