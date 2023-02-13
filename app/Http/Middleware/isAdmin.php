@@ -17,9 +17,10 @@ class isAdmin
     public function handle(Request $request, Closure $next)
     {
 
-        if(auth()->user()->posisi == 1){
+        if(!empty(auth()->user()) && auth()->user()->posisi == 1){
         return $next($request);
      }
+
 
         return redirect('/');
 

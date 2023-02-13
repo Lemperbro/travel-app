@@ -58,7 +58,7 @@ Route::middleware('admin')->group(function(){
     Route::post('/kota/delete/{id}', [AdminKotaController::class, 'destroy']);
 
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
-    Route::get('/admin/wisata/add', [AdminWisataController::class, 'show']);
+    Route::get('/admin/wisata/add', [AdminWisataController::class, 'store']);
 
 
 
