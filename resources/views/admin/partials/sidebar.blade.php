@@ -1,8 +1,8 @@
 <div class="flex overflow-hidden  pt-16">
-    <aside id="sidebar" class="fixed hidden z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
+    <aside id="sidebar" class="fixed hidden z-20 bg-white h-screen overflow-y-auto top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
        <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
           <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-             <div class="flex-1 px-3 bg-white divide-y space-y-1">
+             <div class="flex-1 px-3  divide-y space-y-1">
                 <ul class="space-y-2 pb-2">
                    <li>
                       <form action="#" method="GET" class="lg:hidden">
@@ -28,6 +28,8 @@
                          <span class="ml-3">Dashboard</span>
                       </a>
                    </li>
+
+
                    <li>
                       <a href="/admin/kota"  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ ($tittle === 'Kelola Kota') ? 'bg-gray-300' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 flex-shrink-0 " fill="currentColor" viewBox="0 0 45 45"><path d="M6 42V14.1h12.35V9.5L24 4l5.65 5.5v12.9H42V42Zm3-3h5.3v-5.3H9Zm0-8.3h5.3v-5.3H9Zm0-8.3h5.3v-5.3H9ZM21.35 39h5.3v-5.3h-5.3Zm0-8.3h5.3v-5.3h-5.3Zm0-8.3h5.3v-5.3h-5.3Zm0-8.3h5.3V8.8h-5.3ZM33.7 39H39v-5.3h-5.3Zm0-8.3H39v-5.3h-5.3Z"/></svg>
@@ -60,7 +62,7 @@
                       </a>
                    </li>
                    <li>
-                      <a href="/supir" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                      <a href="/supir" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ ($tittle === 'Kelola Supir') ? 'bg-gray-300' : '' }}">
                          <svg class="w-6 h-6 text-gray-500 flex-shrink-0 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
                          </svg>
@@ -68,7 +70,7 @@
                       </a>
                    </li>
                    <li>
-                      <a href="/kendaraan" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                      <a href="/kendaraan" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ ($tittle === 'Kelola Kendaraan') ? 'bg-gray-300' : '' }}">
                         <img src="/icons/car.svg" alt="" class="w-6 h-6 ">
                          <span class="ml-3 flex-1 whitespace-nowrap">Kendaraan</span>
                       </a>
@@ -107,3 +109,11 @@
           </div>
        </div>
     </aside>
+
+
+     
+    
+
+
+
+   

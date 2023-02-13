@@ -5,10 +5,10 @@
 <div class="bg-white p-4 shadow-best rounded-md my-10">
   
 
-         <div class="relative">
-               <input type="text" class="h-12 w-80 border rounded-md pl-10" placeholder="Cari User...">
-               <img src="icons/search.svg" alt="" class="absolute left-0 top-3 w-7">
-         </div>
+  <div class="relative mt-4 flex mb-4">
+    <input type="text" class="h-12 w-80 border rounded-md pl-10" placeholder="Cari User...">
+    <img src="icons/search.svg" alt="" class="absolute left-2 top-3 w-7">
+</div>
 
          <div class="flex flex-col mt-8">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
