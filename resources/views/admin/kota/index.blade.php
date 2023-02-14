@@ -2,7 +2,7 @@
     <!-- This is an example component -->
 
    @section('container')
-<div>
+<div class="bg-white p-10 rounded-md shadow-best m-10">
   
 
          <div class="flex">
@@ -72,11 +72,11 @@
 
 <!-- Modal Edit-->
 @foreach ($data as $edit)
-<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto backdrop-blur-sm"
 id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
-    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
+    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current left-[50%] -translate-x-[50%] mt-[30%] p-10">
     <div
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          

@@ -2,10 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Wisata;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Jemput extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id'
+    ];
+
+
+    public function wisata(){
+        return $this->belongsTo(Wisata::class);
+    }
 }

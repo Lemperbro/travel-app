@@ -52,6 +52,7 @@ class AdminKotaController extends Controller
     public function store(Request $request)
     {
         //
+
         $input=$request->all();
         $image=array();
         if($files=$request->file('image')){
@@ -82,7 +83,9 @@ class AdminKotaController extends Controller
     public function show(AdminKota $adminKota)
     {
         //
-        return view('admin.kota.add');
+        return view('admin.kota.add',[
+            'tittle' => 'Kelola Kota'
+        ]);
     }
 
     /**

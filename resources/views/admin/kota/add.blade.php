@@ -6,7 +6,7 @@
 <div>
   @include('admin.partials.sidebar')
     
-    <form action="/admin/kota/add" method="POST" class="w-full px-4" enctype="multipart/form-data">
+    <form action="/admin/kota/add" method="POST" class="w-full p-10 rounded-md bg-white shadow-best" enctype="multipart/form-data">
         <h1 class="text-center font-semibold text-2xl">ADD KOTA</h1>
         @csrf
         <div class="w-full">

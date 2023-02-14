@@ -3,7 +3,6 @@
 
 
 @include('partials.carousel')
-@include('partials.contain')
 
 @section('container')
 

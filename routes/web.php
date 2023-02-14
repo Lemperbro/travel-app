@@ -56,7 +56,10 @@ Route::middleware('admin')->group(function(){
     Route::post('/kota/delete/{id}', [AdminKotaController::class, 'destroy']);
 
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
-    Route::get('/admin/wisata/add', [AdminWisataController::class, 'store']);
+    Route::get('/admin/wisata/add', [AdminWisataController::class, 'create']);
+    Route::post('/admin/wisata/add', [AdminWisataController::class, 'store']);
+    Route::post('/admin/wisata/delete/{id}', [AdminWisataController::class, 'destroy']);
+    Route::post('/admin/wisata/jemput/add/{id}', [AdminWisataController::class, 'addJemput']);
 
 
 

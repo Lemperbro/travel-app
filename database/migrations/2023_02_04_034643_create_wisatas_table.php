@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('wisatas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kota_id');
+            $table->foreignId('jemput_id');
             $table->string('tour_type');
             $table->date('tanggal');
             $table->text('deskripsi');
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->text('image');
             $table->text('location');
             $table->integer('harga');
-            $table->integer('diboking');
+            $table->integer('diboking')->default(null);
             $table->timestamps();
         });
     }

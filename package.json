@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.6",
+        "jquery": "^3.6.3",
         "tw-elements": "^1.0.0-alpha13"
     }
 }
