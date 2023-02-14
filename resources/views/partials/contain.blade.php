@@ -7,4 +7,4 @@
           <input class='w-[90%] bg-white h-14 rounded-md pl-16' placeholder='Search' />
           </div>
   </div>
-</div>
+</div>  

@@ -29,17 +29,43 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 //     return view('welcome');
 // });
 
+//client
+
+
 Route::get('/masuk', function () {
     return view('masuk');
 });
 
+
+Route::get('/privatetrip', function () {
+    return view('privatetrip');
+});
+Route::get('/singletrip', function () {
+    return view('single');
+});
 Route::get('/opentrip', function () {
     return view('opentrip');
 });
-
 Route::get('/pdf', function () {
     return view('pdf');
 });
+Route::get('/blogisi', function () {
+    return view('blogisi');
+});
+
+Route::get('/testimoni', function () {
+    return view('testimoni');
+});
+
+Route::get('/testimonimore', function () {
+    return view('nore');
+});
+
+Route::get('/destinasi', function () {
+    return view('destination');
+});
+
+
 
 
 
@@ -90,10 +116,6 @@ Route::middleware('admin')->group(function(){
 
 
 
-
-Route::get('/about', function(){
-    return view('about');
-});
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');

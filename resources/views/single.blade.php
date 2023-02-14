@@ -145,35 +145,34 @@
                   </a>
               </div>
 
-  
               <div class='border border-black rounded-lg'>
-              <div class='relative'>
-                <img src='/img/st1.png' class=''/>
-              </div>
-              <div class='text-center mt-4'>
-                <h1 class='text-[#FF2E00] text-sm'>
-                MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
-                </h1>
-              </div>
-
-                <div class='flex-row mt-4'>
-                  <div class='px-32 flex gap-x-2'>
-                  <img src='/icons/lok.png'/>
-                  <p class='my-auto'>Malang</p>
-                  </div>
-
-                  <div class='px-32 flex gap-x-2 mt-2'>
-                  <img src='/icons/jam.png'/>
-                  <p class='my-auto text-lg'>1 day</p>
-                  </div>
+                <div class='relative'>
+                  <img src='/img/st1.png' class=''/>
                 </div>
-                <h1 class='text-lg text-center mt-3 font-semibold'>
-                  Start from Rp. 1.500.000
-                </h1>
-                  <a class='flex mx-auto border shadow-md text-cente mb-3 mt-4 w-32 px-6 py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
-                     View More
-                  </a>
-              </div>
+                <div class='text-center mt-4'>
+                  <h1 class='text-[#FF2E00] text-sm'>
+                  MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
+                  </h1>
+                </div>
+  
+                  <div class='flex-row mt-4'>
+                    <div class='px-32 flex gap-x-2'>
+                    <img src='/icons/lok.png'/>
+                    <p class='my-auto'>Malang</p>
+                    </div>
+  
+                    <div class='px-32 flex gap-x-2 mt-2'>
+                    <img src='/icons/jam.png'/>
+                    <p class='my-auto text-lg'>1 day</p>
+                    </div>
+                  </div>
+                  <h1 class='text-lg text-center mt-3 font-semibold'>
+                    Start from Rp. 1.500.000
+                  </h1>
+                    <a class='flex mx-auto border shadow-md text-center mb-3 mt-4 w-32 px-6 py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
+                       View More
+                    </a>
+                </div>
 
 
 
