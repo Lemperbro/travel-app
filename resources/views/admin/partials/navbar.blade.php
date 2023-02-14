@@ -1,7 +1,8 @@
 <nav class="bg-white border-b border-gray-200 fixed z-30 w-full left-0">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
        <div class="flex items-center justify-between">
-          <div class="flex items-center justify-start">
+          <div class="flex items-center justify-between w-full">
+            <div class="flex">
             <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" class="lg:hidden mr-2 text-gray-600 hover:text-gray-900 cursor-pointer p-2 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded">
                <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -18,6 +19,11 @@
              <img src="/gambar/1.png" class="h-12 mr-2" alt="grow admin">
              <span class="self-center whitespace-nowrap">Grow Admin</span>
              </a>
+            </div>
+            <div class="flex gap-x-4">
+               <h1 class="font-semibold text-lg my-auto">{{ auth()->user()->username }}</h1>
+               <img src="/img/malang.png" alt="" class="w-10 h-10 object-cover rounded-full">
+            </div>
           </div>
        </div>
     </div>

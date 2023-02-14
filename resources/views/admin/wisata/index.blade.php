@@ -2,7 +2,7 @@
 
 @section('container')
 
-<div>
+<div class="mt-20 bg-white p-10 rounded-md shadow-md">
   
 
     <div class="flex gap-x-4">
@@ -67,31 +67,50 @@
         </div>
         {{-- akhir modal --}}
 
-       <a href="/admin/wisata/add" class="bg-orange-600 text-white p-2 rounded-md">Tambah Kota</a>
+       <a href="/admin/wisata/add" class="bg-orange-600 text-white p-2 rounded-md">Tambah Wisata</a>
     </div>
 
     <div class="grid grid-cols-4 gap-4 mt-8">
 
+        @foreach ($data as $wisata)
+            
        <div class="rounded-md shadow-best p-2">
-          <img src="{{ asset('storage/post-image/pp.jpg') }}" alt="" class="">
+               
+           @php
+              $images = explode('|', $wisata->image);
+           @endphp
+
+          <img src="../../image/{!! $images[0] !!}" alt="" class="">
 
           <div class="mt-4">
-             <h1 class="font-semibold font-mono text-center text-xl">Bromo</h1>
+             <h1 class="font-semibold font-mono text-center text-xl">{{ $wisata->nama_wisata }}</h1>
 
-            <h2 class="font-semibold ">Kota Malang</h2>
-            <p class="line-clamp-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis incidunt tempore repellendus vitae aliquid? Repellendus nobis magnam consequatur quod est corporis maxime, officiis libero dolorum repellat ipsum, cupiditate voluptate tempora.</p>
+            <h2 class="font-semibold ">Kota {{ $wisata->kota->nama_kota }}</h2>
+            <p class="line-clamp-3">{{ $wisata->deskripsi }}</p>
+            @foreach ($wisata->jemput as $jemput)
+            <h1>{{ $jemput->lokasi }}</h1>
+            <h1>{{ $jemput->harga }}</h1>
+
+            @endforeach
 
           <div class="flex gap-x-4 justify-between mt-4">
              <a href="" class="bg-green-600 p-2 rounded-md text-white font-semibold  w-full text-center">Edit</a>
-             <button class="bg-red-600 p-2 rounded-md text-white font-semibold  w-full text-center">Hapus</button>
+             <form action="/admin/wisata/delete/{{ $wisata->id }}" method="POST">
+                @csrf
+             <button type="submit" class="bg-red-600 p-2 rounded-md text-white font-semibold  w-full text-center">Hapus</button>
+            </form>
           </div>
        </div>
 
        </div>
+
+       @endforeach
+
        
     </div>
  
 </div>
+
 
 
 

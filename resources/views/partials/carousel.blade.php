@@ -27,4 +27,9 @@
         />
       </div>
     </div>
+<<<<<<< HEAD
   </div>
+=======
+    @include('partials.contain')
+  </div>
+>>>>>>> c751b4e0f4f52c28e0fea93b3519b48c88a9717e
