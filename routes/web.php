@@ -65,6 +65,9 @@ Route::get('/destinasi', function () {
     return view('destination');
 });
 
+Route::get('/step', function () {
+    return view('step');
+});
 
 
 
