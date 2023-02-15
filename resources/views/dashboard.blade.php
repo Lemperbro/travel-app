@@ -28,7 +28,7 @@
 
 
 
-<div class='container mt-9 flex'>
+<div class='container mt-9 md:flex'>
     <div class='grid-cols-2 w-[50%] mt-4'>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Find The Perfect</h1>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Place</h1>
@@ -51,7 +51,7 @@
      <span class='border-r-2 border-black mx-3'></span> Travel Destination</h1>
 </div>
 
-<div class="mt-6 mb-7 grid grid-cols-5 grid-rows-2 gap-8">
+<div class="mt-6 mb-7 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
 
     <div class='  rounded-xl'>
      <button>
