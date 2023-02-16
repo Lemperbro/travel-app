@@ -28,7 +28,7 @@
 
 
 
-<div class='container mt-9 md:flex'>
+<div class='container mt-9 lg:grid-cols-2 md:flex '>
     <div class='grid-cols-2 w-[50%] mt-4'>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Find The Perfect</h1>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Place</h1>
@@ -51,77 +51,65 @@
      <span class='border-r-2 border-black mx-3'></span> Travel Destination</h1>
 </div>
 
-<div class="mt-6 mb-7 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+<div class="mt-6 mb-7 grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-8">
 
     <div class='  rounded-xl'>
      <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-14'>Bali</h1>
+       <h1 class='text-white font-semibold text-xl absolute mt-64 ml-24'>Bali</h1>
        <img src='img/bali.png' class='object-contain'/>
      </button>
     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Malang</h1>
-       <img src='/img/malang.png' class='object-contain shadow-best5 rounded-xl'/>
-     </button>
+    <div class='rounded-xl '>
+     <a>
+      <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Malang</h1>
+      <img src='/img/malang.png' class='object-contain shadow-best5 rounded-xl'/> 
+     </a>
     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
+    <div class='rounded-xl '>
+     <a>
+       <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-     </button>
+     </a>
     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png'class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
+    <div class='rounded-xl '>
+      <a>
+        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
+        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
+      </a>
+     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
+    <div class='rounded-xl '>
+      <a>
+        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
+        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
+      </a>
+     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png'class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
+    <div class='rounded-xl '>
+      <a>
+        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
+        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
+      </a>
+     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
+     <div class='rounded-xl '>
+      <a>
+        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
+        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
+      </a>
+     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png'class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
+    <div class='rounded-xl '>
+      <a>
+        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
+        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
+      </a>
+     </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png'class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
 
-    <div class='  rounded-xl '>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute py-40 pl-9'>Jogja</h1>
-       <img src='/img/jogja.png'class='object-contain shadow-best5 rounded-xl'/>
-     </button>
-    </div>
    </div>
 
 @include('partials.most')

@@ -177,9 +177,9 @@
         </h1>
     </div>
 
-    <div class="mt-4">
-        <details class="text-justify text-sm font-semibold p-2">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+    <div class="mt-1">
+        <details class="text-justify text-sm font-semibold">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-1 border">
                 what kind of acommodations do we provide?
             </summary>
             We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.

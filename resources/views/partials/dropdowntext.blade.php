@@ -1,67 +1,85 @@
-<div class="flex justify-between gap-x-8">
+<div class="flex justify-between gap-x-6">
 
-<details class="w-[15%]">
-  <summary class="bg-[#FD522C] py-2 text-white text-center font-semibold rounded-xl text-3xl">
-      Day 1
-  </summary>
-    <div class="absolute my-8">
-      <h1 class="border p-2 shadow-best4 inline">Day 1 : Surabaya - Bromo Area</h1>
-      <div class="text-justify">
-      <p class="mt-8">• Pick up from Surabaya Juanda International Airport or Surabaya Train Station on your arrival time. If you are already at Surabaya, we will pick up at your hotel in Surabaya at 9am</p>
-      <p class="mt-0">• Travel to Mount Bromo area, around 3-4 hours driving.</p>
-      <p class="mt-0">• Head to Madakaripura Waterfall to enjoy the magnificent natural sight (if you arrive after 12 noon, we will move waterfall to day 2 after Bromo sunrise).</p>
-      <p class="mt-0">• Check into Bromo Terrace Hotel, you will stay here for 1 night (if this hotel is not available, we will use Jiwa Jawa Bromo or another same standard hotel).</p>
-      <p class="mt-0">• If you choose to add on Milky Way Tour (Additional SGD50/pax), we will pick you up at around 10pm instead of 3am. The Jeep will bring you to the Sea of Sand at Bromo National Park to see the Milky Way, then continue to the sunrise viewpoint and other stops.</p>
-    </div>
-    </div>
-  </details>
-
-  <details class="w-[15%]">
-    <summary class="bg-[#FD522C] py-2 text-white text-center font-semibold rounded-xl text-3xl">
-        Day 1
+  <details class="text-justify text-sm font-semibold w-[40%]">
+    <summary class="text-lg font-semibold p-2 border text-center bg-[#FD522C] rounded-2xl text-white">
+       day 1
     </summary>
-      <div class="absolute my-8 mr-28">
-        <h1 class="border p-2 shadow-best4 inline">Day 1 : Surabaya - Bromo Area</h1>
-        <div class="text-justify">
-        <p class="mt-8">• Pick up from Surabaya Juanda International Airport or Surabaya Train Station on your arrival time. If you are already at Surabaya, we will pick up at your hotel in Surabaya at 9am</p>
-        <p class="mt-0">• Travel to Mount Bromo area, around 3-4 hours driving.</p>
-        <p class="mt-0">• Head to Madakaripura Waterfall to enjoy the magnificent natural sight (if you arrive after 12 noon, we will move waterfall to day 2 after Bromo sunrise).</p>
-        <p class="mt-0">• Check into Bromo Terrace Hotel, you will stay here for 1 night (if this hotel is not available, we will use Jiwa Jawa Bromo or another same standard hotel).</p>
-        <p class="mt-0">• If you choose to add on Milky Way Tour (Additional SGD50/pax), we will pick you up at around 10pm instead of 3am. The Jeep will bring you to the Sea of Sand at Bromo National Park to see the Milky Way, then continue to the sunrise viewpoint and other stops.</p>
-      </div>
-      </div>
-    </details>
-
-    <details class="w-[15%]">
-      <summary class="bg-[#FD522C] py-2 text-white text-center font-semibold rounded-xl text-3xl">
-          Day 1
-      </summary>
-        <div class="absolute my-8">
-          <h1 class="border p-2 shadow-best4 inline">Day 1 : Surabaya - Bromo Area</h1>
-          <div class="text-justify">
-          <p class="mt-8">• Pick up from Surabaya Juanda International Airport or Surabaya Train Station on your arrival time. If you are already at Surabaya, we will pick up at your hotel in Surabaya at 9am</p>
-          <p class="mt-0">• Travel to Mount Bromo area, around 3-4 hours driving.</p>
-          <p class="mt-0">• Head to Madakaripura Waterfall to enjoy the magnificent natural sight (if you arrive after 12 noon, we will move waterfall to day 2 after Bromo sunrise).</p>
-          <p class="mt-0">• Check into Bromo Terrace Hotel, you will stay here for 1 night (if this hotel is not available, we will use Jiwa Jawa Bromo or another same standard hotel).</p>
-          <p class="mt-0">• If you choose to add on Milky Way Tour (Additional SGD50/pax), we will pick you up at around 10pm instead of 3am. The Jeep will bring you to the Sea of Sand at Bromo National Park to see the Milky Way, then continue to the sunrise viewpoint and other stops.</p>
-        </div>
-        </div>
-      </details>
-
-<details class="w-[15%]">
-  <summary class="bg-[#FD522C] py-2 text-white text-center font-semibold rounded-xl text-3xl">
-      Day 1
-  </summary>
-    <div class="absolute my-8">
-      <h1 class="border p-2 shadow-best4 inline">Day 1 : Surabaya - Bromo Area</h1>
-      <div class="text-justify">
-      <p class="mt-8">• Pick up from Surabaya Juanda International Airport or Surabaya Train Station on your arrival time. If you are already at Surabaya, we will pick up at your hotel in Surabaya at 9am</p>
-      <p class="mt-0">• Travel to Mount Bromo area, around 3-4 hours driving.</p>
-      <p class="mt-0">• Head to Madakaripura Waterfall to enjoy the magnificent natural sight (if you arrive after 12 noon, we will move waterfall to day 2 after Bromo sunrise).</p>
-      <p class="mt-0">• Check into Bromo Terrace Hotel, you will stay here for 1 night (if this hotel is not available, we will use Jiwa Jawa Bromo or another same standard hotel).</p>
-      <p class="mt-0">• If you choose to add on Milky Way Tour (Additional SGD50/pax), we will pick you up at around 10pm instead of 3am. The Jeep will bring you to the Sea of Sand at Bromo National Park to see the Milky Way, then continue to the sunrise viewpoint and other stops.</p>
+    <div class="mt-2">
+    <h1 class="border p-2 shadow-best4 inline ">Day 1 : Surabaya - Bromo Area</h1>
     </div>
-    </div>
+   <ul class="p-2 w-full  ">
+    <li class="my-2">
+      Lorem ipsum dolor sit amet  , consectetur adipisicing elit. Illo eligendi eius consectetur repellat facere amet praesentium et nihil modi, quam sapiente nam quae ullam sed quasi autem? Consectetur, nihil ipsam?
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quod officiis dicta atque molestias. Ea quia voluptatum vitae, molestiae tempore voluptas tempora incidunt natus dolores similique ullam quos rem molestias.
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta ratione cum magnam voluptas suscipit saepe rerum harum voluptatem minima aliquid reiciendis obcaecati, rem totam, sapiente ducimus quas itaque quos soluta.
+    </li>
+   </ul>
   </details>
 
-</div>
+  <details class="text-justify text-sm font-semibold w-[40%]">
+    <summary class="text-lg font-semibold p-2 border text-center bg-[#FD522C] rounded-2xl text-white">
+       day 2
+    </summary>
+    <div class="mt-2">
+    <h1 class="border p-2 shadow-best4 inline ">Day 2 : Bromo -Lumajang</h1>
+    </div>
+   <ul class="p-2 w-full  ">
+    <li class="my-2">
+      Lorem ipsum dolor sit amet  , consectetur adipisicing elit. Illo eligendi eius consectetur repellat facere amet praesentium et nihil modi, quam sapiente nam quae ullam sed quasi autem? Consectetur, nihil ipsam?
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quod officiis dicta atque molestias. Ea quia voluptatum vitae, molestiae tempore voluptas tempora incidunt natus dolores similique ullam quos rem molestias.
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta ratione cum magnam voluptas suscipit saepe rerum harum voluptatem minima aliquid reiciendis obcaecati, rem totam, sapiente ducimus quas itaque quos soluta.
+    </li>
+   </ul>
+  </details>
+
+  <details class="text-justify text-sm font-semibold w-[40%]">
+    <summary class="text-lg font-semibold p-2 border text-center bg-[#FD522C] rounded-2xl text-white">
+       day 3
+    </summary>
+    <div class="mt-2">
+    <h1 class="border p-2 shadow-best4 inline ">Day 3 : Lumajang - Pasuruan</h1>
+    </div>
+   <ul class="p-2 w-full  ">
+    <li class="my-2">
+      Lorem ipsum dolor sit amet  , consectetur adipisicing elit. Illo eligendi eius consectetur repellat facere amet praesentium et nihil modi, quam sapiente nam quae ullam sed quasi autem? Consectetur, nihil ipsam?
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quod officiis dicta atque molestias. Ea quia voluptatum vitae, molestiae tempore voluptas tempora incidunt natus dolores similique ullam quos rem molestias.
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta ratione cum magnam voluptas suscipit saepe rerum harum voluptatem minima aliquid reiciendis obcaecati, rem totam, sapiente ducimus quas itaque quos soluta.
+    </li>
+   </ul>
+  </details>
+
+  <details class="text-justify text-sm font-semibold w-[40%]">
+    <summary class="text-lg font-semibold p-2 border text-center bg-[#FD522C] rounded-2xl text-white">
+       day 4
+    </summary>
+    <div class="mt-2">
+    <h1 class="border p-2 shadow-best4 inline ">Day 4 : Pasuruan - Surabaya</h1>
+    </div>
+   <ul class="p-2 w-full  ">
+    <li class="my-2">
+      Lorem ipsum dolor sit amet  , consectetur adipisicing elit. Illo eligendi eius consectetur repellat facere amet praesentium et nihil modi, quam sapiente nam quae ullam sed quasi autem? Consectetur, nihil ipsam?
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quod officiis dicta atque molestias. Ea quia voluptatum vitae, molestiae tempore voluptas tempora incidunt natus dolores similique ullam quos rem molestias.
+    </li>
+    <li class="my-2">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta ratione cum magnam voluptas suscipit saepe rerum harum voluptatem minima aliquid reiciendis obcaecati, rem totam, sapiente ducimus quas itaque quos soluta.
+    </li>
+   </ul>
+  </details>
+
+
+  </div>
+  

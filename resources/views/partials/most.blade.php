@@ -1,7 +1,7 @@
 <h1 class='text-2xl font-bold border-black text-center mt-4'>Most Popular & Bromo</h1>
     <div class="mt-6 mb-7 grid grid-cols-3 grid-rows-2 gap-8">
         <a class='relative'>
-            <img src='/img/a.png' class='object-contain'/>
+            <img src='/img/a.png' class='object-cover w-full'/>
         <div class='absolute top-5 left-1 w-40'>
             <img src='/img/layer.png' class=' relative w-40'/>
                 <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Popular</h1>
@@ -14,7 +14,7 @@
             </div>
               </a>
               <a class='relative'>
-                  <img src='/img/b.png' class='object-contain'/>
+                  <img src='/img/b.png' class='object-cover w-full'/>
                   <div class='absolute top-5 left-1 w-40'>
                   <img src='/img/layer.png' class=' relative w-40'/>
                   <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Best Seller</h1>
@@ -29,7 +29,7 @@
                   </div>
               </a>
               <a class='relative'>
-                  <img src='/img/c.png' class='object-contain'/>
+                  <img src='/img/c.png' class='object-cover w-full'/>
                   <div class='absolute top-5 left-1 w-40'>
                   <img src='/img/layer.png' class=' relative w-40'/>
                   <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Promo</h1>
@@ -44,9 +44,9 @@
                   </div>
               </a>
               <a class='relative'>
-                  <img src='/img/c.png' class='object-contain'/>
+                  <img src='/img/c.png' class='object-cover w-full'/>
                   <div class='absolute top-5 left-1 w-40'>
-                  <img src='/img/layer.png class=' relative w-40'/>
+                  <img src='/img/layer.png' class='relative w-40'/>
                   <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Promo</h1>
                   </div>
                   <h1 class='text-xl ml-1 font-bold text-center mt-2'>
@@ -59,7 +59,7 @@
                   </div>
               </a>
               <a class='relative'>
-                  <img src='/img/c.png' class='object-contain'/>
+                  <img src='/img/c.png' class='object-cover w-full'/>
                   <div class='absolute top-5 left-1 w-40'>
                   <img src='/img/layer.png' class=' relative w-40'/>
                   <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Promo</h1>
@@ -74,7 +74,7 @@
                   </div>
               </a>
               <a class='relative'>
-                  <img src='/img/c.png' class='object-contain'/>
+                  <img src='/img/c.png' class='object-cover w-full'/>
                   <div class='absolute top-5 left-1 w-40'>
                   <img src='/img/layer.png' class=' relative w-40'/>
                   <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Promo</h1>
@@ -88,4 +88,4 @@
                   </button>
                   </div>
               </a>
-              </div>
+</div>

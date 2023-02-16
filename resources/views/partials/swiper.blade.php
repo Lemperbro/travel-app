@@ -1,4 +1,4 @@
-
+{{-- 
 
 <div id="carouselExampleControls" class="carousel slide relative" data-bs-ride="carousel">
   <div class="carousel-inner relative w-full overflow-hidden">
@@ -69,4 +69,4 @@
     <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
+</div> --}}

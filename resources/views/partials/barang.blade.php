@@ -1,4 +1,4 @@
-<div class="border my-[80vh]">
+<div class="border my-[10vh]">
     <div class="bg-[#FF2E00]">
         <div class="flex">
             <div class="mx-16 p-8 text-center">
