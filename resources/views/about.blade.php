@@ -1,8 +1,14 @@
 @extends('layouts.main')
 
 
+    
+
+<div class="">
 <img src='/gambar/op.png' class=''/>
-<h1 class='text-center font-semibold text-2xl mt-8'>Travel Is About The Human Connection </h1>
+<h1 class='font-semibold text-2xl'>Travel Is About The Human Connection </h1>
+</div>
+
+@section('container')
 <h1 class='text-[#FF2E00] text-3xl font-bold text-center mt-8'>WE ARE GROWIN TRAVEL INDONESIA</h1>
 <div class='text-center mb-9'>
     <p>Travel like a human. The human part was always more important than the travel part. What we are about is belonging, and at the center <br> of belonging is love.<br>
@@ -44,3 +50,4 @@ Kabupaten Malang, Jawa Timur 65152
 
        
     
+@endsection

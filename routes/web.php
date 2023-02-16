@@ -36,6 +36,10 @@ Route::get('/masuk', function () {
     return view('masuk');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 
 Route::get('/privatetrip', function () {
     return view('privatetrip');
