@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => '20a0bce47c3bf15eaa1e839ce677cae733b07e67',
+=======
+        'reference' => '78d57a111b9241bd2ee658226b9e5b02e7ba7c43',
+>>>>>>> ca25cf1 (baru dari ryan)
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -403,7 +407,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => '20a0bce47c3bf15eaa1e839ce677cae733b07e67',
+=======
+            'reference' => '78d57a111b9241bd2ee658226b9e5b02e7ba7c43',
+>>>>>>> ca25cf1 (baru dari ryan)
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

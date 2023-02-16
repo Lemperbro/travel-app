@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Kota;
 use App\Models\Jemput;
+use App\Models\Equipment;
 use App\Models\Fasilitas;
 use App\Models\Itenerary;
 use Illuminate\Database\Eloquent\Model;

@@ -13,6 +13,7 @@ return array(
     'App\\Http\\Controllers\\EquipmentController' => $baseDir . '/app/Http/Controllers/EquipmentController.php',
     'App\\Http\\Controllers\\FasilitasController' => $baseDir . '/app/Http/Controllers/FasilitasController.php',
     'App\\Http\\Controllers\\GuideController' => $baseDir . '/app/Http/Controllers/GuideController.php',
+    'App\\Http\\Controllers\\IsiController' => $baseDir . '/app/Http/Controllers/IsiController.php',
     'App\\Http\\Controllers\\IteneraryController' => $baseDir . '/app/Http/Controllers/IteneraryController.php',
     'App\\Http\\Controllers\\JemputController' => $baseDir . '/app/Http/Controllers/JemputController.php',
     'App\\Http\\Controllers\\KendaraanController' => $baseDir . '/app/Http/Controllers/KendaraanController.php',

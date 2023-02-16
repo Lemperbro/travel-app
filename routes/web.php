@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
+use App\Http\Controllers\IsiController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -122,15 +123,29 @@ Route::middleware('admin')->group(function(){
     // });
 });
 
+Route::middleware('auth')->group(function(){
 
+Route::post('/logout', [LoginController::class, 'logout']);
 
+});
 
+Route::middleware('guest')->group(function(){
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/isi/{id}', [IsiController::class, 'show']);
+
+
+});
+
+
+
+
+
 
 //kontrol kota
 // Route::get('/kota', function(){
@@ -155,6 +170,3 @@ Route::get('/blog', function(){
 });
 
 
-Route::get('/isi', function(){
-    return view('isi');                                                                                                                             
-});

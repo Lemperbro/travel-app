@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kota;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
+use App\Models\Fasilitas;
 
-class DashboardController extends Controller
+class IsiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,18 +18,6 @@ class DashboardController extends Controller
     {
         //
 
-
-
-        return view('dashboard', [
-
-            // 'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
-            // 'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
-            'best' => Wisata::with(['kota' => function($query){
-                $query->orderBy('popularitas', 'DESC')->limit(3)->get();
-            }])->orderBy('diboking', 'DESC')->limit(3)->get(),
-            'kota' => Kota::all()
-        
-        ]);
     }
 
     /**
@@ -62,6 +50,17 @@ class DashboardController extends Controller
     public function show($id)
     {
         //
+        // $coba = Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id) {
+        //     $query->where('wisata_id', );
+        // }])->where('id', 3)->get();
+
+
+
+        return view('isi', [
+            'data' => Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id){
+                $query->where('wisata_id' , $id)->get();
+            }])->where('id', $id)->get(),
+        ]);
     }
 
     /**

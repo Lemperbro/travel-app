@@ -559,6 +559,7 @@ class ComposerStaticInit088cbf59bb3467d79350515bbb1b7479
         'App\\Http\\Controllers\\EquipmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/EquipmentController.php',
         'App\\Http\\Controllers\\FasilitasController' => __DIR__ . '/../..' . '/app/Http/Controllers/FasilitasController.php',
         'App\\Http\\Controllers\\GuideController' => __DIR__ . '/../..' . '/app/Http/Controllers/GuideController.php',
+        'App\\Http\\Controllers\\IsiController' => __DIR__ . '/../..' . '/app/Http/Controllers/IsiController.php',
         'App\\Http\\Controllers\\IteneraryController' => __DIR__ . '/../..' . '/app/Http/Controllers/IteneraryController.php',
         'App\\Http\\Controllers\\JemputController' => __DIR__ . '/../..' . '/app/Http/Controllers/JemputController.php',
         'App\\Http\\Controllers\\KendaraanController' => __DIR__ . '/../..' . '/app/Http/Controllers/KendaraanController.php',
