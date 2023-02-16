@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 
-    
-
 <div class="">
 <img src='/gambar/op.png' class=''/>
-<h1 class='font-semibold text-2xl'>Travel Is About The Human Connection </h1>
+<h1 class='absolute top-40 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>ABOUT GROWIN TRAVEL INDONESIA</h1>
 </div>
 
+
 @section('container')
+<h1 class="text-center text-2xl">Travel Is About The Human Connection </h1>
 <h1 class='text-[#FF2E00] text-3xl font-bold text-center mt-8'>WE ARE GROWIN TRAVEL INDONESIA</h1>
 <div class='text-center mb-9'>
     <p>Travel like a human. The human part was always more important than the travel part. What we are about is belonging, and at the center <br> of belonging is love.<br>
@@ -16,6 +16,8 @@
     We value and love every teammate and we help them to succeed in every way that we can. It is only through being truly passionate ,<br> knowledgeable and focused that we can do the best for our customers.
     </p>
 </div>
+
+@include('partials.slider')
 <div class='flex mt-10 container justify-between'>
     <div class='w-[60%]  my-auto'>
         <h1 class='text-3xl font-bold'>TRAVEL WITH CONFIDENCE</h1>
@@ -48,6 +50,7 @@ Kabupaten Malang, Jawa Timur 65152
 </div>
     
 
-       
-    
+
+
 @endsection
+
