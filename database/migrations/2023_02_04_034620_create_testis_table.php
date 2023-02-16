@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('testis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('wisata_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('wisata_id')->constrained('wisatas')->onDelete('cascade');
             $table->date('date');
             $table->text('deskripsi');
             $table->timestamps();

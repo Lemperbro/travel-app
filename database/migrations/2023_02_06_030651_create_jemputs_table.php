@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('jemputs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wisata_id');
+            $table->foreignId('wisata_id')->constrained('wisatas')->onDelete('cascade');
             $table->string('lokasi');
             $table->integer('harga');
             $table->timestamps();

@@ -16,11 +16,38 @@
 	<div x-data="app()" x-cloak>
 		<div class="max-w-3xl mx-auto px-4 py-10">
 
+			<div x-show.transition="step === 'complete'">
+				@if (session()->has('success'))
+					
+				<div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
+					<div>
+						<svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+
+						<h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Success Upload</h2>
+
+						<div class="text-gray-600 mb-8">
+							Thank you. We have sent you an email to demo@demo.test. Please click the link in the message to activate your account.
+						</div>
+
+						<button
+							@click="step = 1"
+							class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
+						>Back to home</button>
+					</div>
+				</div>
+				@endif
+
+
+
+			</div>
 
 			<div x-show.transition="step != 'complete'">	
 				<!-- Top Navigation -->
 				<div class="border-b-2 py-4">
-					<div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight" x-text="`Step: ${step} of 3`"></div>
+					<div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight" x-text="`Step: ${step} of 3`">
+
+					</div>
+
 					<div class="flex flex-col md:flex-row md:items-center md:justify-between">
 						<div class="flex-1">
 							<div x-show="step === 1">
@@ -163,36 +190,48 @@
 
 					</div>
 					<div x-show.transition.in="step === 3">
-						<div class="mb-5">
-							<label for="email" class="font-bold mb-1 text-gray-700 block">Gender</label>
-							
-							<div class="flex">
-								<label
-									class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4">
-									<div class="text-teal-600 mr-3">
-										<input type="radio" x-model="gender" value="Male" class="form-radio focus:outline-none focus:shadow-outline" />
-									</div>
-									<div class="select-none text-gray-700">Male</div>
-								</label>
 
-								<label
-									class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm">
-									<div class="text-teal-600 mr-3">
-										<input type="radio" x-model="gender" value="Female" class="form-radio focus:outline-none focus:shadow-outline" />
-									</div>
-									<div class="select-none text-gray-700">Female</div>
-								</label>
+						<div class="mb-5 mt-8 border rounded-md p-4" >
+							<h1 class="font-semibold text-lg">Itenerary</h1>
+
+						  	<div class="mb-5" id="day">
+							<h3>Day 1</h3>
+
+								<div id="itenerary">
+								
+									<input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
+									<textarea id="banner-message" class="message w-full h-20 relative" name="itenerary[]" style="">
+									</textarea>
+										
 							</div>
+
+							</div>
+							
+						</div>
+						<h1 id="add_day" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">Add Day</h1>
+						
+						
+
+						<div class="mb-5 mt-24 border rounded-md p-4">
+
+						  <div class="mb-5" id="equipment">
+							<h1 class="font-semibold text-lg">Equipment 1</h1>
+
+							<div  class="mt-4">
+								<input type="file" name="images[]" class="w-full border h-12 rounded-md">
+								<input type="text" name="equipment[]" id="equipment" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
+							</div>
+
+							
 						</div>
 
-						<div class="mb-5">
-							<label for="profession" class="font-bold mb-1 text-gray-700 block">Profession</label>
-							<input type="profession"
-								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-								placeholder="eg. Web Developer">
+						<h1 id="add_equipment" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
 						</div>
-					</div>
-				</div>
+
+					
+					
+
+
 				<!-- / Step Content -->
 			</div>
 		</div>
