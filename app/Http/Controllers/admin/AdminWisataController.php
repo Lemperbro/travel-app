@@ -7,7 +7,11 @@ use App\Models\Jemput;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use App\Models\admin\AdminWisata;
+use App\Models\Equipment;
+use App\Models\Fasilitas;
+use App\Models\Itenerary;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Arr;
 
 class AdminWisataController extends Controller
 {
@@ -19,9 +23,13 @@ class AdminWisataController extends Controller
     public function index()
     {
         //
+
+
+
         return view('admin.wisata.index',[
             'tittle' => 'Kelola Wisata',
-            'data' => Wisata::with('kota')->get()
+            'data' => Wisata::with('kota')->get(),
+            
         ]);
     }
 
@@ -48,7 +56,13 @@ class AdminWisataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // $jajal2 = str_replace('>', '',$request->itenerary);
+        // $jajal = preg_split('/\n|\r\n?/',$jajal2);
+        // dd($jajal);
+
+
+
         $validasi = $request->validate([
             'image' => 'required',
             'nama' => 'required',
@@ -61,6 +75,7 @@ class AdminWisataController extends Controller
             'harga' => 'required',
             'deskripsi' => 'required'
         ]);       
+
 
         
         $image=array();
@@ -90,10 +105,7 @@ class AdminWisataController extends Controller
         //     'lokasi' => $validasi['titik_jemput'],
         //     'harga' => $validasi['harga']
         // ]);
-            $coba=([
-                "titik_jemput" => $validasi['titik_jemput'],
-                "harga" => $validasi['harga']
-            ]);
+
 
             $jumlah = count($request->titik_jemput);
             for($i = 0 ; $i < $jumlah; $i++){
@@ -103,6 +115,69 @@ class AdminWisataController extends Controller
                     'harga' => $request->harga[$i]
                 ]);
             }
+
+            $inclusions = array();
+            if($inclusion = $request->inclusion){
+                foreach($inclusion as $inclusion){
+                    $inclusions[] = $inclusion;
+                }
+            }
+            
+            $exclusions = array();
+            if($inclusion = $request->exclusion){
+                foreach($inclusion as $inclusion){
+                    $exclusions[] = $inclusion;
+                }
+            }
+
+            Fasilitas::create([
+                'wisata_id' => $wisata->id,
+                'inclusion' => implode("|", $inclusions),
+                'exclusions' => implode("|", $exclusions)
+            ]);
+
+
+            $jumlah_agenda = count($request->agenda);
+            for($i = 0 ; $i < $jumlah_agenda; $i++){
+                Itenerary::create([
+                    'wisata_id' => $wisata->id,
+                    'agenda' => $request->agenda[$i],
+                    'deskripsi' => $request->itenerary[$i]
+                ]);
+            }
+
+
+            $images=array();
+            if($files=$request->file('images')){
+                foreach($files as $file){
+                    $name=$file->getClientOriginalName();
+                    $file->move('image',$name);
+                    $images[]=$name;
+                }
+            }
+
+            $jumlah_equipment = count($request->equipment);
+            for($i = 0 ; $i < $jumlah_equipment; $i++){
+                Equipment::create([
+                    'wisata_id' => $wisata->id,
+                    'image' => $images[$i],
+                    'name' => $request->equipment[$i]
+                ]);
+            }
+            
+
+
+
+
+
+            // $jumlah_inclusion = count($request->inclusion);
+            // for($i = 0 ; $i < $jumlah; $i++){
+            //     Jemput::create([
+            //         'wisata_id' => $wisata->id,
+            //         'lokasi' => $request->titik_jemput[$i],
+            //         'harga' => $request->harga[$i]
+            //     ]);
+            // }
 
 
         // foreach($coba as $row){
@@ -117,6 +192,7 @@ class AdminWisataController extends Controller
         // }
             
         // }
+        $request->session()->flash('success', 'Success Upload Data');
 
         return redirect('/admin/kota');
 
@@ -182,6 +258,7 @@ class AdminWisataController extends Controller
     {
         //
         Wisata::find($id)->delete();
+        // Itenerary::with('fasilitas','jemput')->where('wisata_id', $id)->delete();
         return redirect('/admin/wisata');
     }
 }

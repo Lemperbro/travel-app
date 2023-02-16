@@ -29,4 +29,7 @@ class Wisata extends Model
     public function jemput(){
         return $this->hasMany(Jemput::class);
     }
+    public function equipment(){
+        return $this->hasMany(Equipment::class);
+    }
 }
