@@ -54,7 +54,6 @@ class IsiController extends Controller
             $query->where('wisata_id' , $id)->get();
         }])->where('id', $id)->get();
 
-        dd($cobaa);
 
 
 

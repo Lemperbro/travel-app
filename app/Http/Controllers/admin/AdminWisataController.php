@@ -75,7 +75,7 @@ class AdminWisataController extends Controller
             'harga' => 'required',
             'deskripsi' => 'required',
             'inclusion' => 'required',
-            'exclusions' => 'required',
+            'exclusion' => 'required',
             
         ]);       
 

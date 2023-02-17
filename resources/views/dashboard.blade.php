@@ -53,62 +53,32 @@
 
 <div class="mt-6 mb-7 grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-8">
 
-    <div class='  rounded-xl'>
-     <button>
-       <h1 class='text-white font-semibold text-xl absolute mt-64 ml-24'>Bali</h1>
-       <img src='img/bali.png' class='object-contain'/>
-     </button>
-    </div>
+  @foreach ($kota as $kota)
+      @php
+      $images = explode('|', $kota->image);
+    @endphp
+    <a href="" class='rounded-xl relative'>
+       <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>{{ $kota->nama_kota }}</h1>
+       <img src='{!! asset('image/'.$images[0]) !!}' class='object-cover'/>
+    </a>
 
-    <div class='rounded-xl '>
-     <a>
-      <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Malang</h1>
-      <img src='/img/malang.png' class='object-contain shadow-best5 rounded-xl'/> 
-     </a>
-    </div>
+  @endforeach
 
-    <div class='rounded-xl '>
-     <a>
-       <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
-       <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-     </a>
-    </div>
+  <a href="" class='rounded-xl relative border border-red-600'>
+    <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>asasas</h1>
+    <img src='' class='object-cover'/>
+ </a>
+ <a href="" class='rounded-xl relative border border-red-600'>
+  <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>asasas</h1>
+  <img src='' class='object-cover'/>
+</a>
+<a href="" class='rounded-xl relative border border-red-600'>
+  <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>asasas</h1>
+  <img src='' class='object-cover'/>
+</a>
 
-    <div class='rounded-xl '>
-      <a>
-        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
-        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-      </a>
-     </div>
 
-    <div class='rounded-xl '>
-      <a>
-        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
-        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-      </a>
-     </div>
-
-    <div class='rounded-xl '>
-      <a>
-        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
-        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-      </a>
-     </div>
-
-     <div class='rounded-xl '>
-      <a>
-        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
-        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-      </a>
-     </div>
-
-    <div class='rounded-xl '>
-      <a>
-        <h1 class='text-white font-semibold text-xl absolute mt-64 ml-20'>Jogja</h1>
-        <img src='/img/jogja.png' class='object-contain shadow-best5 rounded-xl'/>
-      </a>
-     </div>
-
+    
 
    </div>
 
