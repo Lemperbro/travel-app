@@ -15,13 +15,8 @@
               </a>
               <a class='relative'>
                   <img src='/img/b.png' class='object-cover w-full'/>
-<<<<<<< HEAD
-                  <div class='absolute top-5 left-1 w-40'>
-                  <img src='/img/layer.png' class=' relative w-40'/>
-=======
                   <div class='absolute top-5 left-1 w-40 '>
                   <img src='/img/layer.png' class=' relative w-40 '/>
->>>>>>> ca25cf1 (baru dari ryan)
                   <h1 class='absolute top-1 left-2 text-xl text-white font-semibold'>Best Seller</h1>
                   </div>
                   <h1 class='text-xl ml-1 font-bold text-center mt-2'>

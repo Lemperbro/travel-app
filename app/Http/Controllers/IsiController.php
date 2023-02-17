@@ -50,9 +50,11 @@ class IsiController extends Controller
     public function show($id)
     {
         //
-        // $coba = Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id) {
-        //     $query->where('wisata_id', );
-        // }])->where('id', 3)->get();
+        $cobaa = Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id){
+            $query->where('wisata_id' , $id)->get();
+        }])->where('id', $id)->get();
+
+        dd($cobaa);
 
 
 

@@ -73,7 +73,10 @@ class AdminWisataController extends Controller
             'location' => 'required',
             'titik_jemput' => 'required',
             'harga' => 'required',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'inclusion' => 'required',
+            'exclusions' => 'required',
+            
         ]);       
 
 

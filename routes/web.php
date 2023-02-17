@@ -137,11 +137,16 @@ Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 
-Route::get('/isi/{id}', [IsiController::class, 'show']);
+
+
+});
+Route::middleware('guest', 'auth' , 'admin')->group(function(){
+
 
 
 });
 
+Route::get('/isi/{id}', [IsiController::class, 'show']);
 
 
 
