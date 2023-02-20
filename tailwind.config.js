@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  plugins: [require("daisyui")],
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
     './node_modules/tw-elements/dist/js/**/*.js',
     './public/icons/*.css',
-    "./node_modules/flowbite/**/*.js"
+    "./node_modules/flowbite/**/*.js",
+    "transform: (content) => content.replace(/taos:/g, '')"
   ],
   theme: {
     container: {
@@ -21,7 +21,7 @@ module.exports = {
         best2: "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset",
         best3: "rgba(0, 0, 0, 0.35) 0px -7px 9px -7px inset;",
         best4: "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;",
-        DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
+        taos: '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
         md: '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.02)',
         lg: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.01)',
         xl: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.01)',
@@ -59,6 +59,9 @@ module.exports = {
         main5 : "#5e6061",
         main6 : "#0d0e0f"
       },
+      transitionDelay: {
+        delay: '150ms'
+      }
     },
   },
   plugins: [
@@ -66,7 +69,15 @@ module.exports = {
     require('flowbite/plugin'),
     require('@tailwindcss/forms'),
     require('tw-elements/dist/plugin'),
-    require('@tailwindcss/line-clamp')
+    require('@tailwindcss/line-clamp'),
+    require('taos/plugin')
+    
 
   ],
+
+  safelist: [
+    '!duration-0',
+    '!delay-0',
+    'html.js :where([class*="taos:"]:not(.taos-init))'
+  ]
 }

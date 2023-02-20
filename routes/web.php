@@ -202,3 +202,11 @@ Route::get('/coba', function(){
 });
 
 
+Route::get('/booking', function(){
+    return view('booking');                                                                                                                             
+});
+
+Route::get('/tagihan', function(){
+    return view('tagihan');                                                                                                                             
+});
+

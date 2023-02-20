@@ -21,7 +21,11 @@
         "@popperjs/core": "^2.11.6",
         "daisyui": "^2.50.1",
         "jquery": "^3.6.3",
+<<<<<<< HEAD
         "smartwizard": "^6.0.6",
+=======
+        "taos": "^1.0.2",
+>>>>>>> 227a3048108aa728440bbd9cfc947ebab16eea34
         "tw-elements": "^1.0.0-alpha13"
     }
 }

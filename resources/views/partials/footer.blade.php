@@ -7,7 +7,8 @@
             <button class='bg-white rounded-full py-2 px-8'>Send</button>
          </form>
          </div>
-    <div class='container flex mt-4 border-black justify-between'>
+<div class="container">
+    <div class='flex mt-4 border-black justify-between'>
      <img src='img/logoputih.png' class='h-20'/> 
      <div class='flex gap-x-4 w-[40%]'>
 
@@ -26,6 +27,7 @@
 
      </div>
     </div>
+</div>
   </div>
 
   <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>

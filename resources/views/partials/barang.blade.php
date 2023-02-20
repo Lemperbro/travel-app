@@ -7,53 +7,53 @@
             </div>
         <div class="grid grid-cols-5 grid-rows-2">
             <div class="p-8">
-                <img src="/icons/jacket.png" alt="" class="w-20">
-                <p class="text-lg text-white font-semibold mt-2 mx-auto">jacket</p>
+                <img src="/icons/jacket.png" alt="" class="object-contain">
+                <p class=" flex text-lg text-white font-semibold pl-6">jacket</p>
             </div>
 
             <div class=" p-8">
-                <img src="/icons/hand.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">gloves</p>
+                <img src="/icons/hand.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-6">gloves</p>
             </div>
 
             <div class=" p-8">
-                <img src="/icons/hiking.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">Hiking Boots</p>
-            </div>
-
-            <div class=" p-8">
-                <img src="/icons/pills.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">Medicine</p>
-            </div>
-
-            <div class=" p-8">
-                <img src="/icons/bag 1.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">jacket</p>
-            </div>
-
-            <div class=" p-8">
-                <img src="/icons/raincoat.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">jacket</p>
+                <img src="/icons/hiking.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold ">Hiking Boots</p>
             </div>
 
             <div class="p-8">
-                <img src="/icons/seasoning.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2">Cooking Tools</p>
+                <img src="/icons/pills.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-2">Medicine</p>
             </div>
 
             <div class=" p-8">
-                <img src="/icons/torch.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">jacket</p>
+                <img src="/icons/bag 1.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-6">jacket</p>
             </div>
 
             <div class=" p-8">
-                <img src="/icons/trek.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">jacket</p>
+                <img src="/icons/raincoat.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-6">jacket</p>
+            </div>
+
+            <div class="p-8">
+                <img src="/icons/seasoning.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-4">Cooking</p>
             </div>
 
             <div class=" p-8">
-                <img src="/icons/trekking.png" alt="" class="w-20">
-                <p class="text-center text-lg text-white font-semibold mt-2 ml-1">jacket</p>
+                <img src="/icons/torch.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-3">torch</p>
+            </div>
+
+            <div class=" p-8">
+                <img src="/icons/camping.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-6">jacket</p>
+            </div>
+
+            <div class=" p-8">
+                <img src="/icons/trekking.png" alt="" class="object-contain">
+                <p class="text-lg text-white font-semibold pl-4">trekking</p>
             </div>
         </div>
     </div>
