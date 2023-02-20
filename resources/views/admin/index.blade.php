@@ -2,291 +2,188 @@
     <!-- This is an example component -->
 
    @section('container')
-<div>
-  @include('admin.partials.sidebar')
+<div class="mt-10 ">
   
      
-         <main>
-            <div class="pt-6 px-4">
-               <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
-                     <div class="flex items-center justify-between mb-4">
-                        <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">$45,385</span>
-                           <h3 class="text-base font-normal text-gray-500">Sales this week</h3>
-                        </div>
-                        <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                           12.5%
-                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                           </svg>
-                        </div>
-                     </div>
-                     <div id="main-chart"></div>
-                  </div>
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                     <div class="mb-4 flex items-center justify-between">
-                        <div>
-                           <h3 class="text-xl font-bold text-gray-900 mb-2">Latest Transactions</h3>
-                           <span class="text-base font-normal text-gray-500">This is a list of latest transactions</span>
-                        </div>
-                        <div class="flex-shrink-0">
-                           <a href="#" class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all</a>
-                        </div>
-                     </div>
-                     <div class="flex flex-col mt-8">
-                        <div class="overflow-x-auto rounded-lg">
-                           <div class="align-middle inline-block min-w-full">
-                              <div class="shadow overflow-hidden sm:rounded-lg">
-                                 <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-gray-50">
-                                       <tr>
-                                          <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                             Transaction
-                                          </th>
-                                          <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                             Date & Time
-                                          </th>
-                                          <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                             Amount
-                                          </th>
-                                       </tr>
-                                    </thead>
-                                    <tbody class="bg-white">
-                                       <tr>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                             Payment from <span class="font-semibold">Bonnie Green</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 23 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             $2300
-                                          </td>
-                                       </tr>
-                                       <tr class="bg-gray-50">
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                             Payment refund to <span class="font-semibold">#00910</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 23 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             -$670
-                                          </td>
-                                       </tr>
-                                       <tr>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                             Payment failed from <span class="font-semibold">#087651</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 18 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             $234
-                                          </td>
-                                       </tr>
-                                       <tr class="bg-gray-50">
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                             Payment from <span class="font-semibold">Lana Byrd</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 15 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             $5000
-                                          </td>
-                                       </tr>
-                                       <tr>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                             Payment from <span class="font-semibold">Jese Leos</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 15 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             $2300
-                                          </td>
-                                       </tr>
-                                       <tr class="bg-gray-50">
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                             Payment from <span class="font-semibold">THEMESBERG LLC</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 11 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             $560
-                                          </td>
-                                       </tr>
-                                       <tr>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                             Payment from <span class="font-semibold">Lana Lysle</span>
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                             Apr 6 ,2021
-                                          </td>
-                                          <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                             $1437
-                                          </td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+ <!-- Grafic start -->
+ <div class="flex gap-x-4">
+   <div class="w-full max-w-full  mt-0 lg:w-7/12 lg:flex-none ">
+     <div class="border-black/12.5 shadow-soft-xl relative z-20 shadow-best4 flex w-full flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+       <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+         <h6>Monthly Order Report</h6>
+         <p class="leading-normal text-sm">
+           <i class="fa fa-arrow-up text-lime-500"></i>
+           <span class="font-semibold">4% more</span> in 2021
+         </p>
+       </div>
+       <div class="flex-auto p-4">
+         <div>
+           <canvas id="chart-line" height="300"></canvas>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- w-full flex flex-col shadow-soft-xl justify-between  -->
+
+   <div class="w-full  justify-between grid grid-rows-3 gap-y-4 grid-cols-1 ">
+     
+
+
+     <div class="flex-none w-full bg-white p-4 rounded-md shadow-lg max-w-full ">
+       <div class="flex mb-2 mt-7">
+         <div class="flex items-center justify-center w-5 h-5 mr-2 text-center bg-center rounded fill-current shadow-soft-2xl bg-gradient-to-tl from-purple-700 to-pink-500 text-neutral-900">
+           <svg width="10px" height="10px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <title>document</title>
+             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+               <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                 <g transform="translate(1716.000000, 291.000000)">
+                   <g transform="translate(154.000000, 300.000000)">
+                     <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" opacity="0.603585379"></path>
+                     <path class="c  olor-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z"></path>
+                   </g>
+                 </g>
+               </g>
+             </g>
+           </svg>
+         </div>
+         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Users</p>
+       </div>
+
+       <h4 class="font-bold">36K</h4>
+       <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200 ">
+         <div class="duration-600 ease-soft -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+     </div>
+
+
+     <div class="flex-none w-full bg-white p-4 rounded-md shadow-lg max-w-full ">
+       <div class="flex mb-2 mt-7">
+         <div class="flex items-center justify-center w-5 h-5 mr-2 text-center bg-center rounded fill-current shadow-soft-2xl bg-gradient-to-tl from-blue-600 to-cyan-400 text-neutral-900">
+           <svg width="10px" height="10px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <title>spaceship</title>
+             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+               <g transform="translate(-1720.000000, -592.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                 <g transform="translate(1716.000000, 291.000000)">
+                   <g transform="translate(4.000000, 301.000000)">
+                     <path
+                       class="color-background"
+                       d="M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z"
+                     ></path>
+                     <path class="color-background" d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z"></path>
+                     <path class="color-background" d="M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z" opacity="0.598539807"></path>
+                     <path class="color-background" d="M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z" opacity="0.598539807"></path>
+                   </g>
+                 </g>
+               </g>
+             </g>
+           </svg>
+         </div>
+         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Kota</p>
+       </div>
+       <h4 class="font-bold">2m</h4>
+       <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
+         <div class="duration-600 ease-soft -mt-0.38 w-9/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+     </div>
+
+
+     <div class="flex-none w-full bg-white p-4 rounded-md shadow-lg max-w-full">
+       <div class="flex mb-2 mt-7">
+         <div class="flex items-center justify-center w-5 h-5 mr-2 text-center bg-center rounded fill-current shadow-soft-2xl bg-gradient-to-tl from-red-500 to-yellow-400 text-neutral-900">
+           <svg width="10px" height="10px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <title>credit-card</title>
+             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+               <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                 <g transform="translate(1716.000000, 291.000000)">
+                   <g transform="translate(453.000000, 454.000000)">
+                     <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                     <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                   </g>
+                 </g>
+               </g>
+             </g>
+           </svg>
+         </div>
+         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Wisata</p>
+       </div>
+       <h4 class="font-bold">435K</h4>
+       <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-black">
+         <div class="duration-600 ease-soft -mt-0.38 w-3/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+     </div>
+
+
+
+   </div>
+   
+ </div>
+
+ <!-- grafik end -->
+
+
+  <!-- Table 2 -->
+  <div class="flex flex-wrap mt-4">
+   <div class="flex-none w-full max-w-full">
+     <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white p-4 shadow-best4 border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+       <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+         <h6>Latest Booking</h6>
+       </div>
+       <div class="flex-auto px-0 pt-0 pb-2">
+         <div class="p-0 overflow-x-auto">
+           <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+
+             <thead class="align-bottom">
+               <tr>
+                 <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">No</th>
+                 <th class=" px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Name</th>
+                 <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Wisata</th>
+                 <th class="px-6 py-3 font-bold  uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Number Phone</th>
+                 <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Tour Type</th>
+                 <th class="px-6 py-3 font-bold uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Order Date</th>
+                 <th class="px-6 py-3 font-semibold align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70 uppercase">Action</th>
+               </tr>
+             </thead>
+
+             <tbody>
+               <tr>
+
+                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                   <p class="text-center font-semibold leading-tight text-xs">1</p>
+                 </td>
+                     
+                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                  <div class="px-2 py-1">
+                  <p class=" text-center leading-tight font-semibold text-sm">Ryan Yulianto</p>
                </div>
-               <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                     <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">2,340</span>
-                           <h3 class="text-base font-normal text-gray-500">New products this week</h3>
-                        </div>
-                        <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                           14.6%
-                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                           </svg>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                     <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">5,355</span>
-                           <h3 class="text-base font-normal text-gray-500">Visitors this week</h3>
-                        </div>
-                        <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                           32.9%
-                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                           </svg>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                     <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                           <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">385</span>
-                           <h3 class="text-base font-normal text-gray-500">User signups this week</h3>
-                        </div>
-                        <div class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
-                           -2.7%
-                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                           </svg>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
-                  
-                  <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                     <h3 class="text-xl leading-none font-bold text-gray-900 mb-10">Acquisition Overview</h3>
-                     <div class="block w-full overflow-x-auto">
-                        <table class="items-center w-full bg-transparent border-collapse">
-                           <thead>
-                              <tr>
-                                 <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Top Channels</th>
-                                 <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Users</th>
-                                 <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px"></th>
-                              </tr>
-                           </thead>
-                           <tbody class="divide-y divide-gray-100">
-                              <tr class="text-gray-500">
-                                 <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">Organic Search</th>
-                                 <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">5,649</td>
-                                 <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
-                                    <div class="flex items-center">
-                                       <span class="mr-2 text-xs font-medium">30%</span>
-                                       <div class="relative w-full">
-                                          <div class="w-full bg-gray-200 rounded-sm h-2">
-                                             <div class="bg-cyan-600 h-2 rounded-sm" style="width: 30%"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="text-gray-500">
-                                 <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">Referral</th>
-                                 <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">4,025</td>
-                                 <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
-                                    <div class="flex items-center">
-                                       <span class="mr-2 text-xs font-medium">24%</span>
-                                       <div class="relative w-full">
-                                          <div class="w-full bg-gray-200 rounded-sm h-2">
-                                             <div class="bg-orange-300 h-2 rounded-sm" style="width: 24%"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="text-gray-500">
-                                 <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">Direct</th>
-                                 <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">3,105</td>
-                                 <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
-                                    <div class="flex items-center">
-                                       <span class="mr-2 text-xs font-medium">18%</span>
-                                       <div class="relative w-full">
-                                          <div class="w-full bg-gray-200 rounded-sm h-2">
-                                             <div class="bg-teal-400 h-2 rounded-sm" style="width: 18%"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="text-gray-500">
-                                 <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">Social</th>
-                                 <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">1251</td>
-                                 <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
-                                    <div class="flex items-center">
-                                       <span class="mr-2 text-xs font-medium">12%</span>
-                                       <div class="relative w-full">
-                                          <div class="w-full bg-gray-200 rounded-sm h-2">
-                                             <div class="bg-pink-600 h-2 rounded-sm" style="width: 12%"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="text-gray-500">
-                                 <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">Other</th>
-                                 <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">734</td>
-                                 <td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
-                                    <div class="flex items-center">
-                                       <span class="mr-2 text-xs font-medium">9%</span>
-                                       <div class="relative w-full">
-                                          <div class="w-full bg-gray-200 rounded-sm h-2">
-                                             <div class="bg-indigo-600 h-2 rounded-sm" style="width: 9%"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr class="text-gray-500">
-                                 <th class="border-t-0 align-middle text-sm font-normal whitespace-nowrap p-4 pb-0 text-left">Email</th>
-                                 <td class="border-t-0 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4 pb-0">456</td>
-                                 <td class="border-t-0 align-middle text-xs whitespace-nowrap p-4 pb-0">
-                                    <div class="flex items-center">
-                                       <span class="mr-2 text-xs font-medium">7%</span>
-                                       <div class="relative w-full">
-                                          <div class="w-full bg-gray-200 rounded-sm h-2">
-                                             <div class="bg-purple-500 h-2 rounded-sm" style="width: 7%"></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </main>
+                 </td>
+
+                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                   <p class="font-semibold leading-tight text-xs text-center">Bromo</p>
+                 </td>
+                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                  <span class="font-semibold leading-tight text-xs text-center">082230736205</span>
+                </td>
+                
+                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                   <span class="font-semibold leading-tight text-xs ">Open Trip</span>
+                 </td>
+                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                  <span class="font-semibold leading-tight text-xs  text-center">19 January 2023</span>
+                </td>
+                
+
+
+               </tr>
+
+               
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- end Table 2 -->
          
 
       </div>

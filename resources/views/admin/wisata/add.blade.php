@@ -127,20 +127,21 @@
 							</div>
 						</div>
 
-            <div class="mb-5">
+            {{-- <div class="mb-5">
               <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
               <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
                   @foreach ($kota as $kota)
                   <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
                   @endforeach
               </select>
-          </div>
+          </div> --}}
+
           <div class="mb-5">
               <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
               <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
           </div>
 
-            <div class="mb-5">
+            {{-- <div class="mb-5">
 				<h1 class="font-semibold text-gray-700">Titik Jemput</h1>
 
               <div id="jemput">
@@ -160,7 +161,7 @@
 
               </div>
               <h1 id="add_jemput" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
-          </div>
+          </div> --}}
 
           <div class="mt-10">
             <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Deskripsi</label>
@@ -171,32 +172,37 @@
 
 					<div x-show.transition.in="step === 2">
 
-              <div class="mb-5 border rounded-md p-4">
-                  <h1 class="font-semibold text-lg">Inclusion</h1>
-                <div class="mb-5">
-                  <div id="inclusion">
-                      <div class="mt-4 border rounded-md p-8 shadow-best" > 
-                      <input type="text" name="inclusion[]" id="inclusion" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
-                  </div>
-                  </div>
-                  <h1 id="add_inclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right">+</h1>
-              </div>
-
-              </div>
+						<div class="mb-5">
+							<h1 class="font-semibold text-lg">Inclusion</h1>
+							<div class="flex flex-wrap gap-4">
+						   <div id="inclusion" class="flex flex-wrap gap-4">
+	   
+											   
+							   <div class="flex gap-x-2" id="area_inclusion">
+							   <input type="text" name="inclusion[]" id="inclusion" class="h-12 rounded-md p-2 border"> 
+							   <h1 id="remove_inclusion" class="text-white bg-red-600 py-2 px-4 rounded-md inline-block text-xl font-semibold cursor-pointer">-</h1>
+							   </div>
+							   
+						   </div>
+						   <h1 id="add_inclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white h-12 rounded-md inline cursor-pointer">+</h1>
+					   </div> 
+			   </div>
 			  
 
-              <div class="mb-5 mt-8 border rounded-md p-4">
-                <h1 class="font-semibold text-lg">Exclusions</h1>
-              <div class="mb-5">
-                <div id="exclusion">
-                    <div class="mt-4 border rounded-md p-8 shadow-best" > 
-                    <input type="text" name="exclusion[]" id="exclusion" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
-                </div>
-                </div>
-                <h1 id="add_exclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right">+</h1>
-            </div>
-
-            </div>
+			   <div class="mb-5">
+				<h1 class="font-semibold text-lg">Exclusion</h1>
+				<div class="flex flex-wrap gap-4">
+			   <div id="exclusion" class="flex flex-wrap gap-4">
+					
+				<div class="flex gap-x-2" id="area_exclusion">
+					<input type="text" name="exclusion[]" id="exclusion" class="h-12 rounded-md p-2 border" > 
+					<h1 id="remove_exclusion" class="text-white bg-red-600 py-2 px-4 rounded-md inline-block text-xl font-semibold cursor-pointer">-</h1>
+					</div> 
+	
+			   </div>
+			   <h1 id="add_exclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white h-12 rounded-md inline cursor-pointer">+</h1>
+		   </div> 
+	</div>
 
 
 
@@ -227,17 +233,14 @@
 						<div class="mb-5 mt-24 border rounded-md p-4">
 
 						  <div class="mb-5" id="equipment">
-							<h1 class="font-semibold text-lg">Equipment 1</h1>
+							<h1 class="font-semibold text-lg">Equipment </h1>
 
 							<div  class="mt-4">
-								<input type="file" name="images[]" class="w-full border h-12 rounded-md">
-								<input type="text" name="equipment[]" id="equipment" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
+								<input type="file" name="images" class="w-full border h-12 rounded-md">
 							</div>
 
 							
 						</div>
-
-						<h1 id="add_equipment" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
 						</div>
 
 					

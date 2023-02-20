@@ -211,7 +211,6 @@ $number = 0;
               <input type="file" name="images[]" class="border rounded-md">
               @foreach ($equip_images as $img)
                   
-              <span name="old_image[]" >{!! $img !!}</span>
               @endforeach
 
               <input type="text" name="equipment[]" id="equipment" class="rounded-md p-2 border " value="{{ $name }}">

@@ -72,15 +72,7 @@
     });
   });
 
-  var equipment = 1;
 
-  $(document).ready(function() {
-    $("#add_equipment").click(function() {
-      equipment += 1;
-
-        $("#equipment").append('<h1 class="font-semibold text-lg">Equipment '+equipment+'</h1><div class="flex gap-x-4"><input type="file" name="images[]" class="border rounded-md "><input type="text" name="equipment[]" id="equipment" class="rounded-md p-2 border "></div>');
-    });
-  });
 
 
 

@@ -1,4 +1,4 @@
-<nav class="bg-white border-b border-gray-200 fixed z-30 w-full left-0">
+<nav class=" bg-slate-100 fixed z-30 w-full left-0">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
        <div class="flex items-center justify-between">
           <div class="flex items-center justify-between w-full">
@@ -20,10 +20,7 @@
              <span class="self-center whitespace-nowrap">Grow Admin</span>
              </a>
             </div>
-            <div class="flex gap-x-4">
-               <h1 class="font-semibold text-lg my-auto">{{ auth()->user()->username }}</h1>
-               <img src="/img/malang.png" alt="" class="w-10 h-10 object-cover rounded-full">
-            </div>
+
           </div>
        </div>
     </div>

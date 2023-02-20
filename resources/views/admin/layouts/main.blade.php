@@ -6,7 +6,8 @@
   @include('admin.partials.sidebar')
 
   <div id="main-content" class="w-full relative  lg:ml-64  pt-10">
-@yield('container')
+
+  @yield('container')
 
   </div>
 </div>

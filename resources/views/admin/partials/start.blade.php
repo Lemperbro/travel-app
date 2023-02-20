@@ -8,4 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
 </head>
-<body class=" flex items-center justify-center" style="background: #edf2f7;">
+<body class=" flex items-center justify-center bg-slate-100" >
+
+
+    
