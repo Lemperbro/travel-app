@@ -1,6 +1,6 @@
 @extends('layouts.main')
 <div class='relative'>
-  <img src='/gambar/op.png' class=''/>
+  <img src='/img/2.png' class='h-[70vh] object-cover w-full'/>
   <h1 class='absolute top-40 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>Open Trip</h1>
   </div>
   <div class='container'>
@@ -22,11 +22,96 @@
         </p>
       </div>
 
-      <div class='mt-12 mb-14 grid grid-cols-3 grid-rows-2 gap-6'>
 
-        <div class='border border-black rounded-lg'>
-          <div class='relative'>
-            <img src='/gambar/st1.png'class=''/>
+<div class='mt-12 mb-14 grid grid-cols-3 grid-rows-2 gap-6'>
+
+  <div class='border border-black'>
+    <div class='flex'>
+      <img src='/gambar/2.png' class="rounded-br-3xl rounded-b-3xl"/>
+    </div>
+    <div class='text-center mt-4'>
+      <h1 class='text-[#FF2E00] text-sm'>
+      MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
+      </h1>
+    </div>
+
+      <div class='flex-row mt-4'>
+        <div class=' flex justify-center'>
+        <img src='/icons/lok.png' class='object-contain '/>
+        <p class='my-auto'>Malang</p>
+        </div>
+
+        <div class='flex justify-center  mt-2'>
+        <img src='/icons/jam.png' class='object-contain'/>
+        <p class='my-auto text-lg'>1 day</p>
+        </div>
+      </div>
+      <h1 class='text-lg flex justify-center mt-3 font-semibold'>
+        Start from Rp. 1.500.000
+      </h1>
+        <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
+          Eksplore
+        </a>
+    </div>
+    <div class='border border-black'>
+      <div class='flex'>
+        <img src='/gambar/2.png' class="rounded-br-3xl rounded-b-3xl"/>
+      </div>
+      <div class='text-center mt-4'>
+        <h1 class='text-[#FF2E00] text-sm'>
+        MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
+        </h1>
+      </div>
+
+        <div class='flex-row mt-4'>
+          <div class=' flex justify-center'>
+          <img src='/icons/lok.png' class='object-contain '/>
+          <p class='my-auto'>Malang</p>
+          </div>
+
+          <div class='flex justify-center  mt-2'>
+          <img src='/icons/jam.png' class='object-contain'/>
+          <p class='my-auto text-lg'>1 day</p>
+          </div>
+        </div>
+        <h1 class='text-lg flex justify-center mt-3 font-semibold'>
+          Start from Rp. 1.500.000
+        </h1>
+          <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
+            Eksplore
+          </a>
+      </div>
+      <div class='border border-black'>
+        <div class='flex'>
+          <img src='/gambar/2.png' class="rounded-br-3xl rounded-b-3xl"/>
+        </div>
+        <div class='text-center mt-4'>
+          <h1 class='text-[#FF2E00] text-sm'>
+          MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
+          </h1>
+        </div>
+
+          <div class='flex-row mt-4'>
+            <div class=' flex justify-center'>
+            <img src='/icons/lok.png' class='object-contain '/>
+            <p class='my-auto'>Malang</p>
+            </div>
+
+            <div class='flex justify-center  mt-2'>
+            <img src='/icons/jam.png' class='object-contain'/>
+            <p class='my-auto text-lg'>1 day</p>
+            </div>
+          </div>
+          <h1 class='text-lg flex justify-center mt-3 font-semibold'>
+            Start from Rp. 1.500.000
+          </h1>
+            <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
+              Eksplore
+            </a>
+        </div>
+        <div class='border border-black'>
+          <div class='flex'>
+            <img src='/gambar/2.png' class="rounded-br-3xl rounded-b-3xl"/>
           </div>
           <div class='text-center mt-4'>
             <h1 class='text-[#FF2E00] text-sm'>
@@ -35,173 +120,78 @@
           </div>
 
             <div class='flex-row mt-4'>
-              <div class='px-24 flex gap-x-2'>
+              <div class=' flex justify-center'>
               <img src='/icons/lok.png' class='object-contain '/>
               <p class='my-auto'>Malang</p>
               </div>
 
-              <div class='px-24 flex gap-x-2 mt-2'>
+              <div class='flex justify-center  mt-2'>
               <img src='/icons/jam.png' class='object-contain'/>
               <p class='my-auto text-lg'>1 day</p>
               </div>
             </div>
-            <h1 class='text-lg text-center mt-3 font-semibold'>
+            <h1 class='text-lg flex justify-center mt-3 font-semibold'>
               Start from Rp. 1.500.000
             </h1>
               <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
                 Eksplore
               </a>
           </div>
-      
-
-        <div class='border border-black rounded-lg'>
-          <div class='relative'>
-            <img src='/gambar/st1.png'class=''/>
-          </div>
-          <div class='text-center mt-4'>
-            <h1 class='text-[#FF2E00] text-sm'>
-            MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
-            </h1>
-          </div>
-
-            <div class='flex-row mt-4'>
-              <div class='px-24 flex gap-x-2'>
-              <img src='/icons/lok.png' class='object-contain '/>
-              <p class='my-auto'>Malang</p>
-              </div>
-
-              <div class='px-24 flex gap-x-2 mt-2'>
-              <img src='/icons/jam.png' class='object-contain'/>
-              <p class='my-auto text-lg'>1 day</p>
-              </div>
-            </div>
-            <h1 class='text-lg text-center mt-3 font-semibold'>
-              Start from Rp. 1.500.000
-            </h1>
-              <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
-                Eksplore
-              </a>
-          </div>
-
-          <div class='border border-black rounded-lg'>
-            <div class='relative'>
-              <img src='/gambar/st1.png'class=''/>
+          <div class='border border-black'>
+            <div class='flex'>
+              <img src='/gambar/2.png' class="rounded-br-3xl rounded-b-3xl"/>
             </div>
             <div class='text-center mt-4'>
               <h1 class='text-[#FF2E00] text-sm'>
               MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
               </h1>
             </div>
-
+  
               <div class='flex-row mt-4'>
-                <div class='px-24 flex gap-x-2'>
+                <div class=' flex justify-center'>
                 <img src='/icons/lok.png' class='object-contain '/>
                 <p class='my-auto'>Malang</p>
                 </div>
-
-                <div class='px-24 flex gap-x-2 mt-2'>
+  
+                <div class='flex justify-center  mt-2'>
                 <img src='/icons/jam.png' class='object-contain'/>
                 <p class='my-auto text-lg'>1 day</p>
                 </div>
               </div>
-              <h1 class='text-lg text-center mt-3 font-semibold'>
+              <h1 class='text-lg flex justify-center mt-3 font-semibold'>
                 Start from Rp. 1.500.000
               </h1>
                 <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
                   Eksplore
                 </a>
             </div>
-          
-
-
-            <div class='border border-black rounded-lg'>
-              <div class='relative'>
-                <img src='/gambar/st1.png'class=''/>
+            <div class='border border-black'>
+              <div class='flex'>
+                <img src='/gambar/2.png' class="rounded-br-3xl rounded-b-3xl"/>
               </div>
               <div class='text-center mt-4'>
                 <h1 class='text-[#FF2E00] text-sm'>
                 MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
                 </h1>
               </div>
-
+    
                 <div class='flex-row mt-4'>
-                  <div class='px-24 flex gap-x-2'>
+                  <div class=' flex justify-center'>
                   <img src='/icons/lok.png' class='object-contain '/>
                   <p class='my-auto'>Malang</p>
                   </div>
-
-                  <div class='px-24 flex gap-x-2 mt-2'>
+    
+                  <div class='flex justify-center  mt-2'>
                   <img src='/icons/jam.png' class='object-contain'/>
                   <p class='my-auto text-lg'>1 day</p>
                   </div>
                 </div>
-                <h1 class='text-lg text-center mt-3 font-semibold'>
+                <h1 class='text-lg flex justify-center mt-3 font-semibold'>
                   Start from Rp. 1.500.000
                 </h1>
-                  <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
+                  <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold'>
                     Eksplore
                   </a>
-              </div>
-            
-              <div class='border border-black rounded-lg'>
-                <div class='relative'>
-                  <img src='/gambar/st1.png'class=''/>
-                </div>
-                <div class='text-center mt-4'>
-                  <h1 class='text-[#FF2E00] text-sm'>
-                  MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
-                  </h1>
-                </div>
-
-                  <div class='flex-row mt-4'>
-                    <div class='px-24 flex gap-x-2'>
-                    <img src='/icons/lok.png' class='object-contain '/>
-                    <p class='my-auto'>Malang</p>
-                    </div>
-
-                    <div class='px-24 flex gap-x-2 mt-2'>
-                    <img src='/icons/jam.png' class='object-contain'/>
-                    <p class='my-auto text-lg'>1 day</p>
-                    </div>
-                  </div>
-                  <h1 class='text-lg text-center mt-3 font-semibold'>
-                    Start from Rp. 1.500.000
-                  </h1>
-                    <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
-                      Eksplore
-                    </a>
-                </div>
-              
-
-
-                <div class='border border-black rounded-lg'>
-                  <div class='relative'>
-                    <img src='/gambar/st1.png'class=''/>
-                  </div>
-                  <div class='text-center mt-4'>
-                    <h1 class='text-[#FF2E00] text-sm'>
-                    MOUNT BROMO & IJEN & TUMPAK SEWU WATERFALL TOURS
-                    </h1>
-                  </div>
-  
-                    <div class='flex-row mt-4'>
-                      <div class='px-24 flex gap-x-2'>
-                      <img src='/icons/lok.png' class='object-contain '/>
-                      <p class='my-auto'>Malang</p>
-                      </div>
-  
-                      <div class='px-24 flex gap-x-2 mt-2'>
-                      <img src='/icons/jam.png' class='object-contain'/>
-                      <p class='my-auto text-lg'>1 day</p>
-                      </div>
-                    </div>
-                    <h1 class='text-lg text-center mt-3 font-semibold'>
-                      Start from Rp. 1.500.000
-                    </h1>
-                      <a class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] text-white font-semibold '>
-                        Eksplore
-                      </a>
-                  </div>
-      </div>    
+            </div>
   </div>
 </div>

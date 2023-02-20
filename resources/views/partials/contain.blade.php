@@ -1,4 +1,4 @@
-<div class='absolute z-10 bottom-0 container inset-0 '>
+<div class='absolute z-10 bottom-0 container inset-0 "delay-[100ms] duration-[1200ms] data-taos-offset="500" '>
     <div class='py-48 '>
         <h1 class='text-6xl font-bold text-white uppercase'>Grow In Travel</h1>
         <h1 class='text-6xl font-bold text-white uppercase mt-2'>Indonesia</h1>

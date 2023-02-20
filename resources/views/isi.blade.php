@@ -6,7 +6,7 @@
 
 <div class='relative'>
     <img src='/img/pt.png' class=''/>
-    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>Private Trip</h1>
+    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>Gunung Bromo - Jawa Timur</h1>
   </div>
 
   <div class='w-[35%] mb-9 relative '>
