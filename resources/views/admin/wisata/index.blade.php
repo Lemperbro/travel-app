@@ -87,12 +87,30 @@
 
             <h2 class="font-semibold ">Kota {{ $wisata->kota->nama_kota }}</h2>
             <p class="line-clamp-3">{{ $wisata->deskripsi }}</p>
+            @php
+                $jemput = explode("|", $wisata->jemput)
+            @endphp
             @foreach ($wisata->jemput as $jemput)
+
             <h1>{{ $jemput->lokasi }}</h1>
             <h1>{{ $jemput->harga }}</h1>
 
             @endforeach
+            {{-- @foreach ($wisata->equipment as $equip)
+                @php
+                    $equip_image = explode("|", $equip->image);
+                @endphp
+                <div class="flex">
 
+                @foreach ($equip_image as $image)
+                <p>{!! $image !!}</p>
+                    
+                @endforeach
+            </div>
+
+            @endforeach --}}
+
+                
           <div class="flex gap-x-4 justify-between mt-4">
              <a href="" class="bg-green-600 p-2 rounded-md text-white font-semibold  w-full text-center">Edit</a>
              <form action="/admin/wisata/delete/{{ $wisata->id }}" method="POST">

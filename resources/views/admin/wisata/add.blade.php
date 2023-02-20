@@ -104,27 +104,28 @@
 								>
 						</div>
 
-						<div class="mb-5">
-							<label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
-							<input type="datetime-local" name="departure"
-								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-								>
+						<div class="flex gap-4 justify-between">
+							<div class="">
+								<label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
+								<input type="datetime-local" name="departure"
+									class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+									>
+							</div>
+							<div class="">
+								<label for="long_tour" class="font-bold mb-1 text-gray-700 block">Long Tour</label>
+								<input type="text" name="long_tour"
+									class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+									>
+							</div>
+							<div class="">
+								<label for="type" class="font-bold mb-1 text-gray-700 block">Type Tour</label>
+								<select name="type" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+									<option value="single trip" >Single Trip</option>
+									<option value="open trip" >Open Trip</option>
+									<option value="private trip">Private Trip</option>
+								</select>
+							</div>
 						</div>
-
-            <div class="mb-5">
-							<label for="long_tour" class="font-bold mb-1 text-gray-700 block">Long Tour</label>
-							<input type="text" name="long_tour"
-								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-								>
-						</div>
-            <div class="mb-5">
-              <label for="type" class="font-bold mb-1 text-gray-700 block">Type Tour</label>
-              <select name="type" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                  <option value="single_trip">Single Trip</option>
-                  <option value="open_trip">Open Trip</option>
-                  <option value="private_trip">Private Trip</option>
-              </select>
-          </div>
 
             <div class="mb-5">
               <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
@@ -140,20 +141,30 @@
           </div>
 
             <div class="mb-5">
+				<h1 class="font-semibold text-gray-700">Titik Jemput</h1>
+
               <div id="jemput">
-                  <div class="mt-4 border rounded-md p-8 shadow-best" > 
-                  <label for="titik_jemput" class="font-bold mb-1 text-gray-700 block">Titik Jemput </label>
-                  <input type="text" name="titik_jemput[]" id="titik_jemput" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                  <label for="harga" class="font-bold mb-1 text-gray-700 block">Harga</label>
-                  <input type="number" name="harga[]" id="harga" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+
+                  <div class="mt-4 grid grid-cols-2 gap-4 border mx-auto w-full" > 
+			<div class="">
+				<label for="titik_jemput" class="font-bold text-sm mb-1 text-gray-700 block">Lokasi</label>
+                  <input type="text" name="titik_jemput[]" id="titik_jemput" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
+				</div>
+
+				<div>
+                  <label for="harga" class="font-bold text-sm mb-1 text-gray-700 block">Harga</label>
+                  <input type="number" name="harga[]" id="harga" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
+				</div>
+
               </div>
+
               </div>
               <h1 id="add_jemput" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
           </div>
 
           <div class="mt-10">
             <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Deskripsi</label>
-            <input type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+            <textarea type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"></textarea>
         </div>
 
 					</div>
@@ -172,6 +183,7 @@
               </div>
 
               </div>
+			  
 
               <div class="mb-5 mt-8 border rounded-md p-4">
                 <h1 class="font-semibold text-lg">Exclusions</h1>

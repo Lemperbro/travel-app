@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Kota;
+use App\Models\Wisata;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
@@ -12,7 +15,6 @@ use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
-use App\Http\Controllers\IsiController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -94,6 +96,9 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
     Route::get('/admin/wisata/add', [AdminWisataController::class, 'create']);
     Route::post('/admin/wisata/add', [AdminWisataController::class, 'store']);
+    Route::get('/admin/wisata/edit/{id}', [AdminWisataController::class, 'edit']);
+    Route::post('/admin/wisata/edit/{id}', [AdminWisataController::class, 'update']);
+
     Route::post('/admin/wisata/delete/{id}', [AdminWisataController::class, 'destroy']);
     Route::post('/admin/wisata/jemput/add/{id}', [AdminWisataController::class, 'addJemput']);
 
@@ -172,6 +177,28 @@ Route::get('/isi/{id}', [IsiController::class, 'show']);
 
 Route::get('/blog', function(){
     return view('blog');                                                                                                                             
+});
+
+Route::get('/coba', function(){
+    $wisata = Wisata::with(['kota','equipment', 'jemput', 'fasilitas', 'itenerary'  => function($query){
+        $query->where('wisata_id', 7)->get();
+    }])->where('id', 7)->get();
+
+    foreach($wisata as $wisatas){
+
+    foreach($wisatas->fasilitas as $fasilitas){
+
+        $inclusion = explode('|', $fasilitas->inclusion);
+        
+    }
+}
+    return view('admin.wisata.coba',[
+        'data' => $wisata,
+        'inclusion' => $inclusion,
+        'tittle' => 'Kelola Wisata',
+        'kota' => Kota::all(),
+        'coba' => ['satu', 'dua','tiga','empat', 'lima'],
+    ]);                                                                                                                             
 });
 
 

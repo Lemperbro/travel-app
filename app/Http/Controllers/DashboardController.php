@@ -25,8 +25,8 @@ class DashboardController extends Controller
             // 'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
             // 'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
             'best' => Wisata::with(['kota' => function($query){
-                $query->orderBy('popularitas', 'DESC')->limit(3)->get();
-            }])->orderBy('diboking', 'DESC')->limit(3)->get(),
+                $query->orderBy('popularitas', 'DESC')->limit(20)->get();
+            }])->orderBy('diboking', 'DESC')->limit(20)->get(),
             'kota' => Kota::all()
         
         ]);

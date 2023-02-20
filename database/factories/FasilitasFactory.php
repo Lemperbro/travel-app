@@ -20,7 +20,7 @@ class FasilitasFactory extends Factory
             return [
                 //
     
-                'wisata_id' => fake()->randomDigitNotNull(),
+                'wisata_id' => 1,
                 'inclusion' => fake()->word(),
                 'exclusions' => fake()->word()
             ];

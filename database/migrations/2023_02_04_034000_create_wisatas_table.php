@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('kota_id');
             $table->string('tour_type');
             $table->string('long_tour');
-            $table->date('tanggal');
+            $table->dateTime('tanggal');
             $table->text('deskripsi');
             $table->string('nama_wisata');
             $table->text('image');

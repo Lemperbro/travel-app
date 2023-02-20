@@ -57,25 +57,14 @@
       @php
       $images = explode('|', $kota->image);
     @endphp
-    <a href="" class='rounded-xl relative'>
-       <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>{{ $kota->nama_kota }}</h1>
-       <img src='{!! asset('image/'.$images[0]) !!}' class='object-cover'/>
-    </a>
+      <a href="" class='rounded-xl relative shadow-best'>
+        <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[50%]'>{{ $kota->nama_kota }}</h1>
+        <img src='{!! asset('image/'.$images[0]) !!}' class='object-cover w-full h-96 rounded-xl'/>
+      </a>
 
   @endforeach
 
-  <a href="" class='rounded-xl relative border border-red-600'>
-    <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>asasas</h1>
-    <img src='' class='object-cover'/>
- </a>
- <a href="" class='rounded-xl relative border border-red-600'>
-  <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>asasas</h1>
-  <img src='' class='object-cover'/>
-</a>
-<a href="" class='rounded-xl relative border border-red-600'>
-  <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[35%]'>asasas</h1>
-  <img src='' class='object-cover'/>
-</a>
+
 
 
     

@@ -22,10 +22,10 @@ class Wisata extends Model
         return $this->belongsTo(Kota::class);
     }
     public function itenerary(){
-        return $this->belongsTo(Itenerary::class);
+        return $this->hasMany(Itenerary::class);
     }
     public function fasilitas(){
-        return $this->belongsTo(Fasilitas::class);
+        return $this->hasMany(Fasilitas::class);
     }
     public function jemput(){
         return $this->hasMany(Jemput::class);

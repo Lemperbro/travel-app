@@ -3,11 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-<<<<<<< HEAD
-        'reference' => '20a0bce47c3bf15eaa1e839ce677cae733b07e67',
-=======
-        'reference' => '78d57a111b9241bd2ee658226b9e5b02e7ba7c43',
->>>>>>> ca25cf1 (baru dari ryan)
+        'reference' => '1b06fd8da47e791e4b85ecad2f65592ee2d60dc5',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -407,11 +403,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-<<<<<<< HEAD
-            'reference' => '20a0bce47c3bf15eaa1e839ce677cae733b07e67',
-=======
-            'reference' => '78d57a111b9241bd2ee658226b9e5b02e7ba7c43',
->>>>>>> ca25cf1 (baru dari ryan)
+            'reference' => '1b06fd8da47e791e4b85ecad2f65592ee2d60dc5',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -495,6 +487,15 @@
             'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/mime-type-detection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v2.11.2',
+            'version' => '2.11.2.0',
+            'reference' => 'e92233f31dc1b88fb1ac242b32afe1ab7525ee05',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

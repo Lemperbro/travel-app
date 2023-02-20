@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('wisata_id')->constrained('wisatas')->onDelete('cascade');
             $table->text('image');
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }
