@@ -47,20 +47,19 @@ class IsiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
-        $cobaa = Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id){
-            $query->where('wisata_id' , $id)->get();
-        }])->where('id', $id)->get();
+        // $cobaa = Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id){
+        //     $query->where('wisata_id' , $id)->get();
+        // }])->where('id', $id)->get();
 
-
-
-
+            // $wisata = Wisata::where('slug', $slug)->first();
+            
+            // $id = $wisata->id;
         return view('isi', [
-            'data' => Wisata::with(['fasilitas','equipment', 'itenerary', 'jemput' => function($query) use ($id){
-                $query->where('wisata_id' , $id)->get();
-            }])->where('id', $id)->get(),
+
+            'data' => Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get(),
         ]);
     }
 

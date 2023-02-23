@@ -2,59 +2,43 @@
 
 @include('partials.navbar')
 
-
-
+@foreach ($data as $wisata)
+    
 <div class='relative'>
     <img src='/img/pt.png' class=''/>
-    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>Gunung Bromo - Jawa Timur</h1>
+    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>{{ $wisata->nama_wisata }} - {{ $wisata->location }}</h1>
   </div>
 
-  <div class='w-[35%] mb-9 relative '>
-    <div class="flex gap">
-        <img src='/gambar/locisi.png' class='object-contain w-10 '/>
-        <h1 class='mx-3 text-white font-semibold text-2xl top-5 '>
-            Souvenir on bali
-        </h1>
-    </div>
-        <img src='/gambar/isia.png' class='object-contain absolute -z-10 top-0'/>
-    </div>
+
 
     @section('container')
-    <div class="mt-11 mb-7 grid grid-cols-4 ">
-        <div class='mx-auto w-64 mb-8'>
-            <a>
-              <img src='/gambar/element.png' class='object-contain'/>
-            </a>
-        </div>
 
-        <div class='mx-auto w-64 mb-8 '>
-            <a>
-              <img src='/gambar/element.png' class='object-contain'/>
-            </a>
-        </div>
+        @php
+            $img = explode("|", $wisata->image);
+        @endphp
 
-        <div class='mx-auto w-64 mb-8 '>
-            <a>
-              <img src='/gambar/element.png' class='object-contain'/>
-            </a>
-        </div>
+        <img src="{{ asset('image/'.$img[0]) }}" alt="" class="object-cover h-[500px] w-full" id="view-image">
 
-        <div class='mx-auto w-64 mb-8 '>
-            <a>
-              <img src='/gambar/element.png' class='object-contain'/>
-            </a>
-        </div>
+        <div class="grid grid-flow-col mt-2 overflow-auto auto-cols-[20%] h-56">
 
+        @foreach ($img as $image)
+              <img src='{{ asset('image/'.$image ) }}' class='object-cover h-56 w-full' onclick="change(this.src)"/>
+        @endforeach
     </div>
 
-    <div class="mt-11 mb-7 grid grid-cols-4">
+
+
+
+
+
+    <div class="mt-11 mb-7 grid grid-cols-3 place-items-center shadow-best5 bg-white p-4 rounded-md">
         <div class="flex gap-0">
             <div class="w-10 mx-12">
                 <img src='/icons/flag.png' class='object-contain'/>
             </div>
             <div class="">
                 <p class="font-bold text-xl">Type Tour</p>
-                <p class='font-semibold'>Private Tour</p>
+                <p class='font-semibold'>{{ $wisata->tour_type }}</p>
             </div>
         </div>
 
@@ -64,7 +48,7 @@
             </div>
             <div class="">
                 <p class="font-bold text-xl">Departure</p>
-                <p class="font-semibold">Daily</p>
+                <p class="font-semibold">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d/m/y') }}</p>
             </div>
             </div>
 
@@ -74,20 +58,12 @@
             </div>
             <div>
                 <p class="font-bold text-xl">Room Type</p>
-                <p class="font-semibold">(4D/3N)</p>
+                <p class="font-semibold uppercase">({{ $wisata->long_tour }})</p>
             </div>
         </div>
 
-        <div class="flex gap-0">
-            <div>
-                <img src='/icons/team.png' class='object-contain w-10 mx-12'/>
-            </div>
-            <div>
-                <p class="font-bold text-xl">Group Size</p>
-                <p class="font-semibold">1-15 pax</p>
-            </div>
 
-        </div>
+
     </div>
 
     <a>
@@ -100,11 +76,7 @@
     <div class="my-20">
         <h1 class="py-5 text-3xl font-bold">Overview</h1>
         <p class="text-justify text-xl">
-            his is the VIP package to visit Mount Bromo and Mount Ijen. Mount Bromo and Mount Ijen are the two most popular natural attractions in East Java Indonesia. You will get to experience a magnificent sunrise at Mount Bromo as well as capture the famous blue flames at Mount Ijen.
-            The package includes accommodation, land transportation, Jeep at Bromo area and tour guide/driver.
-            Airport/hotel/train station pick-up and drop-off in Surabaya is included. Bali pick up/drop off can be arranged.
-            The package is available everyday including public holidays, Christmas and Chinese New Year.
-            Compared with 3D2N package, this one is less tiring as you have one extra day at Banyuwangi to get sufficient rest time. You need to get up very early for both mountains and trek for hours. So it is also for safety and enjoyment consideration of the customers. If you have tight schedule, you can take 3D2N package instead
+            {{ $wisata->deskripsi }}
         </p>
     </div>
 
@@ -242,6 +214,7 @@
             </button>
         </div>
 
+@endforeach
         
 
 @endsection

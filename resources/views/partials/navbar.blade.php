@@ -1,20 +1,22 @@
-<div class='fixed z-40 w-full py-1 backdrop-blur-sm bg-black/40 top-0'>
+<div class='fixed z-40 w-full py-1 backdrop-blur-md bg-black/50 top-0'>
   <nav class="px-2 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <a href="/" class="flex items-center">
-          <img src="img/logo.png" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" />
+          <img src=" {{ asset('img/logo.png') }}" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" />
       </a>
       <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
       </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-        <ul class=" flex flex-col p-3 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
+      <div class="hidden w-full md:block md:w-auto " id="navbar-multi-level">
+
+
+        <ul class=" flex flex-col p-3 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 ">
           <li>
-            <a href="/" class="block mt-2 py-2 pl-3 pr-4 text-[#f15936] font-semibold text-lg rounded md:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:text-white md:dark:bg-transparent" aria-current="page">Home</a>
+            <a href="/" class="block mt-2 py-2 pl-3 pr-4 text-white uppercase font-semibold text-lg rounded " aria-current="page">Home</a>
           </li>
           <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full mt-2 py-2 pl-3 pr-4 font-bold text-lg text-[#f15936] border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Type Tour<svg class="w-4 h-4 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full mt-2 py-2 pl-3 pr-4 font-bold text-lg text-white uppercase ">Type Tour<svg class="w-4 h-4 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
               
               <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                   <div class="py-1">
@@ -31,8 +33,9 @@
               </div>
           </li>
           <li>
-            <a href="#" class="block font-bold text-lg mt-2 py-2 pl-3 pr-4 text-[#f15936] rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Booking</a>
+            <a href="#" class="block font-bold text-lg mt-2 py-2 pl-3 pr-4 text-white uppercase rounded ">Booking</a>
           </li>
+
           <div class="flex">          
             @auth
           
@@ -45,7 +48,7 @@
                         <img src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="w-full h-full object-cover">
                       </div>
                     </div>
-                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute w-60 px-5 py-3 dark:bg-gray-800 bg-white rounded-lg shadow border dark:border-transparent mt-5">
+                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute w-60 px-5 py-3  bg-white rounded-lg shadow mt-5">
                       <ul class="space-y-3 dark:text-white">
                         <li class="font-medium">
                           <a href="#" class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
@@ -92,6 +95,7 @@
             @endauth
           
             </div>
+
         </ul>
       </div>
     </div>

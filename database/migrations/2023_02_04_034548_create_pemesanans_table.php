@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('wisata_id');
             $table->foreignId('user_id');
-            $table->foreignId('kendaraan_id');
-            $table->foreignId('guide_id');
+            // $table->foreignId('kendaraan_id');
+            // $table->foreignId('guide_id');
             $table->string('pembayaran');
             $table->boolean('status')->default(false);
             $table->timestamps();

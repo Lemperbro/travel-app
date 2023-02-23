@@ -11,9 +11,48 @@
 
          <div class="grid grid-cols-4 gap-4 mt-8 ">
 
+
+            @php
+               $coba = 0;
+            @endphp
             @foreach ($data as $query)
                
             <div class="rounded-md shadow-best p-2 relative ">
+
+               {{-- action menu start --}}
+               <div class="relative inline-block float-right">
+                  <div>
+                    <button type="button" class="inline-flex justify-center w-full options-menu{{ $query->id }}">
+                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                
+                  <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none shadow-best5 hidden dropdown-menu{{ $query->id }}">
+                    <div class="py-1" role="none">
+
+                     <button type="button"
+                     class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full"
+                     data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $query->id }}">
+                     Edit
+                     </button>   
+
+
+                     <form action="/kota/delete/{{ $query->id }}" method="POST">
+                        @csrf
+                        <button type="submit" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 hover:text-red-900 w-full">
+                           Delete
+                        </button>
+                     </form>
+
+                    </div>
+                  </div>
+                </div>
+
+                @include('admin.kota.actionMenu')
+                {{-- action menu end  --}}
+
                @php
                   $images = explode('|', $query->image);
                @endphp
@@ -23,40 +62,16 @@
                <div class="mt-4">
                   <h1 class="font-semibold font-mono text-center text-xl">{{ $query->nama_kota }}</h1>
 
-                  <div class="flex gap-x-4">
 
-                  <div class=" justify-between  ">
-                     <h1 class="font-mono ">Wisata</h1>
-                     <h1 class="font-mono ">Best Wisata</h1>
-                  </div>
-                  
-                  <div class="justify-between  ">
-                     <p>:</p>
-                     <p>:</p>
-                  </div>
-
-                  <div class=" justify-between  ">
-                     
-                     <h1>{{ $query->wisata->count() }}</h1>
+               <div class="flex justify-between mt-4">
+               <a href="/kota/kelola/{{ $query->id }}" class="bg-blue-600 p-2 rounded-md text-white mx-auto">Kelola</a>
 
 
-                  </div>
 
-               </div>
-
-               <div class="flex gap-x-4 justify-between mt-4 ">
-                     <!-- Button trigger modal Edit-->
-               <button type="button"
-               class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-               data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $query->id }}">
-               Edit
-               </button>
-               <form action="/kota/delete/{{ $query->id }}" method="POST">
-                  @csrf
-                  <button type="submit" class="bg-red-600 p-2 rounded-md text-white font-semibold  w-full text-center">Hapus</button>
-               </form>
-               </div>
             </div>
+         </div>
+
+
 
             </div>
             
@@ -66,6 +81,10 @@
 
       
    </div>
+
+
+
+   
 
 
 
@@ -106,6 +125,9 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
 </div>
 </div>
 @endforeach
+
+
+
 
 
    @endsection

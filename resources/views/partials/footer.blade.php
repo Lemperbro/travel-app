@@ -9,7 +9,7 @@
          </div>
 <div class="container">
     <div class='flex mt-4 border-black justify-between'>
-     <img src='img/logoputih.png' class='h-20'/> 
+     <img src='{{ asset('img/logoputih.png') }}' class='h-20'/> 
      <div class='flex gap-x-4 w-[40%]'>
 
      <div class='grid grid-rows-2'> 
@@ -31,5 +31,6 @@
   </div>
 
   <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+  <script src="{{ asset('js/tap-image.js') }}"></script>
 
 

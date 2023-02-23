@@ -8,15 +8,25 @@ use App\Models\Equipment;
 use App\Models\Fasilitas;
 use App\Models\Itenerary;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Wisata extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $guarded = [
         'id'
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'nama_wisata'
+            ]
+        ];
+    }
 
     public function kota(){
         return $this->belongsTo(Kota::class);

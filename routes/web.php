@@ -93,6 +93,11 @@ Route::middleware('admin')->group(function(){
     Route::post('/admin/kota/edit/{id}', [AdminKotaController::class, 'update']);
     Route::post('/kota/delete/{id}', [AdminKotaController::class, 'destroy']);
 
+    Route::get('/kota/kelola/{id}', [AdminKotaController::class, 'titik_jemput']);
+    Route::post('/kota/kelola/add/{id}', [AdminKotaController::class, 'addPickup']);
+    Route::post('/kota/kelola/edit/{id}', [AdminKotaController::class, 'editPickup']);
+    Route::post('/kota/kelola/delete/{id}', [AdminKotaController::class, 'deletePickup']);
+
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
     Route::get('/admin/wisata/add', [AdminWisataController::class, 'create']);
     Route::post('/admin/wisata/add', [AdminWisataController::class, 'store']);
@@ -151,7 +156,7 @@ Route::middleware('guest', 'auth' , 'admin')->group(function(){
 
 });
 
-Route::get('/isi/{id}', [IsiController::class, 'show']);
+Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);
 
 
 

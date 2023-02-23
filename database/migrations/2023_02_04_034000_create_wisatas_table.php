@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('wisatas', function (Blueprint $table) {
             $table->id();
+            $table->text('slug')->unique();
             $table->foreignId('kota_id');
             $table->string('tour_type');
             $table->string('long_tour');

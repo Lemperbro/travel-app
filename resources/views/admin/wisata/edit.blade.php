@@ -79,21 +79,49 @@
    
    
    
-                    <div class="mb-5">
+                    {{-- <div class="mb-5">
                         <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
                         <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
                             @foreach ($kota as $kota)
                             <option value="{{ $kota->id }}" {{ ($data->kota->id === $kota->id) ? 'selected' : '' }}>{{ $kota->nama_kota }}</option>
                             @endforeach
                         </select>
+                    </div> --}}
+                    <div class="flex gap-x-4 mt-2">
+
+
+                        <div class="mb-5">
+                            <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
+                            <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" value="{{ $data->location }}">
+                        </div>
+                        
+                        
+                        <div class="mb-2 flex flex-wrap gap-x-4">
+
+                            <div id="equipment">
+                  
+                            <h1 class="font-semibold text-lg">Equipment</h1>
+                              <div class="flex gap-x-4 mb-2">
+                                  
+                                <input type="file" name="images" class="border rounded-md">
+                                    
+                  
+                  
+                              </div>
+                  
+                  
+                          
+                            </div>
+                  
+                  
+                  
+                          </div>
+
                     </div>
-                    <div class="mb-5">
-                        <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
-                        <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" value="{{ $data->location }}">
-                    </div>
+
         
 
-               <div class="mb-5">
+               {{-- <div class="mb-5">
                         <div id="jemput">
                         <h1 class="font-semibold text-gray-700">Titik Jemput</h1>
                         @foreach ($data->jemput as $jemput)
@@ -123,7 +151,7 @@
         
                         </div>
                         <h1 id="add_jemput" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
-             </div>
+             </div> --}}
 
              <div class="mt-10">
                <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Deskripsi</label>
@@ -174,8 +202,14 @@ $number = 0;
         <h1 class="font-semibold text-lg">Itenerary</h1>
         <div class="mb-1" id="day">
                 <div id="itenerary">
+                    @php
+                        $no = 0;
+                    @endphp
                 @foreach ($data->itenerary as $itenerary)
-				<h3 class="mt-1">Day {{ $number += 1 }}</h3>
+                    @php
+                        $no++;
+                    @endphp
+				<h3 class="mt-1">Day {{ $no }}</h3>
                     <input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2" value="{{ $itenerary->agenda }}">
                     <textarea id="banner-message" class="message w-full h-20 relative hidden">
 						
@@ -188,45 +222,12 @@ $number = 0;
         </div>
 
         </div>
-    <h1 id="add_day" class="bg-blue-600 p-2 text-lg font-semibold text-white rounded-md inline-block justify-center cursor-pointer">Add Day</h1>
+    <h1 id="add_day_update" class="bg-blue-600 p-2 text-lg font-semibold text-white rounded-md inline-block justify-center cursor-pointer">Add Day</h1>
     
     </div>
    
 
-    <div class="mb-2 flex flex-wrap gap-x-4">
 
-          <div id="equipment">
-
-          <h1 class="font-semibold text-lg">Equipment 1</h1>
-			@foreach ($data->equipment as $equipments)
-            @php
-                $equipment = explode("|", $equipments->name);
-                $equip_images = explode("|", $equipments->image);
-            @endphp
-            @foreach ($equipment as $name)
-                
-
-            <div class="flex gap-x-4 mb-2">
-				
-              <input type="file" name="images[]" class="border rounded-md">
-              @foreach ($equip_images as $img)
-                  
-              @endforeach
-
-              <input type="text" name="equipment[]" id="equipment" class="rounded-md p-2 border " value="{{ $name }}">
-
-            </div>
-            @endforeach
-
-			@endforeach
-
-        
-          </div>
-
-
-
-        </div>
-        <h1 id="add_equipment" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white rounded-md cursor-pointer text-center w-[10%] ">+</h1>
    
                
    

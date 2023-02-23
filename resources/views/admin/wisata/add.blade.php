@@ -76,6 +76,10 @@
 				<!-- Step Content -->
 				<div class="py-10">	
 					<div x-show.transition.in="step === 1">
+
+						<div id="previewContainer" class="flex gap-x-2 ">
+						</div>
+
 						<div class="mb-5 text-center">
 							
 							
@@ -94,7 +98,7 @@
 
 							<div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture</div>
 
-							<input type="file" name="image[]" id="image" class="w-full hidden border object-cover rounded-md mt-4" multiple>
+							<input type="file" name="image[]" id="image" class="w-full  border object-cover rounded-md mt-4" multiple onchange="showPreview(event)">
 						</div>
 
 						<div class="mb-5">

@@ -6,6 +6,7 @@ use App\Models\Kota;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use App\Models\admin\AdminKota;
+use App\Models\Jemput;
 use Illuminate\Routing\Controller;
 
 class AdminKotaController extends Controller
@@ -150,5 +151,57 @@ class AdminKotaController extends Controller
         Kota::find($id)->delete();
 
         return redirect('/admin/kota');
+    }
+
+    public function titik_jemput($id){
+
+        return view('admin.kota.addJemput', [
+            'tittle' => 'Kelola Kota',
+            'data' => Jemput::where('kota_id', $id)->get(),
+            'kota' => Kota::where('id', $id)->pluck('nama_kota')->first(),
+            'id_kota' => $id
+        ]);
+    }
+
+    public function addPickup(Request $request, $id){
+        $validasi = $request->validate([
+            'location' => 'required',
+            'price' => 'required'
+
+        ]);
+
+
+        Jemput::create([
+            'kota_id' => $id,
+            'lokasi' => $validasi['location'],
+            'harga' => $validasi['price']
+        ]);
+
+        return redirect('/kota/kelola/'.$id);
+    }
+
+    public function editPickup(Request $request, $id){
+        $validasi = $request->validate([
+            'location' => 'required',
+            'price' => 'required'
+
+        ]);
+
+        Jemput::where('id', $id)->update([
+            'lokasi' => $validasi['location'],
+            'harga' => $validasi['price']
+        ]);
+
+        $kota_id = Jemput::find($id)->pluck('kota_id')->first();
+
+        return redirect('/kota/kelola/'.$kota_id);
+
+    }
+
+    public function deletePickup($id){
+        $kota_id = Jemput::find($id)->pluck('kota_id')->first();
+        Jemput::find($id)->delete();
+
+        return redirect('/kota/kelola/'.$kota_id);
     }
 }

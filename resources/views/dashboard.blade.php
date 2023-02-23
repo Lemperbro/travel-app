@@ -73,6 +73,8 @@
 
 @include('partials.most')
 
+@include('partials.latest')
+
 
 </div>
 <div class='mt-8'>

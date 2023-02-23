@@ -16,7 +16,7 @@
             </button>
 
              <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
-             <img src="/gambar/1.png" class="h-12 mr-2" alt="grow admin">
+             <img src="{{ asset('gambar/1.png') }}" class="h-12 mr-2" alt="grow admin">
              <span class="self-center whitespace-nowrap">Grow Admin</span>
              </a>
             </div>

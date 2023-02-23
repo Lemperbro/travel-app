@@ -76,10 +76,7 @@ class AdminWisataController extends Controller
             'departure' => 'required',
             'long_tour' => 'required',
             'type' => 'required',
-            'kota' => 'required',
             'location' => 'required',
-            'titik_jemput' => 'required',
-            'harga' => 'required',
             'deskripsi' => 'required',
             'inclusion' => 'required',
             'exclusion' => 'required',
@@ -89,10 +86,12 @@ class AdminWisataController extends Controller
 
         
         $image=array();
+        $no = 1;
+
         if($files=$request->file('image')){
             foreach($files as $file){
                 $extension=$file->getClientOriginalExtension();
-                $name = hash('sha256', time()) . '.' . $extension;
+                $name = hash('sha256', time()) .$no++.'.' . $extension;
                 $file->move('image',$name);
                 $image[]=$name;
             }
@@ -106,7 +105,7 @@ class AdminWisataController extends Controller
             'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
-            'kota_id' => $validasi['kota'],
+            'kota_id' => 1,
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
         ]);
@@ -118,14 +117,14 @@ class AdminWisataController extends Controller
         // ]);
 
 
-            $jumlah = count($request->titik_jemput);
-            for($i = 0 ; $i < $jumlah; $i++){
-                Jemput::create([
-                    'wisata_id' => $wisata->id,
-                    'lokasi' => $request->titik_jemput[$i],
-                    'harga' => $request->harga[$i]
-                ]);
-            }
+            // $jumlah = count($request->titik_jemput);
+            // for($i = 0 ; $i < $jumlah; $i++){
+            //     Jemput::create([
+            //         'wisata_id' => $wisata->id,
+            //         'lokasi' => $request->titik_jemput[$i],
+            //         'harga' => $request->harga[$i]
+            //     ]);
+            // }
 
             $inclusions = array();
             if($inclusion = $request->inclusion){
@@ -158,27 +157,18 @@ class AdminWisataController extends Controller
             }
 
 
-            $images=array();
+
+
             if($files=$request->file('images')){
-                foreach($files as $file){
-                    $extension=$file->getClientOriginalExtension();
-                    $name = hash('sha256', time()) .'.' . $extension;
-                    $images[]=$name;
-                }
+                    $extension=$files->getClientOriginalExtension();
+                    $name = hash('sha256', time()) . '.' . $extension;
+                    $files->move('image',$name);
             }
-
-
-            $equipment = array();
-            foreach($request->equipment as $equipments){
-                $equipment[] = $equipments;
-            }
-
-
             Equipment::create([
                 'wisata_id' => $wisata->id,
-                'image' => implode("|", $images),
-                'name' => implode("|", $equipment)
+                'image' => $name,
             ]);
+
 
             // $jumlah_equipment = count($request->equipment);
             // for($i = 0 ; $i < $jumlah_equipment; $i++){
@@ -259,7 +249,7 @@ class AdminWisataController extends Controller
     {
         //
 
-        $wisata = Wisata::with(['kota','equipment', 'jemput', 'fasilitas', 'itenerary'  => function($query) use ($id){
+        $wisata = Wisata::with(['kota','equipment', 'fasilitas', 'itenerary'  => function($query) use ($id){
             $query->where('wisata_id', $id)->get();
         }])->where('id', $id)->get();
 
@@ -302,14 +292,11 @@ class AdminWisataController extends Controller
             'departure' => 'required',
             'long_tour' => 'required',
             'type' => 'required',
-            'kota' => 'required',
             'location' => 'required',
-            'titik_jemput' => 'required',
-            'harga' => 'required',
             'deskripsi' => 'required',
             'inclusion' => 'required',
             'exclusion' => 'required',
-            
+
         ]);
         
 
@@ -319,10 +306,17 @@ class AdminWisataController extends Controller
            
 
             $image=array();
-
+            $no = 1;
             foreach($request->image as $file){
                 $extension=$file->getClientOriginalExtension();
-                $name = hash('sha256', time()) .'.' . $extension;
+                $name = hash('sha256', time()) .$no++.'.' . $extension;
+                $storage2 = public_path("image/".$name);
+
+                while(File::exists($storage2)){
+
+                $name = $no+2;
+
+                }
                 $up = $file->move('image',$name);
                 $image[]=$name;
                 if($up){
@@ -335,7 +329,7 @@ class AdminWisataController extends Controller
                         if(File::exists($storage)){
                             unlink($storage);                       
                         }
-                    }
+                    }   
                 }
             }
         }else{
@@ -348,14 +342,13 @@ class AdminWisataController extends Controller
         }
         
 
-
         $wisata = Wisata::find($id)->update([
             'image'=>  implode("|",$image),
             'nama_wisata' => $validasi['nama'],
             'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
-            'kota_id' => $validasi['kota'],
+            'kota_id' => 1,
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
         ]);
@@ -363,14 +356,14 @@ class AdminWisataController extends Controller
 
 
                
-            $jumlah = count($request->titik_jemput);
-            for($i = 0 ; $i < $jumlah; $i++){
-                Jemput::where('wisata_id', $id)->updateOrCreate([
-                    'wisata_id' => $id,
-                    'lokasi' => $validasi['titik_jemput'][$i],
-                    'harga' => $validasi['harga'][$i]
-                ]);
-            }
+            // $jumlah = count($request->titik_jemput);
+            // for($i = 0 ; $i < $jumlah; $i++){
+            //     Jemput::where('wisata_id', $id)->updateOrCreate([
+            //         'wisata_id' => $id,
+            //         'lokasi' => $validasi['titik_jemput'][$i],
+            //         'harga' => $validasi['harga'][$i]
+            //     ]);
+            // }
 
             $inclusions = array();
             if($inclusion = $request->inclusion){
@@ -395,7 +388,7 @@ class AdminWisataController extends Controller
 
             $jumlah_agenda = count($request->agenda);
             for($i = 0 ; $i < $jumlah_agenda; $i++){
-                Itenerary::where('wisata_id', $id)->updateOrCreate([
+                Itenerary::where('wisata_id', $id)->update([
                     'wisata_id' => $id,
                     'agenda' => $request->agenda[$i],
                     'deskripsi' => $request->itenerary[$i]
@@ -454,26 +447,19 @@ class AdminWisataController extends Controller
             // }
 
 
-            $images=array();
             if($files=$request->file('images')){
-                foreach($files as $file){
-                    $extension=$file->getClientOriginalExtension();
-                    $name = hash('sha256', time()) .'.' . $extension;
-                    $images[]=$name;
-                }
+                    $extension=$files->getClientOriginalExtension();
+                    $img = hash('sha256', time()) .'.' . $extension;
+                    $files->move('image',$img);
+
+            }else{
+                $equipment = Equipment::where('wisata_id', $id)->pluck('image')->first();
+                $img = $equipment;
             }
-
-
-            $equipment = array();
-            foreach($request->equipment as $equipments){
-                $equipment[] = $equipments;
-            }
-
 
             Equipment::where('wisata_id', $id)->update([
                 'wisata_id' => $id,
-                'image' => implode("|", $images),
-                'name' => implode("|", $equipment)
+                'image' => $img
             ]);
 
 

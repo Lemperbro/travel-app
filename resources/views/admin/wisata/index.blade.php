@@ -73,29 +73,55 @@
     <div class="grid grid-cols-4 gap-4 mt-8">
 
         @foreach ($data as $wisata)
+
+
             
-       <div class="rounded-md shadow-best p-2">
+       <div class="rounded-md p-2 border">
+
+        <div class="relative inline-block float-right">
+            <div>
+              <button type="button" class="inline-flex justify-center w-full options-menu-wisata{{ $wisata->id }}">
+               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          
+            <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none shadow-best5 hidden dropdown-menu-wisata{{ $wisata->id }}">
+              <div class="py-1" role="none">
+
+               <button type="button"
+               class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full"
+               data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $wisata->id }}">
+               Edit
+               </button>   
+
+
+               <form action="/admin/wisata/delete/{{ $wisata->id }}" method="POST">
+                  @csrf
+                  <button type="submit" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 hover:text-red-900 w-full">
+                     Delete
+                  </button>
+               </form>
+
+              </div>
+            </div>
+          </div>
+
+          @include('admin.wisata.actionMenu')
+          
                
            @php
               $images = explode('|', $wisata->image);
            @endphp
 
-          <img src="../../image/{!! $images[0] !!}" alt="" class="">
+          <img src="../../image/{!! $images[0] !!}" alt="" class="h-48 object-cover w-full">
 
           <div class="mt-4">
              <h1 class="font-semibold font-mono text-center text-xl">{{ $wisata->nama_wisata }}</h1>
 
-            <h2 class="font-semibold ">Kota {{ $wisata->kota->nama_kota }}</h2>
-            <p class="line-clamp-3">{{ $wisata->deskripsi }}</p>
-            @php
-                $jemput = explode("|", $wisata->jemput)
-            @endphp
-            @foreach ($wisata->jemput as $jemput)
-
-            <h1>{{ $jemput->lokasi }}</h1>
-            <h1>{{ $jemput->harga }}</h1>
-
-            @endforeach
+            <h1 class="font-semibold text-center mt-2">DI Booking</h1>
+            <h4 class="text-center">{{ $wisata->diboking }}</h4>
             {{-- @foreach ($wisata->equipment as $equip)
                 @php
                     $equip_image = explode("|", $equip->image);
@@ -111,13 +137,8 @@
             @endforeach --}}
 
                 
-          <div class="flex gap-x-4 justify-between mt-4">
-             <a href="" class="bg-green-600 p-2 rounded-md text-white font-semibold  w-full text-center">Edit</a>
-             <form action="/admin/wisata/delete/{{ $wisata->id }}" method="POST">
-                @csrf
-             <button type="submit" class="bg-red-600 p-2 rounded-md text-white font-semibold  w-full text-center">Hapus</button>
-            </form>
-          </div>
+
+
        </div>
 
        </div>
