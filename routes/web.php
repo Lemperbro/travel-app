@@ -170,6 +170,10 @@ Route::get('/isi/{id}', [IsiController::class, 'show']);
 //     return view('admin.user.add');
 // });
 
+Route::get('/isi', function(){
+    return view('isi');                                                                                                                             
+});
+
 Route::get('/blog', function(){
     return view('blog');                                                                                                                             
 });
@@ -183,3 +187,10 @@ Route::get('/tagihan', function(){
     return view('tagihan');                                                                                                                             
 });
 
+Route::get('/total', function(){
+    return view('total');                                                                                                                             
+});
+
+Route::get('/home', function(){
+    return view('home');                                                                                                                             
+});

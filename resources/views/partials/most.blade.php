@@ -1,6 +1,6 @@
 <h1 class='text-2xl font-bold border-black text-center mt-4'>Most Popular & Bromo</h1>
     <div class="mt-6 mb-7 grid grid-cols-3 grid-rows-2 gap-8">
-        <a class='relative'>
+        <a class='relative' href="tagihan">
             <img src='/img/a.png' class='object-cover w-full'/>
         <h1 class='text-xl ml-1 font-bold text-center mt-2'>Heha Sky View</h1>
             <div class='mx-auto text-center mt-3'>

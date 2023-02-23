@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <a>
+    <a href="tagihan">
         <button class='shadow-best px-7 py-4 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto mt-24'>
             Booking Now
         </button>

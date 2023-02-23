@@ -48,7 +48,7 @@
                     <h1 class='text-lg flex justify-center mt-3 font-semibold'>
                       Start from Rp. 1.500.000
                     </h1>
-                      <a href="#" class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] hover:bg-[#c12d0b] text-white font-semibold '>
+                      <a href="isi" class='flex mx-auto border mt-4 shadow-md text-center  w-32 px-7 py-1 rounded-lg bg-[#FD522C] hover:bg-[#c12d0b] text-white font-semibold '>
                         Eksplore
                       </a>
                   </div>
