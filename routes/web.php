@@ -130,9 +130,6 @@ Route::middleware('admin')->group(function(){
 
     Route::get('/guide', [AdminKendaraanController::class, 'index']);
     
-    // Route::get('/admin/user', function(){
-    //     return view('admin.user');                                                                                                                             
-    // });
 });
 
 Route::middleware('auth')->group(function(){
@@ -144,6 +141,11 @@ Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
 Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
 Route::get('/booking', [CheckoutController::class, 'booking']);
+Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
+Route::get('/comment/{doc_no}', [CheckoutController::class, 'testi']);
+Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);
+ 
+
 
 
 
@@ -197,27 +199,6 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
-//kontrol kota
-// Route::get('/kota', function(){
-//     return view('admin.kota.index');
-// });
-
-// Route::get('/kota/add', function(){
-//     return view('admin.kota.add');
-// });
-
-// //kontrol user
-// // Route::get('/user', function(){
-// //     return view('admin.user.index');
-// // });
-
-// Route::get('/user/add', function(){
-//     return view('admin.user.add');
-// });
-
-Route::get('/isi', function(){
-    return view('isi');                                                                                                                             
-});
 
 
 
@@ -232,9 +213,7 @@ Route::get('/home', function(){
     return view('home');                                                                                                                             
 });
 
-Route::get('/testi', function(){
-    return view('testimoni');                                                                                                                             
-});
+
 Route::get('/pdf', function(){
     return view('pdf');
 });
@@ -252,4 +231,3 @@ Route::get('/new', function(){
 });
 
 
-Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);

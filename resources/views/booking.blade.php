@@ -40,7 +40,6 @@
               @endif
 
         <h1 class="py-2 text-2xl font-semibold">Booking</h1>
-        <!-- <p class="font- text-slate-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p> -->
       </div>
       <hr class="mt-4 mb-8" />
 
@@ -48,18 +47,40 @@
         <div class="grid grid-cols-2 gap-8">
   
           @foreach ($data as $tagihan)
+
               
           <div class="p-4 w-full hover:scale-105 duration-500 shadow-best5">
             <div class=" flex items-center  justify-between p-4  rounded-lg bg-white shadow-indigo-50 shadow-md">
               <div>
+                
                 <h2 class="text-gray-900 text-lg font-bold">{{ $tagihan->wisata->nama_wisata }}</h2>
                 <h3 class="mt-2 text-xl font-bold text-orange-500 text-left">Rp. {{ $tagihan->amount }}</h3>
-                <div class="flex gap-x-4 mt-2">
-                  <h1 class="font-semibold">Status  :</h1>
-                  <h1 class="text-yellow-400 uppercase">{{ $tagihan->payment_status }}</h1>
+                
+                
+                <div class="flex justify-between mt-2 gap-4">
+                  <div class="text-xs">
+                    <h1 class="font-semibold">Departure</h1>
+                    <h1 class="font-semibold">Tour Type</h1>
+                    <h1 class="font-semibold">Status</h1>
+                  </div>
+                  <div class="text-xs">
+                    <h1 class="font-semibold">:</h1>
+                    <h1 class="font-semibold">:</h1>
+                    <h1 class="font-semibold">:</h1>
+                  </div>
+                  <div class="text-xs">
+                    <h1 class="text-xs">{{ \Carbon\Carbon::parse($tagihan->wisata->tanggal)->format('d-F-Y, h:i') }}</h1>
+                    <h1 class="text-xs">{{ $tagihan->wisata->tour_type }}</h1>
+                    <h1 class="text-xs font-semibold text-yellow-400">{{ $tagihan->payment_status }}</h1>
+                  </div>
                 </div>
-                <p class="text-sm font-semibold text-gray-400">Last Transaction</p>
-                <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-400  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-500 outline-none">Download Ticket</a>
+                
+                <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none">Look Ticket</a>
+
+                <a href="/comment/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none">Comment</a>
+
+
+
               </div>
   
   

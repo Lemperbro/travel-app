@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Kota;
+use App\Models\Testi;
 use App\Models\Wisata;
+use App\Models\Pemesanan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Pemesanan;
 use Illuminate\Support\Facades\Http;
-use PDF;
+use Illuminate\Support\Facades\Redirect;
 
 class CheckoutController extends Controller
 {
@@ -71,7 +73,8 @@ class CheckoutController extends Controller
             'amount' => $count,
             'description' => $request->note,
             'payment_status' => $response->status,
-            'payment_link' => $response->invoice_url
+            'payment_link' => $response->invoice_url,
+            'expired' => $response->expiry_date
         ]);
 
         return redirect('/tagihan');
@@ -82,9 +85,23 @@ class CheckoutController extends Controller
         $data = request()->all();
         $status = $data['status'];
         $external_id = $data['external_id'];
-        Pemesanan::where('doc_no', $external_id)->first()->update([
+        $pemesanan = Pemesanan::with('wisata')->where('doc_no', $external_id)->first();
+        $count_wisata = $pemesanan->wisata->diboking + 1;
+        $count_kota = $pemesanan->wisata->kota->popularitas + 1;
+
+        $proses = Pemesanan::where('doc_no', $external_id)->first()->update([
             'payment_status' => $status
         ]);
+
+        if($proses){
+            Wisata::where('id', $pemesanan->wisata_id)->first()->update([
+                'diboking' => $count_wisata,
+            ]);
+
+            Kota::where('id', $pemesanan->wisata->kota->id)->first()->update([
+                'popularitas' => $count_kota,
+            ]);
+        }
         return response()->json($data);
     }
 
@@ -141,30 +158,99 @@ class CheckoutController extends Controller
     }
 
     public function booking(){
+        $data = Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->get();
 
 
         return view('booking',[
-            'data' => Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->get(),
+            'data' => $data,
         ]);
     }
 
+    // public function ticket($doc_no){
+
+    //     $data = Pemesanan::where('doc_no', $doc_no)->first();
+
+    //     $pdf = PDF::loadview('tiket', [
+    //         'data' => $data
+    //     ]);
+    //     $pdf->set_paper([0,0,300,500], 'landscape');
+
+    //     $pdf->set_option('margin-top', '0mm');
+    //     $pdf->set_option('margin-right', '0mm');
+    //     $pdf->set_option('margin-bottom', '0mm');
+    //     $pdf->set_option('margin-left', '0mm');
+
+    //     //500 tinggi , 1000 lebar
+    //    return $pdf->download('coba.pdf');
+
+    // }
+
+
     public function ticket($doc_no){
 
-        $data = Pemesanan::where('doc_no', $doc_no)->first();
+        $data = Pemesanan::with('wisata', 'user')->where('doc_no', $doc_no)->first();
 
-        $pdf = PDF::loadview('tiket', [
-            'data' => $data
+        if($data){
+            return view('tiket', [
+                'data' => $data,
+            ]);
+        }else{
+            return Redirect('/booking');
+        }
+
+
+
+
+
+    }
+
+
+    public function testi($doc_no){
+        $pemesanan = Pemesanan::where('doc_no', $doc_no)->first();
+        $check = Testi::where('doc_no', $doc_no)->first();
+        
+        
+        if($check){
+            return redirect('/booking');
+        }else{
+            if($pemesanan){
+                return view('getTesti',[
+                    'doc_no' => $doc_no,
+                ]);
+            }else{
+                return redirect('/booking');
+            }
+        }
+
+
+        
+    }
+
+    public function Sendtesti(Request $request,$doc_no){
+        $pemesanan = Pemesanan::with('wisata', 'user')->where('doc_no', $doc_no)->first();
+
+        $validasi = request()->validate([
+            'testi' => 'required',
         ]);
-        $pdf->set_paper([0,0,300,500], 'landscape');
 
-        $pdf->set_option('margin-top', '0mm');
-        $pdf->set_option('margin-right', '0mm');
-        $pdf->set_option('margin-bottom', '0mm');
-        $pdf->set_option('margin-left', '0mm');
+        if($pemesanan){
+            Testi::create([
+                'user_id' => $pemesanan->user->id,
+                'wisata_id' => $pemesanan->wisata->id,
+                'doc_no' => $doc_no,
+                'deskripsi' => $validasi['testi'],
+            ]);
 
-        //500 tinggi , 1000 lebar
-       return $pdf->download('coba.pdf');
 
+            return Redirect('/wisata/'.$pemesanan->wisata->slug);
+
+        }else{
+            return redirect('/booking');
+        }
+
+
+        
+        
     }
     
     /**

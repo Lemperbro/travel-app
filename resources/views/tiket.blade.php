@@ -1,6 +1,7 @@
 @extends('layouts.two')
-<div class="flex flex-col items-center justify-center min-h-screen bg-center bg-cover">
-	<div class="max-w-md w-full h-full mx-auto z-10 bg-orange-500 rounded-3xl">
+<div class="flex flex-col items-center justify-center min-h-screen bg-center bg-cover font-mono">
+
+	<div class="max-w-lg w-full h-full mx-auto z-10 bg-orange-500 rounded-3xl">
 		<div class="flex flex-col">
 			<div class="bg-white relative drop-shadow-2xl  rounded-3xl p-4 m-4">
 				<div class="flex-none sm:flex">
@@ -8,23 +9,55 @@
 						<div class="flex items-center justify-between">
 							<div class="flex items-center mt-2">
 								<span class="mr-3 rounded-full bg-white w-28 ">
-    <img src="img/logo.png" class="">
-</span>
+   							 		<img src="{{ asset('img/logo.png') }}" class="">
+								</span>
 							</div>
-							<div class="ml-auto text-blue-800">A380</div>
+							<div class="ml-auto text-center">
+								<h1 class="text-sm text-orange-600">Order Code</h1>
+								<h1 class="font-semibold text-sm">{{ $data->doc_no }}</h1>
+							</div>
 						</div>
-						<div class="border-b border-dashed border-b-2 my-5"></div>
+						<div class=" border-dashed border-b-2 my-5"></div>
             <div class="">
-              <h1 class="text-center font-semibold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi ex nam quidem dolorum omnis,</h1>
+              <h1 class="text-center font-semibold text-xl my-5 font-mono">{{ $data->wisata->nama_wisata }} - {{ $data->wisata->kota->nama_kota }}</h1>
             </div>
+
+
+			<div class="flex items-center my-5 text-sm justify-between">
+				<div class="flex flex-col text-center">
+					<span class="text-sm text-orange-600 font-semibold">Name Of Passanger</span>
+					<h1 class="font-semibold text-base">{{ $data->user->username }}</h1>
+				</div>
+
+
+				<div class="flex flex-col text-center">
+					<span class="text-sm text-orange-600 font-semibold">Departure</span>
+					<h1 class="text-xs">{{ \Carbon\Carbon::parse($data->wisata->tanggal)->format('d,F,Y') }}</h1>
+					<h1 class="text-xs">{{ \Carbon\Carbon::parse($data->wisata->tanggal)->format('h:i') }} WIB</h1>
+				</div>
+
+			</div>
 						<div class="flex items-center">
 							<div class="flex flex-col">
 								<div class="flex-auto text-xs text-gray-400 my-1">
-									<span class="mr-1 ">MO</span><span>19 22</span>
 								</div>
-								<div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">Pick Up</div>
-								<div class="text-xs">Malang</div>
-                <div class="text-xs">Apart Suhat</div>
+
+								<div class="w-full flex-none text-lg text-orange-600 font-bold leading-none">Pick Up</div>
+								<div class="flex justify-between mt-2 w-[150px]">
+									<div class="text-xs">
+										<h1>Kota</h1>
+										<h1>Location</h1>
+									</div>
+									<div class="text-xs">
+										<h1>:</h1>
+										<h1>:</h1>
+									</div>
+									<div class="text-xs">
+										<h1>{{ $data->pickup_kota }}</h1>
+										<h1>{{ $data->pickup_point }}</h1>
+									</div>
+								</div>
+
 
 							</div>
 							<div class="flex flex-col mx-auto">
@@ -32,47 +65,54 @@
 								</div>
 								<div class="flex flex-col ">
 
-									<div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">Drop Point</div>
-									<div class="text-xs">Batu</div>
-                  <div class="text-xs">Hotel Oyo</div>
+									<div class="w-full flex-none text-lg text-orange-600 font-bold leading-none">Drop Point</div>
+									
+									<div class="flex justify-between mt-2 w-[150px]">
+										<div class="text-xs">
+											<h1>Kota</h1>
+											<h1>Location</h1>
+										</div>
+										<div class="text-xs">
+											<h1>:</h1>
+											<h1>:</h1>
+										</div>
+										<div class="text-xs">
+											<h1>{{ $data->drop_kota }}</h1>
+											<h1>{{ $data->drop_point }}</h1>
+										</div>
+									</div>
 
 								</div>
 							</div>
-							<div class="border-b border-dashed border-b-2 my-5 pt-5">
+							<div class=" border-dashed border-b-2 my-5 pt-5">
 								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -left-2"></div>
 								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -right-2"></div>
 							</div>
-							<div class="flex items-center mb-4 px-5">
+							<div class="flex items-center mb-4">
 								<div class="flex flex-col text-sm">
-									<span class="">Type</span>
-									<div class="font-semibold">Private Trip</div>
+									<span class="text-orange-600 font-semibold">Type Tour</span>
+									<div class="font-semibold">{{ $data->wisata->tour_type }}</div>
 
 								</div>
 								<div class="flex flex-col mx-auto text-sm">
-									<span class="">Status</span>
-									<div class="font-semibold text-green-600 text-center">Paid</div>
+									<div class="font-semibold text-green-600 text-center text-2xl font-mono">{{ $data->payment_status }}</div>
 
 								</div>
 								<div class="flex flex-col text-sm">
-									<span class="">Price</span>
-                  <div class="font-semibold">Rp 200</div>
+									<span class="text-orange-600 font-semibold">Price</span>
+                 				 <div class="font-semibold">Rp. {{ $data->amount }}</div>
 
 
 
 								</div>
 							</div>
-							<div class="border-b border-dashed border-b-2 my-5 pt-5">
+
+							<div class="border-dashed border-b-2 my-5 pt-5">
 								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -left-2"></div>
 								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -right-2"></div>
 							</div>
-							<div class="flex items-center px-5 pt-3 text-sm">
-								<div class="flex flex-col">
-									<span class="">Passanger</span>
-									<div class="font-semibold">jono</div>
 
-								</div>
 
-							</div>
 						</div>
 					</div>
 				</div>

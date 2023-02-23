@@ -73,6 +73,8 @@ class WisataController extends Controller
             $data = 'kosong';
             return $data;
         }
+
+        
         
         return view('view',[
             "data" => $data,
