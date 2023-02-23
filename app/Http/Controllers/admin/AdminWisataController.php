@@ -75,6 +75,7 @@ class AdminWisataController extends Controller
             'nama' => 'required',
             'departure' => 'required',
             'long_tour' => 'required',
+            'kota' => 'required',
             'type' => 'required',
             'location' => 'required',
             'deskripsi' => 'required',
@@ -82,7 +83,6 @@ class AdminWisataController extends Controller
             'exclusion' => 'required',
             
         ]);       
-
 
         
         $image=array();
@@ -105,7 +105,7 @@ class AdminWisataController extends Controller
             'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
-            'kota_id' => 1,
+            'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
         ]);
@@ -208,7 +208,7 @@ class AdminWisataController extends Controller
         // }
         $request->session()->flash('success', 'Success Upload Data');
 
-        return redirect('/admin/kota');
+        return redirect('/admin/wisata');
 
 
     }
@@ -292,6 +292,7 @@ class AdminWisataController extends Controller
             'departure' => 'required',
             'long_tour' => 'required',
             'type' => 'required',
+            'kota' => 'required',
             'location' => 'required',
             'deskripsi' => 'required',
             'inclusion' => 'required',
@@ -348,7 +349,7 @@ class AdminWisataController extends Controller
             'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
-            'kota_id' => 1,
+            'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
         ]);

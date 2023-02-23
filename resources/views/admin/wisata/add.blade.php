@@ -131,41 +131,19 @@
 							</div>
 						</div>
 
-            {{-- <div class="mb-5">
+            <div class="mb-5">
               <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
               <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
                   @foreach ($kota as $kota)
                   <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
                   @endforeach
               </select>
-          </div> --}}
+          </div>
 
           <div class="mb-5">
               <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
               <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
           </div>
-
-            {{-- <div class="mb-5">
-				<h1 class="font-semibold text-gray-700">Titik Jemput</h1>
-
-              <div id="jemput">
-
-                  <div class="mt-4 grid grid-cols-2 gap-4 border mx-auto w-full" > 
-			<div class="">
-				<label for="titik_jemput" class="font-bold text-sm mb-1 text-gray-700 block">Lokasi</label>
-                  <input type="text" name="titik_jemput[]" id="titik_jemput" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-				</div>
-
-				<div>
-                  <label for="harga" class="font-bold text-sm mb-1 text-gray-700 block">Harga</label>
-                  <input type="number" name="harga[]" id="harga" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" >
-				</div>
-
-              </div>
-
-              </div>
-              <h1 id="add_jemput" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
-          </div> --}}
 
           <div class="mt-10">
             <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Deskripsi</label>

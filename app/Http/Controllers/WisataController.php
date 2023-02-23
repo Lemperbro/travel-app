@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kota;
+use App\Models\Wisata;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWisataRequest;
 use App\Http\Requests\UpdateWisataRequest;
-use App\Models\Wisata;
+use Illuminate\Http\Request;
+
 
 class WisataController extends Controller
 {
@@ -99,5 +103,14 @@ class WisataController extends Controller
     public function destroy(Wisata $wisata)
     {
         //
+    }
+
+    public function showDestination(Request $request, $slug){
+        $kota = Kota::where('slug', $slug)->first();
+
+        return view('destination',[
+            'kota' =>  $kota,
+            'wisata' => Wisata::where('kota_id', $kota->id)->get()
+        ]);
     }
 }

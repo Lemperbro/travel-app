@@ -30,5 +30,43 @@
         
 
     </div>
+    <nav class="flex gap-x-1 items-center mt-4 justify-end">
+      <div class="flex justify-start">
+          @if ($best->onFirstPage())
+              <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-l-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">&laquo; Previous</span>
+          @else
+              <a href="{{ $best->previousPageUrl() }}" class="px-2 py-1 text-white bg-blue-500 border border-blue-500 rounded-l-md hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">&laquo; Previous</a>
+          @endif
+      </div>
+  
+      <div class="flex justify-center">
+          @foreach ($best as $element)
+              @if (is_string($element))
+                  <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">{{ $element }}</span>
+              @endif
+  
+              @if (is_array($element))
+                  @foreach ($element as $page => $url)
+                      @if ($page == $best->currentPage())
+                          <span class="px-2 py-1 text-white bg-blue-500 border border-blue-500 hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">{{ $page }}</span>
+                      @else
+                          <a href="{{ $url }}" class="px-2 py-1 text-gray-600 bg-white border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400 dark:hover:text-white">{{ $page }}</a>
+                      @endif
+                  @endforeach
+              @endif
+          @endforeach
+      </div>
+  
+      <div class="flex justify-end">
+          @if ($best->hasMorePages())
+              <a href="{{ $best->nextPageUrl() }}" class="px-2 py-1 text-white bg-blue-500 border border-blue-500 rounded-r-md hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">Next &raquo;</a>
+          @else
+              <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-r-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">Next &raquo;</span>
+          @endif
+      </div>
+  </nav>
     
+  
+
+  
               

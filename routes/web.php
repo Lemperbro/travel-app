@@ -68,9 +68,7 @@ Route::get('/testimonimore', function () {
     return view('nore');
 });
 
-Route::get('/destinasi', function () {
-    return view('destination');
-});
+
 
 Route::get('/step', function () {
     return view('step');
@@ -149,7 +147,13 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 
+
 });
+
+
+Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
+
+
 Route::middleware('guest', 'auth' , 'admin')->group(function(){
 
 

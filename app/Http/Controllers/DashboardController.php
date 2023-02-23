@@ -18,7 +18,14 @@ class DashboardController extends Controller
     {
         //
 
+        // dd(request('search'));
 
+        $wisata = Wisata::latest();
+
+        if(request('search')){
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
+        }
 
         return view('dashboard', [
 
@@ -26,8 +33,9 @@ class DashboardController extends Controller
             // 'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
             'best' => Wisata::with(['kota' => function($query){
                 $query->orderBy('popularitas', 'DESC')->limit(20)->get();
-            }])->orderBy('diboking', 'DESC')->limit(20)->get(),
-            'kota' => Kota::all()
+            }])->orderBy('diboking', 'DESC')->paginate(3),
+            'kota' => Kota::all(),
+            'latest' => $wisata->get()
         
         ]);
     }

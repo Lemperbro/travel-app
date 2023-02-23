@@ -71,7 +71,8 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('tw-elements/dist/plugin'),
     require('@tailwindcss/line-clamp'),
-    require('taos/plugin')
+    require('taos/plugin'),
+
     
 
   ],

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('kotas', function (Blueprint $table) {
             $table->id();
+            $table->text('slug')->unique();
             $table->string('nama_kota');
             $table->text('image');
             $table->integer('popularitas')->nullable();
