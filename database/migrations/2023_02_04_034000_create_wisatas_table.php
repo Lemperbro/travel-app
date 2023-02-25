@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('slug')->unique();
             $table->foreignId('kota_id');
             $table->string('tour_type');
+            $table->integer('harga');
             $table->string('long_tour');
             $table->dateTime('tanggal');
             $table->text('deskripsi');

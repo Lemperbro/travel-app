@@ -79,9 +79,6 @@ Route::get('/step', function () {
 
 
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/wisata/{id}', [WisataController::class, 'show']);
-Route::get('/view/{id}', [WisataController::class, 'show']);
 
 Route::middleware('admin')->group(function(){
     Route::get('/admin', [AdminDashboardController::class, 'index']);
@@ -151,15 +148,16 @@ Route::post('/register', [RegisterController::class, 'store']);
 });
 
 
-Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
-
-
 Route::middleware('guest', 'auth' , 'admin')->group(function(){
 
 
 
 });
 
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/wisata' , [WisataController::class, 'index']);
+Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
+Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
 Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);
 
 
@@ -188,27 +186,6 @@ Route::get('/blog', function(){
     return view('blog');                                                                                                                             
 });
 
-Route::get('/coba', function(){
-    $wisata = Wisata::with(['kota','equipment', 'jemput', 'fasilitas', 'itenerary'  => function($query){
-        $query->where('wisata_id', 7)->get();
-    }])->where('id', 7)->get();
-
-    foreach($wisata as $wisatas){
-
-    foreach($wisatas->fasilitas as $fasilitas){
-
-        $inclusion = explode('|', $fasilitas->inclusion);
-        
-    }
-}
-    return view('admin.wisata.coba',[
-        'data' => $wisata,
-        'inclusion' => $inclusion,
-        'tittle' => 'Kelola Wisata',
-        'kota' => Kota::all(),
-        'coba' => ['satu', 'dua','tiga','empat', 'lima'],
-    ]);                                                                                                                             
-});
 
 
 Route::get('/booking', function(){
@@ -219,3 +196,7 @@ Route::get('/tagihan', function(){
     return view('tagihan');                                                                                                                             
 });
 
+
+Route::get('/checkout', function(){
+    return view('checkout');                                                                                                                             
+});

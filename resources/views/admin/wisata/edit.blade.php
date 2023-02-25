@@ -51,20 +51,37 @@
                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                    value="{{ $data->nama_wisata }}">
                            </div>
+
+
+                           <div class="grid grid-cols-2 gap-4">
+
+                            <div class="">
+                                <label for="harga" class="font-bold mb-1 text-gray-700 block">Harga</label>
+                                <input type="number" name="harga"
+                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                    value="{{ $data->harga }}">
+                            </div>
+
+                            <div class="">
+                                <label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
+                                <input type="datetime-local" name="departure"
+                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                    value="{{ $data->tanggal }}">
+                            </div>
+
+                           </div>
+
+
    
-                           <div class="flex gap-4 justify-between">
-                               <div class="">
-                                   <label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
-                                   <input type="datetime-local" name="departure"
-                                       class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                       value="{{ $data->tanggal }}">
-                               </div>
+                           <div class="grid grid-cols-2 gap-4 my-4">
+
                                <div class="">
                                    <label for="long_tour" class="font-bold mb-1 text-gray-700 block">Long Tour</label>
                                    <input type="text" name="long_tour"
                                        class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                        value="{{ $data->long_tour }}">
                                </div>
+
                                <div class="">
                                    <label for="type" class="font-bold mb-1 text-gray-700 block">Type Tour</label>
                                    <select name="type" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
@@ -79,47 +96,39 @@
    
    
    
-                    {{-- <div class="mb-5">
-                        <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
-                        <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                            @foreach ($kota as $kota)
-                            <option value="{{ $kota->id }}" {{ ($data->kota->id === $kota->id) ? 'selected' : '' }}>{{ $kota->nama_kota }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
-                    <div class="flex gap-x-4 mt-2">
+ 
 
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <div class="mb-5">
+                            <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
+                            <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+                                @foreach ($kota as $kota)
+                                <option value="{{ $kota->id }}" {{ ($data->kota->id === $kota->id) ? 'selected' : '' }}>{{ $kota->nama_kota }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="mb-5">
                             <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
                             <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" value="{{ $data->location }}">
                         </div>
                         
-                        
-                        <div class="mb-2 flex flex-wrap gap-x-4">
-
-                            <div id="equipment">
-                  
-                            <h1 class="font-semibold text-lg">Equipment</h1>
-                              <div class="flex gap-x-4 mb-2">
-                                  
-                                <input type="file" name="images" class="border rounded-md">
-                                    
-                  
-                  
-                              </div>
-                  
-                  
-                          
-                            </div>
-                  
-                  
-                  
-                          </div>
-
                     </div>
 
-        
+                    <div class="mb-2 flex flex-wrap gap-x-4">
+
+                        <div id="equipment">
+              
+                        <h1 class="font-semibold text-lg">Equipment</h1>
+                          <div class="flex gap-x-4 mb-2">
+                              
+                            <input type="file" name="images" class="border rounded-md">
+                          </div>
+                      
+                        </div>
+              
+                      </div>
 
                {{-- <div class="mb-5">
                         <div id="jemput">

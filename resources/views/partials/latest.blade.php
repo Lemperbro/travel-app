@@ -29,7 +29,7 @@
 
 
     </div>
-    <a href="" class="inline-block bg-[#FF2E00] p-4 text-white w-full text-center rounded-md mt-8 font-semibold ">View More</a>
+    <a href="/wisata/" class="inline-block bg-[#FF2E00] p-4 text-white w-full text-center rounded-md mt-8 font-semibold ">View More</a>
 
 </div>
     

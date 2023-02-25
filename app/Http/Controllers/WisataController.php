@@ -20,8 +20,15 @@ class WisataController extends Controller
     public function index()
     {
         //
-        return view('dashboard',[
-            'data' => Wisata::all()
+        $wisata = Wisata::latest();
+        if(request('search')){
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            ->orWhere('deskripsi', 'like', '%' . request('search') . '%')
+            ->orWhere('long_tour', 'like', '%' . request('search') . '%');
+        }
+
+        return view('wisata', [
+            'data' => $wisata->paginate(8)
         ]);
     }
 
@@ -111,6 +118,20 @@ class WisataController extends Controller
         return view('destination',[
             'kota' =>  $kota,
             'wisata' => Wisata::where('kota_id', $kota->id)->get()
+        ]);
+    }
+
+
+    public function type(Request $request, $type){
+        $wisata = Wisata::where('tour_type', $type);
+
+        if(request('search')){
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
+        }
+        return view('type', [
+            "data" => $wisata->paginate(9),
+            'type' => $type
         ]);
     }
 }

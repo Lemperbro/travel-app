@@ -69,7 +69,6 @@ class AdminWisataController extends Controller
         // dd($jajal);
 
 
-
         $validasi = $request->validate([
             'image' => 'required',
             'nama' => 'required',
@@ -77,6 +76,7 @@ class AdminWisataController extends Controller
             'long_tour' => 'required',
             'kota' => 'required',
             'type' => 'required',
+            'harga' => 'required',
             'location' => 'required',
             'deskripsi' => 'required',
             'inclusion' => 'required',
@@ -105,6 +105,7 @@ class AdminWisataController extends Controller
             'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
+            'harga' => $validasi['harga'],
             'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
@@ -293,6 +294,7 @@ class AdminWisataController extends Controller
             'long_tour' => 'required',
             'type' => 'required',
             'kota' => 'required',
+            'harga' => 'required',
             'location' => 'required',
             'deskripsi' => 'required',
             'inclusion' => 'required',
@@ -349,6 +351,7 @@ class AdminWisataController extends Controller
             'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
+            'harga' => $validasi['harga'],
             'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],

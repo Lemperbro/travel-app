@@ -9,8 +9,14 @@
 @yield('container')
 
 
+
+
+
 </div>
 
-</body>
 @include('partials.footer')
+
+
+
+</body>
 
