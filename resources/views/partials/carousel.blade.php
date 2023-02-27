@@ -16,6 +16,8 @@
         <h1 class='text-6xl font-bold text-white uppercase mt-2'>Indonesia</h1>
       </div>
 
+      
+
       </div>
       
       <div class="carousel-item relative float-left w-full">
@@ -28,11 +30,8 @@
         />
 
         <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-        <h5 class="text-xl">First slide label</h5>
-        <p>
-          Some representative placeholder content for the first slide.
-        </p>
+        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
+        <h1 class='text-3xl text-center font-bold text-white uppercase'>Travel is not reward for working, it's education for living.</h1>
       </div>
 
       </div>
@@ -47,11 +46,8 @@
         />
 
         <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-        <h5 class="text-xl">First slide label</h5>
-        <p>
-          Some representative placeholder content for the first slide.
-        </p>
+        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
+        <h1 class='text-3xl text-center font-bold text-white uppercase'>Wherever you go, go with all your heart</h1>
       </div>
 
       </div>

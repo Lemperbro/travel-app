@@ -18,7 +18,7 @@
      <a  class='text-white font-semibold text-2xl inline-block'>Contact Us</a>
      </div>
      <div class='grid grid-rows-2'> 
-     <a class='text-white font-semibold text-2xl inline-block'>Testimoni</a>
+     <a href="testimoni" class='text-white font-semibold text-2xl inline-block'>Testimoni</a>
      <a href='about' class='text-white font-semibold text-2xl inline-block'>About Us</a>
      </div>
      <div class='grid grid-rows-2'> 
