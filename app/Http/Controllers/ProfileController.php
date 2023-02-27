@@ -83,7 +83,7 @@ class ProfileController extends Controller
     {
         //
         $validasi = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
             'username' => 'required',
             'email' => 'required|email',
             'no_tlpn' => 'required|min:11',
@@ -91,7 +91,7 @@ class ProfileController extends Controller
         ]);
 
 
-        if($validasi['image']){
+        if($request->image){
             $extension = $validasi['image']->getClientOriginalExtension();
             $image = hash('sha256', time()) .'.' . $extension;
             $up = $validasi['image']->move('ft_user/', $image);
