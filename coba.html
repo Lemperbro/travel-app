@@ -9,32 +9,48 @@
     <title>Document</title>
 </head>
 <body>
-    <details>
-        <summary>
-            judul
-        </summary>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quidem quia commodi, error at eveniet laudantium illo voluptate dolorum, ducimus repellat aliquid quod fugit, optio est? Magni tempora asperiores saepe.
-    </details>
+    <p></p>
 
 
-    <div class="w-[80%] border flex m-auto">
-        <div class="grid grid-cols-3 gap-4">
-            <div class="w-32 h-32 bg-red-500 hover:w-full hover:col-span-3">
+    <textarea id="my-textarea"></textarea>
 
-            </div>
-            <div class="w-32 h-32 bg-red-500 hover:w-full hover:col-span-3">
-
-            </div>
-            <div class="w-32 h-32 bg-red-500 hover:w-full hover:col-span-3">
-
-            </div>
-        </div>
-
-    </div>
+    <script>
+    const textarea = document.getElementById('my-textarea');
     
+    textarea.addEventListener('input', () => {
+      const text = textarea.value;
+      const lines = text.split('\n');
+      let formattedText = '';
+      let inList = false;
+      for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        if (line.trim().startsWith('-')) {
+          // Jika baris diawali dengan tanda strip (-), format sebagai item list dengan lingkaran
+          line = `<li style="list-style-type: circle;">${line.trim().substr(1)}</li>`;
+          // Jika belum dalam list, buat tag <ul>
+          if (!inList) {
+            line = '<ul>' + line;
+            inList = true;
+          }
+        } else {
+          // Jika tidak diawali dengan tanda strip (-), buat tag </ul> jika dalam list
+          if (inList) {
+            line = '</ul>' + line;
+            inList = false;
+          }
+          // Tambahkan baris tanpa format
+          line = `<li>${line.trim()}</li>`;
+        }
+        formattedText += line;
+      }
+      // Jika dalam list saat selesai mengetik, buat tag </ul> terakhir
+      if (inList) {
+        formattedText += '</ul>';
+      }
+      // Tampilkan teks yang sudah diformat
+      textarea.innerHTML = formattedText;
+    });
+    </script>
 
-    <div class="w-56 border h-56">
-        <a href="" class="bg-red p-2 bg-black text-white m-auto flex flex-col w-[80%] text-center">COBAAAA AA AAA</a>
-    </div>
 </body>
 </html>

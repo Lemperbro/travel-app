@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('wisatas', function (Blueprint $table) {
             $table->id();
+            $table->text('slug')->unique();
             $table->foreignId('kota_id');
             $table->string('tour_type');
+            $table->integer('harga');
             $table->string('long_tour');
-            $table->date('tanggal');
+            $table->dateTime('tanggal');
             $table->text('deskripsi');
             $table->string('nama_wisata');
             $table->text('image');

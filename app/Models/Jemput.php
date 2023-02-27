@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Kota;
 use App\Models\Wisata;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,7 @@ class Jemput extends Model
     ];
 
 
-    public function wisata(){
-        return $this->belongsTo(Wisata::class);
+    public function kota(){
+        return $this->belongsTo(Kota::class);
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Kota;
+use App\Models\Wisata;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
@@ -12,7 +15,6 @@ use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
-use App\Http\Controllers\IsiController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -66,9 +68,7 @@ Route::get('/testimonimore', function () {
     return view('nore');
 });
 
-Route::get('/destinasi', function () {
-    return view('destination');
-});
+
 
 Route::get('/step', function () {
     return view('step');
@@ -79,9 +79,6 @@ Route::get('/step', function () {
 
 
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/wisata/{id}', [WisataController::class, 'show']);
-Route::get('/view/{id}', [WisataController::class, 'show']);
 
 Route::middleware('admin')->group(function(){
     Route::get('/admin', [AdminDashboardController::class, 'index']);
@@ -91,9 +88,17 @@ Route::middleware('admin')->group(function(){
     Route::post('/admin/kota/edit/{id}', [AdminKotaController::class, 'update']);
     Route::post('/kota/delete/{id}', [AdminKotaController::class, 'destroy']);
 
+    Route::get('/kota/kelola/{id}', [AdminKotaController::class, 'titik_jemput']);
+    Route::post('/kota/kelola/add/{id}', [AdminKotaController::class, 'addPickup']);
+    Route::post('/kota/kelola/edit/{id}', [AdminKotaController::class, 'editPickup']);
+    Route::post('/kota/kelola/delete/{id}', [AdminKotaController::class, 'deletePickup']);
+
     Route::get('/admin/wisata', [AdminWisataController::class, 'index']);
     Route::get('/admin/wisata/add', [AdminWisataController::class, 'create']);
     Route::post('/admin/wisata/add', [AdminWisataController::class, 'store']);
+    Route::get('/admin/wisata/edit/{id}', [AdminWisataController::class, 'edit']);
+    Route::post('/admin/wisata/edit/{id}', [AdminWisataController::class, 'update']);
+
     Route::post('/admin/wisata/delete/{id}', [AdminWisataController::class, 'destroy']);
     Route::post('/admin/wisata/jemput/add/{id}', [AdminWisataController::class, 'addJemput']);
 
@@ -139,14 +144,21 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 
+
 });
+
+
 Route::middleware('guest', 'auth' , 'admin')->group(function(){
 
 
 
 });
 
-Route::get('/isi/{id}', [IsiController::class, 'show']);
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/wisata' , [WisataController::class, 'index']);
+Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
+Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
+Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);
 
 
 
@@ -179,6 +191,7 @@ Route::get('/blog', function(){
 });
 
 
+
 Route::get('/booking', function(){
     return view('booking');                                                                                                                             
 });
@@ -187,6 +200,7 @@ Route::get('/tagihan', function(){
     return view('tagihan');                                                                                                                             
 });
 
+<<<<<<< HEAD
 Route::get('/total', function(){
     return view('total');                                                                                                                             
 });
@@ -194,3 +208,9 @@ Route::get('/total', function(){
 Route::get('/home', function(){
     return view('home');                                                                                                                             
 });
+=======
+
+Route::get('/checkout', function(){
+    return view('checkout');                                                                                                                             
+});
+>>>>>>> de28464630c5dbc59bf3ac386a95074152e3df98

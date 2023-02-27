@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <script>document.documentElement.classList.add('js')</script>
+    <link rel=”icon” href='{{ asset('gambar/2.png') }}'>
     <title>Ini dari head</title>
 </head>
 

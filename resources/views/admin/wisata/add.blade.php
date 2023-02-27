@@ -76,6 +76,10 @@
 				<!-- Step Content -->
 				<div class="py-10">	
 					<div x-show.transition.in="step === 1">
+
+						<div id="previewContainer" class="flex gap-x-2 ">
+						</div>
+
 						<div class="mb-5 text-center">
 							
 							
@@ -94,97 +98,113 @@
 
 							<div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture</div>
 
-							<input type="file" name="image[]" id="image" class="w-full hidden border object-cover rounded-md mt-4" multiple>
+							<input type="file" name="image[]" id="image" class="w-full  border object-cover rounded-md mt-4" multiple onchange="showPreview(event)">
 						</div>
 
 						<div class="mb-5">
-							<label for="nama" class="font-bold mb-1 text-gray-700 block">Nama Kota</label>
+							<label for="nama" class="font-bold mb-1 text-gray-700 block">Nama Wisata</label>
 							<input type="text" name="nama"
 								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
 								>
 						</div>
 
-						<div class="mb-5">
-							<label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
-							<input type="datetime-local" name="departure"
-								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-								>
+
+						<div class="grid grid-cols-2 gap-4">
+							<div class="">
+								<label for="harga" class="font-bold mb-1 text-gray-700 block">Harga</label>
+								<input type="number" name="harga"
+									class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+									>
+							</div>
+
+							<div class="">
+								<label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
+								<input type="datetime-local" name="departure"
+									class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+									>
+							</div>
 						</div>
 
-            <div class="mb-5">
-							<label for="long_tour" class="font-bold mb-1 text-gray-700 block">Long Tour</label>
-							<input type="text" name="long_tour"
-								class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-								>
+						<div class="grid grid-cols-2 gap-4 my-4">
+
+
+							<div class="">
+								<label for="long_tour" class="font-bold mb-1 text-gray-700 block">Long Tour</label>
+								<input type="text" name="long_tour"
+									class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+									>
+							</div>
+							<div class="">
+								<label for="type" class="font-bold mb-1 text-gray-700 block">Type Tour</label>
+								<select name="type" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+									<option value="single trip" >Single Trip</option>
+									<option value="open trip" >Open Trip</option>
+									<option value="private trip">Private Trip</option>
+								</select>
+							</div>
+
 						</div>
-            <div class="mb-5">
-              <label for="type" class="font-bold mb-1 text-gray-700 block">Type Tour</label>
-              <select name="type" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                  <option value="single_trip">Single Trip</option>
-                  <option value="open_trip">Open Trip</option>
-                  <option value="private_trip">Private Trip</option>
-              </select>
-          </div>
 
-            <div class="mb-5">
-              <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
-              <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                  @foreach ($kota as $kota)
-                  <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
-                  @endforeach
-              </select>
-          </div>
-          <div class="mb-5">
-              <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
-              <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-          </div>
+						<div class="grid grid-cols-2 gap-4">
 
-            <div class="mb-5">
-              <div id="jemput">
-                  <div class="mt-4 border rounded-md p-8 shadow-best" > 
-                  <label for="titik_jemput" class="font-bold mb-1 text-gray-700 block">Titik Jemput </label>
-                  <input type="text" name="titik_jemput[]" id="titik_jemput" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-                  <label for="harga" class="font-bold mb-1 text-gray-700 block">Harga</label>
-                  <input type="number" name="harga[]" id="harga" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
-              </div>
-              </div>
-              <h1 id="add_jemput" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
-          </div>
+							<div class="">
+								<label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
+								<select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+									@foreach ($kota as $kota)
+									<option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
+									@endforeach
+								</select>
+							</div>
+				  
+							<div class="">
+								<label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
+								<input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+							</div>
+
+						</div>
+
+
 
           <div class="mt-10">
             <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Deskripsi</label>
-            <input type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+            <textarea type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"></textarea>
         </div>
 
 					</div>
 
 					<div x-show.transition.in="step === 2">
 
-              <div class="mb-5 border rounded-md p-4">
-                  <h1 class="font-semibold text-lg">Inclusion</h1>
-                <div class="mb-5">
-                  <div id="inclusion">
-                      <div class="mt-4 border rounded-md p-8 shadow-best" > 
-                      <input type="text" name="inclusion[]" id="inclusion" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
-                  </div>
-                  </div>
-                  <h1 id="add_inclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right">+</h1>
-              </div>
+						<div class="mb-5">
+							<h1 class="font-semibold text-lg">Inclusion</h1>
+							<div class="flex flex-wrap gap-4">
+						   <div id="inclusion" class="flex flex-wrap gap-4">
+	   
+											   
+							   <div class="flex gap-x-2" id="area_inclusion">
+							   <input type="text" name="inclusion[]" id="inclusion" class="h-12 rounded-md p-2 border"> 
+							   <h1 id="remove_inclusion" class="text-white bg-red-600 py-2 px-4 rounded-md inline-block text-xl font-semibold cursor-pointer">-</h1>
+							   </div>
+							   
+						   </div>
+						   <h1 id="add_inclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white h-12 rounded-md inline cursor-pointer">+</h1>
+					   </div> 
+			   </div>
+			  
 
-              </div>
-
-              <div class="mb-5 mt-8 border rounded-md p-4">
-                <h1 class="font-semibold text-lg">Exclusions</h1>
-              <div class="mb-5">
-                <div id="exclusion">
-                    <div class="mt-4 border rounded-md p-8 shadow-best" > 
-                    <input type="text" name="exclusion[]" id="exclusion" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
-                </div>
-                </div>
-                <h1 id="add_exclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right">+</h1>
-            </div>
-
-            </div>
+			   <div class="mb-5">
+				<h1 class="font-semibold text-lg">Exclusion</h1>
+				<div class="flex flex-wrap gap-4">
+			   <div id="exclusion" class="flex flex-wrap gap-4">
+					
+				<div class="flex gap-x-2" id="area_exclusion">
+					<input type="text" name="exclusion[]" id="exclusion" class="h-12 rounded-md p-2 border" > 
+					<h1 id="remove_exclusion" class="text-white bg-red-600 py-2 px-4 rounded-md inline-block text-xl font-semibold cursor-pointer">-</h1>
+					</div> 
+	
+			   </div>
+			   <h1 id="add_exclusion" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white h-12 rounded-md inline cursor-pointer">+</h1>
+		   </div> 
+	</div>
 
 
 
@@ -215,17 +235,14 @@
 						<div class="mb-5 mt-24 border rounded-md p-4">
 
 						  <div class="mb-5" id="equipment">
-							<h1 class="font-semibold text-lg">Equipment 1</h1>
+							<h1 class="font-semibold text-lg">Equipment </h1>
 
 							<div  class="mt-4">
-								<input type="file" name="images[]" class="w-full border h-12 rounded-md">
-								<input type="text" name="equipment[]" id="equipment" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
+								<input type="file" name="images" class="w-full border h-12 rounded-md">
 							</div>
 
 							
 						</div>
-
-						<h1 id="add_equipment" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">+</h1>
 						</div>
 
 					

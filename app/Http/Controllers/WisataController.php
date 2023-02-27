@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kota;
+use App\Models\Wisata;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWisataRequest;
 use App\Http\Requests\UpdateWisataRequest;
-use App\Models\Wisata;
+use Illuminate\Http\Request;
+
 
 class WisataController extends Controller
 {
@@ -16,8 +20,15 @@ class WisataController extends Controller
     public function index()
     {
         //
-        return view('dashboard',[
-            'data' => Wisata::all()
+        $wisata = Wisata::latest();
+        if(request('search')){
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            ->orWhere('deskripsi', 'like', '%' . request('search') . '%')
+            ->orWhere('long_tour', 'like', '%' . request('search') . '%');
+        }
+
+        return view('wisata', [
+            'data' => $wisata->paginate(8)
         ]);
     }
 
@@ -99,5 +110,28 @@ class WisataController extends Controller
     public function destroy(Wisata $wisata)
     {
         //
+    }
+
+    public function showDestination(Request $request, $slug){
+        $kota = Kota::where('slug', $slug)->first();
+
+        return view('destination',[
+            'kota' =>  $kota,
+            'wisata' => Wisata::where('kota_id', $kota->id)->get()
+        ]);
+    }
+
+
+    public function type(Request $request, $type){
+        $wisata = Wisata::where('tour_type', $type);
+
+        if(request('search')){
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
+        }
+        return view('type', [
+            "data" => $wisata->paginate(9),
+            'type' => $type
+        ]);
     }
 }
