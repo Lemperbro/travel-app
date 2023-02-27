@@ -111,7 +111,9 @@
         
           {/* view more start */}
           </div>
-          <button class=' text-white font-bold text-xl w-full text-center bg-[#FF2E00] mb-5 rounded-lg'>View More</button>
+          <a href="resources/views/booking.blade.php">
+            <button class=' text-white font-bold text-xl w-full text-center bg-[#FF2E00] mb-5 rounded-lg'>View More</button>
+          </a>
           {/* view more end */}
 
           {/* most popular start */}

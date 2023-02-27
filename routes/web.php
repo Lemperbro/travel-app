@@ -74,6 +74,10 @@ Route::get('/step', function () {
     return view('step');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
 
 
 
@@ -191,6 +195,10 @@ Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);
 //     return view('admin.user.add');
 // });
 
+Route::get('/isi', function(){
+    return view('isi');                                                                                                                             
+});
+
 Route::get('/blog', function(){
     return view('blog');                                                                                                                             
 });
@@ -206,12 +214,17 @@ Route::get('/tagihan', function(){
 });
 
 
+Route::get('/total', function(){
+    return view('total');                                                                                                                             
+});
+
+Route::get('/home', function(){
+    return view('home');                                                                                                                             
+});
+
 Route::get('/testi', function(){
     return view('testimoni');                                                                                                                             
 });
-
-
-
 Route::get('/pdf', function(){
     return view('pdf');
 });

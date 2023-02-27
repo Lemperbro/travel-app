@@ -66,7 +66,11 @@
 
     </div>
 
+<<<<<<< HEAD
+    <a href="tagihan">
+=======
     <a href="/checkout/{{ $wisata->slug }}">
+>>>>>>> c8897edc5a3855b298eacce59850b29429feaaf1
         <button class='shadow-best px-7 py-4 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto mt-24'>
             Booking Now
         </button>
