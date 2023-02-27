@@ -24,11 +24,12 @@ class WisataController extends Controller
         if(request('search')){
             $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%')
-            ->orWhere('long_tour', 'like', '%' . request('search') . '%');
+            ->orWhere('long_tour', 'like', '%' . request('search') . '%')
+            ->orWhere('tour_type', 'like', '%'. request('search'). '%');
         }
 
         return view('wisata', [
-            'data' => $wisata->paginate(8)
+            'data' => $wisata->paginate(9)
         ]);
     }
 

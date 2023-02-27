@@ -49,10 +49,8 @@
          <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Users</p>
        </div>
 
-       <h4 class="font-bold">36K</h4>
-       <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200 ">
-         <div class="duration-600 ease-soft -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-       </div>
+       <h4 class="font-bold">{{ $user }}</h4>
+
      </div>
 
 
@@ -80,10 +78,10 @@
          </div>
          <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Kota</p>
        </div>
-       <h4 class="font-bold">2m</h4>
-       <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
-         <div class="duration-600 ease-soft -mt-0.38 w-9/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-       </div>
+       <h4 class="font-bold">
+        {{ $kota }}
+       </h4>
+
      </div>
 
 
@@ -107,7 +105,7 @@
          <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Wisata</p>
        </div>
        <h4 class="font-bold">435K</h4>
-       <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-black">
+       <div class="text-xs h-0.75 flex overflow-visible rounded-lg bg-black" style="width: {{ $wisata }}%;">
          <div class="duration-600 ease-soft -mt-0.38 w-3/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
        </div>
      </div>

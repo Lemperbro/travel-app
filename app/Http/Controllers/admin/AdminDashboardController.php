@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Kota;
+use App\Models\User;
+use App\Models\Wisata;
 use Illuminate\Http\Request;
-use App\Models\admin\AdminDashboard;
 use Illuminate\Routing\Controller;
+use App\Models\admin\AdminDashboard;
 
 class AdminDashboardController extends Controller
 {
@@ -16,8 +19,13 @@ class AdminDashboardController extends Controller
     public function index()
     {
         //
+
+        
         return view('admin.index',[
-            'tittle' => 'Dashboard'
+            'tittle' => 'Dashboard',
+            'wisata' => Wisata::count(),
+            'kota' => Kota::count(),
+            'user' => User::where('posisi', 0)->count()
         ]);
     }
 

@@ -242,7 +242,7 @@
                   </a>
                </li>
                   <li class="flex gap-x-4 w-full p-3 mx-4">
-                        <img src="/img/malang.png" alt="" class="w-10 h-10 object-cover rounded-full">
+                        <img src="{{ asset('ft_user/'.auth()->user()->image) }}" alt="" class="w-10 h-10 object-cover rounded-full">
                         <h1 class="font-semibold text-lg my-auto">{{ auth()->user()->username }}</h1>
 
                   </li>

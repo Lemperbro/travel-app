@@ -8,26 +8,6 @@
 
 
 
-
-{{-- <div class="grid grid-cols-4">
-
-
-
-</div> --}}
-
-{{-- <div class="grid grid-cols-4">
-    @foreach ($best as $data)
-    <a href="/wisata/{{ $data->id }}" class="hadow-md p-2 h-96 overflow-hidden inline-block">
-        <img src="{{ asset('storage/'.$data->image) }}" alt="">
-        <h1>{{ $data->nama_wisata }}</h1>
-        <p>di booking : {{ $data->diboking }}</p>
-    </a>
-@endforeach
-</div> --}}
-
-
-
-
 <div class='container mt-9 lg:grid-cols-2 md:flex '>
     <div class='grid-cols-2 w-[50%] mt-4'>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Find The Perfect</h1>
