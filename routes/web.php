@@ -7,6 +7,8 @@ use App\Http\Controllers\IsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\AdminKotaController;
@@ -35,9 +37,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 //client
 
 
-Route::get('/masuk', function () {
-    return view('masuk');
-});
+
 
 Route::get('/about', function () {
     return view('about');
@@ -131,6 +131,15 @@ Route::middleware('admin')->group(function(){
 Route::middleware('auth')->group(function(){
 
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);
+
+
+//profile
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::post('/profile/update', [ProfileController::class, 'update']);
+Route::get('/profile/change-password', [ProfileController::class, 'changePassword']);
+Route::post('/profile/change-password', [ProfileController::class, 'changePassword']);
+
 
 });
 
@@ -197,6 +206,12 @@ Route::get('/tagihan', function(){
 });
 
 
-Route::get('/checkout', function(){
-    return view('checkout');                                                                                                                             
+Route::get('/testi', function(){
+    return view('testimoni');                                                                                                                             
+});
+
+
+
+Route::get('/pdf', function(){
+    return view('pdf');
 });

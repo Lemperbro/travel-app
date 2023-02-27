@@ -9,40 +9,57 @@
       <p class="text-gray-400">Check your items.</p>
       <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
 
+        @php
+           $img = explode("|", $wisata->image)
+        @endphp
         
         <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-          <img class="m-2 h-24 w-96 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+
+          <img class="m-2 h-24 w-96 rounded-md border object-cover object-center" src="{{ asset('image/'.$img[0]) }}" alt="" />
           <div class="flex w-full flex-col px-4 py-4">
-            <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-            <span class="float-right text-gray-400">42EU - 8.5US</span>
-            <p class="text-lg font-bold">$138.99</p>
+            <span class="font-semibold">{{ $wisata->nama_wisata }}</span>
+            <p class="text-lg font-bold">Rp. {{ $wisata->harga }}</p>
           </div>
         </div>
 
+        <table class="flex gap-x-4">
+          <thead >
+              <tr class="flex flex-col text-left">
+              <th class="my-2">Departure</th>
+              <th class="my-2">Type Tour</th>
+          </tr>
+          </thead>
+          
+          <tr class="flex flex-col text-left">
+              <td class="my-2">:</td>
+              <td class="my-2">:</td>
+          </tr>
+
+          <tbody>
+
+
+              <tr class="flex flex-col text-left">
+                  <td class="my-2">{{ $wisata->tanggal }}</td>
+                  <td class="my-2">{{ $wisata->tour_type }}</td>
+              </tr>
+          </tbody>
+      </table>
+
       </div>
   
-      <p class="mt-8 text-lg font-medium">Information Orders</p>
+      <p class="mt-8 text-lg font-medium">Client Information</p>
       <div class="mt-5 grid gap-6">
         <div class="relative border rounded-md p-4">
+
             <table class="flex gap-x-4">
                 <thead >
                     <tr class="flex flex-col text-left">
-                    <th class="my-2">Wisata</th>
-                    <th class="my-2">Departure</th>
-                    <th class="my-2">Type Tour</th>
                     <th class="my-2">Nama Pembeli</th>
                     <th class="my-2">No Telephone</th>
-                    <th class="my-2">Pickup Point</th>
-                    <th class="my-2">Dropout Point</th>
                 </tr>
                 </thead>
                 
                 <tr class="flex flex-col text-left">
-                    <td class="my-2">:</td>
-                    <td class="my-2">:</td>
-                    <td class="my-2">:</td>
-                    <td class="my-2">:</td>
-                    <td class="my-2">:</td>
                     <td class="my-2">:</td>
                     <td class="my-2">:</td>
                 </tr>
@@ -51,16 +68,12 @@
 
 
                     <tr class="flex flex-col text-left">
-                        <td class="my-2">Gunung Bromo</td>
-                        <td class="my-2">12/03/2023, 19:00 WIB</td>
-                        <td class="my-2">Open Trip</td>
-                        <td class="my-2">Ryan Yulianto</td>
-                        <td class="my-2">082230736205</td>
-                        <td class="my-2">Hotel Merah Putih</td>
-                        <td class="my-2">Pinggir Dalan</td>
+                        <td class="my-2">{{ auth()->user()->username }}</td>
+                        <td class="my-2">{{ auth()->user()->no_tlpn }}</td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
         {{-- 1. Wisata
         2. Departure

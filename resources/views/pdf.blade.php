@@ -1,3 +1,5 @@
+@extends('layouts.two')
+
 {{-- <!-- component -->
 <style>
 	.barcode {

@@ -3,16 +3,31 @@
 
 
 @section('container')
-<div class="bg-gradient-to-bl from-orange-600/50 to-blue-600/50 fixed  inset-0 -z-50 backdrop-blur-md"></div>
-<div class='my-10 flex min-h-100vh gap-x-4 mx-auto  shadow-best4 bg-white'>
+<img src="{{ asset('img/bg-login.jpg') }}" alt="" class="absolute inset-0 -z-20 h-screen w-full">
+<div class="backdrop-blur-[2px] absolute inset-0 -z-10"></div>
 
-    <form class='w-[50%] mx-auto py-8' action="/register" method="post">
+<div class='mt-4 flex  gap-x-4 mx-auto  shadow-best4 bg-white'>
+
+    <form class='w-[50%] mx-auto py-8' action="/register" method="post" enctype="multipart/form-data">
       @csrf
       <img src="/img/logo.png" class='w-48 mx-auto ' />
 
       <h1 class='text-4xl font-bold text-center mt-4'>Register</h1>
 
       <div class='mx-9'>
+
+        <div class="w-full">
+          <h1 class='text-xl font-normal'>Image</h1>
+          <input type="file" name="image" class='rounded-md w-full border my-2 block @error('image')
+            peer
+          @enderror'  value="{{ old('image') }}"/>
+          @error('image')
+            <p class="peer-invalid:visible text-red-700 font-light">
+              {{ $message }}
+          </p>
+          @enderror
+
+        </div>
 
         <div class="w-full">
           <h1 class='text-xl font-normal'>Username</h1>
