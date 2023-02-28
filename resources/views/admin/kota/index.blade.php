@@ -63,12 +63,7 @@
                   <h1 class="font-semibold font-mono text-center text-xl">{{ $query->nama_kota }}</h1>
 
 
-               <div class="flex justify-between mt-4">
-               <a href="/kota/kelola/{{ $query->id }}" class="bg-blue-600 p-2 rounded-md text-white mx-auto">Kelola</a>
 
-
-
-            </div>
          </div>
 
 
@@ -112,6 +107,10 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
                 <label for="nama">Nama Kota</label>
                 <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->nama_kota }}">
             </div>
+            <div class="mt-4">
+               <label for="harga">Harga</label>
+               <input type="text" name="harga" id="harga" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->harga }}">
+           </div>
     
             <div class="flex gap-x-4 mt-4">
             <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>

@@ -33,9 +33,17 @@ class AdminWisataController extends Controller
         // $data2i = implode("|", $data2);
         // dd($data2i);
 
+        $wisata = Wisata::latest();
+        $kota = Kota::where('slug', request('pilihDaerah'))->first();
+
+        if(request('pilihDaerah')){
+            $wisata->where('kota_id', $kota->id);
+        }
+
         return view('admin.wisata.index',[
             'tittle' => 'Kelola Wisata',
-            'data' => Wisata::with('kota')->get(),
+            'data' => $wisata->paginate(12),
+            'kota' => Kota::get()
             
         ]);
     }

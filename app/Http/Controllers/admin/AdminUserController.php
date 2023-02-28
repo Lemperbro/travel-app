@@ -17,8 +17,14 @@ class AdminUserController extends Controller
     public function index()
     {
         //
+
+        $user = User::latest();
+
+        if(request('search')){
+            $user->where('posisi', 0)->where('username', 'like', '%' .request('search') . '%');
+        }
         return view('admin.user.index', [
-           'data' => User::where('posisi', 0)->get(),
+           'data' => $user->paginate(5),
            'tittle' => 'User'
 
         ]);

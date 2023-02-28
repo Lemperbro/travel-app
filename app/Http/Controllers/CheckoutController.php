@@ -131,7 +131,10 @@ class CheckoutController extends Controller
     }
 
     public function tagihan(){
-        
+
+        return view('tagihan',[
+            'data' => Pemesanan::where('user_id', Auth()->user()->id)->where('payment_status', 'PENDING')->get(),
+        ]);
     }
     /**
      * Show the form for editing the specified resource.

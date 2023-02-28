@@ -33,18 +33,16 @@
             </div>
             <div class="modal-body relative p-4">
             {{-- isi model --}}
-                <form action="" method="post">
+                <form action="/admin/wisata/">
                     
-                    @csrf
+                    @foreach ($kota as $kota)
                     <div class="mt-2">
-                        <input id="malang" class="peer/malang hidden" type="radio" name="pilihDaerah"/>
-                        <label for="malang" class="w-full border p-2 rouned-md block peer-checked/malang:bg-sky-500 peer-checked/malang:text-white">Malang</label>
+                        <input id="{{ $kota->slug }}" class="peer/{{ $kota->slug }} hidden" type="radio" name="pilihDaerah" value="{{ $kota->slug }}"/>
+                        <label for="{{ $kota->slug }}" class="w-full border p-2 rouned-md block peer-checked/{{ $kota->slug }}:bg-sky-500 peer-checked/{{ $kota->slug }}:text-white">{{ $kota->nama_kota }}</label>
                         
                     </div>
-                    <div class="mt-2">
-                        <input id="surabaya" class="peer/surabaya hidden" type="radio" name="pilihDaerah"/>
-                        <label for="surabaya" class="w-full border p-2 rouned-md block peer-checked/surabaya:bg-sky-500 peer-checked/surabaya:text-white">Surabaya</label>
-                    </div>
+                    @endforeach
+
 
 
 
@@ -56,7 +54,7 @@
             <button type="button"
                 class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                 data-bs-dismiss="modal">Close</button>
-            <button type="button" type="submit"
+            <button type="submit"
                 class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Selesai</button>
 
             </div>
@@ -147,6 +145,45 @@
 
         
     </div>
+
+
+
+    <nav class="flex gap-x-1 items-center mt-4 justify-end mb-32">
+        <div class="flex justify-start">
+            @if ($data->onFirstPage())
+                <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-l-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">&laquo; Previous</span>
+            @else
+                <a href="{{ $data->previousPageUrl() }}" class="px-2 py-1 text-white bg-blue-500 border border-blue-500 rounded-l-md hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">&laquo; Previous</a>
+            @endif
+        </div>
+      
+        <div class="flex justify-center">
+            @foreach ($data as $element)
+                @if (is_string($element))
+                    <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">{{ $element }}</span>
+                @endif
+      
+                @if (is_array($element))
+                    @foreach ($element as $page => $url)
+                        @if ($page == $data->currentPage())
+                            <span class="px-2 py-1 text-white bg-blue-500 border border-blue-500 hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">{{ $page }}</span>
+                        @else
+                            <a href="{{ $url }}" class="px-2 py-1 text-gray-600 bg-white border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-400 dark:hover:text-white">{{ $page }}</a>
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
+        </div>
+      
+        <div class="flex justify-end">
+            @if ($data->hasMorePages())
+                <a href="{{ $data->nextPageUrl() }}" class="px-2 py-1 text-white bg-blue-500 border border-blue-500 rounded-r-md hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">Next &raquo;</a>
+            @else
+                <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-r-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">Next &raquo;</span>
+            @endif
+        </div>
+      </nav>
+      
  
 </div>
 
