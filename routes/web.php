@@ -79,6 +79,10 @@ Route::get('/contact', function () {
 });
 
 
+Route::get('/ticket', function () {
+    return view('tiket');
+});
+
 
 
 
