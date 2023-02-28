@@ -50,7 +50,7 @@
                            </g>
                          </svg>
                        </div>
-                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Kelola Kota</span>
+                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Manage City</span>
                      </a>
                    </li>
 
@@ -75,7 +75,7 @@
                            </g>
                          </svg>
                        </div>
-                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Kelola Wisata</span>
+                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Manage Tours</span>
                      </a>
                    </li>
 
@@ -169,7 +169,7 @@
                            </g>
                          </svg>
                        </div>
-                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Kendaraan</span>
+                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">vehicle</span>
                      </a>
                    </li>
 
