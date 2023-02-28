@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('wisata_id');
             $table->foreignId('user_id');
-            // $table->foreignId('kendaraan_id');
-            // $table->foreignId('guide_id');
-            $table->string('pembayaran');
-            $table->boolean('status')->default(false);
+            $table->text('doc_no');
+            $table->bigInteger('amount');
+            $table->text('description');
+            $table->string('payment_status');
+            $table->string('payment_link');
             $table->timestamps();
         });
     }

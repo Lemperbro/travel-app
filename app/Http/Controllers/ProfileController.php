@@ -116,8 +116,9 @@ class ProfileController extends Controller
             'no_tlpn' => $validasi['no_tlpn'],
             'alamat' => $validasi['alamat']
         ]);
-
-
+        
+        $request->session()->flash('success', 'Your operation was successful.');
+        $request->session()->flash('failed', 'Your Opration Failed');
         return redirect('/profile');
     }
 
@@ -131,9 +132,13 @@ class ProfileController extends Controller
             ]);
         
             User::find(auth()->user()->id)->update(['password' => Hash::make($request->password)]);
+            $request->session()->flash('successChangePassword', 'Password Changed Successfully');
         }
 
+
+
         return view('changePassword');
+        
 
 
     }

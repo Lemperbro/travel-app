@@ -32,6 +32,14 @@
 
     <div class="col-span-8 overflow-hidden rounded-xl sm:bg-gray-50 sm:px-8 sm:shadow py-10">
       <div class="pt-4">
+
+        @if (session('successChangePassword'))
+
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+          {{ session('successChangePassword') }}
+        </div>
+          @endif
+
         <h1 class="py-2 text-2xl font-semibold">Change Password</h1>
         <!-- <p class="font- text-slate-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p> -->
       </div>

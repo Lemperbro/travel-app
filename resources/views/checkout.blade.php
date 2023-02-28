@@ -51,7 +51,8 @@
 
 
     </div>
-    <form action="checkout/{{ $slug }}/payment" class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+    <form action="/checkout/{{ $slug }}/payment" method="post" class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+      @csrf
       <p class="text-xl font-medium">Payment Details</p>
       <p class="text-gray-400">Complete your order by providing your payment details.</p>
 
@@ -60,7 +61,7 @@
         <div class="grid grid-cols-2 gap-x-4 mt-2">
 
             <div class="w-full">
-              <label for="kota">Select City</label>
+              <label for="kota">Select City for pickup point </label>
               <select name="kota" id="pickup" class="w-full rounded-md ">
                 @foreach ($kota as $kota)                  
                 <option value="{{ $kota->slug }}">{{ $kota->nama_kota }}</option>
@@ -79,11 +80,11 @@
         </div>
 
 
-        <div class="grid grid-cols-2 gap-x-4 mt-2">
+        <div class="grid grid-cols-2 gap-x-4 mt-2 mb-2">
 
           <div class="w-full">
-            <label for="kota">Select City</label>
-            <select name="kota" id="dropout" class="w-full rounded-md ">
+            <label for="kota">Select City For Dropout Point</label>
+            <select name="drop_kota" id="dropout" class="w-full rounded-md ">
               @foreach ($drop as $drop)                  
               <option value="{{ $drop->slug }}">{{ $drop->nama_kota }}</option>
 
@@ -94,11 +95,16 @@
           </div>
 
           <div class="w-full">
-            <label for="pickup">Pickup Point</label>
-            <input type="text" name="pickup" class="w-full rounded-md">
+            <label for="pickup">Dropout Point</label>
+            <input type="text" name="dropout" class="w-full rounded-md">
           </div>
 
       </div>
+      <label for="note" class="">Note</label>
+      <textarea name="note" id="note" class="w-full h-20 mt-2 rounded-md">
+
+      </textarea>
+
       <input type="hidden" id="priceWisata" value="{{ $wisata->harga }}">
       <div id="hasil" class="mt-4 bg-yellow-100">
 
