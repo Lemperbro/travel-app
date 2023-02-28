@@ -35,5 +35,6 @@
 
   <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
   <script src="{{ asset('js/tap-image.js') }}"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 
 

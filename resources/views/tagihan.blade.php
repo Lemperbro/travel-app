@@ -1,4 +1,4 @@
-    @extends('layouts.two')
+    @extends('layouts.main')
 
 
     <div class="container mt-28">

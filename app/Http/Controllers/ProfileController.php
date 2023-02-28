@@ -83,7 +83,7 @@ class ProfileController extends Controller
     {
         //
         $validasi = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
             'username' => 'required',
             'email' => 'required|email',
             'no_tlpn' => 'required|min:11',
@@ -91,7 +91,7 @@ class ProfileController extends Controller
         ]);
 
 
-        if($validasi['image']){
+        if($request->image){
             $extension = $validasi['image']->getClientOriginalExtension();
             $image = hash('sha256', time()) .'.' . $extension;
             $up = $validasi['image']->move('ft_user/', $image);
@@ -116,8 +116,9 @@ class ProfileController extends Controller
             'no_tlpn' => $validasi['no_tlpn'],
             'alamat' => $validasi['alamat']
         ]);
-
-
+        
+        $request->session()->flash('success', 'Your operation was successful.');
+        $request->session()->flash('failed', 'Your Opration Failed');
         return redirect('/profile');
     }
 
@@ -131,9 +132,13 @@ class ProfileController extends Controller
             ]);
         
             User::find(auth()->user()->id)->update(['password' => Hash::make($request->password)]);
+            $request->session()->flash('successChangePassword', 'Password Changed Successfully');
         }
 
+
+
         return view('changePassword');
+        
 
 
     }
