@@ -214,9 +214,6 @@ Route::get('/isi', function(){
     return view('isi');                                                                                                                             
 });
 
-Route::get('/blog', function(){
-    return view('blog');                                                                                                                             
-});
 
 
 
