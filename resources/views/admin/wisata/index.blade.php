@@ -89,8 +89,7 @@
               <div class="py-1" role="none">
 
                <a href="/admin/wisata/edit/{{ $wisata->id }}"
-               class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full"
-               data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $wisata->id }}">
+               class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full">
                Edit
               </a>   
 

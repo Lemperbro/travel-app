@@ -26,7 +26,7 @@ class AdminKotaController extends Controller
         // }
         
         return view('admin.kota.index',[
-            'data' => Kota::with('wisata')->paginate(10),
+            'data' => Kota::with('wisata')->get(),
             'tittle' => 'Kelola Kota'
             // 'best' => Kota::with('wisata')->join('wisatas', 'wisatas.kota_id', '=', 'kotas.id')->orderBy('wisatas.diboking', 'DESC')->get(),
             // 'best' => Wisata::where('kota_id')->orderBy('diboking', 'DESC')->limit(1)->get()
@@ -54,7 +54,11 @@ class AdminKotaController extends Controller
     {
         //
 
-        $input=$request->all();
+        $validasi = $request->validate([
+            'image' => 'required|max:2048',
+            'nama' => 'required',
+            'harga' => 'required'
+        ]);
         $image=array();
         if($files=$request->file('image')){
             foreach($files as $file){
@@ -67,8 +71,8 @@ class AdminKotaController extends Controller
     
         Kota::create( [
             'image'=>  implode("|",$image),
-            'nama_kota' => $input['nama'],
-            'harga' => $input['harga']
+            'nama_kota' => $validasi['nama'],
+            'harga' => $validasi['harga']
             //you can put other insertion here
         ]);
     

@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
+            $table->string('invoice_id');
             $table->foreignId('wisata_id');
             $table->foreignId('user_id');
+            $table->string('pickup_kota');
+            $table->string('pickup_point');
+            $table->string('drop_kota');
+            $table->string('drop_point');
             $table->text('doc_no');
             $table->bigInteger('amount');
             $table->text('description');

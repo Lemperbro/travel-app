@@ -17,7 +17,6 @@ class RegisterController extends Controller
 
     public function store(Request $request){
         $validasi = $request->validate([
-            'image' => 'required',
             'username' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:5|max:255',
@@ -28,12 +27,7 @@ class RegisterController extends Controller
 
         $validasi['password'] = bcrypt($validasi['password']); 
 
-        $extension = $request->file('image')->getClientOriginalExtension();
-        $image = hash('sha256', time()) .'.' . $extension;
-        $request->file('image')->move('ft_user/', $image);
-
         User::create([
-            'image' => $image,
             'username' => $validasi['username'],
             'email' => $validasi['email'],
             'password' => $validasi['password'],
