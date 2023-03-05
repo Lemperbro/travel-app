@@ -8,6 +8,7 @@ use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\admin\AdminDashboard;
+use App\Models\Pemesanan;
 
 class AdminDashboardController extends Controller
 {
@@ -25,7 +26,8 @@ class AdminDashboardController extends Controller
             'tittle' => 'Dashboard',
             'wisata' => Wisata::count(),
             'kota' => Kota::count(),
-            'user' => User::where('posisi', 0)->count()
+            'user' => User::where('posisi', 0)->count(),
+            'latest_booking' => Pemesanan::with('user', 'wisata')->limit(10)->get(),
         ]);
     }
 

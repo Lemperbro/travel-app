@@ -8,7 +8,7 @@
 
 <div class='mt-4 flex  gap-x-4 mx-auto  shadow-best4 bg-white'>
 
-    <form class='w-[50%] mx-auto py-8' action="/register" method="post" enctype="multipart/form-data">
+    <form class='w-[50%] mx-auto py-8' action="/register" method="post">
       @csrf
       <img src="/img/logo.png" class='w-48 mx-auto ' />
 
@@ -16,18 +16,6 @@
 
       <div class='mx-9'>
 
-        <div class="w-full">
-          <h1 class='text-xl font-normal'>Image</h1>
-          <input type="file" name="image" class='rounded-md w-full border my-2 block @error('image')
-            peer
-          @enderror'  value="{{ old('image') }}"/>
-          @error('image')
-            <p class="peer-invalid:visible text-red-700 font-light">
-              {{ $message }}
-          </p>
-          @enderror
-
-        </div>
 
         <div class="w-full">
           <h1 class='text-xl font-normal'>Username</h1>

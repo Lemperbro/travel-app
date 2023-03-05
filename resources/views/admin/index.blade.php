@@ -138,9 +138,10 @@
                  <th class="px-6 py-3 font-bold  uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Number Phone</th>
                  <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Tour Type</th>
                  <th class="px-6 py-3 font-bold uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Order Date</th>
+                 <th class="px-6 py-3 font-bold uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Status</th>
                </tr>
              </thead>
-
+             @foreach ($latest_booking as $data)
              <tbody>
                <tr>
 
@@ -150,22 +151,25 @@
                      
                  <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                   <div class="px-2 py-1">
-                  <p class=" text-center leading-tight font-semibold text-sm">Ryan Yulianto</p>
+                  <p class=" text-center leading-tight font-semibold text-sm">{{ $data->user->username }}</p>
                </div>
                  </td>
 
                  <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                   <p class="font-semibold leading-tight text-xs text-center">Bromo</p>
+                   <p class="font-semibold leading-tight text-xs text-center">{{ $data->wisata->nama_wisata }}</p>
                  </td>
                  <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                  <span class="font-semibold leading-tight text-xs text-center">082230736205</span>
+                  <span class="font-semibold leading-tight text-xs text-center">{{ $data->user->no_tlpn }}</span>
                 </td>
                 
                  <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                   <span class="font-semibold leading-tight text-xs ">Open Trip</span>
+                   <span class="font-semibold leading-tight text-xs ">{{ $data->wisata->tour_type }}</span>
                  </td>
                  <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                  <span class="font-semibold leading-tight text-xs  text-center">19 January 2023</span>
+                  <span class="font-semibold leading-tight text-xs  text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('d-F-y') }}</span>
+                </td>
+                <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                  <span class="font-semibold leading-tight text-xs  text-center {{ ($data->payment_status === 'PENDING') ? 'text-red-600' : '' }} {{ ($data->payment_status === 'PAID') ? 'text-green-600' : '' }}">{{ $data->payment_status }}</span>
                 </td>
                 
 
@@ -174,6 +178,9 @@
 
                
              </tbody>
+             @endforeach
+
+
            </table>
          </div>
        </div>

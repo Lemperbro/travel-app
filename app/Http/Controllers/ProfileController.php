@@ -98,8 +98,11 @@ class ProfileController extends Controller
             if($up){
                 $img = auth()->user()->image;
                 $storage = public_path("ft_user/".$img);
-                if(File::exists($storage)){
-                    unlink($storage);                       
+                if($img !== 'fp.png'){
+                    if(File::exists($storage)){
+                        unlink($storage);                       
+                    }
+    
                 }
 
             }

@@ -78,7 +78,8 @@ class AdminWisataController extends Controller
 
 
         $validasi = $request->validate([
-            'image' => 'required',
+            'image' => 'required|max:2048',
+            'images' => 'required|max:2048',
             'nama' => 'required',
             'departure' => 'required',
             'long_tour' => 'required',
@@ -307,6 +308,10 @@ class AdminWisataController extends Controller
             'deskripsi' => 'required',
             'inclusion' => 'required',
             'exclusion' => 'required',
+            'image' => 'required|max:2048',
+            'images' => 'required|max:2048',
+
+
 
         ]);
         
