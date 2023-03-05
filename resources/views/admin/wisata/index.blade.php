@@ -9,9 +9,9 @@
 
                 <!-- Button trigger modal -->
         <button type="button"
-        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out "
         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        FIlter Kota
+        FIlter City
         </button>
 
         <!-- Modal -->
@@ -65,7 +65,7 @@
         </div>
         {{-- akhir modal --}}
 
-       <a href="/admin/wisata/add" class="bg-orange-600 text-white p-2 rounded-md">Tambah Wisata</a>
+       <a href="/admin/wisata/add" class="bg-orange-600 text-white p-2 rounded-md font-semibold">Add Tour</a>
     </div>
 
     <div class="grid grid-cols-4 gap-4 mt-8">
