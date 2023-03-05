@@ -100,6 +100,7 @@
           </div>
 
       </div>
+      <input type="hidden" id="destinasi" value="{{ $wisata->harga }}">
       <label for="note" class="">Note</label>
       <textarea name="note" id="note" class="w-full h-20 mt-2 rounded-md">
 
@@ -147,16 +148,16 @@
           <div class="mt-6 border-t border-b py-2 w-full">
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Destination</p>
-              <p class="font-semibold text-gray-900">Rp. <span id="destinationPrice"></span></p>
+              <p class="font-semibold text-gray-900">Rp. {{ $wisata->harga }}<span id="destinationPrice"></span></p>
             </div>
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Pickup</p>
-              <p class="font-semibold text-gray-900">Rp. <span id="pickupPrice"></span></p>
+              <p class="font-semibold text-gray-900">Rp. {{ $kota->harga }}<span id="pickupPrice"></span></p>
             </div>
 
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Total</p>
-              <p class="font-semibold text-gray-900">Rp. <span id="total"></span></p>
+              <p class="font-semibold text-gray-900">Rp. {{ $wisata->harga + $kota->harga }}<span id="total"></span></p>
             </div>
 
           </div>

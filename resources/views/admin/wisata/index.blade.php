@@ -88,11 +88,11 @@
             <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none shadow-best5 hidden dropdown-menu-wisata{{ $wisata->id }}">
               <div class="py-1" role="none">
 
-               <button type="button"
+               <a href="/admin/wisata/edit/{{ $wisata->id }}"
                class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full"
                data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $wisata->id }}">
                Edit
-               </button>   
+              </a>   
 
 
                <form action="/admin/wisata/delete/{{ $wisata->id }}" method="POST">
@@ -183,7 +183,7 @@
             @endif
         </div>
       </nav>
-      
+
  
 </div>
 

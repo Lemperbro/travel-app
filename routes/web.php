@@ -60,13 +60,7 @@ Route::get('/blogisi', function () {
     return view('blogisi');
 });
 
-Route::get('/testimoni', function () {
-    return view('testimoni');
-});
 
-Route::get('/testimonimore', function () {
-    return view('nore');
-});
 
 
 
@@ -141,9 +135,10 @@ Route::middleware('auth')->group(function(){
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);
 Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
-Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);
-Route::get('/checkout/callback', [CheckoutController::class, 'callback']);
-Route::get('/coba/tagihan', [CheckoutController::class, 'tagihan']);
+// Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);
+Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
+Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
+Route::get('/booking', [CheckoutController::class, 'booking']);
 
 
 
@@ -152,6 +147,10 @@ Route::get('/profile', [ProfileController::class, 'index']);
 Route::post('/profile/update', [ProfileController::class, 'update']);
 Route::get('/profile/change-password', [ProfileController::class, 'changePassword']);
 Route::post('/profile/change-password', [ProfileController::class, 'changePassword']);
+
+
+//review
+Route::post('/review/send', [DashboardController::class, 'review']);
 
 
 });
@@ -181,6 +180,13 @@ Route::get('/wisata' , [WisataController::class, 'index']);
 Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
 Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
 Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);
+
+
+Route::get('/testimoni', [DashboardController::class, 'testi_store']);
+
+
+//kota
+Route::get('/kota', [KotaController::class, 'index']);
 
 
 
@@ -214,13 +220,9 @@ Route::get('/blog', function(){
 
 
 
-Route::get('/booking', function(){
-    return view('booking');                                                                                                                             
-});
 
-Route::get('/tagihan', function(){
-    return view('tagihan');                                                                                                                             
-});
+
+
 
 
 Route::get('/total', function(){

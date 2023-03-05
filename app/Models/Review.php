@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Wisata;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Pemesanan extends Model
+class Review extends Model
 {
     use HasFactory;
+
 
     protected $guarded = [
         'id',
@@ -20,9 +20,4 @@ class Pemesanan extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-
-    public function wisata(){
-        return $this->belongsTo(Wisata::class);
-    }
-
 }

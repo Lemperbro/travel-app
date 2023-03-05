@@ -8,6 +8,7 @@
 <script src="{{ asset('js/dynamic-input.js') }}"></script>
 <script src="{{ asset('js/view-image.js') }}"></script>
 <script src="{{ asset('js/action-menu.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.2/tinymce.min.js" integrity="sha512-0hADhKU8eEFSmp3+f9Yh8QmWpr6nTYLpN9Br7k2GTUQOT6reI2kdEOwkOORcaRZ+xW5ZL8W24OpBlsCOCqNaNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -46,6 +47,9 @@ $(document).ready(function(){
 })
 
 
+tinymce.init({
+  selector: 'textarea.default-editor'
+});
 
 
 

@@ -7,6 +7,7 @@ use App\Models\Jemput;
 use App\Models\Equipment;
 use App\Models\Fasilitas;
 use App\Models\Itenerary;
+use App\Models\Pemesanan;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,5 +43,8 @@ class Wisata extends Model
     }
     public function equipment(){
         return $this->hasMany(Equipment::class);
+    }
+    public function pemesanan(){
+        return $this->belongsTo(Pemesanan::class);
     }
 }

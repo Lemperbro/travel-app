@@ -34,7 +34,7 @@ $(document).ready(function() {
   $(document).ready(function() {
     $("#add_day").click(function() {
         day += 1;
-        $("#day").append('<h3>Day '+day+'</h3><div id="itenerary"><input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2"><textarea id="banner-message" class="message w-full h-20 relative" name="itenerary[]" style=""></textarea></div>');
+        $("#day").append('<h3>Day '+day+'</h3><div id="itenerary"><input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2"><textarea id="default-editor" class="default-editor message w-full h-20 relative" name="itenerary[]" style=""></textarea></div>');
     });
   });
 

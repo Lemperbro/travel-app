@@ -8,6 +8,7 @@
 
 
 
+
 <div class='container mt-9 lg:grid-cols-2 md:flex '>
     <div class='grid-cols-2 w-[50%] mt-4'>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Find The Perfect</h1>
@@ -31,7 +32,7 @@
      <span class='border-r-2 border-black mx-3'></span> Travel Destination</h1>
 </div>
 
-<div class="mt-6 mb-7 grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-8">
+<div class="mt-6 mb-7 grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-8 relative">
 
   @foreach ($kota as $kota)
       @php
@@ -44,16 +45,18 @@
 
   @endforeach
 
-
-
-
-    
-
+      <a href="/kota/" class="p-3 rounded-full bg-orange-500 absolute top-[50%] translate-y-[-50%] -right-9 text-white text-center ">
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path fill="#fff" d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/></svg>
+      </a>
    </div>
+
+
 
 @include('partials.most')
 
 @include('partials.latest')
+
+
 
 
 </div>

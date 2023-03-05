@@ -72,15 +72,15 @@ class CheckoutController extends Controller
             'payment_link' => $response->invoice_url
         ]);
 
+        return redirect('/tagihan');
+
     }
 
     public function callback(){
         $data = request()->all();
-        dd($data);
         $status = $data['status'];
         $external_id = $data['external_id'];
-        dd($status);
-        Pemesanan::where('doc_no', $external_id)->update([
+        Pemesanan::where('doc_no', $external_id)->first()->update([
             'payment_status' => $status
         ]);
         return response()->json($data);
@@ -133,9 +133,18 @@ class CheckoutController extends Controller
     public function tagihan(){
 
         return view('tagihan',[
-            'data' => Pemesanan::where('user_id', Auth()->user()->id)->where('payment_status', 'PENDING')->get(),
+            'data' => Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PENDING')->get(),
         ]);
     }
+
+    public function booking(){
+
+
+        return view('booking',[
+            'data' => Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->get(),
+        ]);
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *

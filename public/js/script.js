@@ -1,6 +1,7 @@
 var pickup = document.getElementById('pickup');
 // var pickupValue = pickup.value;
 // var pickupsplit = pickupValue.split(",");
+// console.log(pickupsplit)
 
 
 var dropout = document.getElementById('dropout');

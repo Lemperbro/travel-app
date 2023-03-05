@@ -211,6 +211,26 @@
 					</div>
 					<div x-show.transition.in="step === 3">
 
+						{{-- <div class="mb-5 mt-8 border rounded-md p-4" >
+							<h1 class="font-semibold text-lg">Itenerary</h1>
+
+						  	<div class="mb-5" id="day">
+							<h3>Day 1</h3>
+
+								<div id="itenerary">
+								
+									<input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
+									<textarea id="banner-message" class="message w-full h-20 relative" name="itenerary[]" style="">
+									</textarea>
+										
+							</div>
+
+							</div>
+							
+						</div>
+						<h1 id="add_day" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">Add Day</h1> --}}
+
+
 						<div class="mb-5 mt-8 border rounded-md p-4" >
 							<h1 class="font-semibold text-lg">Itenerary</h1>
 

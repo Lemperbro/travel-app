@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kota;
+use App\Models\Review;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -34,7 +35,7 @@ class DashboardController extends Controller
             'best' => Wisata::with(['kota' => function($query){
                 $query->orderBy('popularitas', 'DESC')->limit(20)->get();
             }])->orderBy('diboking', 'DESC')->paginate(3),
-            'kota' => Kota::all(),
+            'kota' => Kota::limit(4)->get(),
             'latest' => $wisata->get()
         
         ]);
@@ -104,6 +105,22 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function review(Request $request){
+
+        Review::create([
+            'user_id' => Auth()->user()->id,
+            'description' => $request->description
+        ]);
+
+        return redirect('/testimoni');
+    }
+
+    public function testi_store(){
+        return view('/testimoni', [
+            'data' => Review::with('user')->get()
+        ]);
     }
 
 

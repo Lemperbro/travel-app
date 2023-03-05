@@ -20,6 +20,7 @@
       
         <div class="grid gap-6 text-center md:grid-cols-3">
 
+          @foreach ($data as $testi)
           <div>
             <div
               class="block rounded-lg bg-white dark:bg-neutral-700 dark:shadow-black/30  shadow-best5 relative">
@@ -27,11 +28,11 @@
               <div
                 class="absolute -top-10 left-[50%] translate-x-[-50%] w-24 overflow-hidden rounded-full border-2 border-white bg-red-600 dark:border-neutral-800 dark:bg-neutral-800">
                 <img
-                  src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
+                  src="{{ asset('ft_user/'.$testi->user->image) }}" class="object-cover w-24 h-24 rounded-full"/>
               </div>
 
               <div class="px-6 pb-6 pt-20 relative">
-                <h4 class="mb-4 text-2xl font-semibold">Maria Smantha</h4>
+                <h4 class="mb-4 text-2xl font-semibold">{{ $testi->user->username }}</h4>
                 <hr />
                 <p class="mt-4">
                   <svg
@@ -42,15 +43,14 @@
                     <path
                       d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
                   </svg>
-                  Lorem ipsum dolor sit amet eos adipisci, consectetur
-                  adipisicing elit.
+                 {{ $testi->description }}
                 </p>
               </div>
             </div>
           </div>
+          @endforeach
 
           
-
 
         </div>
       </section>

@@ -31,7 +31,19 @@
 
 
 
-    <div class="mt-11 mb-7 grid grid-cols-3 place-items-center shadow-best5 bg-white p-4 rounded-md">
+    <div class="mt-11 mb-7 grid grid-cols-4 place-items-center shadow-best5 bg-white p-4 rounded-md">
+
+        <div class="flex gap-0">
+            <div class="w-10 mx-12">
+                <img src='/icons/price.png' class='object-contain'/>
+            </div>
+            <div class="">
+                <p class="font-bold text-xl">Start Price</p>
+                <p class='font-semibold'>Rp. {{ $wisata->harga }}</p>
+            </div>
+        </div>
+
+
         <div class="flex gap-0">
             <div class="w-10 mx-12">
                 <img src='/icons/flag.png' class='object-contain'/>

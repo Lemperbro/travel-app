@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kota;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKotaRequest;
 use App\Http\Requests\UpdateKotaRequest;
-use App\Models\Kota;
 
 class KotaController extends Controller
 {
@@ -16,6 +17,16 @@ class KotaController extends Controller
     public function index()
     {
         //
+
+        $kota = Kota::latest();
+
+
+        if(request('search')){
+            $kota->where('nama_kota', 'like','%'. request('search') .'%');
+        }
+        return view('kota', [
+            'data' => $kota->paginate(15)
+        ]);
     }
 
     /**
