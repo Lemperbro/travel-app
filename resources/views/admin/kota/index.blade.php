@@ -6,7 +6,7 @@
   
 
          <div class="flex">
-            <a href="/admin/kota/add" class="bg-orange-600 text-white p-2 rounded-md">Tambah Kota</a>
+            <a href="/admin/kota/add" class="bg-orange-600 text-white p-2 rounded-md">Add City</a>
          </div>
 
          <div class="grid grid-cols-4 gap-4 mt-8 ">
