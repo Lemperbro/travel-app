@@ -141,12 +141,17 @@
                  <th class="px-6 py-3 font-bold uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Status</th>
                </tr>
              </thead>
+             @php
+             $no = 1;
+
+           @endphp
              @foreach ($latest_booking as $data)
+
              <tbody>
                <tr>
 
                  <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                   <p class="text-center font-semibold leading-tight text-xs">1</p>
+                   <p class="text-center font-semibold leading-tight text-xs">{{ $no++ }}</p>
                  </td>
                      
                  <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">

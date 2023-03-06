@@ -6,7 +6,7 @@
     
 <div class='relative'>
     <img src='/img/pt.png' class=''/>
-    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>{{ $wisata->nama_wisata }} - {{ $wisata->location }}</h1>
+    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
   </div>
 
 

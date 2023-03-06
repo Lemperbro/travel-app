@@ -59,7 +59,7 @@
                   <h1 class="text-yellow-400 uppercase">{{ $tagihan->payment_status }}</h1>
                 </div>
                 <p class="text-sm font-semibold text-gray-400">Last Transaction</p>
-                <a href="{{ $tagihan->payment_link }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-400  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-500 outline-none">Download Ticket</a>
+                <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-400  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-500 outline-none">Download Ticket</a>
               </div>
   
   

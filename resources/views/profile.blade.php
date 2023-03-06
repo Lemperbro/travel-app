@@ -43,10 +43,17 @@
     <div class="col-span-8 overflow-hidden rounded-xl sm:bg-gray-50 sm:px-8 sm:shadow py-10">
       <div class="pt-4">
               @if (session('success'))
+              <div class="alert bg-green-200 rounded-lg py-5 px-6 mb-8 text-base text-black inline-flex items-center w-full alert-dismissible fade show " role="alert">
+                <strong class="mr-1">{{ session('success') }}</strong> 
+                <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-yellow-900 border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-yellow-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif
 
-            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-              {{ session('success') }}
-            </div>
+              @if (session('error'))
+              <div class="alert bg-green-200 rounded-lg py-5 px-6 mb-8 text-base text-white inline-flex items-center w-full alert-dismissible fade show " role="alert">
+                <strong class="mr-1">{{ session('error') }}</strong> 
+                <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-yellow-900 border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-yellow-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
               @endif
 
         <h1 class="py-2 text-2xl font-semibold">Account settings</h1>

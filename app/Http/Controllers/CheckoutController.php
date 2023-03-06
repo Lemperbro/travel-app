@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pemesanan;
 use Illuminate\Support\Facades\Http;
+use PDF;
 
 class CheckoutController extends Controller
 {
@@ -143,6 +144,25 @@ class CheckoutController extends Controller
         return view('booking',[
             'data' => Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->get(),
         ]);
+    }
+
+    public function ticket($doc_no){
+
+        $data = Pemesanan::where('doc_no', $doc_no)->first();
+
+        $pdf = PDF::loadview('tiket', [
+            'data' => $data
+        ]);
+        $pdf->set_paper([0,0,200,400], 'landscape');
+
+        $pdf->set_option('margin-top', '0mm');
+        $pdf->set_option('margin-right', '0mm');
+        $pdf->set_option('margin-bottom', '0mm');
+        $pdf->set_option('margin-left', '0mm');
+
+        //500 tinggi , 1000 lebar
+       return $pdf->download('coba.pdf');
+
     }
     
     /**

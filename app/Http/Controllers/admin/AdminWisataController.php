@@ -308,8 +308,8 @@ class AdminWisataController extends Controller
             'deskripsi' => 'required',
             'inclusion' => 'required',
             'exclusion' => 'required',
-            'image' => 'required|max:2048',
-            'images' => 'required|max:2048',
+            'image' => 'max:2048',
+            'images' => 'max:2048',
 
 
 
@@ -403,14 +403,28 @@ class AdminWisataController extends Controller
             ]);
 
 
+
             $jumlah_agenda = count($request->agenda);
-            for($i = 0 ; $i < $jumlah_agenda; $i++){
-                Itenerary::where('wisata_id', $id)->update([
-                    'wisata_id' => $id,
-                    'agenda' => $request->agenda[$i],
-                    'deskripsi' => $request->itenerary[$i]
-                ]);
+            $itenerary_count = Itenerary::where('wisata_id', $id)->count();
+
+            if ($jumlah_agenda > $itenerary_count){
+                for($i = 0 ; $i < $jumlah_agenda; $i++){
+                    Itenerary::where('wisata_id', $id)->where('id', $request->id_itenerary[$i])->updateOrCreate([
+                        'wisata_id' => $id,
+                        'agenda' => $request->agenda[$i],
+                        'deskripsi' => $request->itenerary[$i]
+                    ]);
+                }
+            } else if($jumlah_agenda <= $itenerary_count){
+                for($i = 0 ; $i < $jumlah_agenda; $i++){
+                    Itenerary::where('wisata_id', $id)->where('id', $request->id_itenerary[$i])->update([
+                        'wisata_id' => $id,
+                        'agenda' => $request->agenda[$i],
+                        'deskripsi' => $request->itenerary[$i]
+                    ]);
+                }
             }
+
 
 
             // $images=array();
