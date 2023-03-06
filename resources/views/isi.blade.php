@@ -189,44 +189,12 @@
     </div>
 
 
-    <div class="my-8">
-        <div class="text-center">
-            <h1 class="text-2xl font-bold ">
-                Enquiry Form
-            </h1>
-            <h1 class=" text-lg font-semibold justify-center flex">
-                If you are looking for other tours or do some customisation,<br>
-                just leave your information and message below.
-            </h1>
-        </div>
-    </div>
-
-  
-        <div class="w-full ">
-            <div class="flex">
-                <input type="text" class="mx-auto rounded-xl w-[65%]" placeholder="Your Name">
-            </div>
-            
-            <div class="flex my-9">
-                <input type="text" class="mx-auto rounded-xl w-[65%]" placeholder="Phone Number">
-            </div>
-
-            <div class="flex my-9">
-                <input type="Email" class="mx-auto rounded-xl w-[65%]" placeholder="Agungadnhita@gmail.com">
-            </div>
-
-            <div class="flex my-9">
-                <input type="text area" class="mx-auto rounded-xl w-[65%] border-2 px-4 py-12" placeholder="Leave Your Massage Here">
-            </div>
-        </div>
-
-        <div class='flex my-8'>
-            <button class='border shadow-md px-6 py-4 rounded-xl bg-[#FF2E00] text-white font-semibold mx-auto'>
-              Submit
-            </button>
-        </div>
 
 @endforeach
-        
+
+<div class="pt-20">
+<h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Destination On {{ $wisata->kota->nama_kota }}</h1>
+@include('partials.most')
+</div>
 
 @endsection

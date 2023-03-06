@@ -153,7 +153,7 @@ class CheckoutController extends Controller
         $pdf = PDF::loadview('tiket', [
             'data' => $data
         ]);
-        $pdf->set_paper([0,0,200,400], 'landscape');
+        $pdf->set_paper([0,0,300,500], 'landscape');
 
         $pdf->set_option('margin-top', '0mm');
         $pdf->set_option('margin-right', '0mm');

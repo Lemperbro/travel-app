@@ -47,7 +47,7 @@
 
 
                   <tr class="border-b">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $no+1 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"></td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                    
                     </td>
@@ -61,7 +61,7 @@
 
                     </td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                       <form action="/user/delete/{{ $user->id }}" method="post">
+                       <form action="/user/delete/" method="post">
                           @csrf
                           <button type="submit" class="bg-red-600 p-2 rounded-md text-white">Hapus</button>
                        </form>
@@ -75,7 +75,7 @@
               </table>
 
 
-              <nav class="flex gap-x-1 items-center mt-4 justify-end mb-32">
+              {{-- <nav class="flex gap-x-1 items-center mt-4 justify-end mb-32">
                 <div class="flex justify-start">
                     @if ($data->onFirstPage())
                         <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-l-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">&laquo; Previous</span>
@@ -109,7 +109,7 @@
                         <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-r-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">Next &raquo;</span>
                     @endif
                 </div>
-              </nav>
+              </nav> --}}
 
 
 
