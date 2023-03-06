@@ -115,8 +115,12 @@ class AdminKotaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $gambar = Kota::findOrFail($id);     
-        $input=$request->all();
+        $gambar = Kota::findOrFail($id);
+        $validasi = $request->validate([
+            'image' => 'max:2048',
+            'nama' => 'required',
+            'harga' => 'required'
+        ]);     
 
         $image=array();
 
@@ -133,9 +137,8 @@ class AdminKotaController extends Controller
     
         Kota::find($id)->update( [
             'image'=>  implode("|",$image),
-            'nama_kota' => $input['nama'],
-            'harga' => $input['harga']
-            //you can put other insertion here
+            'nama_kota' => $validasi['nama'],
+            'harga' => $validasi['harga']
         ]);
     
     
@@ -169,45 +172,5 @@ class AdminKotaController extends Controller
         ]);
     }
 
-    public function addPickup(Request $request, $id){
-        $validasi = $request->validate([
-            'location' => 'required',
-            'price' => 'required'
 
-        ]);
-
-
-        Jemput::create([
-            'kota_id' => $id,
-            'lokasi' => $validasi['location'],
-            'harga' => $validasi['price']
-        ]);
-
-        return redirect('/kota/kelola/'.$id);
-    }
-
-    public function editPickup(Request $request, $id){
-        $validasi = $request->validate([
-            'location' => 'required',
-            'price' => 'required'
-
-        ]);
-
-        Jemput::where('id', $id)->update([
-            'lokasi' => $validasi['location'],
-            'harga' => $validasi['price']
-        ]);
-
-        $kota_id = Jemput::find($id)->pluck('kota_id')->first();
-
-        return redirect('/kota/kelola/'.$kota_id);
-
-    }
-
-    public function deletePickup($id){
-        $kota_id = Jemput::find($id)->pluck('kota_id')->first();
-        Jemput::find($id)->delete();
-
-        return redirect('/kota/kelola/'.$kota_id);
-    }
 }

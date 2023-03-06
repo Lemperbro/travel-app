@@ -219,6 +219,7 @@ $number = 0;
                         $no++;
                     @endphp
 				<h3 class="mt-1">Day {{ $no }}</h3>
+                <input type="hidden" name="id_itenerary[]" value="{{ $itenerary->id }}">
                     <input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2" value="{{ $itenerary->agenda }}">
                     <textarea id="banner-message" class="message w-full h-20 relative hidden">
 						

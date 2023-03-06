@@ -85,7 +85,7 @@ class ProfileController extends Controller
         $validasi = $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif',
             'username' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email:dns',
             'no_tlpn' => 'required|min:11',
             'alamat' => 'required',
         ]);

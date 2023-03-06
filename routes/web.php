@@ -243,3 +243,5 @@ Route::get('/pdf', function(){
 Route::get('/contact', function(){
     return view('contact');
 });
+
+Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
