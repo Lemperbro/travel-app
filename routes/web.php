@@ -222,8 +222,8 @@ Route::get('/isi', function(){
 
 
 
-Route::get('/total', function(){
-    return view('total');                                                                                                                             
+Route::get('/admin/booking', function(){
+    return view('booking');                                                                                                                             
 });
 
 Route::get('/home', function(){
@@ -239,4 +239,8 @@ Route::get('/pdf', function(){
 
 Route::get('/contact', function(){
     return view('contact');
+});
+
+Route::get('/baru', function(){
+    return view('kendaraan');
 });

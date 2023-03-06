@@ -77,17 +77,11 @@
 
               <nav class="flex gap-x-1 items-center mt-4 justify-end mb-32">
                 <div class="flex justify-start">
-                    @if ($data->onFirstPage())
                         <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 rounded-l-md dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">&laquo; Previous</span>
-                    @else
-                        <a href="{{ $data->previousPageUrl() }}" class="px-2 py-1 text-white bg-blue-500 border border-blue-500 rounded-l-md hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">&laquo; Previous</a>
-                    @endif
+                        <a href="" class="px-2 py-1 text-white bg-blue-500 border border-blue-500 rounded-l-md hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 dark:text-white">&laquo; Previous</a>
                 </div>
               
                 <div class="flex justify-center">
-                    @foreach ($data as $element)
-                        @if (is_string($element))
-                            <span class="px-2 py-1 text-gray-600 bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">{{ $element }}</span>
                         @endif
               
                         @if (is_array($element))
