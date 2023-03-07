@@ -1,6 +1,6 @@
 <h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Most Popular</h1>
 
-      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-rows-3-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
 
         @foreach ($best as $best_wisata)
 

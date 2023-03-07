@@ -1,4 +1,5 @@
-  @extends('layouts.main')
+  {{-- @extends('layouts.main')
+
         <div class='relative'>
           <img src='/img/2.png' class='h-[70vh] object-cover w-full'/>
           <h1 class='absolute top-40 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>Private Trip</h1>
@@ -197,4 +198,4 @@
                   </a>
                 </div>  
           </div>
-      </div>
+      </div> --}}

@@ -5,8 +5,8 @@
       <div class="carousel-item active relative float-left w-full">
         <div class="bg-black/40 absolute inset-0"></div>
         <img
-          src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
-          class="block w-full h-screen"
+          src="img/gmabar1.jpg"
+          class="block w-full h-screen object-cover"
           alt="Wild Landscape"
         />
 
@@ -24,14 +24,14 @@
         <div class="bg-black/40 absolute inset-0"></div>
 
         <img
-          src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          src="img/gambar2.jpg"
           class="block w-full h-screen"
           alt="Camera"
         />
 
         <div
         class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
-        <h1 class='text-3xl text-center font-bold text-white uppercase'>Travel is not reward for working, it's education for living.</h1>
+        <h1 class='text-6xl text-center font-bold text-white uppercase'>Travel is not reward for working, it's education for living.</h1>
       </div>
 
       </div>
@@ -40,14 +40,14 @@
         <div class="bg-black/40 absolute inset-0"></div>
 
         <img
-          src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          src="img/gambar3.jpg"
           class="block w-full h-screen"
           alt="Exotic Fruits"
         />
 
         <div
         class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
-        <h1 class='text-3xl text-center font-bold text-white uppercase'>Wherever you go, go with all your heart</h1>
+        <h1 class='text-6xl text-center font-bold text-white uppercase'>Wherever you go, go with all your heart</h1>
       </div>
 
       </div>
@@ -71,7 +71,7 @@
           <circle cx="11" cy="11" r="8" class=""></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65" class=""></line>
         </svg>
-        <input type="name" name="search" class="h-14 w-full rounded-md py-4 pr-40 pl-12 outline-none focus:ring-2" placeholder="City, Address, Zip :" />
+        <input type="name" name="search" class="h-14 w-full rounded-md py-4 pr-40 pl-12 outline-none focus:ring-2" placeholder="City, Destination" />
         <button type="submit" class="absolute right-0 mr-1 inline-flex h-12 items-center justify-center rounded-lg bg-gray-900 px-10 font-medium text-white focus:ring-4 hover:bg-gray-700">Search</button>
       </form>
     </div>

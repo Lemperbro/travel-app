@@ -8,8 +8,8 @@
     @endphp
       
       <a href="/isi/{{ $best->id }}" class="relative inline-block">
-        <h1 class='text-white   font-semibold text-xl absolute w-full text-center bottom-0 left-[50%] translate-x-[-50%]'>{{ $best->nama_wisata }}</h1>
-        <img src='{!! asset('image/'.$img[0]) !!}' class='w-56 rounded-xl border h-full object-cover'/>   
+        <h1 class='text-white font-semibold text-xl absolute w-full text-center bottom-0 left-[50%] translate-x-[-50%]'>{{ $best->nama_wisata }}</h1>
+        <img src='{!! asset('image/'.$img[0]) !!}' class='w-56 rounded-xl border h-full object-cover md:flex'/>   
         </a>
 
 
