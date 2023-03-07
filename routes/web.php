@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminBookingController;
 use App\Models\Kota;
 use App\Models\Wisata;
 use Illuminate\Support\Facades\Route;
@@ -119,6 +120,10 @@ Route::middleware('admin')->group(function(){
     Route::post('/kendaraan/delete/{id}', [AdminKendaraanController::class, 'destroy']);
     Route::post('/kendaraan/edit/{id}', [AdminKendaraanController::class, 'update']);
     Route::post('/kendaraan/add', [AdminKendaraanController::class, 'store']);
+
+
+    //booking
+    Route::get('/admin/booking', [AdminBookingController::class, 'index']);
 
 
 

@@ -51,7 +51,7 @@
    </div>
 
 
-
+   <h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Most Popular</h1>
 @include('partials.most')
 
 @include('partials.latest')

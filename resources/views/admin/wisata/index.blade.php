@@ -34,12 +34,19 @@
             <div class="modal-body relative p-4">
             {{-- isi model --}}
                 <form action="/admin/wisata/">
-                    
+                    <div class="mt-2">
+                        <input id="all" class="form-radio h-5 w-5 text-blue-500 " type="radio" name="pilihDaerah" value="" {{ (request('pilihDaerah') === null)? 'checked' : ''  }}/>
+                        <label for="all" class="inline-flex items-center ml-2 cursor-pointer ">
+                            <span class="text-gray-900">All</span>
+                        </label>
+                    </div>
+
                     @foreach ($kota as $kota)
                     <div class="mt-2">
-                        <input id="{{ $kota->slug }}" class="peer/{{ $kota->slug }} hidden" type="radio" name="pilihDaerah" value="{{ $kota->slug }}"/>
-                        <label for="{{ $kota->slug }}" class="w-full border p-2 rouned-md block peer-checked/{{ $kota->slug }}:bg-sky-500 peer-checked/{{ $kota->slug }}:text-white">{{ $kota->nama_kota }}</label>
-                        
+                        <input id="{{ $kota->slug }}" class="form-radio h-5 w-5 text-blue-500 " type="radio" name="pilihDaerah" value="{{ $kota->slug }}" {{ (request('pilihDaerah') === $kota->slug)? 'checked' : ''  }}/>
+                        <label for="{{ $kota->slug }}" class="inline-flex items-center ml-2 cursor-pointer ">
+                            <span class="text-gray-900">{{ $kota->nama_kota }}</span>
+                        </label>
                     </div>
                     @endforeach
 

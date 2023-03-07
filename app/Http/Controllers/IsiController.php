@@ -57,9 +57,11 @@ class IsiController extends Controller
             // $wisata = Wisata::where('slug', $slug)->first();
             
             // $id = $wisata->id;
+            $wisata = Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get();
         return view('isi', [
 
-            'data' => Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get(),
+            'data' => $wisata,
+            'best' => Wisata::where('kota_id', $wisata->first()->kota_id)->paginate(10),
         ]);
     }
 
