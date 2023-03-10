@@ -128,7 +128,7 @@ Route::middleware('admin')->group(function(){
 
 
 
-
+    Route::get('/guide', [AdminKendaraanController::class, 'index']);
     
     // Route::get('/admin/user', function(){
     //     return view('admin.user');                                                                                                                             
