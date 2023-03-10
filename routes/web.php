@@ -246,5 +246,15 @@ Route::get('/contact', function(){
 Route::get('/baru', function(){
     return view('kendaraan');
 });
+<<<<<<< HEAD
 Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
 
+=======
+
+Route::get('/new', function(){
+    return view('kendaraan');
+});
+
+
+Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
+>>>>>>> 76e0e86a37441bbd6e8688aa6af54fea0aa86a3e
