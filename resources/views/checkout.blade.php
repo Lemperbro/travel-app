@@ -62,9 +62,9 @@
 
             <div class="w-full">
               <label for="kota">Select City for pickup point </label>
-              <select name="kota" id="pickup" class="w-full rounded-md ">
+              <select name="kota" id="pickup" onclick="piickup()" class="w-full rounded-md ">
                 @foreach ($kota as $kota)                  
-                <option value="{{ $kota->slug }}">{{ $kota->nama_kota }}</option>
+                <option value="{{ $kota->slug }},{{ $kota->harga }}">{{ $kota->nama_kota }}</option>
 
                 @endforeach
 
@@ -148,16 +148,16 @@
           <div class="mt-6 border-t border-b py-2 w-full">
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Destination</p>
-              <p class="font-semibold text-gray-900">Rp. {{ $wisata->harga }}<span id="destinationPrice"></span></p>
+              <p class="font-semibold text-gray-900">Rp. <span id="destinationPrice">{{ $wisata->harga }}</span></p>
             </div>
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Pickup</p>
-              <p class="font-semibold text-gray-900">Rp. {{ $kota->harga }}<span id="pickupPrice"></span></p>
+              <p class="font-semibold text-gray-900">Rp. <span id="pickupPrice">{{ $firstpricePickup }}</span></p>
             </div>
 
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Total</p>
-              <p class="font-semibold text-gray-900">Rp. {{ $wisata->harga + $kota->harga }}<span id="total"></span></p>
+              <p class="font-semibold text-gray-900">Rp. <span id="total">{{ $wisata->harga + $firstpricePickup  }}</span></p>
             </div>
 
           </div>

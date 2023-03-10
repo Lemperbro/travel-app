@@ -26,13 +26,6 @@ class AdminWisataController extends Controller
     {
         //
 
-        // $data1 = ["satu", "dua", "tiga"];
-        // $data1i = implode("|", $data1);
-
-        // $data2 = ["100", "200", "150"];
-        // $data2i = implode("|", $data2);
-        // dd($data2i);
-
         $wisata = Wisata::latest();
         $kota = Kota::where('slug', request('pilihDaerah'))->first();
 
@@ -120,21 +113,7 @@ class AdminWisataController extends Controller
             'deskripsi' => $validasi['deskripsi'],
         ]);
 
-        // Jemput::create([
-        //     'wisata_id' => $wisata->id,
-        //     'lokasi' => $validasi['titik_jemput'],
-        //     'harga' => $validasi['harga']
-        // ]);
 
-
-            // $jumlah = count($request->titik_jemput);
-            // for($i = 0 ; $i < $jumlah; $i++){
-            //     Jemput::create([
-            //         'wisata_id' => $wisata->id,
-            //         'lokasi' => $request->titik_jemput[$i],
-            //         'harga' => $request->harga[$i]
-            //     ]);
-            // }
 
             $inclusions = array();
             if($inclusion = $request->inclusion){
@@ -190,32 +169,6 @@ class AdminWisataController extends Controller
             // }
             
 
-
-
-
-
-            // $jumlah_inclusion = count($request->inclusion);
-            // for($i = 0 ; $i < $jumlah; $i++){
-            //     Jemput::create([
-            //         'wisata_id' => $wisata->id,
-            //         'lokasi' => $request->titik_jemput[$i],
-            //         'harga' => $request->harga[$i]
-            //     ]);
-            // }
-
-
-        // foreach($coba as $row){
-        //     foreach($row as $jemput){
-
-        //         dd($coba);
-        //         Jemput::create([
-        //         'wisata_id' => $wisata->id,
-        //         'lokasi' => $jemput['titik_jemput'],
-        //         'harga' => $jemput['harga']
-        //     ]);
-        // }
-            
-        // }
         $request->session()->flash('success', 'Success Upload Data');
 
         return redirect('/admin/wisata');
@@ -371,16 +324,6 @@ class AdminWisataController extends Controller
         ]);
 
 
-
-               
-            // $jumlah = count($request->titik_jemput);
-            // for($i = 0 ; $i < $jumlah; $i++){
-            //     Jemput::where('wisata_id', $id)->updateOrCreate([
-            //         'wisata_id' => $id,
-            //         'lokasi' => $validasi['titik_jemput'][$i],
-            //         'harga' => $validasi['harga'][$i]
-            //     ]);
-            // }
 
             $inclusions = array();
             if($inclusion = $request->inclusion){

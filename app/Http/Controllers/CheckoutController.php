@@ -44,7 +44,8 @@ class CheckoutController extends Controller
         //
         $wisata = Wisata::where('slug', $slug)->first();
         $kota = Kota::where('slug', request('kota'))->first();
-        $count = $wisata->harga + $kota->harga;
+        $kota_pickup = explode(',', $request->kota);
+        $count = $wisata->harga + $kota_pickup[1];
 
         $secret_key = 'Basic '.config('xendit.key_auth');
         $external_id = Str::random(10);
@@ -102,6 +103,7 @@ class CheckoutController extends Controller
             'wisata' => Wisata::where('slug', $slug)->first(),
             'kota' => Kota::get(),
             'drop' => Kota::get(),
+            'firstpricePickup' => Kota::pluck('harga')->first(),
             'slug' => $slug
         ]);
         
