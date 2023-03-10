@@ -227,9 +227,6 @@ Route::get('/isi', function(){
 
 
 
-Route::get('/admin/booking', function(){
-    return view('booking');                                                                                                                             
-});
 
 Route::get('/home', function(){
     return view('home');                                                                                                                             
@@ -249,6 +246,10 @@ Route::get('/contact', function(){
 Route::get('/wel', function(){
     return view('welcome');
 });
+<<<<<<< HEAD
+Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
+
+=======
 
 Route::get('/new', function(){
     return view('kendaraan');
@@ -256,3 +257,4 @@ Route::get('/new', function(){
 
 
 Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
+>>>>>>> 76e0e86a37441bbd6e8688aa6af54fea0aa86a3e
