@@ -51,3 +51,23 @@ pickup.addEventListener('input', function(){
     total.innerHTML = count;
 });
 
+    const togglePassword = document.querySelector('.toggle-password');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        const eye = togglePassword.querySelector('.hidden-password');
+        const slash = togglePassword.querySelector('.visible-password');
+        if (type === 'password') {
+            eye.classList.remove('hidden');
+            slash.classList.add('hidden');
+        } else {
+            eye.classList.add('hidden');
+            slash.classList.remove('hidden');
+        }
+    });
+
+
+

@@ -246,8 +246,8 @@ Route::get('/contact', function(){
     return view('contact');
 });
 
-Route::get('/baru', function(){
-    return view('kendaraan');
+Route::get('/wel', function(){
+    return view('welcome');
 });
 
 Route::get('/new', function(){

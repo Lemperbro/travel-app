@@ -18,7 +18,7 @@
 
 
         <div class="w-full">
-          <h1 class='text-xl font-normal'>Username</h1>
+          <h1 class='text-xl font-normal '>Username</h1>
           <input type="text" placeholder='Andhi Satria' name="username" class='rounded-md w-full border h-12 p-2 mt-2 @error('username')
             peer
           @enderror'  value="{{ old('username') }}"/>
@@ -110,3 +110,6 @@
   </div>
 
   @endsection
+
+
+ 
