@@ -40,13 +40,7 @@
         <h1 class='text-xl font-normal'>Email</h1>
         <input type="email" placeholder='Andhi@gmail.com' name="email" class='rounded-md w-full border h-12 p-2 mt-2' />
         </div>
-<<<<<<< HEAD
-=======
 
-        <div class="w-full mt-8">
-
-          <div class='flex justify-between'>
->>>>>>> 2ff1c2b05b165698e4b176576830483ab746dd72
 
 
 
@@ -55,21 +49,6 @@
         <h1 class='text-xl font-normal'>Password</h1>
         <a href="" class='text-red-600'> forgot Password?</a>
       </div>
-        <div class="relative">
-              <input id="password" type="password" placeholder="password" name="Password" class="rounded-md w-full border h-12 p-2 mt-2">
-              <button type="button" id="show-password" class="absolute top-0 right-0 mt-3 mr-3 focus:outline-none">
-                  <svg class="h-10 w-10 text-gray-500 border object-cover" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M12 4c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm0-10c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3z"></path>
-                      <path fill="currentColor" d="M0 0h24v24H0z" fill-opacity="0"></path>
-                  </svg>
-              </button>
-          </div>
-<<<<<<< HEAD
-      </div>
-
-      
-      
-=======
 
           <div class="relative flex">
             <input type="password" name="password" id="password" class="password w-full h-10 rounded-md mt-2">
@@ -89,7 +68,6 @@
       </div>
 
       
->>>>>>> 2ff1c2b05b165698e4b176576830483ab746dd72
       </div>
 
 

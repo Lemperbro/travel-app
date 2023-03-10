@@ -96,7 +96,6 @@ function ShowPassword() {
       eyeShow.classList.remove('hidden')
 
 
-<<<<<<< HEAD
     const togglePassword = document.querySelector('.toggle-password');
     const password = document.querySelector('#password');
     togglePassword.addEventListener('click', function (e) {
@@ -114,10 +113,3 @@ function ShowPassword() {
             slash.classList.remove('hidden');
         }
     });
-
-
-
-=======
-   }
-}
->>>>>>> 2ff1c2b05b165698e4b176576830483ab746dd72

@@ -1,575 +1,523 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        body{
-  margin: 0;
-  padding: 0;
-  background: #fff;
-}
-
-.box{
-  position: absolute;
-  top: calc(50% - 125px);
-  top: -webkit-calc(50% - 125px);
-  left: calc(50% - 300px);
-  left: -webkit-calc(50% - 300px);
-}
-
-.ticket{
-  width: 600px;
-  height: 250px;
-  background: #FFB300;
-  border-radius: 3px;
-  box-shadow: 0 0 100px #aaa;
-  border-top: 1px solid #E89F3D;
-  border-bottom: 1px solid #E89F3D;
-}
-
-.left{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: absolute;
-  top: 0px;
-  left: -5px;
-}
-
-.left li{
-  width: 0px;
-  height: 0px;
-}
-
-.left li:nth-child(-n+2){
-  margin-top: 8px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #FFB300;
-}
-
-.left li:nth-child(3),
-.left li:nth-child(6){
-  margin-top: 8px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #EEEEEE;
-}
-
-.left li:nth-child(4){
-  margin-top: 8px;
-  margin-left: 2px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #EEEEEE;
-}
-
-.left li:nth-child(5){
-  margin-top: 8px;
-  margin-left: -1px;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent; 
-  border-right: 6px solid #EEEEEE;
-}
-
-.left li:nth-child(7),
-.left li:nth-child(9),
-.left li:nth-child(11),
-.left li:nth-child(12){
-  margin-top: 7px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #E5E5E5;
-}
-
-.left li:nth-child(8){
-  margin-top: 7px;
-  margin-left: 2px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #E5E5E5;
-}
-
-.left li:nth-child(10){
-  margin-top: 7px;
-  margin-left: 1px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #E5E5E5;
-}
-
-.left li:nth-child(13){
-  margin-top: 7px;
-  margin-left: 2px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #FFB300;
-}
-
-.left li:nth-child(14){
-  margin-top: 7px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right: 5px solid #FFB300;
-}
-
-.right{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: absolute;
-  top: 0px;
-  right: -5px;
-}
-
-.right li:nth-child(-n+2){
-  margin-top: 8px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #FFB300;
-}
-
-.right li:nth-child(3),
-.right li:nth-child(4),
-.right li:nth-child(6){
-  margin-top: 8px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #EEEEEE;
-}
-
-.right li:nth-child(5){
-  margin-top: 8px;
-  margin-left: -2px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #EEEEEE;
-}
-
-.right li:nth-child(8),
-.right li:nth-child(9),
-.right li:nth-child(11){
-  margin-top: 7px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #E5E5E5;
-}
-
-.right li:nth-child(7){
-  margin-top: 7px;
-  margin-left: -3px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #E5E5E5;
-}
-
-.right li:nth-child(10){
-  margin-top: 7px;
-  margin-left: -2px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #E5E5E5;
-}
-
-.right li:nth-child(12){
-  margin-top: 7px;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent; 
-  border-left: 6px solid #E5E5E5;
-}
-
-.right li:nth-child(13),
-.right li:nth-child(14){
-  margin-top: 7px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-left: 5px solid #FFB300;
-}
-
-.ticket:after{
-  content: '';
-  position: absolute;
-  right: 200px;
-  top: 0px;
-  width: 2px;
-  height: 250px;
-  box-shadow: inset 0 0 0 #FFB300,
-    inset 0 -10px 0 #B56E0A,
-    inset 0 -20px 0 #FFB300,
-    inset 0 -30px 0 #B56E0A,
-    inset 0 -40px 0 #FFB300,
-    inset 0 -50px 0 #999999,
-    inset 0 -60px 0 #E5E5E5,
-    inset 0 -70px 0 #999999,
-    inset 0 -80px 0 #E5E5E5,
-    inset 0 -90px 0 #999999,
-    inset 0 -100px 0 #E5E5E5,
-    inset 0 -110px 0 #999999,
-    inset 0 -120px 0 #E5E5E5,
-    inset 0 -130px 0 #999999,
-    inset 0 -140px 0 #E5E5E5,
-    inset 0 -150px 0 #B0B0B0,
-    inset 0 -160px 0 #EEEEEE,
-    inset 0 -170px 0 #B0B0B0,
-    inset 0 -180px 0 #EEEEEE,
-    inset 0 -190px 0 #B0B0B0,
-    inset 0 -200px 0 #EEEEEE,
-    inset 0 -210px 0 #B0B0B0,
-    inset 0 -220px 0 #FFB300,
-    inset 0 -230px 0 #B56E0A,
-    inset 0 -240px 0 #FFB300,
-    inset 0 -250px 0 #B56E0A;
-}
-
-.ticket:before{
-  content: '';
-  position: absolute;
-  z-index: 5;
-  right: 199px;
-  top: 0px;
-  width: 1px;
-  height: 250px;
-  box-shadow: inset 0 0 0 #FFB300,
-    inset 0 -10px 0 #F4D483,
-    inset 0 -20px 0 #FFB300,
-    inset 0 -30px 0 #F4D483,
-    inset 0 -40px 0 #FFB300,
-    inset 0 -50px 0 #FFFFFF,
-    inset 0 -60px 0 #E5E5E5,
-    inset 0 -70px 0 #FFFFFF,
-    inset 0 -80px 0 #E5E5E5,
-    inset 0 -90px 0 #FFFFFF,
-    inset 0 -100px 0 #E5E5E5,
-    inset 0 -110px 0 #FFFFFF,
-    inset 0 -120px 0 #E5E5E5,
-    inset 0 -130px 0 #FFFFFF,
-    inset 0 -140px 0 #E5E5E5,
-    inset 0 -150px 0 #FFFFFF,
-    inset 0 -160px 0 #EEEEEE,
-    inset 0 -170px 0 #FFFFFF,
-    inset 0 -180px 0 #EEEEEE,
-    inset 0 -190px 0 #FFFFFF,
-    inset 0 -200px 0 #EEEEEE,
-    inset 0 -210px 0 #FFFFFF,
-    inset 0 -220px 0 #FFB300,
-    inset 0 -230px 0 #F4D483,
-    inset 0 -240px 0 #FFB300,
-    inset 0 -250px 0 #F4D483;
-}
-
-.content{
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  height: 170px;
-  background: #eee;
-}
-
-.airline{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  color: rgba(0,0,102,1);
-}
-
-.boarding{
-  position: absolute;
-  top: 10px;
-  right: 220px;
-  font-family: Arial;
-  font-size: 18px;
-  color: rgba(255,255,255,0.6);
-}
-
-.jfk{
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-family: Arial;
-  font-size: 38px;
-  color: #222;
-}
-
-.sfo{
-  position: absolute;
-  top: 10px;
-  left: 180px;
-  font-family: Arial;
-  font-size: 38px;
-  color: #222;
-}
-
-.plane{
-  position: absolute;
-  left: 105px;
-  top: 0px;
-}
-
-.sub-content{
-  background: #e5e5e5;
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: 70px;
-}
-
-.watermark{
-  position: absolute;
-  left: 5px;
-  top: -10px;
-  font-family: Arial;
-  font-size: 110px;
-  font-weight: bold;
-  color: rgba(255,255,255,0.2);
-}
-
-.name{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: Arial Narrow, Arial;
-  font-weight: bold;
-  font-size: 14px;
-  color: #999;
-}
-
-.name span{
-  color: #555;
-  font-size: 17px;
-}
-
-.flight{
-  position: absolute;
-  top: 10px;
-  left: 180px;
-  font-family: Arial Narrow, Arial;
-  font-weight: bold;
-  font-size: 14px;
-  color: #999;
-}
-
-.flight span{
-  color: #555;
-  font-size: 17px;
-}
-
-.gate{
-  position: absolute;
-  top: 10px;
-  left: 280px;
-  font-family: Arial Narrow, Arial;
-  font-weight: bold;
-  font-size: 14px;
-  color: #999;
-}
-
-.gate span{
-  color: #555;
-  font-size: 17px;
-}
+{{-- @extends('layouts.') --}}
 
 
-.seat{
-  position: absolute;
-  top: 10px;
-  left: 350px;
-  font-family: Arial Narrow, Arial;
-  font-weight: bold;
-  font-size: 14px;
-  color: #999;
-}
-
-.seat span{
-  color: #555;
-  font-size: 17px;
-}
-
-.boardingtime{
-  position: absolute;
-  top: 60px;
-  left: 10px;
-  font-family: Arial Narrow, Arial;
-  font-weight: bold;
-  font-size: 14px;
-  color: #999;
-}
-
-.boardingtime span{
-  color: #555;
-  font-size: 17px;
-}
-
-.barcode{
-  position: absolute;
-  left: 8px;
-  bottom: 6px;
-  height: 30px;
-  width: 90px;
-  background: #222;
-  box-shadow: inset 0 1px 0 #FFB300, inset -2px 0 0 #FFB300,
-    inset -4px 0 0 #222,
-    inset -5px 0 0 #FFB300,
-    inset -6px 0 0 #222,
-    inset -9px 0 0 #FFB300,
-    inset -12px 0 0 #222,
-    inset -13px 0 0 #FFB300,
-    inset -14px 0 0 #222,
-    inset -15px 0 0 #FFB300,
-    inset -16px 0 0 #222,
-    inset -17px 0 0 #FFB300,
-    inset -19px 0 0 #222,
-    inset -20px 0 0 #FFB300,
-    inset -23px 0 0 #222,
-    inset -25px 0 0 #FFB300,
-    inset -26px 0 0 #222,
-    inset -26px 0 0 #FFB300,
-    inset -27px 0 0 #222,
-    inset -30px 0 0 #FFB300,
-    inset -31px 0 0 #222,
-    inset -33px 0 0 #FFB300,
-    inset -35px 0 0 #222,
-    inset -37px 0 0 #FFB300,
-    inset -40px 0 0 #222,
-    inset -43px 0 0 #FFB300,
-    inset -44px 0 0 #222,
-    inset -45px 0 0 #FFB300,
-    inset -46px 0 0 #222,
-    inset -48px 0 0 #FFB300,
-    inset -49px 0 0 #222,
-    inset -50px 0 0 #FFB300,
-    inset -52px 0 0 #222,
-    inset -54px 0 0 #FFB300,
-    inset -55px 0 0 #222,
-    inset -57px 0 0 #FFB300,
-    inset -59px 0 0 #222,
-    inset -61px 0 0 #FFB300,
-    inset -64px 0 0 #222,
-    inset -66px 0 0 #FFB300,
-    inset -67px 0 0 #222,
-    inset -68px 0 0 #FFB300,
-    inset -69px 0 0 #222,
-    inset -71px 0 0 #FFB300,
-    inset -72px 0 0 #222,
-    inset -73px 0 0 #FFB300,
-    inset -75px 0 0 #222,
-    inset -77px 0 0 #FFB300,
-    inset -80px 0 0 #222,
-    inset -82px 0 0 #FFB300,
-    inset -83px 0 0 #222,
-    inset -84px 0 0 #FFB300,
-    inset -86px 0 0 #222,
-    inset -88px 0 0 #FFB300,
-    inset -89px 0 0 #222,
-    inset -90px 0 0 #FFB300;
-}
-
-.slip{
-  left: 455px;
-}
-
-.nameslip{
-  top: 60px;
-  left: 410px;
-}
-
-.flightslip{
-  left: 410px;
-}
-
-.seatslip{
-  left: 540px;
-}
-
-.jfkslip{
-  font-size: 30px;
-  top: 20px;
-  left: 410px;
-}
-
-.sfoslip{
-  font-size: 30px;
-  top: 20px;
-  left: 530px;
-}
-
-.planeslip{
-  top: 10px;
-  left: 475px;
-}
-
-.airlineslip{
-  left: 455px;
-}
-    </style>
-</head>
-<body>
-    <div class="box">
-        <ul class="left">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        
-        <ul class="right">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <div class="ticket">
-          <span class="airline">Lufthansa</span>
-          <span class="airline airlineslip">Lufthansa</span>
-          <span class="boarding">Boarding pass</span>
-          <div class="content">
-            <span class="jfk">JFK</span>
-            <span class="plane"><?xml version="1.0" ?><svg clip-rule="evenodd" fill-rule="evenodd" height="60" width="60" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><g stroke="#222"><line fill="none" stroke-linecap="round" stroke-width="30" x1="300" x2="55" y1="390" y2="390"/><path d="M98 325c-9 10 10 16 25 6l311-156c24-17 35-25 42-50 2-15-46-11-78-7-15 1-34 10-42 16l-56 35 1-1-169-31c-14-3-24-5-37-1-10 5-18 10-27 18l122 72c4 3 5 7 1 9l-44 27-75-15c-10-2-18-4-28 0-8 4-14 9-20 15l74 63z" fill="#222" stroke-linejoin="round" stroke-width="10"/></g></svg></span>
-            <span class="sfo">SFO</span>
-            
-            <span class="jfk jfkslip">JFK</span>
-            <span class="plane planeslip"><?xml version="1.0" ?><svg clip-rule="evenodd" fill-rule="evenodd" height="50" width="50" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><g stroke="#222"><line fill="none" stroke-linecap="round" stroke-width="30" x1="300" x2="55" y1="390" y2="390"/><path d="M98 325c-9 10 10 16 25 6l311-156c24-17 35-25 42-50 2-15-46-11-78-7-15 1-34 10-42 16l-56 35 1-1-169-31c-14-3-24-5-37-1-10 5-18 10-27 18l122 72c4 3 5 7 1 9l-44 27-75-15c-10-2-18-4-28 0-8 4-14 9-20 15l74 63z" fill="#222" stroke-linejoin="round" stroke-width="10"/></g></svg></span>
-            <span class="sfo sfoslip">SFO</span>
-            <div class="sub-content">
-              <span class="watermark">Lufthansa</span>
-              <span class="name">PASSENGER NAME<br><span>Rex, Anonasaurus</span></span>
-              <span class="flight">FLIGHT N&deg;<br><span>X3-65C3</span></span>
-              <span class="gate">GATE<br><span>11B</span></span>
-              <span class="seat">SEAT<br><span>45A</span></span>
-              <span class="boardingtime">BOARDING TIME<br><span>8:25PM ON AUGUST 2013</span></span>
-                  
-               <span class="flight flightslip">FLIGHT N&deg;<br><span>X3-65C3</span></span>
-                <span class="seat seatslip">SEAT<br><span>45A</span></span>
-               <span class="name nameslip">PASSENGER NAME<br><span>Rex, Anonasaurus</span></span>
-            </div>
-          </div>
-          <div class="barcode"></div>
-          <div class="barcode slip"></div>
-        </div>
+<style>
+  /* 
+  Import the desired font from Google fonts. 
+  */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+  
+  /* 
+  Define all colors used in this template 
+  */
+  :root{
+    --font-color: black;
+    --highlight-color: #60D0E4;
+    --header-bg-color: #B8E6F1;
+    --footer-bg-color: #BFC0C3;
+    --table-row-separator-color: #BFC0C3;
+  }
+  
+  @page{
+    /*
+    This CSS highlights how page sizes, margins, and margin boxes are set.
+    https://docraptor.com/documentation/article/1067959-size-dimensions-orientation
+  
+    Within the page margin boxes content from running elements is used instead of a 
+    standard content string. The name which is passed in the element() function can
+    be found in the CSS code below in a position property and is defined there by 
+    the running() function.
+    */
+    size:A4;
+    margin:8cm 0 3cm 0;
+  
+    @top-left{
+      content:element(header);
+    }
+  
+    @bottom-left{
+      content:element(footer);
+    }
+  }
+  
+  /* 
+  The body itself has no margin but a padding top & bottom 1cm and left & right 2cm.
+  Additionally the default font family, size and color for the document is defined
+  here.
+  */
+  body{
+    margin:0;
+    padding:1cm 2cm;
+    color:var(--font-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size:10pt;
+  }
+  
+  /*
+  The links in the document should not be highlighted by an different color and underline
+  instead we use the color value inherit to get the current texts color.
+  */
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
+  
+  /*
+  For the dividers in the document we use an HR element with a margin top and bottom 
+  of 1cm, no height and only a border top of one millimeter.
+  */
+  hr{
+    margin:1cm 0;
+    height:0;
+    border:0;
+    border-top:1mm solid var(--highlight-color);
+  }
+  
+  /*
+  The page header in our document uses the HTML HEADER element, we define a height 
+  of 8cm matching the margin top of the page (see @page rule) and a padding left
+  and right of 2cm. We did not give the page itself a margin of 2cm to ensure that
+  the background color goes to the edges of the document.
+  
+  As mentioned above in the comment for the @page the position property with the 
+  value running(header) makes this HTML element float into the top left page margin
+  box. This page margin box repeats on every page in case we would have a multi-page
+  estimate.
+  */
+  header{
+    height:8cm;
+    padding:0 2cm;
+    position:running(header);
+    background-color:var(--header-bg-color);
+  }
+  
+  /*
+  For the different sections in the header we use some flexbox and keep space between
+  with the justify-content property.
+  */
+  header .headerSection{
+    display:flex;
+    justify-content:space-between;
+  }
+  
+  /*
+  To move the first sections a little down and have more space between the top of 
+  the document and the logo/company name we give the section a padding top of 5mm.
+  */
+  header .headerSection:first-child{
+    padding-top:.5cm;
+  }
+  
+  /*
+  Similar we keep some space at the bottom of the header with the padding-bottom
+  property.
+  */
+  header .headerSection:last-child{
+    padding-bottom:.5cm;
+  }
+  
+  /*
+  Within the header sections we have defined two DIV elements, and the last one in
+  each headerSection element should only take 35% of the headers width.
+  */
+  header .headerSection div:last-child{
+    width:35%;
+  }
+  
+  /*
+  For the logo, where we use an SVG image and the company text we also use flexbox
+  to align them correctly.
+  */
+  header .logoAndName{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  
+  /*
+  The SVG gets set to a fixed size and get 5mm margin right to keep some distance
+  to the company name.
+  */
+  header .logoAndName svg{
+    width:1.5cm;
+    height:1.5cm;
+    margin-right:.5cm;
+  }
+  
+  /*
+  To ensure the top right section "ESTIMATE" starts on the same level as the Logo &
+  Name we set a padding top of 1cm for this element.
+  */
+  header .headerSection .estimateDetails{
+    padding-top:1cm;
+  }
+  
+  /*
+  In the second row of header sections, we find the "ISSUED TO" area where we also
+  make use of flexbox to achive the desired layout.
+  */
+  header .headerSection .issuedTo{
+    display:flex;
+    justify-content:space-between;
+  }
+  
+  /*
+  The H3 element "ISSUED TO" gets another 25mm margin to the right to keep some 
+  space between this header and the client's address.
+  Additionally this header text gets the hightlight color as font color.
+  */
+  header .headerSection .issuedTo h3{
+    margin:0 .75cm 0 0;
+    color:var(--highlight-color);
+  }
+  
+  /*
+  The paragraphs within the header sections DIV elements get a small 2px margin top
+  to ensure its in line with the "ISSUED TO" header text.
+  */
+  header .headerSection div p{
+    margin-top:2px;
+  }
+  
+  /*
+  All header elements and paragraphs within the HTML HEADER tag get a margin of 0.
+  */
+  header h1,
+  header h2,
+  header h3,
+  header p{
+    margin:0;
+  }
+  
+  /*
+  Heading of level 2 and 3 ("ESTIMATE" and "ISSUED TO") need to be written in 
+  uppercase, so we use the text-transform property for that.
+  */
+  header h2,
+  header h3{
+    text-transform:uppercase;
+  }
+  
+  /*
+  The divider in the HEADER element gets a slightly different margin than the 
+  standard dividers.
+  */
+  header hr{
+    margin:1cm 0 .5cm 0;
+  }
+  
+  /*
+  Our main content is all within the HTML MAIN element. In this template this are
+  two tables. The one which lists all items and the table which shows us the 
+  subtotal, tax and total amount.
+  
+  Both tables get the full width and collapse the border.
+  */
+  main table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  
+  /*
+  We put the first tables headers in a THEAD element, this way they repeat on the
+  next page if our table overflows to multiple pages.
+  
+  The text color gets set to the highlight color.
+  */
+  main table thead th{
+    height:1cm;
+    /* color:var(--highlight-color); */
+  }
+  
+  /*
+  For the last three columns we set a fixed width of 2.5cm, so if we would change
+  the documents size only the first column with the item name and description grows.
+  */
+  main table thead th:nth-of-type(2),
+  main table thead th:nth-of-type(3),
+  main table thead th:last-of-type{
+    width:2.5cm;
+  }
+  
+  /*
+  The items itself are all with the TBODY element, each cell gets a padding top
+  and bottom of 2mm and a border bottom of .5mm as a row separator.
+  */
+  main table tbody td{
+    padding:2mm 0;
+    border-bottom:0.5mm solid var(--table-row-separator-color);
+  }
+  
+  /*
+  The cells in the last column (in this template the column containing the total)
+  get a text align right so the text is at the end of the table.
+  */
+  main table thead th:last-of-type,
+  main table tbody td:last-of-type{
+    text-align:right;
+  }
+  
+  /*
+  By default text within TH elements is aligned in the center, we do not want that
+  so we overwrite it with an left alignment.
+  */
+  main table th{
+    text-align:left;
+  }
+  
+  /*
+  The summary table, so the table containing the subtotal, tax and total amount 
+  gets a width of 40% + 2cm. The plus 2cm is added because our body has a 2cm padding
+  but we want our highlight color for the total row to go to the edge of the document.
+  
+  To move the table to the right side we simply set a margin-left of 60%.
+  */
+  main table.summary{
+    width:calc(40% + 2cm);
+    margin-left:60%;
+    margin-top:.5cm;
+  }
+  
+  /*
+  The row containing the total amount gets its background color set to the highlight 
+  color and the font weight to bold.
+  */
+  main table.summary tr.total{
+    font-weight:bold;
+    background-color:var(--highlight-color);
+  }
+  
+  /*
+  The TH elements of the summary table are not on top but the cells on the left side
+  these get a padding left of 1cm to give the highlight color some space.
+  */
+  main table.summary th{
+    padding:4mm 0 4mm 1cm;
+    border-bottom:0;
+  }
+  
+  /*
+  As only the highlight background color should go to the edge of the document
+  but the text should still have the 2cm distance, we set the padding right to 
+  2cm.
+  */
+  main table.summary td{
+    padding:4mm 2cm 4mm 0;
+    border-bottom:0;
+  }
+  
+  /*
+  The content below the tables is placed in a ASIDE element next to the MAIN element.
+  To ensure this element is always at the bottom of the page, just above the page 
+  footer, we use the Prince custom property "-prince-float" with the value bottom.
+  
+  See Page Floats on https://www.princexml.com/howcome/2021/guides/float/.
+  */
+  aside{
+    -prince-float: bottom;
+    padding:0 2cm .5cm 2cm;
+  }
+  
+  /*
+  The content itself is shown in 2 columns.
+  */
+  aside p{
+    margin:0;
+    column-count:2;
+  }
+  
+  /*
+  The page footer in our document uses the HTML FOOTER element, we define a height 
+  of 3cm matching the margin bottom of the page (see @page rule) and a padding left
+  and right of 2cm. We did not give the page itself a margin of 2cm to ensure that
+  the background color goes to the edges of the document.
+  
+  As mentioned above in the comment for the @page the position property with the 
+  value running(footer) makes this HTML element float into the bottom left page margin
+  box. This page margin box repeats on every page in case we would have a multi-page
+  estimate.
+  
+  The content inside the footer is aligned with the help of line-height 3cm and a 
+  flexbox for the child elements.
+  */
+  footer{
+    height:3cm;
+    line-height:3cm;
+    padding:0 2cm;
+    position:running(footer);
+    background-color:var(--footer-bg-color);
+    font-size:8pt;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  
+  /*
+  The first link in the footer, which points to the company website is highlighted 
+  in bold.
+  */
+  footer a:first-child{
+    font-weight:bold;
+  }
+  
+  </style>
+  <!-- The header element will appear on the top of each page of this estimate document. -->
+  <header>
+    <div class="headerSection">
+      <!-- As a logo we take an SVG element and add the name in an standard H1 element behind it. -->
+      <div class="logoAndName">
+        <img src="img/logo.png" alt="">
       </div>
-</body>
-</html>
+      <!-- Details about the estimation are on the right top side of each page. -->
+      <div>
+        <h2>Estimate</h2>
+        <p>
+          <b>Date Issued</b> 05/10/2021
+        </p>
+        <p>
+          <b>Project No.</b> 01
+        </p>
+      </div>
+    </div>
+    <!-- The two header rows are divided by an blue line, we use the HR element for this. -->
+    <hr />
+    <div class="headerSection">
+      <!-- The clients details come on the left side below the logo and company name. -->
+      <div class="issuedTo">
+        <h3>Issued to</h3>
+        <p>
+          <b>Client Name</b>
+          <br />
+          Andrew johson
+          <br />
+          Lamongan
+          <br />
+          <a href="mailto:clientname@clientwebsite.com">
+            andrewjohson@gmail.com
+          </a>
+          <br />
+          08088811
+        </p>
+      </div>
+      <!-- Additional notes can be placed below the estimation details. -->
+      <div>
+        <p>
+          <b>Notes</b>
+          <br />
+          option
+        </p>
+      </div>
+    </div>
+  </header>
+  
+  <!-- The footer contains the company's website and address. To align the address details we will use flexbox in the CSS style. -->
+  <footer>
+      <a href="https://companywebsite.com">
+        companywebsite.com
+      </a>
+      <a href="mailto:company@website.com">
+        company@website.com
+      </a>
+      <span>
+        317.123.8765
+      </span>
+      <span>
+        123 Alphabet Road, Suite 01, Indianapolis, IN 46260
+      </span>
+  </footer>
+  
+  <!-- In the main section the table for the separate items is added. Also we add another table for the summary, so subtotal, tax and total amount. -->
+  <main>
+    <table>
+      <!-- A THEAD element is used to ensure the header of the table is repeated if it consumes more than one page. -->
+      <thead>
+        <tr>
+          <th>Item Description</th>
+          <th>Rate</th>
+          <th>Amount</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <!-- The single estimate items are all within the TBODY of the table. -->
+      <tbody>
+        <tr>
+          <td>
+            <b>Item Names Goes Here</b>
+            <br />
+            Description goes here
+          </td>
+          <td>
+            $100
+          </td>
+          <td>
+            4
+          </td>
+          <td>
+            $400.00
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Lorem Ipsum</b>
+            <br />
+            Description goes here
+          </td>
+          <td>
+            $250
+          </td>
+          <td>
+            2
+          </td>
+          <td>
+            $500.00
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Dolor Set Amit Caslum</b>
+            <br />
+            Description goes here
+          </td>
+          <td>
+            $300
+          </td>
+          <td>
+            1
+          </td>
+          <td>
+            $300.00
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- The summary table contains the subtotal, tax and total amount. -->
+    <table class="summary">
+      <tr>
+        <th>
+          Subtotal
+        </th>
+        <td>
+          $1200.00
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Tax 4.7%
+        </th>
+        <td>
+          $000.00
+        </td>
+      </tr>
+      <tr class="total">
+        <th>
+          Total
+        </th>
+        <td>
+          $12,000.00
+        </td>
+      </tr>
+    </table>
+  </main>
+  <!-- Within the aside tag we will put the terms and conditions which shall be shown below the estimate table. -->
+  
+  
