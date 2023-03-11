@@ -192,6 +192,43 @@
 
 @endforeach
 
+<section>
+    <h1 class="text-4xl text-center font-semibold mt-8">What About Customer Says</h1>
+    <div class="flex mt-8">
+      <div class="max-w-xl">
+        <div
+          class="block rounded-lg bg-white- p-6 shadow-best4 dark:bg-neutral-800 dark:shadow-black/20">
+          <div class="md:flex md:flex-row">
+            <div
+              class="mx-auto mb-6 flex w-36 items-center justify-center md:mx-0 md:w-96 lg:mb-0">
+              <img
+                src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20%2810%29.jpg"
+                class="rounded-full shadow-md dark:shadow-black/30"
+                alt="woman avatar" />
+            </div>
+            <div class="md:ml-6">
+              <p
+                class="mb-6 font-light text-neutral-500 dark:text-neutral-300">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id
+                quam sapiente molestiae numquam quas, voluptates omnis nulla
+                ea odio quia similique corrupti magnam.
+              </p>
+              <p
+                class="mb-2 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
+                Anna Smith
+              </p>
+              <p
+                class="mb-0 font-semibold text-neutral-500 dark:text-neutral-400">
+                Product manager
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 <div class="pt-20">
 <h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Destination On {{ $wisata->kota->nama_kota }}</h1>
 @include('partials.most')

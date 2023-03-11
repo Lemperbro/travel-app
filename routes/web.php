@@ -231,3 +231,9 @@ Route::get('/new', function(){
 });
 
 
+Route::get('/reviews', function(){
+    return view('getTesti', [
+        'doc_no' => 'sasas'
+    ]);
+});
+
