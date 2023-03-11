@@ -1,37 +1,39 @@
-@extends('admin.layouts.main')
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-@section('container')
-
-<div>
-  @include('admin.partials.sidebar')
-    
- <!-- component -->
-<!-- This is an example component -->
-<form method="post" action="/admin/wisata/add" enctype="multipart/form-data" class="mx-auto mt-10 w-full container" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="" class="container mx-auto max-w-screen-lg mt-32" 
     x-data="{
         slide : 1,
         ActiveSlide : 1 ,
         total : $refs.Content.children.length,
         previous(){
             if(this.slide > 1)
-                this.slide--
+                this.slide--,
+                this.ActiveSlide--
         },
         next(){
             if(this.slide < this.total)
-                this.slide++
+                this.slide++,
+                this.ActiveSlide--
 
                 
                 
         }
     }">
-	@csrf
-        <div x-ref="Content" class="bg-white border rounded-lg p-10 h-[85vh] overflow-auto">
+        <div x-ref="Content" class="bg-white border rounded-lg p-4">
 
             <!-- slide 1 start -->
             <div x-show="slide == 1" >
                 <!-- step-1 -->
-                <div class="flex justify-between mb-10">
+                <div class="flex justify-between">
                     <h1 x-text="`Step : ${slide} of ${total}`"></h1>
                     <h1 class="font-semibold">Upload Wisata</h1>
                 </div>
@@ -140,7 +142,7 @@
             <!-- slide 2 start -->
             <div x-show="slide == 2" >
                 <!-- step 2 -->
-                <div class="flex justify-between mb-10">
+                <div class="flex justify-between">
                     <h1 x-text="`Step : ${slide} of ${total}`"></h1>
                     <h1 class="font-semibold">Upload Wisata</h1>
                 </div>
@@ -187,7 +189,7 @@
             <!-- slide 3 start -->
             <div x-show="slide == 3" >
                 <!-- step 3 -->
-                <div class="flex justify-between mb-10">
+                <div class="flex justify-between">
                     <h1 x-text="`Step : ${slide} of ${total}`"></h1>
                     <h1 class="font-semibold">Upload Wisata</h1>
                 </div>
@@ -235,13 +237,10 @@
         </div>
 
         <div class="text-center my-2 flex gap-x-2 mx-auto justify-center ">
-            <h1 @click="previous" class="bg-gray-300 rounded p-2 cursor-pointer" :class="{'bg-purple-300' : slide > 1}">Previous</h1>
-            <h1 @click="next" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide === total}">Next</h1>
+            <h1 @click="previous" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'bg-purple-100' : slide == 1}">Previous</h1>
+            <h1 @click="next" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide == total}">Next</h1>
             <button class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide < total}">Kirim</button>
         </div>
     </form>
-
-
-    
-</div>
-@endsection
+</body>
+</html>
