@@ -69,8 +69,8 @@
                 <img src='/icons/hotel.png' class='object-contain w-10 mx-12'/>
             </div>
             <div>
-                <p class="font-bold text-xl">Room Type</p>
-                <p class="font-semibold uppercase">({{ $wisata->long_tour }})</p>
+                <p class="font-bold text-xl">Long Tour</p>
+                <p class="font-semibold uppercase">{{ $wisata->long_tour }} Days</p>
             </div>
         </div>
 

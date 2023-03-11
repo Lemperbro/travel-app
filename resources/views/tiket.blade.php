@@ -1,6 +1,6 @@
 @extends('layouts.two')
 <div class="flex flex-col items-center justify-center min-h-screen bg-center bg-cover">
-	<div class="max-w-md w-full h-full mx-auto z-10 bg-blue-900 rounded-3xl">
+	<div class="max-w-md w-full h-full mx-auto z-10 bg-orange-500 rounded-3xl">
 		<div class="flex flex-col">
 			<div class="bg-white relative drop-shadow-2xl  rounded-3xl p-4 m-4">
 				<div class="flex-none sm:flex">
@@ -39,8 +39,8 @@
 								</div>
 							</div>
 							<div class="border-b border-dashed border-b-2 my-5 pt-5">
-								<div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -left-2"></div>
-								<div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -right-2"></div>
+								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -left-2"></div>
+								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -right-2"></div>
 							</div>
 							<div class="flex items-center mb-4 px-5">
 								<div class="flex flex-col text-sm">
@@ -62,8 +62,8 @@
 								</div>
 							</div>
 							<div class="border-b border-dashed border-b-2 my-5 pt-5">
-								<div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -left-2"></div>
-								<div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -right-2"></div>
+								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -left-2"></div>
+								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -right-2"></div>
 							</div>
 							<div class="flex items-center px-5 pt-3 text-sm">
 								<div class="flex flex-col">
