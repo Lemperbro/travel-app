@@ -118,10 +118,19 @@ class WisataController extends Controller
     public function showDestination(Request $request, $slug){
         $kota = Kota::where('slug', $slug)->first();
 
-        return view('destination',[
-            'kota' =>  $kota,
-            'wisata' => Wisata::where('kota_id', $kota->id)->get()
-        ]);
+
+        if($kota === null){
+            return redirect('/');
+
+        }else{
+            return view('destination',[
+                'kota' =>  $kota,
+                'wisata' => Wisata::where('kota_id', $kota->id)->get()
+            ]);
+
+        }
+
+
     }
 
 

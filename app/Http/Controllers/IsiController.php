@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testi;
 use App\Models\Wisata;
+use App\Models\Fasilitas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Fasilitas;
 use Illuminate\Support\Facades\Redirect;
 
 class IsiController extends Controller
@@ -60,15 +61,17 @@ class IsiController extends Controller
             // $id = $wisata->id;
             $wisata = Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get();
 
+            $comment = Testi::with('user')->where('wisata_id', $slug)->get();
 
             if($wisata->count() > 0){
-                
+
                 $best = Wisata::where('kota_id', $wisata->first()->kota_id)->paginate(10);
 
                 return view('isi', [
 
                     'data' => $wisata,
                     'best' => $best,
+                    'comment' => $comment
                 ]);
             }else{
                 return Redirect('/');

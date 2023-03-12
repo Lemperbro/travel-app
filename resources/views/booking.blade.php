@@ -77,8 +77,9 @@
                 
                 <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none">Look Ticket</a>
 
+                @if($tagihan->comment === 0)
                 <a href="/comment/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none">Comment</a>
-
+                @endif
 
 
               </div>

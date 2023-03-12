@@ -7,6 +7,7 @@ use App\Models\Review;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -109,12 +110,27 @@ class DashboardController extends Controller
 
     public function review(Request $request){
 
-        Review::create([
-            'user_id' => Auth()->user()->id,
-            'description' => $request->description
+        $testi = Review::where('user_id', Auth()->user()->id)->first();
+        $validasi = $request->validate([
+            'description' => 'required'
         ]);
 
-        return redirect('/testimoni');
+        if($testi === null){
+
+            Review::create([
+                'user_id' => Auth()->user()->id,
+                'description' => $request->description
+            ]);
+    
+            return redirect('/testimoni');
+        }else{
+
+            return redirect('/');
+            
+
+
+        }
+
     }
 
     public function testi_store(){

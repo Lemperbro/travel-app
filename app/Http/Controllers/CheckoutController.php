@@ -207,10 +207,10 @@ class CheckoutController extends Controller
 
     public function testi($doc_no){
         $pemesanan = Pemesanan::where('doc_no', $doc_no)->first();
-        $check = Testi::where('doc_no', $doc_no)->first();
-        
-        
-        if($check){
+
+
+
+        if($pemesanan->comment === 1){
             return redirect('/booking');
         }else{
             if($pemesanan){
@@ -220,7 +220,10 @@ class CheckoutController extends Controller
             }else{
                 return redirect('/booking');
             }
+    
         }
+
+
 
 
         
@@ -236,9 +239,13 @@ class CheckoutController extends Controller
         if($pemesanan){
             Testi::create([
                 'user_id' => $pemesanan->user->id,
-                'wisata_id' => $pemesanan->wisata->id,
+                'wisata_id' => $pemesanan->wisata->slug,
                 'doc_no' => $doc_no,
                 'deskripsi' => $validasi['testi'],
+            ]);
+
+            Pemesanan::where('doc_no', $doc_no)->update([
+                'comment' => true,
             ]);
 
 

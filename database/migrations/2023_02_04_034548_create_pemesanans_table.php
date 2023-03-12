@@ -27,6 +27,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('payment_status');
             $table->string('payment_link');
+            $table->string('expired');
+            $table->boolean('comment')->default(false);
             $table->timestamps();
         });
     }
