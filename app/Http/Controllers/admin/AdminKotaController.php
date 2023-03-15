@@ -26,7 +26,7 @@ class AdminKotaController extends Controller
         // }
         
         return view('admin.kota.index',[
-            'data' => Kota::with('wisata')->get(),
+            'data' => Kota::with('wisata')->paginate(8),
             'tittle' => 'Kelola Kota'
             // 'best' => Kota::with('wisata')->join('wisatas', 'wisatas.kota_id', '=', 'kotas.id')->orderBy('wisatas.diboking', 'DESC')->get(),
             // 'best' => Wisata::where('kota_id')->orderBy('diboking', 'DESC')->limit(1)->get()

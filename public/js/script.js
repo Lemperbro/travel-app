@@ -17,7 +17,7 @@ pickup.addEventListener('input', function() {
 
 
     if(pickupsplit[0] !== dropout.value){
-       hasil.innerHTML = '<div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-800 dark:text-yellow-300" role="alert"><span class="font-medium">Warning!</span> Your Drop Point Location is out Off Range, You Will Be </div>' 
+       hasil.innerHTML = '<div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-800 dark:text-yellow-300" role="alert"><span class="font-medium">Warning!</span> Your Drop Point Location is out Off Range, You Will Be get extra cost </div>' 
     }else if(pickupsplit[0] === dropout.value){
        hasil.innerHTML = ""
 
@@ -44,7 +44,7 @@ dropout.addEventListener('input', function() {
 
 
     if(pickupsplit[0] !== dropout.value){
-       hasil.innerHTML = '<div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-800 dark:text-yellow-300" role="alert"><span class="font-medium">Warning!</span> Your Drop Point Location is out Off Range, You Will Be </div>'
+       hasil.innerHTML = '<div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-100 dark:bg-gray-800 dark:text-yellow-300" role="alert"><span class="font-medium">Warning!</span> Your Drop Point Location is out Off Range, You Will Be get extra cost</div>'
     }else if(pickupsplit[0] === dropout.value){
        hasil.innerHTML = ""
 
@@ -95,6 +95,6 @@ function ShowPassword() {
       eyeHidden.classList.add('hidden')
       eyeShow.classList.remove('hidden')
 
+   }
 
    }
-}

@@ -73,6 +73,8 @@
             @endforeach
 
          </div>
+      {{ $data->links('vendor.pagination.tailwind') }}
+
 
       
    </div>

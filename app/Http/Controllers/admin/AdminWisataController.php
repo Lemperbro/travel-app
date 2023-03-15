@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Faq;
 use App\Models\Kota;
 use App\Models\Jemput;
 use App\Models\Wisata;
@@ -35,7 +36,7 @@ class AdminWisataController extends Controller
 
         return view('admin.wisata.index',[
             'tittle' => 'Kelola Wisata',
-            'data' => $wisata->paginate(12),
+            'data' => $wisata->paginate(8),
             'kota' => Kota::get()
             
         ]);
@@ -352,7 +353,7 @@ class AdminWisataController extends Controller
 
             if ($jumlah_agenda > $itenerary_count){
                 for($i = 0 ; $i < $jumlah_agenda; $i++){
-                    Itenerary::where('wisata_id', $id)->where('id', $request->id_itenerary[$i])->updateOrCreate([
+                    Itenerary::where('wisata_id', $id)->updateOrCreate([
                         'wisata_id' => $id,
                         'agenda' => $request->agenda[$i],
                         'deskripsi' => $request->itenerary[$i]
@@ -455,6 +456,16 @@ class AdminWisataController extends Controller
         return redirect('/admin/wisata');
     }
 
+
+    public function destroy_itenerary($id){
+        Itenerary::where('id', $id)->delete();
+
+        return response()->json([
+            'success' => true
+        ]);
+
+
+    }
     public function delete(Request $request){
             $id = $request->id;
             
@@ -463,5 +474,73 @@ class AdminWisataController extends Controller
 
             return response()->json(['status'=>'200']);
 
+    }
+
+
+
+    public function faq($slug){
+        $faq = Faq::where('wisata', $slug)->get();
+
+
+        return view('admin.wisata.faq', [
+            'tittle' => 'Kelola Wisata',
+            'slug' => $slug,
+            'faq' => $faq
+        ]);
+    }
+
+    public function addFaq(Request $request, $slug){
+        $faq = Faq::where('wisata', $slug)->get();
+
+        if($request->question < 1 && $request->answer < 1){
+            return redirect('/admin/wisata');
+        }else if($request->question > 0 && $request->answer > 0){
+
+            $hitung_request = count($request->question);
+            
+
+            if($hitung_request > $faq->count()){
+                for($i = 0 ; $i < $hitung_request; $i++){
+
+
+                Faq::where('wisata', $slug)->updateOrCreate([
+                    'wisata' => $slug,
+                    'question' => $request->question[$i],
+                    'answer' => $request->answer[$i],
+                ]);
+
+                }
+                    
+            }else if($hitung_request <= $faq->count()){
+                for($i = 0 ; $i < $hitung_request; $i++){
+
+
+                    Faq::where('wisata', $slug)->where('id', $request->id[$i])->update([
+                        'wisata' => $slug,
+                        'question' => $request->question[$i],
+                        'answer' => $request->answer[$i],
+                    ]);
+
+
+
+                    }
+                    
+
+                    
+            }
+
+        }
+
+
+        return redirect('/admin/wisata/faq/'.$slug);
+    }
+
+    public function deleteFaq($id){
+        Faq::where('id', $id)->delete();
+
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }

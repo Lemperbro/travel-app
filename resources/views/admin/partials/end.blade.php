@@ -22,7 +22,59 @@
 
 
 
+// $(".remove_faq").on("click", function(){
+//         var id = $(this).data("id");
+//         $.ajax({ 
+//           url: ",
+//           data: {"id": id,"_token": "{{ csrf_token() }}"},
+//           type: 'post',
+//           success: function(result){
+//               location.reload();
+//           }
+//         });
+      
+//   });
 
+
+  $(document).on('click', '.remove_faq', function() {
+        var id = $(this).data('id');
+        var token = "{{ csrf_token() }}";
+        
+        $.ajax({
+            url: '/admin/wisata/faq/delete/' + id,
+            type: 'DELETE',
+            data: {
+                _token: token
+            },
+            success: function(response) {
+                // Berikan respon sukses pada pengguna
+            },
+            error: function(xhr) {
+                // Berikan respon error pada pengguna
+            }
+        });
+    });
+
+
+    $(document).on('click', '.remove_itenerary', function() {
+        var id = $(this).data('id');
+        var token = "{{ csrf_token() }}";
+        
+        $.ajax({
+            url: '/admin/wisata/delete/itenerary/' + id,
+            type: 'DELETE',
+            data: {
+                _token: token
+            },
+            success: function(response) {
+                // Berikan respon sukses pada pengguna
+            },
+            error: function(xhr) {
+                // Berikan respon error pada pengguna
+            }
+        });
+    });
+  
 
 
   var strings = [];

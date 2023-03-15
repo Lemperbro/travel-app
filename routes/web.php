@@ -103,7 +103,18 @@ Route::middleware('admin')->group(function(){
     Route::post('/admin/wisata/edit/{id}', [AdminWisataController::class, 'update']);
 
     Route::post('/admin/wisata/delete/{id}', [AdminWisataController::class, 'destroy']);
+
+    Route::delete('/admin/wisata/delete/itenerary/{id}', [AdminWisataController::class, 'destroy_itenerary']);
+
     Route::post('/admin/wisata/jemput/add/{id}', [AdminWisataController::class, 'addJemput']);
+
+
+    Route::get('/admin/wisata/faq/{slug}', [AdminWisataController::class, 'faq']);
+    Route::post('/admin/wisata/faq/{slug}', [AdminWisataController::class, 'addFaq']);
+
+    Route::delete('/admin/wisata/faq/delete/{id}', [AdminWisataController::class, 'deleteFaq']);
+
+
 
 
 
@@ -142,7 +153,6 @@ Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
 Route::get('/booking', [CheckoutController::class, 'booking']);
 Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
-Route::get('/comment/{doc_no}', [CheckoutController::class, 'testi']);
 Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);
  
 
@@ -229,5 +239,8 @@ Route::get('/wel', function(){
 Route::get('/new', function(){
     return view('kendaraan');
 });
+
+
+
 
 

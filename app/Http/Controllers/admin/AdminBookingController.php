@@ -31,7 +31,7 @@ class AdminBookingController extends Controller
 
     return view('admin.booking.booking', [
         'tittle' => 'booking',
-        'data' => $data->get()
+        'data' => $data->paginate(10)
 
     ]);
 

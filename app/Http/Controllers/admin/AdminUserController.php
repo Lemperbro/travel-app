@@ -24,7 +24,7 @@ class AdminUserController extends Controller
             $user->where('posisi', 0)->where('username', 'like', '%' .request('search') . '%');
         }
         return view('admin.user.index', [
-           'data' => $user->paginate(5),
+           'data' => $user->paginate(10),
            'tittle' => 'User'
 
         ]);

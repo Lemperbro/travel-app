@@ -205,29 +205,6 @@ class CheckoutController extends Controller
     }
 
 
-    public function testi($doc_no){
-        $pemesanan = Pemesanan::where('doc_no', $doc_no)->first();
-
-
-
-        if($pemesanan->comment === 1){
-            return redirect('/booking');
-        }else{
-            if($pemesanan){
-                return view('getTesti',[
-                    'doc_no' => $doc_no,
-                ]);
-            }else{
-                return redirect('/booking');
-            }
-    
-        }
-
-
-
-
-        
-    }
 
     public function Sendtesti(Request $request,$doc_no){
         $pemesanan = Pemesanan::with('wisata', 'user')->where('doc_no', $doc_no)->first();

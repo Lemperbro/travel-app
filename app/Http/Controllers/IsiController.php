@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use App\Models\Testi;
 use App\Models\Wisata;
 use App\Models\Fasilitas;
@@ -61,8 +62,8 @@ class IsiController extends Controller
             // $id = $wisata->id;
             $wisata = Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get();
 
-            $comment = Testi::with('user')->where('wisata_id', $slug)->get();
-
+            $faq = Faq::where('wisata', $slug)->get();
+            $comment = Testi::with('user')->where('wisata_id', $slug)->paginate(6);
             if($wisata->count() > 0){
 
                 $best = Wisata::where('kota_id', $wisata->first()->kota_id)->paginate(10);
@@ -71,7 +72,8 @@ class IsiController extends Controller
 
                     'data' => $wisata,
                     'best' => $best,
-                    'comment' => $comment
+                    'comment' => $comment,
+                    'faq' => $faq
                 ]);
             }else{
                 return Redirect('/');

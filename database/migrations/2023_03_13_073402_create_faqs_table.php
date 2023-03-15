@@ -13,20 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->text('description');
+            $table->text('wisata');
+            $table->text('question');
+            $table->text('answer');
             $table->timestamps();
         });
     }
-
-
-    // $table->id();
-    // $table->text('wisata');
-    // $table->text('question');
-    // $table->text('answer');
-    // $table->timestamps();
 
     /**
      * Reverse the migrations.
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('faqs');
     }
 };

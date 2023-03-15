@@ -69,8 +69,8 @@
                 <img src='/icons/hotel.png' class='object-contain w-10 mx-12'/>
             </div>
             <div>
-                <p class="font-bold text-xl">Room Type</p>
-                <p class="font-semibold uppercase">({{ $wisata->long_tour }})</p>
+                <p class="font-bold text-xl">Long Tour</p>
+                <p class="font-semibold uppercase">{{ $wisata->long_tour }} Days</p>
             </div>
         </div>
 
@@ -103,94 +103,88 @@
 
     
     <div class="mt-8">
-        <h1 class="text-center font-bold text-2xl">We can tell you everything about Mount Bromo</h1>
+        <h1 class="text-center font-bold text-2xl">We can tell you everything about {{ $wisata->nama_wisata }}</h1>
     </div>
 
+    @if ($faq->count() > 0)
+        
     <div class='mt-1 border bg-[#FD522C]'>
         <h1 class="text-center font-semibold text-white text-2xl">
-            About Mount Bromo
+            About {{ $wisata->nama_wisata }}
         </h1>
     </div>
 
+    @foreach ($faq as $faq)
+        
+
+
     <div class="mt-4">
-        <details class="text-justify text-sm font-semibold">
+        <details class="text-justify text-sm font-semibold cursor-pointer">
             <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
-               where is mount bromo located and how does the landscape look like ?
+               {{ $faq->question }}
             </summary>
            <p class="p-2">
-            Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
+            {{ $faq->answer }}
             </p> 
         </details>
     </div>
 
-    <div>
-        <details class="text-justify text-sm font-semibold">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
-               what is the best time to visit mount bromo? can i visit during the festivals ?
-            </summary>
-            <p class="p-2">
-                Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
-            </p>
-        </details>
-    </div>
+    @endforeach
 
-    <div>
-        <details class="text-justify text-sm font-semibold border">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2">
-                how difficult is the trek?
-            </summary>
-            <p class="p-2">
-                Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
-            </p>
-            
-        </details>
-    </div>
+    @endif
 
-    <div>
-        <details class="text-justify text-sm font-semibold">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
-                can i camp at mount bromo?
-            </summary>
-            Mount Bromo is located within the massive Tengger Caldera in Bromo-Tengger-Semeru National Park in East Java. The nearest major city serving international flights will be Surabaya, which is about 4-5 hrs drive away. There are 5 volcanoes within the Caldera; Mount Bromo (2,329 m), Mount Batok (2,470 m), Mount Kursi (2,581 m), Mount Watangan (2,661 m), and Mount Widodaren (2,650 m).
-        </details>
-    </div>
 
-    <div class='my-4 border bg-[#FD522C]'>
-        <h1 class="text-center font-semibold text-white text-2xl">
-            About Tour Packages
-        </h1>
-    </div>
 
-    <div class="mt-1">
-        <details class="text-justify text-sm font-semibold">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-1 border">
-                what kind of acommodations do we provide?
-            </summary>
-            We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.
-        </details>
-    </div>
 
-    <div class="">
-        <details class="text-justify text-sm font-semibold">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
-                how much is the horse ride at mount bromo?
-            </summary>
-            We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.
-        </details>
-    </div>
 
-    <div class="">
-        <details class="text-justify text-sm font-semibold">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
-                how much many do i need during the trip?
-            </summary>
-            We will provide three classes of accommodations for customers to choose – budget, standard and luxury. These options with prices will be provided upon trip enquiry. It is also possible for customers to book their own accommodations. We would recommend at least the standard (Hotel stay) and above if possible and budget allows. Also, the higher end accomodation will adopt safe practices for COVID19.
-        </details>
-    </div>
+
+
+
 
 
 
 @endforeach
+@if ($comment->count() > 0)
+    
+
+<div>
+    <h1 class="text-4xl text-center font-semibold mt-8 mb-10">What About Customer Says</h1>
+
+  <!-- component -->
+<div class="grid grid-cols-3 gap-4 relative top-1/3">
+
+
+
+@foreach ($comment as $comments)
+    
+    <!-- This is an example component -->
+    <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+        <div class="relative flex gap-4">
+            <img src="{{ asset('ft_user/'.$comments->user->image) }}" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+            <div class="flex flex-col w-full">
+                <div class="flex flex-row justify-between">
+                    <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{{ $comments->user->username }}</p>
+                    <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+                </div>
+                <p class="text-gray-400 text-sm">{{ \Carbon\Carbon::parse($comments->created_at)->format('d F Y , h:i A') }}</p>
+            </div>
+        </div>
+        <p class="-mt-4 text-gray-500 line-clamp-10">{{ $comments->deskripsi }}</p>
+    </div>
+@endforeach
+    
+
+    
+    
+    </div>
+    {{ $comment->links('vendor.pagination.tailwind') }}
+
+
+</div>
+
+@endif
+
+
 
 <div class="pt-20">
 <h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Destination On {{ $wisata->kota->nama_kota }}</h1>

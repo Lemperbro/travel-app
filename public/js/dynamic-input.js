@@ -29,22 +29,35 @@ $(document).ready(function() {
             $(this).parents("#area_exclusion").remove();
         });
 
-  var day = 1;
+  var day = 0;
 
   $(document).ready(function() {
     $("#add_day").click(function() {
         day += 1;
-        $("#day").append('<h3>Day '+day+'</h3><div id="itenerary"><input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2"><textarea id="default-editor" class="default-editor message w-full h-20 relative" name="itenerary[]" style=""></textarea></div>');
+        $("#day").append('<div id="itenerary"><h3>Day '+day+'</h3><input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2"><textarea id="default-editor" class="default-editor message w-full h-20 relative" name="itenerary[]" style=""></textarea><h1 id="remove_itenerary" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4 cursor-pointer remove_itenerary" data-id="{{ $itenerary->id }}">-</h1></div>');
     });
   });
+
+
+
+
+
+  $("body").on("click", "#remove_itenerary", function () {
+    $(this).parents("#itenerary").remove();
+});
+
 
 
 
   $(document).ready(function() {
-    $("#add_itenerary").click(function() {
-        $("#itenerary").append('<div class="mt-4 border rounded-md p-8 shadow-best" > <input type="text" name="exclusion[]" id="inclusion" class="w-full h-12 rounded-md p-2 border mt-4 mb-2"></div>');
+    $("#add_faq").click(function() {
+        $("#faq").append('<div class="mb-14 mt-14" id="faq_area"><div class="flex gap-x-4"><label for="" class="my-auto font-semibold text-xl">Q</label><input name="question[]" type="text" class="w-full p-2 rounded-md"></div><div class="flex gap-x-4 mt-2"><label for="" class="my-auto font-semibold text-xl">A</label><input name="answer[]" type="text" class="w-full p-2 rounded-md"></div><h1 id="remove_faq" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4 cursor-pointer remove_faq" data-id="{{ $data_faq->id }}">-</h1></div>');
     });
   });
+
+  $("body").on("click", "#remove_faq", function () {
+            $(this).parents("#faq_area").remove();
+        });
 
 //   var increment = 0;
 

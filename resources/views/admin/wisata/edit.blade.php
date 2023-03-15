@@ -219,18 +219,21 @@
                 </div>
 
 
-                <@php
+                @php
                 $number = 0;
                 @endphp
                 
-                <div class="mb-5" >
+                <div class="mb-5">
                         <h1 class="font-semibold text-lg">Itenerary</h1>
                         <div class="mb-1" id="day">
+                            @foreach ($data->itenerary as $itenerary)
+
                                 <div id="itenerary">
                                     @php
                                         $no = 0;
                                     @endphp
-                                @foreach ($data->itenerary as $itenerary)
+
+
                                     @php
                                         $no++;
                                     @endphp
@@ -241,14 +244,17 @@
                                         
                                     </textarea>
                                     <textarea type="text" id="banner-message" class="message w-full h-20 relative" name="itenerary[]">{{ $itenerary->deskripsi }}</textarea>
+
+                                    <h1 id="remove_itenerary" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4 cursor-pointer remove_itenerary" data-id="{{ $itenerary->id }}">-</h1>
                 
-                                    @endforeach
                                 
                                         
                         </div>
+                        @endforeach
+
                 
                         </div>
-                    <h1 id="add_day_update" class="bg-blue-600 p-2 text-lg font-semibold text-white rounded-md inline-block justify-center cursor-pointer">Add Day</h1>
+                    <h1 id="add_day" class="bg-blue-600 p-2 text-lg font-semibold text-white rounded-md inline-block justify-center cursor-pointer mt-10">Add Day</h1>
                     
                     </div>
                 

@@ -5,7 +5,7 @@
         <!-- Client Table -->
         <div class="p-8 rounded-lg">
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto bg-gray-50">
+            <div class="w-full overflow-x-auto bg-gray-50 p-2">
 
 
             <form class="w-[80%] mx-auto my-5" action="/admin/booking">   
@@ -34,38 +34,38 @@
                   </tr>
                 </thead>
 
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 ">
                   @php
                     $no = 1;
                   @endphp
-                  @foreach ($data as $data)
+                  @foreach ($data as $datas)
                     
                   <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                     <td class="px-4 py-3 text-sm">{{ $no++ }}</td>
 
-                    <td class="px-4 py-3 text-sm">{{ $data->doc_no }}</td>
+                    <td class="px-4 py-3 text-sm">{{ $datas->doc_no }}</td>
 
                     <td class="px-4 py-3">
                       <div class="flex items-center text-sm">
                         <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                          <img class="object-cover w-full h-full rounded-full" src="{{ asset('ft_user/'.$data->user->image) }}" alt="" loading="lazy" />
+                          <img class="object-cover w-full h-full rounded-full" src="{{ asset('ft_user/'.$datas->user->image) }}" alt="" loading="lazy" />
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold">{{ $data->user->username }}</p>
+                          <p class="font-semibold">{{ $datas->user->username }}</p>
                         </div>
                       </div>
                     </td>
 
-                    <td class="px-4 py-3 text-sm">Rp. {{ $data->amount }}</td>
+                    <td class="px-4 py-3 text-sm">Rp. {{ $datas->amount }}</td>
 
-                    <td class="px-4 py-3 text-sm">{{ $data->wisata->nama_wisata }}</td>
+                    <td class="px-4 py-3 text-sm">{{ $datas->wisata->nama_wisata }}</td>
 
-                    <td class="px-4 py-3 text-sm">{{ $data->wisata->tour_type }}</td>
-                    <td class="px-4 py-3 text-sm">{{ \Carbon\Carbon::parse($data->created_at)->format('d-F-y') }}</td>
+                    <td class="px-4 py-3 text-sm">{{ $datas->wisata->tour_type }}</td>
+                    <td class="px-4 py-3 text-sm">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-y') }}</td>
 
                     <td class="px-4 py-3 text-xs">
-                      <span class="px-2 py-1 font-semibold leading-tight rounded-full {{ ($data->payment_status === 'PENDING') ? 'text-yellow-700 bg-yellow-100' : ''}}  {{ ($data->payment_status === 'PAID') ? 'text-green-700 bg-green-100' : ''}}">{{ $data->payment_status }}</span>
+                      <span class="px-2 py-1 font-semibold leading-tight rounded-full {{ ($datas->payment_status === 'PENDING') ? 'text-yellow-700 bg-yellow-100' : ''}}  {{ ($datas->payment_status === 'PAID') ? 'text-green-700 bg-green-100' : ''}}">{{ $datas->payment_status }}</span>
                     </td>
 
                   </tr>
@@ -80,6 +80,8 @@
               @if ($data->count() === 0)
                 <h1 class="text-center text-2xl p-4">kosong</h1>
               @endif
+
+              {{ $data->links('vendor.pagination.tailwind') }}
             </div>
 
 
