@@ -1,4 +1,4 @@
-<footer class="mt-56">
+<footer class="mt-32">
     <div class='bg-[#FF2E00] h-44 relative pt-16'>
         <div class='absolute -top-8 left-[50%] transform -translate-x-[50%] flex justify-between bg-[#FD522C] px-8 py-4 rounded-xl w-[80%] shadow-best'>
         <h1 class='text-white text-2xl font-semibold my-auto w-[30%]'>Review & Sugestion</h1>
@@ -12,21 +12,19 @@
 <div class="container">
     <div class='flex mt-4 border-black justify-between'>
      <img src='{{ asset('img/logoputih.png') }}' class='h-20'/> 
-     <div class='flex gap-x-4 w-[40%]'>
+     <div class='flex gap-x-4 w-[40%]  justify-end'>
+
 
      <div class='grid grid-rows-2'> 
-     <a class='text-white font-semibold text-2xl inline-block'>Partnership</a>
      <a  class='text-white font-semibold text-2xl inline-block'>Contact Us</a>
-     </div>
-     <div class='grid grid-rows-2'> 
-     <a href="testimoni" class='text-white font-semibold text-2xl inline-block'>Testimoni</a>
      <a href='about' class='text-white font-semibold text-2xl inline-block'>About Us</a>
      </div>
-     <div class='grid grid-rows-2'> 
-     <a class='text-white font-semibold text-2xl inline-block'>FAQ</a>
-     <a href="../blog" class='text-white font-semibold text-2xl inline-block'>Blog</a>
-     </div>
 
+     <div class='grid grid-rows-2'> 
+     <a href="testimoni" class='text-white font-semibold text-2xl inline-block'>Testimoni</a>
+     <a href="blog" class='text-white font-semibold text-2xl inline-block'>Blog</a>
+ 
+     </div>
      </div>
     </div>
 </div>

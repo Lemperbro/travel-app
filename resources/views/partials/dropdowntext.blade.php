@@ -1,4 +1,4 @@
-<div class="grid grid-cols-3 justify-between gap-6">
+<div class="grid grid-cols-4 justify-between gap-6">
   @php
     $no = 1;
   @endphp

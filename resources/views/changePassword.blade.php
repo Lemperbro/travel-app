@@ -72,15 +72,17 @@
             <div>
                 <label for="password">New Password</label>
                 <input type="password" name="password" class="w-full h-10 rounded-md mt-2">
+
+                
             </div>
             <div>
-                <label for="password_confirmation">Konfimation Password</label>
+                <label for="password_confirmation">Confirmation Password</label>
                 <input type="password" name="password_confirmation" class="w-full h-10 rounded-md mt-2" >
             </div>
 
         </div>
 
-        <button type="submit" class="bg-orange-600 text-white p-2 rounded-md mt-8">Simpan</button>
+        <button type="submit" class="bg-orange-600 text-white p-2 rounded-md mt-8">Save</button>
 
       </form>
       

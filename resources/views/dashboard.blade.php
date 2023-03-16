@@ -70,17 +70,10 @@
   </p>
   <div class='mt-6'>
 
-  <iframe class="text-center mx-auto"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.9521455537024!2d112.60469731418937!3d-7.900068680794963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7881c2c4637501%3A0x10433eaf1fb2fb4c!2sHummasoft%20Technology!5e0!3m2!1sid!2sid!4v1674017713271!5m2!1sid!2sid"
-  width="1024",
-  height="512",
-  style='border: 0',
-  allowFullScreen=" true",
-  aria-hidden="false",
-  tabIndex="0"></iframe>
+<div class="mapouter container mb-0"><div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=hummasoft&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2yu.co">2yu</a><br><style>.mapouter{position:relative;text-align:right;height:100%;width:100%;}</style><a href="https://embedgooglemap.2yu.co/">html embed google map</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:80%;width:100%;}</style></div></div>
 
 
-   <h1 class='text-center mt-6 text-3xl font-bold '>
+   <h1 class='text-center text-3xl font-bold '>
     Follow Us
   </h1>
   <div class='flex mt-6 justify-center grid-cols-4 gap-8 pb-16'>
