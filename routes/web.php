@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
+use App\Http\Controllers\ResetPasswordController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -178,6 +179,13 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/forgot-password',[ResetPasswordController::class, 'index'])->name('password.request');
+Route::post('/forgot-password', [ResetPasswordController::class, 'store'])->name('password.email');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'update_password'])->name('password.update');
+
 
 
 
