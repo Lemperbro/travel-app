@@ -118,7 +118,7 @@
         
 
 
-    <div class="mt-4">
+    <div class="mt-1">
         <details class="text-justify text-sm font-semibold cursor-pointer">
             <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
                {{ $faq->question }}
