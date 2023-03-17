@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     <script>document.documentElement.classList.add('js')</script>
     <link rel=”icon” href='{{ asset('gambar/2.png') }}'>
-    <title>Ini dari head</title>
+    <title>Grow In Travel</title>
 </head>
 
 
