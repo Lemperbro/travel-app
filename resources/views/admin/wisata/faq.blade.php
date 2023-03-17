@@ -2,7 +2,9 @@
 
 @section('container')
 
-<div class="mt-20 bg-white p-10 rounded-md shadow-md ">
+<div class="mt-20 bg-white p-10 rounded-md shadow-md">
+
+    
   
 
    <form action="/admin/wisata/faq/{{ $slug }}" method="post" class="">
@@ -10,7 +12,7 @@
 
 
 <div class="mb-32">
-<div class="" id="faq">
+<div class="w-[50%] grid-cols-2" id="faq">
 
 @if ($faq->count() > 0)
     
@@ -30,7 +32,7 @@
         <input name="answer[]" type="text" class="w-full p-2 rounded-md" value="{{ $data_faq->answer }}">
     </div>
     
-    <h1 id="remove_faq" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4 cursor-pointer remove_faq" data-id="{{ $data_faq->id }}">-</h1>
+    <h1 id="remove_faq" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4  cursor-pointer remove_faq" data-id="{{ $data_faq->id }}">-</h1>
 
 </div>
 
@@ -66,11 +68,11 @@
 
 
 
-<h1 id="add_faq" class="bg-blue-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-xl float-right mt-4 cursor-pointer">+</h1>
+<h1 id="add_faq" class="bg-blue-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-xl float-left cursor-pointer">+</h1>
 </div>
 
 
-<button type="submit" class="bg-orange-600 p-2 text-white rounded-md">Send</button>
+<button type="submit" class="bg-orange-600 p-2 text-white rounded-md justify-center">Send</button>
 
    </form>
  
