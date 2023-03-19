@@ -12,14 +12,14 @@
 
 
 <div class="mb-32">
-<div class="w-[50%] grid-cols-2" id="faq">
+<div class="" id="faq">
 
 @if ($faq->count() > 0)
     
     @foreach ($faq as $data_faq)
     <input name="id[]" type="hidden" class="w-full p-2 rounded-md" value="{{ $data_faq->id }}">
 
-    <div class="mb-14" id="faq_area">
+    <div class="mb-14 " id="faq_area">
 
     <div class="flex gap-x-4">
         <label for="" class="my-auto font-semibold text-xl">Q</label>

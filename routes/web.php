@@ -202,6 +202,7 @@ Route::middleware('guest', 'auth' , 'admin')->group(function(){
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata' , [WisataController::class, 'index']);
+Route::get('/wisata/perfect' , [WisataController::class, 'perfect']);
 Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
 Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
 Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);

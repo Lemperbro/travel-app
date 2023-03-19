@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 
 class WisataController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +29,28 @@ class WisataController extends Controller
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%')
             ->orWhere('long_tour', 'like', '%' . request('search') . '%')
             ->orWhere('tour_type', 'like', '%'. request('search'). '%');
+            
+
         }
 
         return view('wisata', [
             'data' => $wisata->paginate(9)
+        ]);
+    }
+
+
+    public function perfect()
+    {
+        //
+        $wisata = Wisata::latest();
+        if(request('perfect_place')){
+            $wisata->orderBy('diboking', 'DESC');
+            
+
+        }
+
+        return view('wisata', [
+            'data' => $wisata->paginate(25)
         ]);
     }
 

@@ -15,11 +15,11 @@
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Place</h1>
       <p class='font-medium mt-6 text-lg '>a list of the top best 25 tourist places to see</p>
       <p class='font-medium '>in indonesia for a perfect holiday or a trip</p>
-      <div class='mt-3'>
-        <button class='border shadow-md px-3   py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
+      <form action="/wisata/perfect" class='mt-3'>
+        <button type="submit" name="perfect_place" class='border shadow-md px-3   py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
           View More
         </button>
-      </div>
+      </form>
     </div>
     <div class='w-[50%] mt-4'>
     @include('partials.swiper')
