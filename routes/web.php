@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
+use App\Http\Controllers\ResetPasswordController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -180,6 +181,13 @@ Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 
+Route::get('/forgot-password',[ResetPasswordController::class, 'index'])->name('password.request');
+Route::post('/forgot-password', [ResetPasswordController::class, 'store'])->name('password.email');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'update_password'])->name('password.update');
+
+
+
 
 
 
@@ -194,6 +202,7 @@ Route::middleware('guest', 'auth' , 'admin')->group(function(){
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/wisata' , [WisataController::class, 'index']);
+Route::get('/wisata/perfect' , [WisataController::class, 'perfect']);
 Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
 Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
 Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);

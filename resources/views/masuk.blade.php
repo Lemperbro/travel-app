@@ -47,7 +47,7 @@
       <div class="w-full mt-8 ">
         <div class="flex justify-between">
         <h1 class='text-xl font-normal'>Password</h1>
-        <a href="" class='text-red-600'> forgot Password?</a>
+        <a href="{{ route('password.request') }}" class='text-red-600'> forgot Password?</a>
       </div>
 
           <div class="relative flex">
