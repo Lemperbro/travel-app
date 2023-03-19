@@ -27,9 +27,8 @@
         <form class='ml-32'>
           <img src='/img/logo.png' class='mx-auto w-40'/>
           <h1 class='font-semibold text-4xl text-center'>Contact Us</h1>
-          <input class='w-full h-10 bg-white rounded-xl mt-4 '/>
-          <input class='w-full h-10 bg-white rounded-xl mt-4 '/>
-          <textarea class='bg-white h-44 w-full mt-4'></textarea>
+          <input class='w-full h-10 bg-white rounded-xl mt-4 p-2 ' placeholder="Subject"/>
+          <textarea class='bg-white h-44 w-full mt-4' placeholder="Type Your Suggetsion"></textarea>
           <a class='flex mx-auto border shadow-md text-center m-5 w-32 px-9 py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
               Submit
           </a>
