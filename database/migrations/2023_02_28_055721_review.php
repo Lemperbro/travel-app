@@ -22,11 +22,7 @@ return new class extends Migration
     }
 
 
-    // $table->id();
-    // $table->text('wisata');
-    // $table->text('question');
-    // $table->text('answer');
-    // $table->timestamps();
+
 
     /**
      * Reverse the migrations.
