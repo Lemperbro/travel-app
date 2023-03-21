@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\AdminBookingController;
 use App\Models\Kota;
 use App\Models\Wisata;
 use Illuminate\Support\Facades\Route;
@@ -8,17 +7,19 @@ use App\Http\Controllers\IsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\admin\AdminKotaController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
+use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
-use App\Http\Controllers\ResetPasswordController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -70,9 +71,7 @@ Route::get('/step', function () {
     return view('step');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+
 
 
 Route::get('/ticket', function () {
@@ -157,7 +156,11 @@ Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
 Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);
  
 
-
+//contact
+Route::get('/contact', [ContactController::class, 'index']);
+// Route::post('/contacts', [ContactController::class, 'Email']);
+Route::post('/contacts', [ContactController::class, 'sendEmail']);
+Route::get('/contacts', [ContactController::class, 'sendEmail']);
 
 
 //profile
