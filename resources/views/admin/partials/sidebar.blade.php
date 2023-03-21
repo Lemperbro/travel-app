@@ -100,8 +100,8 @@
                    </li>
 
                    <li  class="mt-0.5 w-full">
-                     <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/admin/booking">
-                       <div class="shadow-best mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                     <a class="{{ ($tittle === 'booking') ? 'bg-white shadow-best5' : '' }} p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg" href="/admin/booking">
+                       <div class="{{ ($tittle === 'booking')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'booking')? 'bg-white shadow-best' : '' }} shadow-best mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                            <!-- SVG Booking -->
                            <svg height="12px" width="12px" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -153,7 +153,7 @@
 
 
                    <li  class="mt-0.5 w-full">
-                     <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ ($tittle === 'Kelola Kendaraan') ? 'bg-white shadow-best5' : '' }} rounded-lg" href="/Kelola kendaraan">
+                     <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ ($tittle === 'Kelola Kendaraan') ? 'bg-white shadow-best5' : '' }} rounded-lg" href="/kendaraan">
                        <div class="{{ ($tittle === 'Kelola Kendaraan')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'Kelola Kendaraan')? 'bg-white shadow-best' : '' }} mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
                            <!-- SVG Kelola Kendaraan -->
                            <svg height="12px" width="12px" fill="#000000" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -175,8 +175,8 @@
 
                   
           <li  class="mt-0.5 w-full">
-            <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/guide">
-              <div class="shadow-best mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
+            <a class="{{ ($tittle === 'Guide') ? 'bg-white shadow-best5' : '' }} p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/guide">
+              <div class="{{ ($tittle === 'Guide')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'Guide')? 'bg-white shadow-best' : '' }} shadow-best mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
                
                   <!-- SVG Guide -->
                   <svg height="12px" width="12px" viewBox="0 -2 24 24" id="meteor-icon-kit__regular-guide" fill="none" xmlns="http://www.w3.org/2000/svg">

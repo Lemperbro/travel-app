@@ -2,23 +2,7 @@
 
 @section('container')
 
-    {{-- <div>  
-      <div class='bg-[#D9D9D9] w-[45%] px-8 relative m-20 p-10 transform translate-x-[70%]'>
 
-
-
-        <form class='ml-32' action="/contacts">
-          <img src='/img/logo.png' class='mx-auto w-40'/>
-          <h1 class='font-semibold text-4xl text-center'>Contact Us</h1>
-          <input class='w-full h-10 bg-white rounded-xl mt-4 ' name="email"/>
-          <input class='w-full h-10 bg-white rounded-xl mt-4 '/>
-          <textarea class='bg-white h-44 w-full mt-4'></textarea>
-          <button type="submit" class='flex mx-auto border shadow-md text-center m-5 w-32 px-9 py-1 rounded-xl bg-[#FF2E00] text-white font-semibold '>
-              Submit
-          </button>
-        </form>
-      </div>    
-    </div> --}}
 
 
 
