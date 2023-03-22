@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'sendinblue' => [
+        'url' => env('SENDINBLUE_API_URL'),
+        'key' => env('SENDINBLUE_API_KEY'),
+    ],
+    
+
 ];
