@@ -27,19 +27,19 @@
                           No
                         </th>
                         <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Nama
+                          Name
                         </th>
                         <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
                           Email
                         </th>
                         <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          No Telephone
+                          Phone Number
                         </th>
                         <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Alamat
+                          Address
                         </th>
                         <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Aksi
+                          Action
                         </th>
                       </tr>
                     </thead>

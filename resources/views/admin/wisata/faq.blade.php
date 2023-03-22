@@ -14,6 +14,10 @@
 <div class="mb-32">
 <div class="" id="faq">
 
+    <div class="mb-8">
+    <h1 class="text-2xl font-semibold flex justify-center">Type Frequently Asked Questions </h1>
+    </div>
+
 @if ($faq->count() > 0)
     
     @foreach ($faq as $data_faq)
@@ -68,7 +72,7 @@
 
 
 
-<h1 id="add_faq" class="bg-blue-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-xl float-left cursor-pointer">+</h1>
+<h1 id="add_faq" class="bg-blue-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-xl float-right mt-8 cursor-pointer">Tambah</h1>
 </div>
 
 

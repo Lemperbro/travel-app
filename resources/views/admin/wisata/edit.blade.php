@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="nama" class="font-bold mb-1 text-gray-700 block">Nama Wisata</label>
+                    <label for="nama" class="font-bold mb-1 text-gray-700 block">Tour Name</label>
                     <input type="text" name="nama"
                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                         value="{{ $data->nama_wisata }}">
@@ -73,7 +73,7 @@
                 <div class="grid grid-cols-2 gap-4">
 
                  <div class="">
-                     <label for="harga" class="font-bold mb-1 text-gray-700 block">Harga</label>
+                     <label for="harga" class="font-bold mb-1 text-gray-700 block">Price</label>
                      <input type="number" name="harga"
                          class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                          value="{{ $data->harga }}">
@@ -118,7 +118,7 @@
          <div class="grid grid-cols-2 gap-4">
 
              <div class="mb-5">
-                 <label for="kota" class="font-bold mb-1 text-gray-700 block">Kota</label>
+                 <label for="kota" class="font-bold mb-1 text-gray-700 block">City</label>
                  <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
                      @foreach ($kota as $kota)
                      <option value="{{ $kota->id }}" {{ ($data->kota->id === $kota->id) ? 'selected' : '' }}>{{ $kota->nama_kota }}</option>
@@ -149,7 +149,7 @@
 
 
   <div class="mt-10">
-    <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Deskripsi</label>
+    <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Description</label>
     <textarea type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">{{ $data->deskripsi }}</textarea>
 </div>
 
@@ -164,7 +164,7 @@
                 <!-- step 2 -->
                 <div class="flex justify-between mb-10">
                     <h1 x-text="`Step : ${slide} of ${total}`"></h1>
-                    <h1 class="font-semibold">Upload Wisata</h1>
+                    <h1 class="font-semibold">Upload Tour</h1>
                 </div>
 
 
@@ -215,7 +215,7 @@
                 <!-- step 3 -->
                 <div class="flex justify-between mb-10">
                     <h1 x-text="`Step : ${slide} of ${total}`"></h1>
-                    <h1 class="font-semibold">Upload Wisata</h1>
+                    <h1 class="font-semibold">Upload Tour</h1>
                 </div>
 
 
@@ -283,7 +283,7 @@
         <div class="text-center my-2 flex gap-x-2 mx-auto justify-center ">
             <h1 @click="previous" class="bg-gray-300 rounded p-2 cursor-pointer" :class="{'bg-purple-300' : slide > 1}">Previous</h1>
             <h1 @click="next" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide === total}">Next</h1>
-            <button type="submit" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide < total}">Kirim</button>
+            <button type="submit" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide < total}">Send</button>
         </div>
     </form>
 @endforeach

@@ -77,7 +77,7 @@
     Follow Us
   </h1>
   <div class='flex mt-6 justify-center grid-cols-4 gap-8 pb-16'>
-  <img src='/icons/ig.png' class='object-contain w-12'/>
+  <a href=""><img src='/icons/ig.png' class='object-contain w-12 cursor-pointer'/></a> 
   <img src='/icons/fb.png' class='object-contain w-12'/>
   <img src='/icons/wa.png' class='object-contain w-12'/>
   <img src='/icons/gmail.png' class='object-contain w-12'/>

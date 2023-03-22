@@ -129,7 +129,7 @@
           <div class="mt-4">
              <h1 class="font-semibold font-mono text-center text-xl">{{ $wisata->nama_wisata }}</h1>
 
-            <h1 class="font-semibold text-center mt-2">DI Booking</h1>
+            <h1 class="font-semibold text-center mt-2">Private Trip</h1>
             <h4 class="text-center">{{ $wisata->diboking }}</h4>
             {{-- @foreach ($wisata->equipment as $equip)
                 @php
