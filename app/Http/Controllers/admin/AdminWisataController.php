@@ -69,7 +69,7 @@ class AdminWisataController extends Controller
         // $jajal2 = str_replace('>', '',$request->itenerary);
         // $jajal = preg_split('/\n|\r\n?/',$jajal2);
         // dd($jajal);
-
+        
 
         $validasi = $request->validate([
             'image' => 'required|max:2048',

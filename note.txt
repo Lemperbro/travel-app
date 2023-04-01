@@ -1,0 +1,9 @@
+isi dashboard admin {
+    - jumlah user
+    - jumlah kota
+    - jumlah wisata
+    - grafik yang melaporkan pemesanan perbulan
+    - latest booking
+    - wisata terlaris
+    - latest post
+}

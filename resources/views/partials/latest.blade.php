@@ -2,6 +2,7 @@
 <div class="mt-4 mb-4">
 <h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Latest Post</h1>
 
+@include('partials.filter')
       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
 
         @foreach ($latest->take(6) as $latest_post)
