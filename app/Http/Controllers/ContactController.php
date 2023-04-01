@@ -29,12 +29,19 @@ class ContactController extends Controller
                 'pesan' => $request->message
             );
 
-            Mail::send('email.index', $data, function($message) use ($data){
+            $send = Mail::send('email.index', $data, function($message) use ($data){
                 $message->from($data['email'], 'To Grow In Travel Indonesia');
 
                 $message->to('sihdobleh@gmail.com')->subject($data['subject']);
             });
 
+            if($send){
             return redirect()->back()->with('success', 'successfully sent');
+
+            }else{
+            return redirect()->back()->with('error', 'failed to send');
+            }
+
+
     }
 }

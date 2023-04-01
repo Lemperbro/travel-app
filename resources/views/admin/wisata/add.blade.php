@@ -59,7 +59,7 @@
 
                     <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture</div>
 
-                    <input type="file" name="image[]" id="image" class="w-full  border object-cover rounded-md mt-4" multiple onchange="showPreview(event)">
+                    <input type="file" name="image[]" id="image" class="w-full  border object-cover rounded-md mt-4" multiple onchange="loadFile(event)">
                 </div>
 
                 <div class="mb-5">

@@ -62,6 +62,7 @@ class IsiController extends Controller
             // $id = $wisata->id;
             $wisata = Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get();
 
+
             $faq = Faq::where('wisata', $slug)->get();
             $comment = Testi::with('user')->where('wisata_id', $slug)->paginate(6);
             if($wisata->count() > 0){

@@ -22,11 +22,25 @@ class DashboardController extends Controller
 
         // dd(request('search'));
 
-        $wisata = Wisata::latest();
-
+        $wisata = Wisata::with('kota');
+        $price = ['id','desc'];
         if(request('search')){
             $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
+        }elseif(request('type') && request('price') && request('departure')){
+
+            if(request('price') === 'termurah'){
+                $price = ['harga','asc'];
+            }elseif(request('price') === 'termahal'){
+                $price = ['harga','desc'];
+            }
+
+            if(request('departure') === 'terdekat'){
+                $departure = 'asc';
+            }elseif(request('departure') === 'terpanjang'){
+                $departure = 'desc';
+            }
+            $wisata->where('tour_type', 'like', '%' . request('type') . '%');
         }
 
         return view('dashboard', [
@@ -37,7 +51,7 @@ class DashboardController extends Controller
                 $query->orderBy('popularitas', 'DESC')->limit(25)->get();
             }])->orderBy('diboking', 'DESC')->paginate(3),
             'kota' => Kota::limit(4)->get(),
-            'latest' => $wisata->get()
+            'latest' => $wisata->orderBy($price[0],$price[1])->get(),
         
         ]);
     }
