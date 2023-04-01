@@ -12,6 +12,7 @@
           <img class="w-full h-64 object-cover" src="/image/{!! $images[0] !!}" alt="Mountain">
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2 capitalize">{{ $best_wisata->nama_wisata }}</div>
+            <h1 class="text-lg">Start From <span class="font-semibold">Rp. {{ $best_wisata->harga }}</span></h1>
             <p class="text-gray-700 text-base line-clamp-4">
               {{ $best_wisata->deskripsi }}
             </p>

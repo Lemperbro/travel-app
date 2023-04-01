@@ -164,7 +164,6 @@
             <div class="flex flex-col w-full">
                 <div class="flex flex-row justify-between">
                     <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{{ $comments->user->username }}</p>
-                    <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
                 </div>
                 <p class="text-gray-400 text-sm">{{ \Carbon\Carbon::parse($comments->created_at)->format('d F Y , h:i A') }}</p>
             </div>

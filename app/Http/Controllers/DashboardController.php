@@ -27,18 +27,12 @@ class DashboardController extends Controller
         if(request('search')){
             $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
-        }elseif(request('type') && request('price') && request('departure')){
+        }elseif(request('type') && request('price')){
 
             if(request('price') === 'termurah'){
                 $price = ['harga','asc'];
             }elseif(request('price') === 'termahal'){
                 $price = ['harga','desc'];
-            }
-
-            if(request('departure') === 'terdekat'){
-                $departure = 'asc';
-            }elseif(request('departure') === 'terpanjang'){
-                $departure = 'desc';
             }
             $wisata->where('tour_type', 'like', '%' . request('type') . '%');
         }
