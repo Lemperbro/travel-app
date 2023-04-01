@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->text('wisata_id');
-            $table->date('doc_no');
+            $table->text('doc_no');
             $table->text('deskripsi');
             $table->timestamps();
         });

@@ -15,6 +15,7 @@
           <img class="w-full h-64 object-cover" src="/image/{!! $images[0] !!}" alt="Mountain">
           <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2 capitalize">{{ $latest_post->nama_wisata }}</div>
+            <h1 class="text-lg">Start From <span class="font-semibold">Rp. {{ $latest_post->harga }}</span></h1>
             <p class="text-gray-700 text-base line-clamp-4">
               {{ $latest_post->deskripsi }}
             </p>
