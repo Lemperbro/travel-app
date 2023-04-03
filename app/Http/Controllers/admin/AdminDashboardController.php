@@ -21,10 +21,11 @@ class AdminDashboardController extends Controller
     {
         //
 
-        
+
         return view('admin.index',[
             'tittle' => 'Dashboard',
             'wisata' => Wisata::count(),
+            'terlaris' => Wisata::orderBy('diboking', 'DESC')->first(),
             'kota' => Kota::count(),
             'user' => User::where('posisi', 0)->count(),
             'latest_booking' => Pemesanan::with('user', 'wisata')->limit(10)->get(),
