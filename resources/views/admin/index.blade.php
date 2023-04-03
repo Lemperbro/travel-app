@@ -85,9 +85,9 @@
 
    <div class="w-full max-w-full mt-0">
      <div class="border-black/12.5 shadow-soft-xl relative z-20 shadow-best4 flex w-full flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-       <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
-         <h6>Monthly Order Report</h6>
-         <p class="leading-normal text-sm">
+       <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-[#FF8400] p-2 pb-0">
+         <h1 class="text-white font-semibold text-lg">Monthly Order Report</h1>
+         <p class="leading-normal text-md mt-1">
            <i class="fa fa-arrow-up text-lime-500"></i>
            <span class="font-semibold">4% more</span> in 2021
          </p>
@@ -101,7 +101,9 @@
    </div>
 
    <div class="bg-white w-1/3 shadow-best4 rounded-2xl">
-
+    <div class="mt-0 rounded-t-2xl flex justify-center bg-yellow-400">
+      <p class="m-2 text-xl text-white font-bold">Late Post</p>
+    </div>
    </div>
 
   </div>
