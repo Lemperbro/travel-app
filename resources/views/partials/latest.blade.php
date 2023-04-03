@@ -30,7 +30,12 @@
         @endforeach
 
 
+
+
     </div>
+    @if ($latest->count() === 0)
+    <h1 class="text-center font-semibold text-xl">Ooops !! The data you are looking for does not exist</h1>
+  @endif
     <a href="/wisata/" class="inline-block bg-[#FF2E00] p-4 text-white w-full text-center rounded-md mt-8 font-semibold ">View More</a>
 
 </div>
