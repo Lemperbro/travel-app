@@ -54,7 +54,7 @@
                         <td class="text-sm text-gray-900 font-light px-2 py-2 border text-center whitespace-nowrap">
                           {{ $user->jumlah }} Unit
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-2 py-2 whitespace-nowrap flex gap-x-4">
+                        <td class="text-sm text-gray-900 font-light py-2 px-4 whitespace-nowrap flex gap-x-4 ">
                           <button type="button"
                           class="inline-block bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out px-2 py-2"
                           data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $user->id }}">
@@ -152,9 +152,9 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
 
     
             <div class="flex gap-x-4 mt-4">
-            <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>
-            <a href="/kendaraan" class="bg-red-600 px-4 py-2 text-white rounded-md">Batal</a>
-        </div>
+              <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>
+              <a href="/kendaraan" class="bg-red-600 px-4 py-2 text-white rounded-md">Batal</a>
+            </div>
         </form>
 
     </div>
