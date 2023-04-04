@@ -17,11 +17,18 @@
               {{ $best_wisata->deskripsi }}
             </p>
           </div>
-          
+          @php
+            $booking = $best_wisata->diboking;
+
+            if($booking === null){
+              $booking = 0;
+            }
+          @endphp
           <div class="px-6 pt-4 pb-2">
             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $best_wisata->tour_type }}</span>
             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $best_wisata->long_tour }}</span>
             <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $best_wisata->kota->nama_kota }}</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $booking }} On Booking</span>
           </div>
         </a>
         @endforeach
