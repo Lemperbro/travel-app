@@ -5,10 +5,16 @@
 <div class="bg-white p-4 shadow-best rounded-md my-10">
   
 
-         <div class="relative mt-4 flex mb-4">
-               <input type="text" class="h-12 w-80 border rounded-md pl-10" placeholder="Cari Supir...">
-               <img src="icons/search.svg" alt="" class="absolute left-2 top-3 w-7">
-         </div>
+        <form class="w-[80%] mx-auto my-5" action="/kendaraan">   
+          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+          <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+              <input type="search" id="default-search" name="search" value="{{ request('search') }}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos...">
+              <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+          </div>
+        </form>
 
          <button type="button"
          class="inline px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
@@ -20,59 +26,60 @@
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-x-auto">
-                  <table class="min-w-full border">
-                    <thead class="border-b bg-gray-200 text-center">
-                      <tr>
-                        <th scope="col" class="text-base text-center font-semibold text-gray-900 px-2 py-2 border">
-                          No
-                        </th>
-                        <th scope="col" class="text-base text-center font-semibold text-gray-900 px-2 py-2 border">
-                          Merek
-                        </th>
-                        <th scope="col" class="text-base text-center font-semibold text-gray-900 px-2 py-2 border">
-                          Kapasitas
-                        </th>
-                        <th scope="col" class="text-base text-center font-semibold text-gray-900 px-2 py-2 border">
-                          Jumlah
-                        </th>
-                        <th scope="col" class="text-base text-center font-semibold text-gray-900 px-2 py-2 border">
-                          Aksi
-                        </th>
+
+
+                  <table class="w-full">
+                    <thead>
+                      <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
+                        <th class="border px-4 py-3">No</th>
+                        <th class="border px-4 py-3">Merek</th>
+                        <th class="border px-4 py-3">Kapasitas</th>
+                        <th class="px-2 border">Jumlah</th>
+                        <th class="px-2 border">Action</th>
                       </tr>
                     </thead>
-                    <tbody>
-               @foreach ($data as $no => $user)
+    
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border ">
 
-                      <tr class="border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm  border text-center font-medium text-gray-900">{{ $no+1 }}</td>
-                        <td class="text-sm text-gray-900 font-light px-2 py-2 border text-center  whitespace-nowrap">
-                          {{ $user->merek }}
+                      @foreach ($data as $no => $user)
+                        
+                      <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                        <td class="px-4 py-3 text-sm border text-center">{{ $no+1 }}</td>
+    
+                        <td class="px-4 py-3 text-sm text-center border">{{ $user->merek }}</td>
+    
+                        <td class="flex px-4 py-3 justify-center">
+                          {{ $user->kapasitas }}
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-2 py-2 border text-center whitespace-nowrap">
-                          {{ $user->kapasitas }} Orang
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-2 py-2 border text-center whitespace-nowrap">
-                          {{ $user->jumlah }} Unit
-                        </td>
+<<<<<<< HEAD
                         <td class="text-sm text-gray-900 font-light py-2 px-4 whitespace-nowrap flex gap-x-4 ">
+=======
+    
+                        <td class="px-4 py-3 text-sm border text-center">{{ $user->jumlah }}</td>
+    
+    
+                        <td class="px-4 py-3 text-sm border text-center flex gap-x-4 justify-center">
+>>>>>>> 25725a257d42e7dfb9442ad45c6d08daaff84c86
                           <button type="button"
                           class="inline-block bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out px-2 py-2"
                           data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $user->id }}">
                           Edit
                           </button>
-                           <form action="/kendaraan/delete/{{ $user->id }}" method="post" class="w-full">
+                           <form action="/kendaraan/delete/{{ $user->id }}" method="post" class="">
                               @csrf
                               <button type="submit" class="bg-red-600 p-2 rounded-md text-white">Hapus</button>
                            </form>
                         </td>
-                        
+    
                       </tr>
-
-                      
-               @endforeach
+                      @endforeach
+    
                       
                     </tbody>
                   </table>
+
+
+                  
                 </div>
               </div>
             </div>
