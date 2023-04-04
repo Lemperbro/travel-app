@@ -22,49 +22,49 @@
 
               <table class="w-full">
                 <thead>
-                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                  <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
                     <th class="border px-4 py-3">No</th>
                     <th class="border px-4 py-3">No Order</th>
                     <th class="border px-4 py-3">Client</th>
                     <th class="px-2 border">Amount</th>
                     <th class="px-2 border">Destination</th>
                     <th class="px-2 border">Type Tour</th>
-                    <th class="px-4 py-3">Date</th>
-                    <th class="px-4 py-3">Status</th>
+                    <th class="px-4 py-3 border">Date</th>
+                    <th class="px-4 py-3 border">Status</th>
                   </tr>
                 </thead>
 
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 ">
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border ">
                   @php
                     $no = 1;
                   @endphp
                   @foreach ($data as $datas)
                     
                   <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3 text-sm">{{ $no++ }}</td>
+                    <td class="px-4 py-3 text-sm border text-center">{{ $no++ }}</td>
 
-                    <td class="px-4 py-3 text-sm">{{ $datas->doc_no }}</td>
+                    <td class="px-4 py-3 text-sm text-center border">{{ $datas->doc_no }}</td>
 
-                    <td class="px-4 py-3">
+                    <td class="flex px-4 py-3 justify-center">
                       <div class="flex items-center text-sm">
                         <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                           <img class="object-cover w-full h-full rounded-full" src="{{ asset('ft_user/'.$datas->user->image) }}" alt="" loading="lazy" />
                           <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                         </div>
                         <div>
-                          <p class="font-semibold">{{ $datas->user->username }}</p>
+                          <p class="font-semibold text-center">{{ $datas->user->username }}</p>
                         </div>
                       </div>
                     </td>
 
-                    <td class="px-4 py-3 text-sm">Rp. {{ $datas->amount }}</td>
+                    <td class="px-4 py-3 text-sm border text-center">Rp. {{ $datas->amount }}</td>
 
-                    <td class="px-4 py-3 text-sm">{{ $datas->wisata->nama_wisata }}</td>
+                    <td class="px-4 py-3 text-sm border text-center">{{ $datas->wisata->nama_wisata }}</td>
 
-                    <td class="px-4 py-3 text-sm">{{ $datas->wisata->tour_type }}</td>
-                    <td class="px-4 py-3 text-sm">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-y') }}</td>
+                    <td class="px-4 py-3 text-sm border text-center">{{ $datas->wisata->tour_type }}</td>
+                    <td class="px-4 py-3 text-sm border text-center">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-y') }}</td>
 
-                    <td class="px-4 py-3 text-xs">
+                    <td class="px-4 py-3 text-xs text-center">
                       <span class="px-2 py-1 font-semibold leading-tight rounded-full {{ ($datas->payment_status === 'PENDING') ? 'text-yellow-700 bg-yellow-100' : ''}}  {{ ($datas->payment_status === 'PAID') ? 'text-green-700 bg-green-100' : ''}}">{{ $datas->payment_status }}</span>
                     </td>
 

@@ -17,34 +17,34 @@
   </form>
 
          <button type="button"
-         class="inline px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
+         class="inline px-6 py-2.5 bg-blue-600 text-white font-bold text-sm  uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
          data-bs-toggle="modal" data-bs-target="#exampleModalLong">
          Tambah Supir
          </button>
 
-         <div class="flex flex-col mt-8 ">
+         <div class="flex flex-col mt-8 rounded-lg ">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-x-auto">
                   <table class="min-w-full border">
-                    <thead class="border-b bg-gray-400 ">
+                    <thead class="border-b">
                       <tr>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-base border text-center font-semibold text-gray-900 px-2 py-2">
                           No
                         </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-base border text-center font-semibold text-gray-900 px-2 py-2">
                           Nama
                         </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          No Telephone
+                        <th scope="col" class="text-base border text-center font-semibold text-gray-900 px-2 py-2">
+                          Telephone
                         </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-base border text-center font-semibold text-gray-900 px-2 py-2">
                           Alamat
                         </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-base border text-center font-semibold text-gray-900 px-2 py-2">
                           Umur
                         </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-base border text-center font-semibold text-gray-900 px-2 py-2">
                           Aksi
                         </th>
                       </tr>
@@ -53,26 +53,26 @@
                @foreach ($data as $no => $user)
 
                       <tr class="border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $no+1 }}</td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <td class="px-2 py-2 whitespace-nowrap text-center text-sm border font-medium text-gray-900">{{ $no+1 }}</td>
+                        <td class="text-sm text-gray-900 font-semibold px-2 py-2 border whitespace-nowrap text-center">
                           {{ $user->nama }}
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <td class="text-sm text-gray-900 font-semibold px-2 py-2 border whitespace-nowrap text-center">
                           {{ $user->no_tlpn }}
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <td class="text-sm text-gray-900 font-semibold px-2 py-2 border whitespace-nowrap text-center">
                           {{ $user->alamat }}
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <td class="text-sm text-gray-900 font-semibold px-2 py-2 border whitespace-nowrap text-center">
                           {{ $user->umur }} Th
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-x-4">
+                        <td class=" text-sm text-gray-900 font-semibold px-2 py-2 whitespace-nowrap flex gap-x-4">
                           <button type="button"
-                          class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                          class="inline-block px-2 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-[40%]"
                           data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $user->id }}">
                           Edit
                           </button>
-                           <form action="/supir/delete/{{ $user->id }}" method="post" class="w-full">
+                           <form action="/supir/delete/{{ $user->id }}" method="post" class="">
                               @csrf
                               <button type="submit" class="bg-red-600 p-2 rounded-md text-white">Hapus</button>
                            </form>
