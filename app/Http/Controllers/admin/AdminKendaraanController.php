@@ -18,8 +18,14 @@ class AdminKendaraanController extends Controller
     public function index()
     {
         //
+
+        $data = Kendaraan::latest();
+
+        if(request('search')){
+            $data->where('merek', 'like', '%'. request('search').'%');
+        }
         return view('admin.kendaraan.index',[
-           'data' => Kendaraan::all(),
+           'data' => $data->get(),
             'tittle' => 'Kelola Kendaraan'
         ]);
     }

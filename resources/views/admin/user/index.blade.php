@@ -1,5 +1,11 @@
 @extends('admin.layouts.main')
     <!-- This is an example component -->
+  {{-- //no
+  //name
+  //email
+  //phone number
+  //address
+  //action --}}
 
    @section('container')
 <div class="bg-white p-4 shadow-best rounded-md my-10">
@@ -20,60 +26,54 @@
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-x-auto">
-                  <table class="min-w-full">
-                    <thead class="border-b bg-gray-400 ">
-                      <tr>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          No
-                        </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Name
-                        </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Email
-                        </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Phone Number
-                        </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Address
-                        </th>
-                        <th scope="col" class="text-base font-semibold text-gray-900 px-6 py-4 text-left">
-                          Action
-                        </th>
+
+
+
+                  <table class="w-full">
+                    <thead>
+                      <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
+                        <th class="border px-4 py-3">No</th>
+                        <th class="border px-4 py-3">Name</th>
+                        <th class="border px-4 py-3">Email</th>
+                        <th class="px-2 border">Phone Number</th>
+                        <th class="px-2 border">Address</th>
+                        <th class="px-2 border">Action</th>
                       </tr>
                     </thead>
-                    <tbody>
-               @foreach ($data as $no => $user)
+    
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border ">
 
-                      <tr class="border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $no+1 }}</td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {{ $user->username }}
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                   @foreach ($data as $no => $user)
+                        
+                      <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                        <td class="px-4 py-3 text-sm border text-center">{{ $no+1 }}</td>
+    
+                        <td class="px-4 py-3 text-sm text-center border">{{ $user->username }}</td>
+    
+                        <td class="flex px-4 py-3 justify-center">
                           {{ $user->email }}
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {{ $user->no_tlpn }}
+    
+                        <td class="px-4 py-3 text-sm border text-center">{{ $user->no_tlpn }}</td>
+    
+                        <td class="px-4 py-3 text-sm border text-center">{{ $user->alamat }}</td>
+    
+                        <td class="px-4 py-3 text-sm border text-center">
+                          <form action="/user/delete/{{ $user->id }}" method="post">
+                            @csrf
+                            <button type="submit" class="bg-red-600 p-2 rounded-md text-white">Hapus</button>
+                         </form>
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {{ $user->alamat }}
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                           <form action="/user/delete/{{ $user->id }}" method="post">
-                              @csrf
-                              <button type="submit" class="bg-red-600 p-2 rounded-md text-white">Hapus</button>
-                           </form>
-                        </td>
-                        
+    
                       </tr>
-
-                      
-               @endforeach
+                      @endforeach
+    
                       
                     </tbody>
                   </table>
+
+                  
+                
 
 
                   {{ $data->links('vendor.pagination.tailwind') }}

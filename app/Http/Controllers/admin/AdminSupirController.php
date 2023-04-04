@@ -17,8 +17,14 @@ class AdminSupirController extends Controller
     public function index()
     {
         //
+
+        $data = Supir::latest();
+
+        if(request('search')){
+            $data->where('nama', 'like', '%'. request('search') .'%');
+        }
         return view('admin.supir.index',[
-           'data' => Supir::all(),
+           'data' => $data->get(),
             'tittle' => 'Kelola Supir'
         ]);
     }
