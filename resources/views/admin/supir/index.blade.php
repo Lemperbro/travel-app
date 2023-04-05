@@ -11,7 +11,7 @@
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
-        <input type="search" id="default-search" name="search" value="{{ request('search') }}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos...">
+        <input type="search" id="default-search" name="search" value="{{ request('search') }}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="">
         <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
     </div>
   </form>
@@ -19,7 +19,7 @@
          <button type="button"
          class="inline px-6 py-2.5 bg-blue-600 text-white font-bold text-sm  uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
          data-bs-toggle="modal" data-bs-target="#exampleModalLong">
-         Tambah Supir
+         ADD DRIVER
          </button>
 
          <div class="flex flex-col mt-8 rounded-lg ">
@@ -103,19 +103,19 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
             @csrf
 
             <div class="mt-4">
-                <label for="nama">Nama</label>
+                <label for="nama">Name</label>
                 <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->nama }}">
             </div>
             <div class="mt-4">
-              <label for="no_tlpn">No Telephone</label>
+              <label for="no_tlpn">Telephone</label>
               <input type="number" name="no_tlpn" id="no_tlpn" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->no_tlpn }}">
           </div>
           <div class="mt-4">
-            <label for="alamat">Alamat</label>
+            <label for="alamat">Address</label>
             <input type="text" name="alamat" id="alamat" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->alamat }}">
         </div>
         <div class="mt-4">
-          <label for="umur">Umur</label>
+          <label for="umur">Age</label>
           <input type="number" name="umur" id="umur" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->umur }}">
       </div>
     
@@ -149,25 +149,25 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
             @csrf
 
             <div class="mt-4">
-                <label for="nama">Nama</label>
+                <label for="nama">Name</label>
                 <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4" >
             </div>
             <div class="mt-4">
-              <label for="no_tlpn">No Telephone</label>
+              <label for="no_tlpn">Telephon</label>
               <input type="number" name="no_tlpn" id="no_tlpn" class="w-full h-12 rounded-md p-2 border mt-4" >
           </div>
           <div class="mt-4">
-            <label for="alamat">Alamat</label>
+            <label for="alamat">Address</label>
             <input type="text" name="alamat" id="alamat" class="w-full h-12 rounded-md p-2 border mt-4" >
         </div>
         <div class="mt-4">
-          <label for="umur">Umur</label>
+          <label for="umur">Age</label>
           <input type="number" name="umur" id="umur" class="w-full h-12 rounded-md p-2 border mt-4" >
       </div>
     
             <div class="flex gap-x-4 mt-4">
-            <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>
-            <a href="/supir" class="bg-red-600 px-4 py-2 text-white rounded-md">Batal</a>
+            <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Send</button>
+            <a href="/supir" class="bg-red-600 px-4 py-2 text-white rounded-md">Undo</a>
         </div>
         </form>
 

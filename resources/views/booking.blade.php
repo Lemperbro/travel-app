@@ -80,7 +80,7 @@
                 {{-- <a href="/comment/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none">Comment</a> --}}
                 @if($tagihan->comment === 0)
                 <!-- Modal toggle -->
-                <h1 data-modal-target="defaultModal-{{ $tagihan->doc_no }}" data-modal-toggle="defaultModal-{{ $tagihan->doc_no }}" class="text-white bg-orange-600 hover:bg-orange-700 text-sm mt-6 px-4 py-2 rounded-lg  inline-block tracking-wider font-bold outline-none">
+                <h1 data-modal-target="defaultModal-{{ $tagihan->doc_no }}" data-modal-toggle="defaultModal-{{ $tagihan->doc_no }}" class="text-white bg-orange-600 hover:bg-orange-700 text-sm mt-6 px-4 py-2 rounded-lg  inline-block tracking-wider font-bold outline-none cursor-pointer">
                   Comment
                 </h1>
                 @endif
