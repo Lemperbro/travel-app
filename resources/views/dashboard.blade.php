@@ -38,7 +38,7 @@
       @php
       $images = explode('|', $kota->image);
     @endphp
-      <a href="/destinasi/{{ $kota->slug }}" class='rounded-xl relative shadow-best'>
+      <a href="/destinasi/{{ $kota->slug }}" class='rounded-xl relative shadow-best md:'>
         <h1 class='text-white font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[50%] md:grid-cols-2'>{{ $kota->nama_kota }}</h1>
         <img src='{!! asset('image/'.$images[0]) !!}' class='object-cover w-full h-96 rounded-xl'/>
       </a>
