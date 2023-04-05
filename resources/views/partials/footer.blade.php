@@ -46,7 +46,7 @@
           <li class="mt-2"><a href="/wisata/type/private trip">Private Trip</a></li>
         </ul>
       </div>
-      
+
 {{-- 
       <div class="">
         <h1 class="text-white text-3xl font-semibold">Type Tour</h1>
@@ -62,13 +62,13 @@
       <div class="">
         <ul class="text-white mt-2 text-2xl font-semibold ">
           <li class="">
-            <a href="about">About Us</a>
+            <a href="/about">About Us</a>
           </li>
           <li class="mt-5">
-            <a href="testimoni">Testimoni</a>
+            <a href="/testimoni">Testimoni</a>
           </li>
           <li class="mt-5">
-            <a href="contact">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
         </ul>
       </div>

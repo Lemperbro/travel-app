@@ -5,16 +5,14 @@
 @section('container')
 
     <h1 class="text-center text-3xl font-bold">
-        What Our Customers Say ?
+        What Ours Customers Say ?
     </h1>
 
     <section class="text-neutral-700 dark:text-neutral-300 mb-32">
         <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
           <h3 class="mb-6 text-3xl font-bold">Testimonials</h3>
-          <p class="mb-6 pb-2 md:mb-12 md:pb-0">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-            error amet numquam iure provident voluptate esse quasi, veritatis
-            totam voluptas nostrum quisquam eum porro a pariatur veniam.
+          <p class="mb-6 pb-2 md:mb-12 md:pb-0 text-lg">
+            With this testimony, it is hoped that customers will have more confidence in the quality of our services
           </p>
         </div>
       
@@ -44,6 +42,14 @@
                       d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
                   </svg>
                  {{ $testi->description }}
+                 <svg
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor"
+                 class="inline-block h-7 w-7 pr-2"
+                 viewBox="0 0 24 24">
+                 <path
+                   d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
+               </svg>
                 </p>
               </div>
             </div>
