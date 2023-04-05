@@ -80,6 +80,30 @@
                    </li>
 
                    <li  class="mt-0.5 w-full">
+                    <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg {{ ($tittle === 'Kelola Wisata') ? 'bg-white shadow-best5' : '' }}" href="/admin/wisata">
+                      <div class="{{ ($tittle === 'Kelola Wisata')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'Kelola Wisata')? 'bg-white shadow-best' : '' }} mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                          <!-- SVG Wisata -->
+                          <svg width="14px" height="14px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#FFFFFF">
+        
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <!-- SVG Wisata -->
+                                    <path class="{{ ($tittle !== 'Kelola Wisata')? 'fill-slate-800' : '' }}  {{ ($tittle === 'Kelola Wisata')? 'fill-white' : '' }} opacity-60" d="M394.977,170.953c1.141-2.109,1.016-4.719-0.328-6.734l-37.047-55.563c-1.453-2.188-1.453-5.063,0-7.266 l37.047-55.563c1.344-2.016,1.469-4.609,0.328-6.734c-1.156-2.125-3.375-3.469-5.781-3.469H216.398v138.813h172.797 C391.602,174.438,393.82,173.078,394.977,170.953z"></path> 
+                                    <path class="{{ ($tittle !== 'Kelola Wisata')? 'fill-slate-800' : '' }}  {{ ($tittle === 'Kelola Wisata')? 'fill-white' : '' }}" d="M511.805,473.203l-8.703-19.141l-90.547-199.438H295.633h-9.344H213.68v31.547h54.031h46.5h20.688 L230.523,417.063L87.68,356.859l32.094-70.688h25.344v-31.547H99.43L0.195,473.203c-0.313,0.703-0.25,1.5,0.156,2.141 c0.422,0.641,1.125,1.031,1.891,1.031h507.516c0.766,0,1.469-0.391,1.891-1.031C512.055,474.703,512.117,473.906,511.805,473.203z M355.086,286.172h37.141l40.828,89.922L323.914,325.25L355.086,286.172z M47.758,444.813l33.406-73.578l174.563,73.578H47.758z M296.367,444.813l-50.734-21.391l68.156-85.469l129.281,60.203l21.172,46.656H296.367z"></path> 
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Article</span>
+                    </a>
+                  </li>
+
+
+                   <li  class="mt-0.5 w-full">
                      <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors  {{ ($tittle === 'User') ? 'bg-white shadow-best5' : '' }} rounded-lg" href="/user">
                        <div class="{{ ($tittle === 'User')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'User')? 'bg-white shadow-best' : '' }} mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                            <!-- SVG Booking -->

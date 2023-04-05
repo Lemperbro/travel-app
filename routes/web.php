@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
+use App\Http\Controllers\ArticleController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -77,6 +78,13 @@ Route::get('/step', function () {
 Route::get('/ticket', function () {
     return view('tiket');
 });
+
+Route::get('/article', function(){
+    return view('admin.article.index', [
+        'tittle' => 'article'
+    ]);
+});
+
 
 
 
@@ -140,6 +148,15 @@ Route::middleware('admin')->group(function(){
 
 
     Route::get('/guide', [AdminKendaraanController::class, 'index']);
+
+
+    // Route::post('/upload_image_tiny', [ArticleController::class, 'upload_image_tiny']);
+
+
+    Route::get('/article/add', [ArticleController::class, 'create']);
+    Route::post('/article/add', [ArticleController::class, 'store']);
+
+    Route::post('/froala/upload_image', [ArticleController::class, 'uploadImage_froala']);
     
 });
 

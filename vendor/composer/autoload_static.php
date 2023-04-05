@@ -147,6 +147,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'FroalaEditor\\' => 13,
             'FontLib\\' => 8,
             'Faker\\' => 6,
         ),
@@ -477,6 +478,10 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
+        'FroalaEditor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor',
+        ),
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
@@ -570,11 +575,19 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'F' => 
+        array (
+            'FroalaEditor' => 
+            array (
+                0 => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ArticleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArticleController.php',
         'App\\Http\\Controllers\\CheckoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/CheckoutController.php',
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -617,6 +630,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Middleware\\XenditMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/XenditMiddleware.php',
         'App\\Http\\Middleware\\isAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/isAdmin.php',
+        'App\\Http\\Requests\\StoreArticleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreArticleRequest.php',
         'App\\Http\\Requests\\StoreFaqRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreFaqRequest.php',
         'App\\Http\\Requests\\StoreFasilitasRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreFasilitasRequest.php',
         'App\\Http\\Requests\\StoreGuideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreGuideRequest.php',
@@ -630,6 +644,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'App\\Http\\Requests\\StoreTestiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreTestiRequest.php',
         'App\\Http\\Requests\\StoreWisataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreWisataRequest.php',
         'App\\Http\\Requests\\StoreequipmentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreequipmentRequest.php',
+        'App\\Http\\Requests\\UpdateArticleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateArticleRequest.php',
         'App\\Http\\Requests\\UpdateFaqRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateFaqRequest.php',
         'App\\Http\\Requests\\UpdateFasilitasRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateFasilitasRequest.php',
         'App\\Http\\Requests\\UpdateGuideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateGuideRequest.php',
@@ -663,6 +678,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'App\\Models\\admin\\AdminKota' => __DIR__ . '/../..' . '/app/Models/admin/AdminKota.php',
         'App\\Models\\admin\\AdminUser' => __DIR__ . '/../..' . '/app/Models/admin/AdminUser.php',
         'App\\Models\\admin\\AdminWisata' => __DIR__ . '/../..' . '/app/Models/admin/AdminWisata.php',
+        'App\\Policies\\ArticlePolicy' => __DIR__ . '/../..' . '/app/Policies/ArticlePolicy.php',
         'App\\Policies\\EquipmentPolicy' => __DIR__ . '/../..' . '/app/Policies/EquipmentPolicy.php',
         'App\\Policies\\FaqPolicy' => __DIR__ . '/../..' . '/app/Policies/FaqPolicy.php',
         'App\\Policies\\FasilitasPolicy' => __DIR__ . '/../..' . '/app/Policies/FasilitasPolicy.php',
@@ -919,6 +935,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'Database\\Factories\\TestiFactory' => __DIR__ . '/../..' . '/database/factories/TestiFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Factories\\WisataFactory' => __DIR__ . '/../..' . '/database/factories/WisataFactory.php',
+        'Database\\Seeders\\ArticleSeeder' => __DIR__ . '/../..' . '/database/seeders/ArticleSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\EquipmentSeeder' => __DIR__ . '/../..' . '/database/seeders/EquipmentSeeder.php',
         'Database\\Seeders\\FaqSeeder' => __DIR__ . '/../..' . '/database/seeders/FaqSeeder.php',
@@ -1750,6 +1767,12 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'FontLib\\WOFF\\File' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/File.php',
         'FontLib\\WOFF\\Header' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/Header.php',
         'FontLib\\WOFF\\TableDirectoryEntry' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
+        'FroalaEditor\\File' => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor/File.php',
+        'FroalaEditor\\Image' => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor/Image.php',
+        'FroalaEditor\\S3' => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor/S3.php',
+        'FroalaEditor\\Utils\\DiskManagement' => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor/Utils/DiskManagement.php',
+        'FroalaEditor\\Utils\\Utils' => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor/Utils/Utils.php',
+        'FroalaEditor\\Video' => __DIR__ . '/..' . '/froala/wysiwyg-editor-php-sdk/lib/FroalaEditor/Video.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
@@ -3132,6 +3155,12 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'League\\CommonMark\\Event\\DocumentPreRenderEvent' => __DIR__ . '/..' . '/league/commonmark/src/Event/DocumentPreRenderEvent.php',
         'League\\CommonMark\\Event\\DocumentRenderedEvent' => __DIR__ . '/..' . '/league/commonmark/src/Event/DocumentRenderedEvent.php',
         'League\\CommonMark\\Event\\ListenerData' => __DIR__ . '/..' . '/league/commonmark/src/Event/ListenerData.php',
+        'League\\CommonMark\\Exception\\AlreadyInitializedException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/AlreadyInitializedException.php',
+        'League\\CommonMark\\Exception\\CommonMarkException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/CommonMarkException.php',
+        'League\\CommonMark\\Exception\\IOException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/IOException.php',
+        'League\\CommonMark\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/InvalidArgumentException.php',
+        'League\\CommonMark\\Exception\\LogicException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/LogicException.php',
+        'League\\CommonMark\\Exception\\MissingDependencyException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/MissingDependencyException.php',
         'League\\CommonMark\\Exception\\UnexpectedEncodingException' => __DIR__ . '/..' . '/league/commonmark/src/Exception/UnexpectedEncodingException.php',
         'League\\CommonMark\\Extension\\Attributes\\AttributesExtension' => __DIR__ . '/..' . '/league/commonmark/src/Extension/Attributes/AttributesExtension.php',
         'League\\CommonMark\\Extension\\Attributes\\Event\\AttributesListener' => __DIR__ . '/..' . '/league/commonmark/src/Extension/Attributes/Event/AttributesListener.php',
@@ -3364,6 +3393,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'League\\CommonMark\\Parser\\MarkdownParserInterface' => __DIR__ . '/..' . '/league/commonmark/src/Parser/MarkdownParserInterface.php',
         'League\\CommonMark\\Parser\\MarkdownParserState' => __DIR__ . '/..' . '/league/commonmark/src/Parser/MarkdownParserState.php',
         'League\\CommonMark\\Parser\\MarkdownParserStateInterface' => __DIR__ . '/..' . '/league/commonmark/src/Parser/MarkdownParserStateInterface.php',
+        'League\\CommonMark\\Parser\\ParserLogicException' => __DIR__ . '/..' . '/league/commonmark/src/Parser/ParserLogicException.php',
         'League\\CommonMark\\Reference\\Reference' => __DIR__ . '/..' . '/league/commonmark/src/Reference/Reference.php',
         'League\\CommonMark\\Reference\\ReferenceInterface' => __DIR__ . '/..' . '/league/commonmark/src/Reference/ReferenceInterface.php',
         'League\\CommonMark\\Reference\\ReferenceMap' => __DIR__ . '/..' . '/league/commonmark/src/Reference/ReferenceMap.php',
@@ -3379,6 +3409,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'League\\CommonMark\\Renderer\\Inline\\NewlineRenderer' => __DIR__ . '/..' . '/league/commonmark/src/Renderer/Inline/NewlineRenderer.php',
         'League\\CommonMark\\Renderer\\Inline\\TextRenderer' => __DIR__ . '/..' . '/league/commonmark/src/Renderer/Inline/TextRenderer.php',
         'League\\CommonMark\\Renderer\\MarkdownRendererInterface' => __DIR__ . '/..' . '/league/commonmark/src/Renderer/MarkdownRendererInterface.php',
+        'League\\CommonMark\\Renderer\\NoMatchingRendererException' => __DIR__ . '/..' . '/league/commonmark/src/Renderer/NoMatchingRendererException.php',
         'League\\CommonMark\\Renderer\\NodeRendererInterface' => __DIR__ . '/..' . '/league/commonmark/src/Renderer/NodeRendererInterface.php',
         'League\\CommonMark\\Util\\ArrayCollection' => __DIR__ . '/..' . '/league/commonmark/src/Util/ArrayCollection.php',
         'League\\CommonMark\\Util\\Html5EntityDecoder' => __DIR__ . '/..' . '/league/commonmark/src/Util/Html5EntityDecoder.php',

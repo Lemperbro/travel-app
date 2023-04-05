@@ -13,6 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        '/checkout/callback'
+        '/checkout/callback',
+        '/upload_image_tiny',
+        '/froala/upload_image'
     ];
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateArticleRequest;
+use Illuminate\Http\Request;
+
 
 class ArticleController extends Controller
 {
@@ -18,6 +20,7 @@ class ArticleController extends Controller
         //
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,6 +29,19 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('admin.article.add', [
+            'tittle' => 'article',
+            'data' => Article::first()
+        ]);
+    }
+
+    public function uploadImage_froala(Request $request)
+{
+    $image = $request->file('file');
+    $imageName = time() . '-' . $image->getClientOriginalName();
+    $image->move(public_path('image'), $imageName);
+    
+    return response()->json(['link' => '/image/' . $imageName]);
     }
 
     /**
@@ -34,9 +50,22 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\StoreArticleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(Request $request)
     {
         //
+
+        if($files=$request->file('image')){
+            $extension=$files->getClientOriginalExtension();
+            $name = hash('sha256', time()) . '.' . $extension;
+            $files->move('image',$name);
+    }
+        Article::create([
+            'judul' => $request->judul,
+            'image' => $name,
+            'isi' => $request->isi
+        ]);
+
+        return redirect()->back();
     }
 
     /**
