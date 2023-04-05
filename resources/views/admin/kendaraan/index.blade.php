@@ -51,15 +51,11 @@
                         <td class="flex px-4 py-3 justify-center">
                           {{ $user->kapasitas }}
                         </td>
-<<<<<<< HEAD
-                        <td class="text-sm text-gray-900 font-light py-2 px-4 whitespace-nowrap flex gap-x-4 ">
-=======
     
                         <td class="px-4 py-3 text-sm border text-center">{{ $user->jumlah }}</td>
     
     
                         <td class="px-4 py-3 text-sm border text-center flex gap-x-4 justify-center">
->>>>>>> 25725a257d42e7dfb9442ad45c6d08daaff84c86
                           <button type="button"
                           class="inline-block bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out px-2 py-2"
                           data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $user->id }}">
