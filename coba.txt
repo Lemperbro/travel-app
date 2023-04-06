@@ -11,6 +11,7 @@
 <body>
     <p></p>
 
+php 8.0.2
 
     <textarea id="my-textarea"></textarea>
 
@@ -51,6 +52,22 @@
       textarea.innerHTML = formattedText;
     });
     </script>
+
+
+- tour harga ditampilkan di menu admin
+- growin di halaman depan tidak jadi satu
+- tambahkan time table di itinerary
+- notifikasi ketika pembayaran sudah di acc
+- foto driver 
+- foto guide (tambah about me)
+- foto kendaraan
+- hapus kasih notifikasi
+- kendaraan tampil di halaman pemesan ketika ada orderan di setting kendaraan dan drivernya serta guidenya siapa dan muncul di halaman my bookingt
+- dalam guide di tampilkan profil dari guide nya dan di tambahkan ke halaman depan
+- about us bisa di ed
+
+- about us bisa di edit dengan disertai tentang team untuk ditambahkan berisi foto nama jabatan dan about myself
+
 
 </body>
 </html>
