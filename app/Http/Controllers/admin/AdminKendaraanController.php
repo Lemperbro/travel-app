@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\admin\AdminWisata;
 use App\Models\Kendaraan;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
+
 
 class AdminKendaraanController extends Controller
 {
@@ -50,12 +52,28 @@ class AdminKendaraanController extends Controller
     {
         //
         $validasi = $request->validate([
+
             'merek' => 'required|max:255',
             'kapasitas' => 'required',
             'jumlah' => 'required',
+            'plat' => 'required',
+            'image' => 'required'
         ]);
 
-        Kendaraan::create($validasi);
+        if($files=$request->file('image')){
+            $extension=$files->getClientOriginalExtension();
+            $name = hash('sha256', time()) . '.' . $extension;
+            $files->move('image',$name);
+    }
+
+        Kendaraan::create([
+            'merek' => $validasi['merek'],
+            'kapasitas' => $validasi['kapasitas'],
+            'jumlah' => $validasi['jumlah'],
+            'plat' => $validasi['plat'],
+            'image' => $name
+
+        ]);
         return redirect('/kendaraan');
 
     }
@@ -93,10 +111,41 @@ class AdminKendaraanController extends Controller
     {
         //
 
+
+
+        $validasi = $request->validate([
+
+            'merek' => 'required|max:255',
+            'kapasitas' => 'required',
+            'jumlah' => 'required',
+            'plat' => 'required',
+            'image' => 'max:2048'
+        ]);
+        $img = Kendaraan::where('id', $id)->pluck('image')->first();
+
+        if($files=$request->file('image')){
+            $extension=$files->getClientOriginalExtension();
+            $name = hash('sha256', time()) . '.' . $extension;
+            $up = $files->move('image',$name);
+
+            if($up){
+                $storage = public_path('image/'.$img);
+                if(File::exists($storage)){
+                    unlink($storage);
+                }
+            }
+    }else{
+        $name = $img;
+    }
+
+    
+
         Kendaraan::find($id)->update([
             'merek' => $request['merek'],
             'kapasistas' => $request['kapasitas'],
-            'jumlah' => $request['jumlah']
+            'jumlah' => $request['jumlah'],
+            'plat' => $request['plat'],
+            'image' => $name
         ]);
 
         return redirect('/kendaraan');
@@ -112,9 +161,13 @@ class AdminKendaraanController extends Controller
     public function destroy($id)
     {
         //
+        $data = Kendaraan::where('id', $id)->pluck('image')->first();
 
-        Kendaraan::find($id)->delete();
-
+        $delete = Kendaraan::find($id)->delete();
+        if($delete){
+            $storage = public_path('image/'.$data);
+            unlink($storage);
+        }
         return redirect('/kendaraan');
     }
 }

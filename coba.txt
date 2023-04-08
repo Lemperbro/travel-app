@@ -54,13 +54,13 @@ php 8.0.2
     </script>
 
 
-- tour harga ditampilkan di menu admin
+- tour harga ditampilkan di menu admin (develope)
 - growin di halaman depan tidak jadi satu
-- tambahkan time table di itinerary
+- tambahkan time table di itinerary 
 - notifikasi ketika pembayaran sudah di acc
 - foto driver 
 - foto guide (tambah about me)
-- foto kendaraan
+- foto kendaraan (develope)
 - hapus kasih notifikasi
 - kendaraan tampil di halaman pemesan ketika ada orderan di setting kendaraan dan drivernya serta guidenya siapa dan muncul di halaman my bookingt
 - dalam guide di tampilkan profil dari guide nya dan di tambahkan ke halaman depan
