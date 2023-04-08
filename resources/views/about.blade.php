@@ -31,6 +31,75 @@
     <img src='/gambar/jeep.png' class='w-[35%]'/>
 </div>
 
+
+<div class="grid-cols-3 flex gap-x-3 mb-24">
+
+  <div class="md:flex bg-slate-100 rounded-xl p-2 h-64 md:p-0 dark:bg-slate-800 mt-8">
+    <img class="w-24 h-24 md:w-48 md:h-64 md:rounded-none rounded-full mx-auto" src="img/malang.png" alt="" width="384" height="512">
+    <div class="pt-2 md:p-2 text-center md:text-left space-y-2">
+      <blockquote>
+        <p class="text-lg font-medium">
+          “Tailwind CSS is the only framework that I've seen scale
+          on large teams. It’s easy to customize, adapts to any design,
+          and the build size is tiny.”
+        </p>
+      </blockquote>
+      <figcaption class="font-medium">
+        <div class="text-sky-500 dark:text-sky-400">
+          Sarah Dayan
+        </div>
+        <div class="text-slate-700 dark:text-slate-500">
+          Staff Engineer, Algolia
+        </div>
+      </figcaption>
+    </div>
+  </div>
+
+  <div class="md:flex bg-slate-100 rounded-xl p-2 h-64 md:p-0 dark:bg-slate-800 mt-8">
+    <img class="w-24 h-24 md:w-48 md:h-64 md:rounded-none rounded-full mx-auto" src="img/malang.png" alt="" width="384" height="512">
+    <div class="pt-2 md:p-2 text-center md:text-left space-y-2">
+      <blockquote>
+        <p class="text-lg font-medium">
+          “Tailwind CSS is the only framework that I've seen scale
+          on large teams. It’s easy to customize, adapts to any design,
+          and the build size is tiny.”
+        </p>
+      </blockquote>
+      <figcaption class="font-medium">
+        <div class="text-sky-500 dark:text-sky-400">
+          Sarah Dayan
+        </div>
+        <div class="text-slate-700 dark:text-slate-500">
+          Staff Engineer, Algolia
+        </div>
+      </figcaption>
+    </div>
+  </div>
+
+  <div class="md:flex bg-slate-100 rounded-xl p-2 h-64 md:p-0 dark:bg-slate-800 mt-8">
+    <img class="w-24 h-24 md:w-48 md:h-64 md:rounded-none rounded-full mx-auto" src="img/malang.png" alt="" width="384" height="512">
+    <div class="pt-2 md:p-2 text-center md:text-left space-y-2">
+      <blockquote>
+        <p class="text-lg font-medium">
+          “Tailwind CSS is the only framework that I've seen scale
+          on large teams. It’s easy to customize, adapts to any design,
+          and the build size is tiny.”
+        </p>
+      </blockquote>
+      <figcaption class="font-medium">
+        <div class="text-sky-500 dark:text-sky-400">
+          Sarah Dayan
+        </div>
+        <div class="text-slate-700 dark:text-slate-500">
+          Staff Engineer, Algolia
+        </div>
+      </figcaption>
+    </div>
+  </div>
+  
+</div>
+
+
 <h1 class='text-center font-bold text-3xl mt-16 '>
  Location Growin Travel Indonesia
 </h1>
@@ -47,7 +116,7 @@ Kabupaten Malang, Jawa Timur 65152
   allowFullScreen=""
   aria-hidden="false"
   tabIndex="0">
-</div>
+
     
 
 

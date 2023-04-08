@@ -20,11 +20,12 @@ return new class extends Migration
             //kapasitas
             //
 
-
             $table->id();
             $table->string('merek');
             $table->integer('kapasitas');
             $table->integer('jumlah');
+            $table->string('plat');
+            $table->text('image');
             $table->timestamps();
         });
     }
