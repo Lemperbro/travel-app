@@ -1,6 +1,6 @@
 @include('partials.head')
 
-<body>
+<body class="">
 
 @include('partials.navbar')
 

@@ -54,4 +54,6 @@
   </div>
   @endforeach
 </div>
+
+{{ $data->links('vendor.pagination.tailwind') }}
 @endsection

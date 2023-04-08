@@ -1,5 +1,5 @@
 
-<div id="carouselExampleSlidesOnly" class="carousel slide relative h-screen" data-bs-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="carousel slide relative w-full lg:h-screen" data-bs-ride="carousel">
     <div class="carousel-inner relative w-full overflow-hidden ">
 
       <div class="carousel-item active relative float-left w-full">
@@ -11,9 +11,9 @@
         />
 
         <div
-        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
-        <h1 class='text-6xl font-bold text-white uppercase'>Grow In Travel</h1>
-        <h1 class='text-6xl font-bold text-white uppercase mt-2'>Indonesia</h1>
+        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] py-5 text-center text-white md:block">
+        <h1 class='text-2xl lg:text-6xl font-bold text-white uppercase'>Grow In Travel</h1>
+        <h1 class='text-2xl lg:text-6xl font-bold text-white uppercase mt-2'>Indonesia</h1>
       </div>
 
       
@@ -30,8 +30,8 @@
         />
 
         <div
-        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
-        <h1 class='text-6xl text-center font-bold text-white uppercase'>Travel is not reward for working, it's education for living.</h1>
+        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] py-5 text-center text-white md:block">
+        <h1 class='text-2xl lg:text-6xl text-center font-bold text-white uppercase'>Travel is not reward for working, it's education for living.</h1>
       </div>
 
       </div>
@@ -46,8 +46,8 @@
         />
 
         <div
-        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] hidden py-5 text-center text-white md:block">
-        <h1 class='text-6xl text-center font-bold text-white uppercase'>Wherever you go, go with all your heart</h1>
+        class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] py-5 text-center text-white md:block">
+        <h1 class='text-2xl lg:text-6xl text-center font-bold text-white uppercase'>Wherever you go, go with all your heart</h1>
       </div>
 
       </div>
@@ -65,7 +65,7 @@
       
     </form> --}}
 
-    <div class="mx-auto mt-5 max-w-screen-md py-20 leading-6 absolute bottom-10 left-[50%] translate-x-[-50%] w-[50%]"> 
+    <div class="mx-auto mt-5  py-20 leading-6 absolute bottom-10 left-[50%] translate-x-[-50%] w-[80%] lg:w-[50%]"> 
       <form action="/wisata/" autocomplete="off" class="relative mx-auto flex w-full max-w-2xl items-center justify-between rounded-md border shadow-lg"> 
         <svg class="absolute left-2 block h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8" class=""></circle>

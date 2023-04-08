@@ -99,7 +99,7 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          
          <form action="/admin/supir/edit/{{ $edit->id }}" method="POST" class="w-full px-4" enctype="multipart/form-data">
-            <h1 class="text-center font-semibold text-2xl">EDIT KOTA</h1>
+            <h1 class="text-center font-semibold text-2xl">EDIT DRIVER</h1>
             @csrf
 
             <div class="mt-4">
@@ -145,7 +145,8 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          
          <form action="/admin/supir/add" method="POST" class="w-full px-4" enctype="multipart/form-data">
-            <h1 class="text-center font-semibold text-2xl">TAMBAH SUPIR</h1>
+            <h1 class="text-center font-semibold text-2xl">ADD DRIVER</h1>
+
             @csrf
 
             <div class="mt-4">

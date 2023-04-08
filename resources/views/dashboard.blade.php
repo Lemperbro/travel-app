@@ -10,7 +10,7 @@
 
 
 <div class='container mt-9 lg:grid-cols-2 md:flex '>
-    <div class='grid-cols-2 w-[50%] mt-4'>
+    <div class='grid-cols-2 w-full md:w-[50%] mt-4'>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Find The Perfect</h1>
       <h1 class='font-semibold text-5xl text-[#FF2E00]'>Place</h1>
       <p class='font-medium mt-6 text-lg '>a list of the top best 25 tourist places to see</p>
@@ -21,6 +21,7 @@
         </button>
       </form>
     </div>
+
     <div class='w-[50%] mt-4'>
     @include('partials.swiper')
     </div>
@@ -67,12 +68,12 @@
   <a href="">Find All</a>
 </div>
 
-<div class="grid grid-cols-4 gap-4 container my-10">
+<div class="grid lg:grid-cols-4 gap-4 container my-10">
 
 
   @foreach ($article as $articles)
     
-  <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative pb-10">
+  <div class=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative pb-10">
     <a href="#">
         <img class="rounded-t-lg w-full h-64 object-cover" src="{{ asset('image/'.$articles->image) }}" alt=""/>
     </a>

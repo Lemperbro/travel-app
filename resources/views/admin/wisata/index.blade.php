@@ -128,9 +128,14 @@
 
           <div class="mt-4">
              <h1 class="font-semibold font-mono text-center text-xl">{{ $wisata->nama_wisata }}</h1>
+            <div class="flex justify-between">
+                <h1 class="font-semibold text-center mt-2">{{ $wisata->tour_type }}</h1>
+                <h1 class="font-semibold text-center mt-2">Rp.{{ $wisata->harga }} </h1>
 
-            <h1 class="font-semibold text-center mt-2">Private Trip</h1>
-            <h4 class="text-center">{{ $wisata->diboking }}</h4>
+
+                {{-- <h4 class="text-center">{{ $wisata->diboking }}</h4> --}}
+            </div>
+
             {{-- @foreach ($wisata->equipment as $equip)
                 @php
                     $equip_image = explode("|", $equip->image);
