@@ -80,23 +80,10 @@
                    </li>
 
                    <li  class="mt-0.5 w-full">
-                    <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg {{ ($tittle === 'Kelola Wisata') ? 'bg-white shadow-best5' : '' }}" href="/admin/wisata">
-                      <div class="{{ ($tittle === 'Kelola Wisata')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'Kelola Wisata')? 'bg-white shadow-best' : '' }} mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                    <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg {{ ($tittle === 'Add Article') ? 'bg-white shadow-best5' : '' }}" href="/article/add">
+                      <div class="{{ ($tittle === 'Add Article')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ ($tittle !== 'Add Article')? 'bg-white shadow-best' : '' }} mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                           <!-- SVG Wisata -->
-                          <svg width="14px" height="14px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#FFFFFF">
-        
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <!-- SVG Wisata -->
-                                    <path class="{{ ($tittle !== 'Kelola Wisata')? 'fill-slate-800' : '' }}  {{ ($tittle === 'Kelola Wisata')? 'fill-white' : '' }} opacity-60" d="M394.977,170.953c1.141-2.109,1.016-4.719-0.328-6.734l-37.047-55.563c-1.453-2.188-1.453-5.063,0-7.266 l37.047-55.563c1.344-2.016,1.469-4.609,0.328-6.734c-1.156-2.125-3.375-3.469-5.781-3.469H216.398v138.813h172.797 C391.602,174.438,393.82,173.078,394.977,170.953z"></path> 
-                                    <path class="{{ ($tittle !== 'Kelola Wisata')? 'fill-slate-800' : '' }}  {{ ($tittle === 'Kelola Wisata')? 'fill-white' : '' }}" d="M511.805,473.203l-8.703-19.141l-90.547-199.438H295.633h-9.344H213.68v31.547h54.031h46.5h20.688 L230.523,417.063L87.68,356.859l32.094-70.688h25.344v-31.547H99.43L0.195,473.203c-0.313,0.703-0.25,1.5,0.156,2.141 c0.422,0.641,1.125,1.031,1.891,1.031h507.516c0.766,0,1.469-0.391,1.891-1.031C512.055,474.703,512.117,473.906,511.805,473.203z M355.086,286.172h37.141l40.828,89.922L323.914,325.25L355.086,286.172z M47.758,444.813l33.406-73.578l174.563,73.578H47.758z M296.367,444.813l-50.734-21.391l68.156-85.469l129.281,60.203l21.172,46.656H296.367z"></path> 
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="opacity-60"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M168 80c-13.3 0-24 10.7-24 24V408c0 8.4-1.4 16.5-4.1 24H440c13.3 0 24-10.7 24-24V104c0-13.3-10.7-24-24-24H168zM72 480c-39.8 0-72-32.2-72-72V112C0 98.7 10.7 88 24 88s24 10.7 24 24V408c0 13.3 10.7 24 24 24s24-10.7 24-24V104c0-39.8 32.2-72 72-72H440c39.8 0 72 32.2 72 72V408c0 39.8-32.2 72-72 72H72zM176 136c0-13.3 10.7-24 24-24h96c13.3 0 24 10.7 24 24v80c0 13.3-10.7 24-24 24H200c-13.3 0-24-10.7-24-24V136zm200-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H376c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 80h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H376c-13.3 0-24-10.7-24-24s10.7-24 24-24zM200 272H408c13.3 0 24 10.7 24 24s-10.7 24-24 24H200c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 80H408c13.3 0 24 10.7 24 24s-10.7 24-24 24H200c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg>
                       </div>
                       <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Article</span>
                     </a>
@@ -132,8 +119,7 @@
                              <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                <g transform="translate(1716.000000, 291.000000)">
                                  <g transform="translate(453.000000, 454.000000)">
-                                     <path class="fill-slate-800" d="m13.817 5.669 4.504 4.501-8.15 8.15-4.501-4.504zm-3.006 13.944 8.8-8.8c.166-.163.27-.389.27-.64s-.103-.477-.269-.64l-5.156-5.156c-.166-.158-.392-.255-.64-.255s-.474.097-.64.256l-8.8 8.8c-.166.163-.27.389-.27.64s.103.477.269.64l5.156 5.156c.166.158.392.255.64.255s.474-.097.64-.256zm12.663-9.073-12.918 12.933c-.332.326-.787.527-1.289.527s-.957-.201-1.289-.527l-1.794-1.793c.477-.492.77-1.164.77-1.905 0-1.513-1.227-2.74-2.74-2.74-.74 0-1.412.294-1.905.771l.001-.001-1.781-1.794c-.326-.332-.527-.787-.527-1.289s.201-.957.527-1.289l12.919-12.906c.332-.326.787-.527 1.289-.527s.957.201 1.289.527l1.781 1.781c-.515.499-.835 1.197-.835 1.969 0 1.513 1.227 2.74 2.74 2.74.773 0 1.471-.32 1.969-.835l.001-.001 1.794 1.781c.326.332.527.787.527 1.289s-.201.957-.527 1.289z"></path>
-                                 </g>
+                                  <path class="{{ ($tittle !== 'booking')? 'fill-slate-800' : '' }}  {{ ($tittle === 'booking')? 'fill-white' : '' }} opacity-60" d="m13.817 5.669 4.504 4.501-8.15 8.15-4.501-4.504zm-3.006 13.944 8.8-8.8c.166-.163.27-.389.27-.64s-.103-.477-.269-.64l-5.156-5.156c-.166-.158-.392-.255-.64-.255s-.474.097-.64.256l-8.8 8.8c-.166.163-.27.389-.27.64s.103.477.269.64l5.156 5.156c.166.158.392.255.64.255s.474-.097.64-.256zm12.663-9.073-12.918 12.933c-.332.326-.787.527-1.289.527s-.957-.201-1.289-.527l-1.794-1.793c.477-.492.77-1.164.77-1.905 0-1.513-1.227-2.74-2.74-2.74-.74 0-1.412.294-1.905.771l.001-.001-1.781-1.794c-.326-.332-.527-.787-.527-1.289s.201-.957.527-1.289l12.919-12.906c.332-.326.787-.527 1.289-.527s.957.201 1.289.527l1.781 1.781c-.515.499-.835 1.197-.835 1.969 0 1.513 1.227 2.74 2.74 2.74.773 0 1.471-.32 1.969-.835l.001-.001 1.794 1.781c.326.332.527.787.527 1.289s-.201.957-.527 1.289z"></path>
                                </g>
                              </g>
                            </g>
@@ -221,7 +207,19 @@
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Guide</span>
             </a>
           </li>
+
+          <li  class="mt-0.5 w-full">
+            <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg" href="#">
+              <div class=" mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="opacity-60"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 464H96v48H64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V288H336V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16zM176 352h32c30.9 0 56 25.1 56 56s-25.1 56-56 56H192v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V448 368c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24H192v48h16zm96-80h32c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H304c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H320v96h16zm80-112c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V432 368z"/></svg>
+              </div>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Report</span>
+            </a>
+          </li>
                    
+
+       
+
                <li  class="mt-0.5 w-full">
                   <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/" dashboardclient.html">
                   <div class="shadow-best mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
