@@ -68,6 +68,9 @@
             <a href="/testimoni">Testimoni</a>
           </li>
           <li class="mt-5">
+            <a href="/article">Blog</a>
+          </li>
+          <li class="mt-5">
             <a href="/contact">Contact</a>
           </li>
         </ul>

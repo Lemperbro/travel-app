@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('slug')->unique();
+            $table->string('kategori');
             $table->text('image');
             $table->text('isi');
             $table->timestamps();

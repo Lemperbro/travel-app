@@ -7,6 +7,7 @@ use App\Http\Controllers\IsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
@@ -15,12 +16,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\admin\AdminKotaController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\KategoriArticleController;
 use App\Http\Controllers\admin\AdminSupirController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
-use App\Http\Controllers\ArticleController;
+use App\Models\Article;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -79,11 +81,7 @@ Route::get('/ticket', function () {
     return view('tiket');
 });
 
-Route::get('/article', function(){
-    return view('admin.article.index', [
-        'tittle' => 'article'
-    ]);
-});
+
 
 
 
@@ -150,13 +148,20 @@ Route::middleware('admin')->group(function(){
     Route::get('/guide', [AdminKendaraanController::class, 'index']);
 
 
-    // Route::post('/upload_image_tiny', [ArticleController::class, 'upload_image_tiny']);
+    Route::post('/upload_image_tiny', [ArticleController::class, 'upload_image_tiny']);
 
 
+    
+
+    Route::get('/admin/article', [ArticleController::class, 'index']);
     Route::get('/article/add', [ArticleController::class, 'create']);
     Route::post('/article/add', [ArticleController::class, 'store']);
 
-    Route::post('/froala/upload_image', [ArticleController::class, 'uploadImage_froala']);
+    Route::get('/article/edit/{slug}', [ArticleController::class, 'edit']);
+    Route::post('/article/edit/{slug}', [ArticleController::class, 'update']);
+
+    Route::get('/article/kategori', [KategoriArticleController::class, 'index']);
+    Route::post('/article/kategori', [KategoriArticleController::class, 'store']);
     
 });
 
@@ -190,6 +195,9 @@ Route::post('/profile/change-password', [ProfileController::class, 'changePasswo
 //review
 Route::post('/review/send', [DashboardController::class, 'review']);
 
+
+Route::get('/article', [ArticleController::class, 'index_client']);
+Route::get('/article/show/{slug}', [ArticleController::class, 'show_client']);
 
 });
 

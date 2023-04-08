@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Kota;
 use App\Models\Review;
 use App\Models\Wisata;
@@ -36,7 +37,7 @@ class DashboardController extends Controller
             }
             $wisata->where('tour_type', 'like', '%' . request('type') . '%');
         }
-
+        $article =  Article::paginate(8);
         return view('dashboard', [
 
             // 'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
@@ -46,7 +47,7 @@ class DashboardController extends Controller
             }])->orderBy('diboking', 'DESC')->paginate(3),
             'kota' => Kota::limit(4)->get(),
             'latest' => $wisata->orderBy($price[0],$price[1])->get(),
-        
+            'article' => $article
         ]);
     }
 

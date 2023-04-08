@@ -237,7 +237,7 @@
         <div class="text-center my-2 flex gap-x-2 mx-auto justify-center ">
             <h1 @click="previous" class="bg-gray-300 rounded p-2 cursor-pointer" :class="{'bg-purple-300' : slide > 1}">Previous</h1>
             <h1 @click="next" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide === total}">Next</h1>
-            <button class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide < total}">Kirim</button>
+            <button type="submit" class="bg-purple-300 rounded p-2 cursor-pointer" :class="{'hidden' : slide < total}">Kirim</button>
         </div>
     </form>
 

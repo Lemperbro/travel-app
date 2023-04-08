@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori_Article;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreKategori_ArticleRequest;
 use App\Http\Requests\UpdateKategori_ArticleRequest;
-use App\Models\Kategori_Article;
+use Illuminate\Support\Facades\Redirect;
 
 class KategoriArticleController extends Controller
 {
@@ -16,6 +19,10 @@ class KategoriArticleController extends Controller
     public function index()
     {
         //
+        return view('admin.article.kategori', [
+            'tittle' => 'kategori',
+            'data' => Kategori_Article::get()
+        ]);
     }
 
     /**
@@ -34,9 +41,17 @@ class KategoriArticleController extends Controller
      * @param  \App\Http\Requests\StoreKategori_ArticleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreKategori_ArticleRequest $request)
+    public function store(Request $request)
     {
         //
+        $validasi = $request->validate([
+            'kategori' => 'required|unique:kategori__articles,kategori'
+        ]);
+        Kategori_Article::create([
+            'kategori' => $validasi['kategori']
+        ]);
+
+        return redirect()->back();
     }
 
     /**

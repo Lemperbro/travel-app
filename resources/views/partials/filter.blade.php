@@ -47,6 +47,28 @@
                   class="text-gray-700"
                   aria-labelledby="dropdownDefault"
                 >
+
+                <option value=""
+                x-data="{ 
+                                      checked: false
+                                  }"
+                @reset.window="checked = false"
+              >
+                <button
+                  @click="count"
+                  :class="checked ? 'text-green-500 bg-green-50' : ''"
+                  class="group flex w-full items-center justify-between px-4 py-2 hover:bg-stone-500 hover:text-stone-300"
+                >
+                  Type Tour
+                  <i
+                    :class="
+                            checked ? 'text-green-400' : 'text-gray-600'
+                          "
+                    class="fas fa-check pl-4 group-hover:text-white text-gray-600"
+                  ></i>
+                </button>
+              </option>
+
                   <option value="private trip"
                     x-data="{ 
                                           checked: false
@@ -157,6 +179,30 @@
                   class="text-gray-700"
                   aria-labelledby="dropdownDefault"
                 >
+
+                <option value=""
+                x-data="{ 
+                                      checked: false
+                                  }"
+                @reset.window="checked = false"
+              >
+                <button
+                  @click="count"
+                  :class="checked ? 'text-green-500 bg-green-50' : ''"
+                  class="group flex w-full items-center justify-between px-4 py-2 hover:bg-stone-500 hover:text-stone-300"
+                >
+                  
+                    Price
+                  <i
+                    :class="
+                            checked ? 'text-green-400' : 'text-gray-600'
+                          "
+                    class="fas fa-check pl-4 group-hover:text-white text-gray-600"
+                  ></i>
+                </button>
+              </option>
+
+
                   <option value="termurah"
                     x-data="{ 
                                           checked: false
