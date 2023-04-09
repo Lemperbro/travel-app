@@ -58,11 +58,11 @@ php 8.0.2
 - growin di halaman depan tidak jadi satu
 - tambahkan time table di itinerary 
 - notifikasi ketika pembayaran sudah di acc
-- foto driver 
+- foto driver (develope)
 - foto guide (tambah about me)
 - foto kendaraan (develope)
 - hapus kasih notifikasi
-- kendaraan tampil di halaman pemesan ketika ada orderan di setting kendaraan dan drivernya serta guidenya siapa dan muncul di halaman my bookingt
+- kendaraan tampil di halaman pemesan ketika ada orderan di setting kendaraan dan drivernya serta guidenya siapa dan muncul di halaman my booking
 - dalam guide di tampilkan profil dari guide nya dan di tambahkan ke halaman depan
 - about us bisa di ed
 
