@@ -22,6 +22,7 @@ use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
+use App\Http\Controllers\admin\AdminGuideController;
 use App\Models\Article;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -121,6 +122,12 @@ Route::middleware('admin')->group(function(){
     Route::delete('/admin/wisata/faq/delete/{id}', [AdminWisataController::class, 'deleteFaq']);
 
 
+    //admin guide\
+    Route::get('/guide', [AdminGuideController::class, 'index']);
+    Route::post('/admin/guide/edit/{id}', [AdminGuideController::class, 'update']);
+    Route::post('admin/guide/delete/{id}', [AdminGuideController::class, 'destroy']);
+    Route::post('/admin/guide/add',[AdminGuideController::class, 'store']);
+
 
 
 
@@ -145,7 +152,7 @@ Route::middleware('admin')->group(function(){
 
 
 
-    Route::get('/guide', [AdminKendaraanController::class, 'index']);
+  
 
 
     Route::post('/upload_image_tiny', [ArticleController::class, 'upload_image_tiny']);

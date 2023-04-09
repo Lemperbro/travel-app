@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('guides', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->text('image');
             $table->bigInteger('no_tlpn');
             $table->text('alamat');
             $table->boolean('status')->default(false);
