@@ -32,6 +32,7 @@
                     <thead>
                       <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
                         <th class="border px-4 py-3">No</th>
+                        <th class="border px-4 py-3">profil</th>
                         <th class="border px-4 py-3">Name</th>
                         <th class="border px-4 py-3">Telephone</th>
                         <th class="px-2 border">Address</th>
@@ -46,10 +47,15 @@
                         
                       <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3 text-sm border text-center">{{ $no+1 }}</td>
+
+                        <td class="px-4 py-3 text-sm border text-center w-32 h-32 object-cover"> 
+                          <img src="{{ asset('image/'.$user->image) }}" alt=""> 
+                        </td>
+
+
+                        <td class="px-4 py-3 text-sm text-center border"> {{ $user->nama }}</td>
     
-                        <td class="px-4 py-3 text-sm text-center border">{{ $user->nama }}</td>
-    
-                        <td class="flex px-4 py-3 justify-center">
+                        <td class="px-4 py-3 text-sm border text-center">
                           {{ $user->no_tlpn }}
                         </td>
     
@@ -57,7 +63,7 @@
     
                         <td class="px-4 py-3 text-sm border text-center">{{ $user->umur }} Th</td>
     
-                        <td class="px-4 py-3 text-sm border text-center flex gap-x-4 justify-center">
+                        <td class="px-4 py-10 text-sm text-center flex gap-x-4 justify-center">
                           <button type="button"
                           class="inline-block px-2 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-[40%]"
                           data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $user->id }}">
@@ -102,6 +108,12 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
             <h1 class="text-center font-semibold text-2xl">EDIT DRIVER</h1>
             @csrf
 
+            <img src="{{ asset('image/'.$user->image) }}" alt="" class="flex w-36 h-36 justify-center object-cover">
+            <div class="mt-4">
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
+              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image">
+            </div>
+
             <div class="mt-4">
                 <label for="nama">Name</label>
                 <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->nama }}">
@@ -120,8 +132,8 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
       </div>
     
             <div class="flex gap-x-4 mt-4">
-            <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Kirim</button>
-            <a href="/supir" class="bg-red-600 px-4 py-2 text-white rounded-md">Batal</a>
+            <button type="submit" id="btn-select-file" class="bg-green-600 py-2 px-4 rounded-md text-white">SEND</button>
+            <a href="/supir" class="bg-red-600 px-4 py-2 text-white rounded-md">UNDO</a>
         </div>
         </form>
 
@@ -148,6 +160,11 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
             <h1 class="text-center font-semibold text-2xl">ADD DRIVER</h1>
 
             @csrf
+
+            <div class="mt-4">
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
+              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image">
+            </div>
 
             <div class="mt-4">
                 <label for="nama">Name</label>

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Supir;
+use App\Models\Guide;
 use Illuminate\Http\Request;
-use App\Models\admin\AdminWisata;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
+use Ramsey\Uuid\Guid\Guid;
 
-class AdminSupirController extends Controller
+class AdminGuideController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +19,14 @@ class AdminSupirController extends Controller
     {
         //
 
-        $data = Supir::latest();
+        $data = Guide::latest();
 
         if(request('search')){
             $data->where('nama', 'like', '%'. request('search') .'%');
         }
-        return view('admin.supir.index',[
+        return view('admin.guide.index',[
            'data' => $data->get(),
-            'tittle' => 'Kelola Supir'
+        'tittle' => 'manage guide'
         ]);
     }
 
@@ -52,49 +52,45 @@ class AdminSupirController extends Controller
         $validasi = $request->validate([
             'nama' => 'required|max:255',
             'image' => 'required',
-            'no_tlpn' => 'required|min:11',
+            'no_tlpn' => 'required',
             'alamat' => 'required',
-            'umur' => 'required',
         ]);
 
         if($files=$request->file('image')){
             $extension=$files->getClientOriginalExtension();
-            $name = hash('sha256', time()) . '.' . $extension;
+            $name = hash('sha256',time()) . '.' . $extension;
             $files->move('image',$name);
-    }
 
-        Supir::create([
+        }
+
+        Guide::create([
             'nama' => $validasi['nama'],
             'image' => $name,
             'no_tlpn' => $validasi['no_tlpn'],
-            'alamat' => $validasi['alamat'],
-            'umur' => $validasi['umur']
+            'alamat' => $validasi['alamat']
         ]);
-        return redirect('/supir');
-
-
-
+        
+        return redirect('/guide');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Guide  $guide
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminWisata $adminWisata)
+    public function show(Guide $guide)
     {
         //
-        return view('admin.wisata.add');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Guide  $guide
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminWisata $adminWisata)
+    public function edit(Guide $guide)
     {
         //
     }
@@ -103,24 +99,20 @@ class AdminSupirController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Guide  $guide
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminWisata $adminWisata, $id)
+    public function update(Request $request, Guide $guide, $id)
     {
         //
-
-
         $validasi = $request->validate([
-
             'nama' => 'required|max:255',
-            'image' => 'required',
+            'image' => 'max:2048',
             'no_tlpn' => 'required',
             'alamat' => 'required',
-            'umur' => 'required'
         ]);
 
-        $img = Supir::where('id', $id)->pluck('image')->first();
+        $img = Guide::where('id', $id)->pluck('image')->first();
 
         if($files=$request->file('image')){
             $extension=$files->getClientOriginalExtension();
@@ -137,37 +129,36 @@ class AdminSupirController extends Controller
             $name = $img;
         }
 
-
-        Supir::find($id)->update([
+        Guide::find($id)->update([
             'nama' => $request['nama'],
-            'image' => $request['image'],
+            'image' => $name,
             'no_tlpn' => $request['no_tlpn'],
             'alamat' => $request['alamat'],
             'umur' => $request['umur']
         ]);
 
-        return redirect('/supir');
+        return redirect('/guide');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Guide  $guide
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Guide $guide, $id)
     {
         //
+        $data = Guide::where('id', $id)->pluck('image')->first();
 
-        $data = Supir::where('id', $id)->pluck('image')->first();
-
-        $delete = Supir::find($id)->delete();
+        $delete = Guide::find($id)->delete();
         if($delete){
             $storage = public_path('image/'.$data);
             unlink($storage);
-        }
+        }   
 
-        return redirect('/supir');
+        return redirect('/guide');
+
     }
 }
