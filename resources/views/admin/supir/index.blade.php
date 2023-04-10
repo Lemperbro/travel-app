@@ -1,6 +1,9 @@
 @extends('admin.layouts.main')
     <!-- This is an example component -->
 
+
+
+
    @section('container')
 <div class="bg-white p-4 shadow-best rounded-md my-10">
   
@@ -96,6 +99,7 @@
 
    {{-- modal edit start --}}
    @foreach ($data as $edit)
+   
 <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto "
 id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">

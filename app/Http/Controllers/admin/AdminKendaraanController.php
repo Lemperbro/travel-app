@@ -74,6 +74,9 @@ class AdminKendaraanController extends Controller
             'image' => $name
 
         ]);
+
+        $request->session()->flash('success', 'Success Edit Data');
+
         return redirect('/kendaraan');
 
     }
@@ -147,6 +150,9 @@ class AdminKendaraanController extends Controller
             'plat' => $request['plat'],
             'image' => $name
         ]);
+
+        $request->session()->flash('success', 'Success Edit Data');
+
 
         return redirect('/kendaraan');
 

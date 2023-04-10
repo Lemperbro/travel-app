@@ -70,10 +70,10 @@ class AdminSupirController extends Controller
             'alamat' => $validasi['alamat'],
             'umur' => $validasi['umur']
         ]);
+
+        $request->session()->flash('success', 'Success Upload Data');
+
         return redirect('/supir');
-
-
-
     }
 
     /**
@@ -114,7 +114,7 @@ class AdminSupirController extends Controller
         $validasi = $request->validate([
 
             'nama' => 'required|max:255',
-            'image' => 'required',
+            'image' => 'max:2048',
             'no_tlpn' => 'required',
             'alamat' => 'required',
             'umur' => 'required'
@@ -140,11 +140,14 @@ class AdminSupirController extends Controller
 
         Supir::find($id)->update([
             'nama' => $request['nama'],
-            'image' => $request['image'],
+            'image' => $name,
             'no_tlpn' => $request['no_tlpn'],
             'alamat' => $request['alamat'],
             'umur' => $request['umur']
         ]);
+
+
+        $request->session()->flash('success', 'Success Edit Data');
 
         return redirect('/supir');
 
@@ -158,15 +161,24 @@ class AdminSupirController extends Controller
      */
     public function destroy($id)
     {
+
         //
-
-        $data = Supir::where('id', $id)->pluck('image')->first();
-
+        $data = Supir::where('id', $id)->pluck('image')->first();  
+        
         $delete = Supir::find($id)->delete();
         if($delete){
             $storage = public_path('image/'.$data);
             unlink($storage);
-        }
+            if ($data) {
+                $data->delete();
+                Alert::success('Success', 'Data berhasil dihapus');
+            } else {
+                Alert::error('Error', 'Data tidak ditemukan');
+            }
+
+        }   
+
+        
 
         return redirect('/supir');
     }

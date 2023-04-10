@@ -69,6 +69,9 @@ class AdminGuideController extends Controller
             'no_tlpn' => $validasi['no_tlpn'],
             'alamat' => $validasi['alamat']
         ]);
+
+        $request->session()->flash('success', 'Success Edit Data');
+
         
         return redirect('/guide');
     }
@@ -136,6 +139,9 @@ class AdminGuideController extends Controller
             'alamat' => $request['alamat'],
             'umur' => $request['umur']
         ]);
+
+        $request->session()->flash('success', 'Success Edit Data');
+
 
         return redirect('/guide');
 
