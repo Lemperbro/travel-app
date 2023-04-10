@@ -65,7 +65,7 @@
 
 <div class="flex justify-between border-b-[1px] mt-10 container py-4">
   <h1 class="font-semibold text-2xl">Article</h1>
-  <a href="">Find All</a>
+  <a href="/article">Find All</a>
 </div>
 
 <div class="grid lg:grid-cols-4 gap-4 container my-10">

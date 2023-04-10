@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.11",
         "nesbot/carbon": "^2.66",
+        "realrashid/sweet-alert": "^6.0",
         "sendinblue/api-v3-sdk": "^8.4",
         "xendit/xendit-php": "^2.19"
     },

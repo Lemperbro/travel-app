@@ -8,8 +8,11 @@
 <script src="{{ asset('js/dynamic-input.js') }}"></script>
 <script src="{{ asset('js/view-image.js') }}"></script>
 <script src="{{ asset('js/action-menu.js') }}"></script>
+<script src="{{ asset('js/pop-up.js') }}"></script>
 
 <script src="{{ asset('js/tinymce.js') }}"></script>
+@include('sweetalert::alert')
+
 
 
 

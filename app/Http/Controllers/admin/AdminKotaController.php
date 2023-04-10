@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Kota;
+use App\Models\Jemput;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
 use App\Models\admin\AdminKota;
-use App\Models\Jemput;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class AdminKotaController extends Controller
 {
@@ -26,7 +29,7 @@ class AdminKotaController extends Controller
         // }
         
         return view('admin.kota.index',[
-            'data' => Kota::with('wisata')->paginate(8),
+            'data' => Kota::with('wisata')->paginate(16),
             'tittle' => 'Kelola Kota'
             // 'best' => Kota::with('wisata')->join('wisatas', 'wisatas.kota_id', '=', 'kotas.id')->orderBy('wisatas.diboking', 'DESC')->get(),
             // 'best' => Wisata::where('kota_id')->orderBy('diboking', 'DESC')->limit(1)->get()
@@ -59,25 +62,38 @@ class AdminKotaController extends Controller
             'nama' => 'required',
             'harga' => 'required'
         ]);
+
+
+
+
         $image=array();
         if($files=$request->file('image')){
             foreach($files as $file){
-                $name=$file->getClientOriginalName();
+                $extension=$file->getClientOriginalName();
+                $name = hash('sha256', time()) . '.' . $extension;
+
                 $file->move('image',$name);
                 $image[]=$name;
             }
         }
         /*Insert your data*/
     
-        Kota::create( [
+       $proses = Kota::create( [
             'image'=>  implode("|",$image),
             'nama_kota' => $validasi['nama'],
             'harga' => $validasi['harga']
             //you can put other insertion here
         ]);
+
+        if($proses){
+            return redirect('/admin/kota')->with('success', 'berhasil menambah kota');
+
+        }else{
+            return redirect('/admin/kota')->with('warning', 'gagal menambah kota');
+
+        }
     
     
-        return redirect('/admin/kota');
     }
 
     /**
@@ -115,7 +131,6 @@ class AdminKotaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $gambar = Kota::findOrFail($id);
         $validasi = $request->validate([
             'image' => 'max:2048',
             'nama' => 'required',
@@ -123,15 +138,30 @@ class AdminKotaController extends Controller
         ]);     
 
         $image=array();
+        $img = Kota::where('id', $id)->pluck('image')->first();
 
         if($files=$request->file('image')){
             foreach($files as $file){
-                $name=$file->getClientOriginalName();
-                $file->move('image',$name);
+                $extension=$file->getClientOriginalName();
+                $name = hash('sha256', time()) . '-' . $extension;
+
+                $up = $file->move('image',$name);
                 $image[]=$name;
             }
+
+            if($up){
+                $data_img = explode('|', $img);
+
+                foreach($data_img as $imgs){
+                    $storage = public_path('image/'.$imgs);
+
+                    if(File::exists($storage)){
+                        unlink($storage);
+                    }
+                }
+            }
         }else{
-            $image[] = $gambar->image;
+            $image[] = $img;
         }
        
     
@@ -156,10 +186,21 @@ class AdminKotaController extends Controller
     public function destroy($id)
     {
         //
+        $img = Kota::where('id', $id)->pluck('image')->first();
 
-        Kota::find($id)->delete();
+        $proses = Kota::find($id)->delete();
 
-        return redirect('/admin/kota');
+        if($proses){
+            $storage = public_path('image/'.$img);
+
+            if(File::exists($storage)){
+                unlink($storage);
+            }
+
+        return redirect('/admin/kota')->with('success', 'berhasil menghapus');
+
+        }
+
     }
 
     public function titik_jemput($id){

@@ -86,7 +86,8 @@ Route::get('/ticket', function () {
 
 
 
-
+Route::get('/article', [ArticleController::class, 'index_client']);
+Route::get('/article/show/{slug}', [ArticleController::class, 'show_client']);
 
 
 
@@ -203,8 +204,7 @@ Route::post('/profile/change-password', [ProfileController::class, 'changePasswo
 Route::post('/review/send', [DashboardController::class, 'review']);
 
 
-Route::get('/article', [ArticleController::class, 'index_client']);
-Route::get('/article/show/{slug}', [ArticleController::class, 'show_client']);
+
 
 });
 
