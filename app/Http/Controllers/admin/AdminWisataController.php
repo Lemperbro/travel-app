@@ -170,9 +170,8 @@ class AdminWisataController extends Controller
             // }
             
 
-        $request->session()->flash('success', 'Success Upload Data');
 
-        return redirect('/admin/wisata');
+        return redirect('/admin/wisata')->with('success', 'berhasil menambah');
 
 
     }
@@ -450,10 +449,27 @@ class AdminWisataController extends Controller
      */
     public function destroy(AdminWisata $adminWisata, $id)
     {
+
+        $img = Wisata::where('id', $id)->pluck('image')->first();
         //
-        Wisata::find($id)->delete();
+       $proses = Wisata::find($id)->delete();
+
+       if($proses){
+            $data = explode('|',$img);
+
+            foreach($data as $datas){
+                $storage = public_path('image/'.$datas);
+
+                if(File::exists($storage)){
+                    unlink($storage);
+
+                }
+            }
+            return redirect('/admin/wisata')->with('success', 'berhasil menghapus');
+
+       }
         // Itenerary::with('fasilitas','jemput')->where('wisata_id', $id)->delete();
-        return redirect('/admin/wisata');
+        return redirect('/admin/wisata')->with('warning', 'gagal menghapus');
     }
 
 

@@ -170,6 +170,8 @@ Route::middleware('admin')->group(function(){
 
     Route::get('/article/kategori', [KategoriArticleController::class, 'index']);
     Route::post('/article/kategori', [KategoriArticleController::class, 'store']);
+
+    Route::post('/article/delete/{slug}', [ArticleController::class, 'destroy']);
     
 });
 

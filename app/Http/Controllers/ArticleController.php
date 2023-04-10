@@ -196,7 +196,7 @@ class ArticleController extends Controller
         }else{
             $img = $image;
         }
-
+  
         $up = Article::where('slug', $slug)->update([
             'judul' => $validasi['judul'],
             'kategori' => $validasi['kategori'],
@@ -205,9 +205,9 @@ class ArticleController extends Controller
         ]);
 
         if($up){
-            return redirect('/admin/article')->with('successUpdate', 'berhasil mengupdate');
+            return redirect('/admin/article')->with('success', 'berhasil mengupdate');
         }else{
-            return redirect('/admin/article')->with('errorUpdate', 'gagal mengupdate');
+            return redirect('/admin/article')->with('error', 'gagal mengupdate');
         }
     }
 
@@ -217,8 +217,24 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(Article $article, $slug)
     {
         //
+
+        $img = Article::where('slug', $slug)->pluck('image')->first();
+
+        $proses = Article::where('slug', $slug)->delete();
+
+        if($proses){
+            $storage = public_path('image/'.$img);
+
+            if(File::exists($storage)){
+                unlink($storage);
+
+                return redirect('/admin/article')->with('success', 'berhasil menghapus');
+            }
+        }
+
+        return redirect('/admin/article')->with('warning', 'gagal menghapus');
     }
 }
