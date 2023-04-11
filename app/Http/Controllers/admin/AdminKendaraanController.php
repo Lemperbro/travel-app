@@ -75,9 +75,8 @@ class AdminKendaraanController extends Controller
 
         ]);
 
-        $request->session()->flash('success', 'Success Edit Data');
+        return redirect('/kendaraan')->with('success', 'Upload Succes');
 
-        return redirect('/kendaraan');
 
     }
 
@@ -151,10 +150,7 @@ class AdminKendaraanController extends Controller
             'image' => $name
         ]);
 
-        $request->session()->flash('success', 'Success Edit Data');
-
-
-        return redirect('/kendaraan');
+        return redirect('/kendaraan')->with('success', 'Update Succes');
 
     }
 
@@ -174,6 +170,6 @@ class AdminKendaraanController extends Controller
             $storage = public_path('image/'.$data);
             unlink($storage);
         }
-        return redirect('/kendaraan');
+        return redirect('/kendaraan')->with('success', 'Delete Succes');
     }
 }

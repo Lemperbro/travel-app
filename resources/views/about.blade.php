@@ -8,6 +8,65 @@
 
 
 @section('container')
+
+
+<div class="grid-cols-3 flex justify-between">
+
+
+
+  <div class="max-w-sm mb-24 bg-white border border-gray-200 rounded-lg shadow-best dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+    </div>
+  </div>
+
+
+  <div class="max-w-sm mb-24 bg-white border border-gray-200 rounded-lg shadow-best dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+    </div>
+  </div>
+
+  <div class="max-w-sm mb-24 bg-white border border-gray-200 rounded-lg shadow-best dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+    </div>
+  </div>
+</div>
+
+
+
+
 <h1 class="text-center text-2xl">Travel Is About The Human Connection </h1>
 <h1 class='text-[#FF2E00] text-3xl font-bold text-center mt-8'>WE ARE GROWIN TRAVEL INDONESIA</h1>
 <div class='text-center mb-9'>
@@ -16,6 +75,11 @@
     We value and love every teammate and we help them to succeed in every way that we can. It is only through being truly passionate ,<br> knowledgeable and focused that we can do the best for our customers.
     </p>
 </div>
+
+
+
+
+
 
 @include('partials.slider')
 <div class='flex mt-10 container justify-between'>
@@ -32,29 +96,7 @@
 </div>
 
 
-<div class="grid-cols-3 flex gap-x-3 mb-24">
- 
-  
-  <div class="md:flex bg-slate-100 rounded-xl p-2 h-64 md:p-0 dark:bg-slate-800 mt-8">
-    <img class="w-24 h-24 md:w-48 md:h-64 md:rounded-none rounded-full mx-auto" src="img/malang.png" alt="" width="384" height="512">
-    <div class="pt-2 md:p-2 text-center md:text-left space-y-2">
-      <blockquote>
-        <p class="text-lg font-medium">
-          “Tailwind CSS is the only framework that I've seen scale
-          on large teams. It’s easy to customize, adapts to any design,
-          and the build size is tiny.”
-        </p>
-      </blockquote>
-      <figcaption class="font-medium">
-        <div class="text-sky-500 dark:text-sky-400">
-          Sarah Dayan
-        </div>
-        <div class="text-slate-700 dark:text-slate-500">
-          Staff Engineer, Algolia
-        </div>
-      </figcaption>
-    </div>
-  </div>
+
 
   
 </div>

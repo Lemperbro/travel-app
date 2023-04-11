@@ -70,10 +70,8 @@ class AdminGuideController extends Controller
             'alamat' => $validasi['alamat']
         ]);
 
-        $request->session()->flash('success', 'Success Edit Data');
+        return redirect('/guide')->with('success', 'Upload Succes');
 
-        
-        return redirect('/guide');
     }
 
     /**
@@ -140,10 +138,8 @@ class AdminGuideController extends Controller
             'umur' => $request['umur']
         ]);
 
-        $request->session()->flash('success', 'Success Edit Data');
+        return redirect('/guide')->with('success', 'Update Succes');
 
-
-        return redirect('/guide');
 
     }
 
@@ -164,7 +160,8 @@ class AdminGuideController extends Controller
             unlink($storage);
         }   
 
-        return redirect('/guide');
+        return redirect('/guide')->with('success', 'Delete Succes');
+
 
     }
 }

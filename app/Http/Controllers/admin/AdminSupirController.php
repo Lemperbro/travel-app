@@ -71,7 +71,8 @@ class AdminSupirController extends Controller
             'umur' => $validasi['umur']
         ]);
 
-        $request->session()->flash('success', 'Success Upload Data');
+            return redirect('/supir')->with('success', 'Upload Driver Succes');
+            
 
         return redirect('/supir');
     }
@@ -147,9 +148,8 @@ class AdminSupirController extends Controller
         ]);
 
 
-        $request->session()->flash('success', 'Success Edit Data');
+        return redirect('/supir')->with('success', 'Update Driver Succes');
 
-        return redirect('/supir');
 
     }
 
@@ -169,17 +169,18 @@ class AdminSupirController extends Controller
         if($delete){
             $storage = public_path('image/'.$data);
             unlink($storage);
-            if ($data) {
-                $data->delete();
-                Alert::success('Success', 'Data berhasil dihapus');
-            } else {
-                Alert::error('Error', 'Data tidak ditemukan');
-            }
 
         }   
 
+        {
+            return redirect('/supir')->with('success', 'Delete Driver Succes');
+            
+
+
+        }
+
+        
         
 
-        return redirect('/supir');
     }
 }

@@ -170,6 +170,9 @@ class AdminKotaController extends Controller
             'nama_kota' => $validasi['nama'],
             'harga' => $validasi['harga']
         ]);
+
+        return redirect('/admin/kota')->with('success', 'Update Succes');
+
     
     
         return redirect('/admin/kota');
@@ -197,7 +200,7 @@ class AdminKotaController extends Controller
                 unlink($storage);
             }
 
-        return redirect('/admin/kota')->with('success', 'berhasil menghapus');
+        return redirect('/admin/kota')->with('success', 'Delete Succes');
 
         }
 
