@@ -16,7 +16,19 @@ class AdminBookingController extends Controller
         $data = Pemesanan::with('wisata','user');
         $user = User::where('username', 'like', '%'.request('search').'%')->get();
 
-        if(request('search')){
+        if(request('search') && request('status')){
+            $data->where('payment_status', 'like' , '%' . request('status') . '%')
+            ->Where('doc_no', 'like' , '%' . request('search') . '%');
+
+            if($user->count() > 0){
+                foreach($user as $user){
+
+                $data = Pemesanan::with('wisata','user')->where('payment_status', 'like' , '%' . request('status') . '%')->Where('user_id', 'like' , '%' . $user->id . '%');
+            }
+
+            }
+        }
+        elseif(request('search')){
             $data->where('payment_status', 'like' , '%' . request('search') . '%')
             ->orWhere('doc_no', 'like' , '%' . request('search') . '%');
 
