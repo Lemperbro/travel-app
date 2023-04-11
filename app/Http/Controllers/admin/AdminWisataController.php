@@ -514,18 +514,26 @@ class AdminWisataController extends Controller
 
             $hitung_request = count($request->question);
             
-
             if($hitung_request > $faq->count()){
+
+                if($faq->count() < 5){
+
                 for($i = 0 ; $i < $hitung_request; $i++){
 
 
-                Faq::where('wisata', $slug)->updateOrCreate([
+               $add = Faq::where('wisata', $slug)->updateOrCreate([
                     'wisata' => $slug,
                     'question' => $request->question[$i],
                     'answer' => $request->answer[$i],
                 ]);
 
                 }
+                return redirect()->back()->with('success', 'berhasil menambah FAQ');
+
+            }else if($faq->count() >= 5){
+                return redirect()->back()->with('warning', 'FAQ Sudah mencapai batas');
+            }
+
                     
             }else if($hitung_request <= $faq->count()){
                 for($i = 0 ; $i < $hitung_request; $i++){

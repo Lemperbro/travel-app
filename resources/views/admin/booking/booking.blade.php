@@ -8,9 +8,15 @@
             <div class="w-full overflow-x-auto bg-gray-50 p-2">
 
 
-            <form class="w-[80%] mx-auto my-5" action="/admin/booking">   
+            <form class="w-[80%] mx-auto my-5 flex gap-x-4" action="/admin/booking">   
               <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-              <div class="relative">
+              <select name="status" id="" class="border-[1px] border-slate-300 rounded-md ">
+                <option value="" selected>Status</option>
+                <option value="PAID" {{ (request('status') === 'PAID')? 'selected' : '' }}>PAID</option>
+                <option value="PENDING" {{ (request('status') === 'PENDING')? 'selected' : '' }}>PENDING</option>
+                <option value="EXPIRED" {{ (request('status') === 'EXPIRED')? 'selected' : '' }}>EXPIRED</option>
+              </select>
+              <div class="relative w-full">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                   </div>
@@ -62,7 +68,7 @@
                     <td class="px-4 py-3 text-sm border text-center">{{ $datas->wisata->nama_wisata }}</td>
 
                     <td class="px-4 py-3 text-sm border text-center">{{ $datas->wisata->tour_type }}</td>
-                    <td class="px-4 py-3 text-sm border text-center">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-y') }}</td>
+                    <td class="px-4 py-3 text-sm border text-center">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-Y ') }}</td>
 
                     <td class="px-4 py-3 text-xs text-center">
                       <span class="px-2 py-1 font-semibold leading-tight rounded-full {{ ($datas->payment_status === 'PENDING') ? 'text-yellow-700 bg-yellow-100' : ''}}  {{ ($datas->payment_status === 'PAID') ? 'text-green-700 bg-green-100' : ''}}">{{ $datas->payment_status }}</span>
