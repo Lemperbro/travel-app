@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
+use App\Models\About;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
-use App\Models\About;
 
 class AboutController extends Controller
 {
@@ -13,9 +15,14 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_client()
     {
         //
+
+        return view('about', [
+            'data' => About::first(),
+            'team' => Team::get()
+        ]);
     }
 
     /**

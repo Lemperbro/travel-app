@@ -15,18 +15,13 @@
 
 
 
-<div class="flex grid-cols-2 justify-between">
-<div class='mb-9 w-[40%] mt-3'>
-  <h1 class="text-2xl">Travel Is About The Human Connection </h1>
-  <h1 class='text-[#FF2E00] text-3xl font-bold mt-3 mb-4 text-justify'>WE ARE GROWIN TRAVEL INDONESIA</h1>
-    <p>Travel like a human. The human part was always more important than the travel part. What we are about is belonging, and at the center of belonging is love.
-    Over the past 10 years, the team at Tour Mount Bromo has always believed in building that relationship with each customers to turn every trip into a memorable experience. It is the human connection that separates a tour/trip and an experience to remember.
-    We value and love every teammate and we help them to succeed in every way that we can. It is only through being truly passionate ,knowledgeable and focused that we can do the best for our customers.
-    </p>
+<div class="flex grid-cols-2 gap-8">
+<div class='mb-9 w-[50%] mt-3'>
+  {!! $data->isi !!}
 </div>
 
 <div class="w-[50%]">
-  <img src="img/back2.png" alt="">
+  <img src="{{ asset('about/'.$data->image) }}" alt="" class="object-contain">
 </div>
 
 </div>

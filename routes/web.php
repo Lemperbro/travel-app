@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Kota;
-use App\Models\Wisata;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\admin\AdminAboutController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IsiController;
 use App\Http\Controllers\KotaController;
@@ -24,7 +25,7 @@ use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\admin\AdminGuideController;
 use App\Http\Controllers\admin\AdminTeamController;
-use App\Models\Article;
+
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -47,9 +48,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 
-Route::get('/about', function () {
-    return view('about');
-});
 
 
 Route::get('/privatetrip', function () {
@@ -89,6 +87,9 @@ Route::get('/ticket', function () {
 
 Route::get('/article', [ArticleController::class, 'index_client']);
 Route::get('/article/show/{slug}', [ArticleController::class, 'show_client']);
+
+
+Route::get('/abouts', [AdminAboutController::class, 'index_client']);
 
 
 
@@ -182,6 +183,12 @@ Route::middleware('admin')->group(function(){
     Route::post('/article/kategori', [KategoriArticleController::class, 'store']);
 
     Route::post('/article/delete/{slug}', [ArticleController::class, 'destroy']);
+
+
+    //about
+
+    Route::get('/admin/about', [AdminAboutController::class, 'index']);
+    Route::post('/admin/about/update', [AdminAboutController::class, 'update']);
     
 });
 

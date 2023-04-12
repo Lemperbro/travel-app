@@ -24,7 +24,7 @@ class AdminTeamController extends Controller
         if(request('search')){
             $data->where('nama', 'like', '%'. request('search') .'%');
         }
-        return view('admin.about.about',[
+        return view('admin.team.about',[
             'data' => $data->get(),
             'tittle' => 'Kelola Supir'
         ]);

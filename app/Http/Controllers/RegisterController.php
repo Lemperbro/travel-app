@@ -38,9 +38,9 @@ class RegisterController extends Controller
         if($proses){
             return redirect('/login')->with('success', 'Registration successfull! Please login');
 
-        }else(
+        }else{
             return redirect()->back()->with('warning', 'Registrasi Gagal');
-        )
+        }
  
     }
 

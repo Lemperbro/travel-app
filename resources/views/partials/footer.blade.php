@@ -62,7 +62,7 @@
       <div class="">
         <ul class="text-white mt-2 text-2xl font-semibold ">
           <li class="">
-            <a href="/about">About Us</a>
+            <a href="/abouts">About Us</a>
           </li>
           <li class="mt-5">
             <a href="/testimoni">Testimoni</a>
