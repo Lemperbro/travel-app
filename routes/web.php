@@ -23,6 +23,7 @@ use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\admin\AdminGuideController;
+use App\Http\Controllers\admin\AdminTeamController;
 use App\Models\Article;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -128,6 +129,15 @@ Route::middleware('admin')->group(function(){
     Route::post('/admin/guide/edit/{id}', [AdminGuideController::class, 'update']);
     Route::post('admin/guide/delete/{id}', [AdminGuideController::class, 'destroy']);
     Route::post('/admin/guide/add',[AdminGuideController::class, 'store']);
+
+
+    //admin about
+    Route::get('/team', [AdminTeamController::class, 'index']);
+    Route::post('admin/team/edit/{id}', [AdminTeamController::class, 'update']);
+    Route::post('admin/team/delete/{id}', [AdminTeamController::class, 'destroy']);
+    Route::post('admin/team/add', [AdminTeamController::class, 'store']);
+
+
 
 
 

@@ -142,6 +142,8 @@
              $no = 1;
 
            @endphp
+
+ 
              @foreach ($latest_booking as $data)
 
              <tbody>

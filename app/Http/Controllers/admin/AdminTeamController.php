@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Supir;
+use App\Models\Team;
 use Illuminate\Http\Request;
-use App\Models\admin\AdminWisata;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 
-class AdminSupirController extends Controller
+class AdminTeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +18,14 @@ class AdminSupirController extends Controller
     {
         //
 
-        $data = Supir::latest();
+
+        $data = Team::latest();
 
         if(request('search')){
             $data->where('nama', 'like', '%'. request('search') .'%');
         }
-        return view('admin.supir.index',[
-           'data' => $data->get(),
+        return view('admin.about.about',[
+            'data' => $data->get(),
             'tittle' => 'Kelola Supir'
         ]);
     }
@@ -49,52 +49,50 @@ class AdminSupirController extends Controller
     public function store(Request $request)
     {
         //
+
         $validasi = $request->validate([
             'nama' => 'required|max:255',
             'image' => 'required',
-            'no_tlpn' => 'required|min:11',
-            'alamat' => 'required',
-            'umur' => 'required',
+            'jabatan' => 'required',
+            'profile' => 'required',
         ]);
 
         if($files=$request->file('image')){
             $extension=$files->getClientOriginalExtension();
-            $name = hash('sha256', time()) . '.' . $extension;
+            $name = hash('sha256',time()) . '.' . $extension;
             $files->move('image',$name);
-    }
 
-        Supir::create([
+        }
+
+        Team::create([
             'nama' => $validasi['nama'],
             'image' => $name,
-            'no_tlpn' => $validasi['no_tlpn'],
-            'alamat' => $validasi['alamat'],
-            'umur' => $validasi['umur']
+            'jabatan' => $validasi['jabatan'],
+            'profile' => $validasi['profile']
         ]);
 
-            return redirect('/supir')->with('success', 'Upload Driver Succes');
-            
+        return redirect('/team')->with('success', 'Upload Succes');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminWisata $adminWisata)
+    public function show(Team $team)
     {
         //
-        return view('admin.wisata.add');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminWisata $adminWisata)
+    public function edit(Team $team)
     {
         //
     }
@@ -103,24 +101,23 @@ class AdminSupirController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminWisata $adminWisata, $id)
+    public function update(Request $request, Team $team, $id)
     {
         //
-
 
         $validasi = $request->validate([
 
             'nama' => 'required|max:255',
             'image' => 'max:2048',
-            'no_tlpn' => 'required',
-            'alamat' => 'required',
-            'umur' => 'required'
+            'jabatan' => 'required|max:255',
+            'Profile' => 'required|max:255',
+
         ]);
 
-        $img = Supir::where('id', $id)->pluck('image')->first();
+        $img = Team::where('id', $id)->pluck('image')->first();
 
         if($files=$request->file('image')){
             $extension=$files->getClientOriginalExtension();
@@ -138,48 +135,37 @@ class AdminSupirController extends Controller
         }
 
 
-        Supir::find($id)->update([
+        Team::find($id)->update([
             'nama' => $request['nama'],
             'image' => $name,
-            'no_tlpn' => $request['no_tlpn'],
-            'alamat' => $request['alamat'],
-            'umur' => $request['umur']
+            'jabatan' => $request['jabatan'],
+            'profile' => $request['profile'],
+
         ]);
 
 
-        return redirect('/supir')->with('success', 'Update Driver Succes');
-
+        return redirect('/team')->with('success', 'Update Team Succes');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdminWisata  $adminWisata
+     * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Team $team, $id)
     {
-
         //
-        $data = Supir::where('id', $id)->pluck('image')->first();  
-        
-        $delete = Supir::find($id)->delete();
+
+        $data = Team::where('id', $id)->pluck('image')->first();
+
+        $delete = Team::find($id)->delete();
         if($delete){
             $storage = public_path('image/'.$data);
             unlink($storage);
-
         }   
 
-        {
-            return redirect('/supir')->with('success', 'Delete Driver Succes');
-            
-
-
-        }
-
-        
-        
-
+        return redirect('/team')->with('success', 'Delete Succes');
     }
 }

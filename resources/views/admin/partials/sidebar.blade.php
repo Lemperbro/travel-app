@@ -208,6 +208,31 @@
             </a>
           </li>
 
+
+          <li  class="mt-0.5 w-full">
+            <a class="{{ request()->is('team') || request()->is('team/*') ? 'bg-white shadow-best5' : '' }} rounded-lg p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/team">
+              <div class="{{ request()->is('team') || request()->is('team/*')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ !request()->is('team') || !request()->is('team/*')? 'bg-white shadow-best' : '' }} shadow-best mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
+               
+                  <!-- SVG Guide -->
+                  <svg height="12px" width="12px" viewBox="0 -2 24 24" id="meteor-icon-kit__regular-team" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                      <g transform="translate(1716.000000, 291.000000)">
+                        <g transform="translate(153.000000, 2.000000)">
+                          <!-- SVG Guide -->
+                            <path class="{{  !request()->is('team') || !request()->is('team/*')? 'fill-slate-800' : ''  }}  {{ request()->is('team') || request()->is('team/*')? 'fill-white' : '' }} fill-slate-800" fill-rule="evenodd" clip-rule="evenodd" d="M17 0C16.4477 0 16 0.44772 16 1V19C16 19.5523 16.4477 20 17 20C17.5523 20 18 19.5523 18 19V8.7808L23.2425 7.47014C23.6877 7.35885 24 6.95887 24 6.5V1C24 0.44772 23.5523 0 23 0H17zM22 5.71922L18 6.71922V2H22V5.71922z" fill="#FFFFFF"></path>
+                            <path class="{{  !request()->is('team') || !request()->is('team/*')? 'fill-slate-800' : ''  }}  {{ request()->is('team') || request()->is('team/*')? 'fill-white' : '' }} fill-slate-800" fill-rule="evenodd" clip-rule="evenodd" d="M7 11C9.20914 11 11 9.2091 11 7C11 4.79086 9.20914 3 7 3C4.79086 3 3 4.79086 3 7C3 9.2091 4.79086 11 7 11zM7 9C8.10457 9 9 8.1046 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.1046 5.89543 9 7 9z" fill="#FFFFFF"></path>
+                            <path class="{{  !request()->is('team') || !request()->is('team/*')? 'fill-slate-800' : ''  }}  {{ request()->is('team') || request()->is('team/*')? 'fill-white' : '' }} fill-slate-800" d="M5 14C3.34315 14 2 15.3431 2 17V19C2 19.5523 1.55228 20 1 20C0.447715 20 0 19.5523 0 19V17C0 14.2386 2.23858 12 5 12H9C11.7614 12 14 14.2386 14 17V19C14 19.5523 13.5523 20 13 20C12.4477 20 12 19.5523 12 19V17C12 15.3431 10.6569 14 9 14H5z" fill="#FFFFFF"></path>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Team</span>
+            </a>
+          </li>
+
           <li  class="mt-0.5 w-full">
             <a class="p-3 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg {{ request()->is('report') || request()->is('report/*') ? 'bg-white shadow-best5' : '' }}" href="#">
               <div class="{{ request()->is('report') || request()->is('report/*')? 'bg-gradient-to-tl from-purple-700 to-pink-500 ' : '' }} {{ !request()->is('report') || !request()->is('report/*')? 'bg-white shadow-best' : '' }} mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">

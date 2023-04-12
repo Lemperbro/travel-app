@@ -15,6 +15,14 @@ module.exports = {
       padding: "2rem",
     },
     extend: {
+
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+        'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        
+      },
+
       boxShadow: {
         best: "0px 2px 5px -1px rgba(50, 50, 93, 0.25),  0px 1px 3px -1px rgba(0, 0, 0, 0.3)",
         best4: "0px 2px 5px -1px rgba(255, 255, 255, 0.25),  0px 1px 3px -1px rgba(255, 255, 255, 0.3)",
@@ -28,6 +36,7 @@ module.exports = {
         xl: '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.01)',
         
       },
+
       outline: {
         blue: '2px solid rgba(0, 112, 244, 0.5)',
         },
