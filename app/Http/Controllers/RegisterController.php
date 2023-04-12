@@ -27,16 +27,21 @@ class RegisterController extends Controller
 
         $validasi['password'] = bcrypt($validasi['password']); 
 
-        User::create([
+        $proses = User::create([
             'username' => $validasi['username'],
             'email' => $validasi['email'],
             'password' => $validasi['password'],
             'no_tlpn' => $validasi['no_tlpn'],
             'alamat' => $validasi['alamat']
         ]);
-        $request->session()->flash('success', 'Registration successfull! Please login');
+
+        if($proses){
+            return redirect('/login')->with('success', 'Registration successfull! Please login');
+
+        }else(
+            return redirect()->back()->with('warning', 'Registrasi Gagal');
+        )
  
-        return redirect('/login');
     }
 
     

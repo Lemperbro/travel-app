@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('no_tlpn');
             $table->text('alamat');
             $table->integer('umur');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

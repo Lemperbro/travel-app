@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('image');
             $table->text('location');
             $table->integer('diboking')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

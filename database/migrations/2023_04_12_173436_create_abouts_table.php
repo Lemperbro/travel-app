@@ -13,20 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kendaraans', function (Blueprint $table) {
-
-                        //tambah db supir + kendaraan
-            //merek
-            //kapasitas
-            //
-
+        Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('merek');
-            $table->integer('kapasitas');
-            $table->integer('jumlah');
-            $table->string('plat');
+            $table->text('isi');
             $table->text('image');
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -38,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kendaraans');
+        Schema::dropIfExists('abouts');
     }
 };
