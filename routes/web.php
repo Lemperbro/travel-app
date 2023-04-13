@@ -188,6 +188,7 @@ Route::middleware('admin')->group(function(){
     //about
 
     Route::get('/admin/about', [AdminAboutController::class, 'index']);
+    Route::post('/admin/about/add', [AdminAboutController::class, 'store']);
     Route::post('/admin/about/update', [AdminAboutController::class, 'update']);
     
 });

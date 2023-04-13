@@ -56,6 +56,11 @@ class AdminAboutController extends Controller
     {
         //
 
+        $validasi = $request->validate([
+            'image' => 'required|max:2048',
+            'isi' => 'required'
+        ]);
+
         if($files=$request->file('image')){
             $extension=$files->getClientOriginalExtension();
             $name = hash('sha256',time()) . '.' . $extension;
@@ -63,11 +68,16 @@ class AdminAboutController extends Controller
 
         }
 
-        About::create([
+        $proses = About::create([
             'isi' => $request->isi,
             'image' => $name
         ]);
-        return redirect()->back();
+
+        if($proses){
+            return redirect()->back()->with('success', 'Berhasil Menambah About');
+        }else{
+            return redirect()->back()->with('warning', 'Gagal Menambah About');
+        }
     }
 
     /**
