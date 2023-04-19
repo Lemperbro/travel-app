@@ -124,6 +124,9 @@ Route::middleware('admin')->group(function(){
 
     Route::delete('/admin/wisata/faq/delete/{id}', [AdminWisataController::class, 'deleteFaq']);
 
+    Route::post('/admin/wisata/aktif/{id}', [AdminWisataController::class, 'aktif']);
+    Route::post('/admin/wisata/nonaktif/{id}', [AdminWisataController::class, 'nonaktif']);
+
 
     //admin guide\
     Route::get('/guide', [AdminGuideController::class, 'index']);

@@ -67,7 +67,7 @@ class IsiController extends Controller
             $comment = Testi::with('user')->where('wisata_id', $slug)->paginate(6);
             if($wisata->count() > 0){
 
-                $best = Wisata::where('kota_id', $wisata->first()->kota_id)->paginate(10);
+                $best = Wisata::where('kota_id', $wisata->first()->kota_id)->where('status', true)->paginate(10);
 
                 return view('isi', [
 

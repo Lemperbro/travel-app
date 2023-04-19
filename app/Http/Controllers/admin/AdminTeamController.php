@@ -113,7 +113,7 @@ class AdminTeamController extends Controller
             'nama' => 'required|max:255',
             'image' => 'max:2048',
             'jabatan' => 'required|max:255',
-            'Profile' => 'required|max:255',
+            'profile' => 'required|max:255',
 
         ]);
 
@@ -135,7 +135,7 @@ class AdminTeamController extends Controller
         }
 
 
-        Team::find($id)->update([
+        Team::where('id',$id)->update([
             'nama' => $request['nama'],
             'image' => $name,
             'jabatan' => $request['jabatan'],

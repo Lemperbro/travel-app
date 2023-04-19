@@ -25,7 +25,7 @@ class WisataController extends Controller
         //
         $wisata = Wisata::latest();
         if(request('search')){
-            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')->where('status', true)
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%')
             ->orWhere('long_tour', 'like', '%' . request('search') . '%')
             ->orWhere('tour_type', 'like', '%'. request('search'). '%');
@@ -34,7 +34,7 @@ class WisataController extends Controller
         }
 
         return view('wisata', [
-            'data' => $wisata->paginate(9)
+            'data' => $wisata->where('status', true)->paginate(9)
         ]);
     }
 
@@ -44,13 +44,13 @@ class WisataController extends Controller
         //
         $wisata = Wisata::latest();
         if(request('perfect_place')){
-            $wisata->orderBy('diboking', 'DESC');
+            $wisata->where('status', true)->orderBy('diboking', 'DESC');
             
 
         }
 
         return view('wisata', [
-            'data' => $wisata->paginate(25)
+            'data' => $wisata->where('status', true)->paginate(25)
         ]);
     }
 
@@ -160,10 +160,10 @@ class WisataController extends Controller
 
         if(request('search')){
             $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
-            ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
+            ->where('status', true)->orWhere('deskripsi', 'like', '%' . request('search') . '%');
         }
         return view('type', [
-            "data" => $wisata->paginate(9),
+            "data" => $wisata->where('status', true)->paginate(9),
             'type' => $type
         ]);
     }

@@ -9,13 +9,49 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
     "transform: (content) => content.replace(/taos:/g, '')"
   ],
+  safelist: [
+    'w-64',
+    'w-1/2',
+    'rounded-l-lg',
+    'rounded-r-lg',
+    'bg-gray-200',
+    'grid-cols-4',
+    'grid-cols-7',
+    'h-6',
+    'leading-6',
+    'h-9',
+    'leading-9',
+    'shadow-lg',
+    'bg-opacity-50',
+    'dark:bg-opacity-80'
+  ],
   theme: {
     container: {
       center: true,
       padding: "2rem",
     },
     extend: {
-
+      colors: {
+        primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a" },
+        main : "#1A1C1E",
+        main2 : "#F0CC80",
+        main3 : "#F9F9F9",
+        main4 : "#303234",
+        main5 : "#5e6061",
+        main6 : "#0d0e0f"
+      },
+      fontFamily: {
+        'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+        'body': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+        'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
+      },
+      transitionProperty: {
+        'width': 'width'
+      },
+      textDecoration: ['active'],
+      minWidth: {
+        'kanban': '28rem'
+      },
       transitionTimingFunction: {
         'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
         'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
@@ -60,14 +96,6 @@ module.exports = {
         best1: "slide_bottom 4s infinite",
         best2: "slide_top 4s infinite",
         best3: "slide_bottom 4s infinite",
-      },
-      colors: {
-        main : "#1A1C1E",
-        main2 : "#F0CC80",
-        main3 : "#F9F9F9",
-        main4 : "#303234",
-        main5 : "#5e6061",
-        main6 : "#0d0e0f"
       },
       transitionDelay: {
         delay: '150ms'

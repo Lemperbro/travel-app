@@ -104,7 +104,7 @@
         <div
           class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
              
-             <form action="admin/team/edit/{{ $edit->id }}" method="POST" class="w-full px-4" enctype="multipart/form-data">
+             <form action="/admin/team/edit/{{ $edit->id }}" method="POST" class="w-full px-4" enctype="multipart/form-data">
                 <h1 class="text-center font-semibold text-2xl">EDIT TEAM</h1>
                 @csrf
     

@@ -567,4 +567,35 @@ class AdminWisataController extends Controller
             'success' => true
         ]);
     }
+
+    public function aktif($id){
+        
+        $wisata = Wisata::where('id', $id)->first();
+        $proses = Wisata::where('id', $id)->update([
+            'status' => true
+        ]);
+
+        if($proses){
+            return redirect()->back()->with('success', $wisata->nama_wisata.' berhasil di aktifkan');
+        }else{
+            return redirect()->back()->with('warning', $wisata->nama_wisata.' tidak berhasil di aktifkan');
+
+        }
+    }
+
+
+    public function nonaktif($id){
+        
+        $wisata = Wisata::where('id', $id)->first();
+        $proses = Wisata::where('id', $id)->update([
+            'status' => false
+        ]);
+
+        if($proses){
+            return redirect()->back()->with('success', $wisata->nama_wisata.' berhasil di non aktifkan');
+        }else{
+            return redirect()->back()->with('warning', $wisata->nama_wisata.' tidak berhasil di non aktifkan');
+
+        }
+    }
 }
