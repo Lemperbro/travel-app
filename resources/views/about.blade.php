@@ -29,6 +29,9 @@
 <!-- component -->
 <div class="flex flex-wrap mt-6 bg-[#FD522C] justify-between">
 
+  
+  @foreach ($team as $user)
+
 
   <div class="md:w-1/2 lg:w-1/4 py-4 px-4 mt-8 ">
     <div class=" ">
@@ -36,12 +39,12 @@
         <div class="relative p-2 rounded-lg text-gray-800 ">
 
           <div class="flex justify-center ">
-            <img src="img/user1.jpg" class="ease-in-out duration-300 rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-44 w-44">
+            <img src="{{ asset('image/'.$user->image) }}" class="ease-in-out duration-300 rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-44 w-44">
           </div>
           <div class="py-2 px-2">
-            <div class=" text-white text-2xl font-bold font-title text-center">Kucing Malas</div>
+            <div class=" text-white text-2xl font-bold font-title text-center">{{ $user->nama }}</div>
 
-            <div class="text-white text-xl font-nold text-center my-2">Portal pecinta kucing</div>
+            <div class="text-white text-xl font-nold text-center my-2">{{ $user->jabatan }}</div>
           </div>
         </div>
       </a>
@@ -49,43 +52,9 @@
     </div>
   </div>	
 
-  <div class="md:w-1/2 lg:w-1/4 py-4 px-4 mt-8 ">
-    <div class=" ">
-      <a href="#">
-        <div class="relative p-2 rounded-lg text-gray-800 ">
+  @endforeach
 
-          <div class="flex justify-center ">
-            <img src="img/user1.jpg" class="ease-in-out duration-300 rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-44 w-44">
-          </div>
-          <div class="py-2 px-2">
-            <div class=" text-white text-2xl font-bold font-title text-center">Kucing Malas</div>
-
-            <div class="text-white text-xl font-nold text-center my-2">Portal pecinta kucing</div>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>	
-
-  <div class="md:w-1/2 lg:w-1/4 py-4 px-4 mt-8   ">
-    <div class=" ">
-      <a href="#">
-        <div class="relative p-2 rounded-lg text-gray-800 ">
-
-          <div class="flex justify-center ">
-            <img src="img/user1.jpg" class="ease-in-out duration-300 rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-44 w-44">
-          </div>
-          <div class="py-2 px-2">
-            <div class=" text-white text-2xl font-bold font-title text-center">Kucing Malas</div>
-
-            <div class="text-white text-xl font-nold text-center my-2">Portal pecinta kucing</div>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>	
+  
 
 
 </div>
