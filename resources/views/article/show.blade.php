@@ -9,6 +9,7 @@
     <div class="mt-5">
     {!! $data->isi !!}
     </div>
+    
 </div>
 
 

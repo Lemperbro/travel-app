@@ -2,7 +2,7 @@
 
 @section('container')
 
-<div class="mt-20 bg-white p-10 rounded-md shadow-md">
+<div class="px-4 py-6 overflow-hidden">
   
 @if ($data === null)
 <h1 class="text-center font-semibold text-2xl">ADD ABOUT</h1>

@@ -2,7 +2,8 @@
 
 @section('container')
 
-<div class="mt-20 bg-white p-10 rounded-md shadow-md">
+<div class="px-4 py-6">
+<h1 class="text-2xl my-4 font-semibold text-gray-900 dark:text-gray-200 text-center">Edit Article</h1>
   
 
     <form action="/article/edit/{{ $data->slug }}" method="post" enctype="multipart/form-data">

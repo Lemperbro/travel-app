@@ -2,14 +2,29 @@
     <!-- This is an example component -->
 
    @section('container')
-<div class="bg-white p-10 rounded-md shadow-best m-10">
+<div class="px-4 py-6">
   
 
-         <div class="flex">
-            <a href="/admin/kota/add" class="bg-orange-600 text-white p-2 rounded-md">Add City</a>
+         <div class="flex my-5">
+         <div class="bg-orange-700 p-2 rounded-md flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="my-auto" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
+            <a href="/admin/kota/add" class=" text-white uppercase font-semibold my-auto">Add City</a>
          </div>
 
-         <div class="grid grid-cols-4 gap-4 mt-8 ">
+         <form class="w-[80%] mx-auto " action="/admin/kota">   
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <input type="search" id="default-search" name="search" value="{{ request('search') }}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="Search">
+                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Search</button>
+            </div>
+          </form>
+
+         </div>
+
+         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 ">
 
 
             @php
@@ -17,13 +32,13 @@
             @endphp
             @foreach ($data as $query)
                
-            <div class="rounded-md shadow-best p-2 relative ">
+            <div class="rounded-md shadow-best p-2 relative bg-white dark:bg-gray-700">
 
                {{-- action menu start --}}
                <div class="relative inline-block float-right">
                   <div>
                     <button type="button" class="inline-flex justify-center w-full options-menu{{ $query->id }}">
-                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                     <svg class="h-5 w-5 text-gray-900 dark:text-white" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                       </svg>
                     </button>
@@ -56,11 +71,12 @@
                @php
                   $images = explode('|', $query->image);
                @endphp
-               <img src="../../image/{!! $images[0] !!}" alt="" class="w-full h-44 object-cover">
+               <img src="../../image/{!! $images[0] !!}" alt="" class="w-full object-cover h-52 rounded-lg">
                   
 
                <div class="mt-4">
-                  <h1 class="font-semibold font-mono text-center text-xl">{{ $query->nama_kota }}</h1>
+                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Kota {{ $query->nama_kota }}</h1>
+                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Harga Pickup : {{ $query->harga }}</h1>
 
 
 
@@ -72,7 +88,24 @@
             
             @endforeach
 
+
          </div>
+
+         @if ($data->count() === 0)
+         <!-- component -->
+         <div class=" flex flex-col items-center justify-center mt-10">
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-44 fill-gray-900 dark:fill-white h-44" width="24" height="24" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M20 6c0-2.168-3.663-4-8-4S4 3.832 4 6v2c0 2.168 3.663 4 8 4s8-1.832 8-4V6zm-8 13c-4.337 0-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3c0 2.168-3.663 4-8 4z"></path><path d="M20 10c0 2.168-3.663 4-8 4s-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3z"></path></svg>
+
+
+         <div class="flex flex-col items-center justify-center">
+         <p class="text-3xl md:text-4xl lg:text-5xl text-gray-900 dark:text-white mt-12">{{ request('search') }} Not Found</p>
+         <p class="md:text-lg lg:text-xl text-gray-600 dark:text-slate-300 mt-8">Sorry, {{ request('search') }} you are looking for could not be found.</p>
+
+         </div>
+         </div>
+         @endif
+
       {{ $data->links('vendor.pagination.tailwind') }}
 
 
