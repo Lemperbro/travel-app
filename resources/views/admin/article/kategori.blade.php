@@ -2,10 +2,10 @@
 
 @section('container')
 
-<div class="mt-20 bg-white p-10 rounded-md shadow-md">
+<div class="px-4 py-6">
   
 <div class="flex gap-x-4">
-    <a href="/article" class="text-white bg-green-600 p-2 rounded-md ">
+    <a href="/admin/article" class="text-white bg-green-600 p-2 rounded-md ">
         Back
     </a>
 

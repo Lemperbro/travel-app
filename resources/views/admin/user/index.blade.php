@@ -8,7 +8,7 @@
   //action --}}
 
    @section('container')
-<div class="bg-white p-4 shadow-best rounded-md my-10">
+<div class="px-4 py-6 overflow-hidden">
   
 
     <form class="w-[80%] mx-auto my-5" action="/user/">   

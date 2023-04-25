@@ -27,9 +27,15 @@ class AdminKotaController extends Controller
         // foreach($kota as $data_id){
         //     $id = $kota->id;
         // }
+
+        $data = Kota::with('wisata')->latest();
+
+        if(request('search')){
+            $data->where('nama_kota', 'like', '%'.request('search').'%')->orWhere('harga','like','%'.request('search').'%');
+        }
         
         return view('admin.kota.index',[
-            'data' => Kota::with('wisata')->paginate(16),
+            'data' => $data->paginate(16),
             'tittle' => 'Kelola Kota'
             // 'best' => Kota::with('wisata')->join('wisatas', 'wisatas.kota_id', '=', 'kotas.id')->orderBy('wisatas.diboking', 'DESC')->get(),
             // 'best' => Wisata::where('kota_id')->orderBy('diboking', 'DESC')->limit(1)->get()

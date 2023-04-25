@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $wisata = Wisata::with('kota');
         $price = ['id','desc'];
         if(request('search')){
-            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
+            $wisata->where('status', true)->where('nama_wisata', 'like', '%' . request('search') . '%')
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
         }elseif(request('type') && request('price')){
 
@@ -35,7 +35,7 @@ class DashboardController extends Controller
             }elseif(request('price') === 'termahal'){
                 $price = ['harga','desc'];
             }
-            $wisata->where('tour_type', 'like', '%' . request('type') . '%');
+            $wisata->where('status', true)->where('tour_type', 'like', '%' . request('type') . '%');
         }
         $article =  Article::paginate(8);
         return view('dashboard', [
@@ -44,9 +44,9 @@ class DashboardController extends Controller
             // 'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
             'best' => Wisata::with(['kota' => function($query){
                 $query->orderBy('popularitas', 'DESC')->limit(25)->get();
-            }])->orderBy('diboking', 'DESC')->paginate(3),
+            }])->where('status', true)->orderBy('diboking', 'DESC')->paginate(3),
             'kota' => Kota::limit(4)->get(),
-            'latest' => $wisata->orderBy($price[0],$price[1])->get(),
+            'latest' => $wisata->where('status', true)->orderBy($price[0],$price[1])->get(),
             'article' => $article
         ]);
     }

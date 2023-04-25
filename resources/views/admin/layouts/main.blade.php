@@ -1,16 +1,22 @@
 @include('admin.partials.start')
 
-<div class="container">
 @include('admin.partials.navbar')
-<div>
-  @include('admin.partials.sidebar')
 
-  <div id="main-content" class="w-full relative  lg:ml-64  pt-10">
+<div class="flex pt-16 overflow-hidden bg-gray-100 dark:bg-gray-900">
 
-  @yield('container')
+@include('admin.partials.sidebar')
 
-  </div>
+<div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-100 lg:ml-64 dark:bg-gray-900">
+    <main>
+
+@yield('container')
+
+    <main>
+
+{{-- @include('admin.partials.footer') --}}
+
 </div>
+
 </div>
 
 @include('admin.partials.end')

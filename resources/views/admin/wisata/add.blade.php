@@ -1,10 +1,8 @@
 @extends('admin.layouts.main')
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 @section('container')
 
 <div>
-  @include('admin.partials.sidebar')
     
  <!-- component -->
 <!-- This is an example component -->
@@ -26,17 +24,32 @@
         }
     }">
 	@csrf
-        <div x-ref="Content" class="bg-white border rounded-lg p-10 h-[85vh] overflow-auto">
+        <div x-ref="Content" class=" bg-white dark:bg-gray-700 rounded-lg p-10 h-[85vh] overflow-auto">
 
             <!-- slide 1 start -->
             <div x-show="slide == 1" >
                 <!-- step-1 -->
                 <div class="flex justify-between mb-10">
-                    <h1 x-text="`Step : ${slide} of ${total}`"></h1>
-                    <h1 class="font-semibold">Upload Wisata</h1>
+                    <h1 x-text="`Step : ${slide} of ${total}`" class="text-gray-900 dark:text-white"></h1>
+                    <h1 class="font-semibold text-gray-900 dark:text-white">Upload Wisata</h1>
                 </div>
 
 
+
+ 
+ 
+                @if ($errors->any())
+
+
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <ul class="px-5">
+                        @foreach ($errors->all() as $error)
+                            <li class="list-disc">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                  </div>
+                @endif
+ 
                 
                 <div id="previewContainer" class="flex gap-x-2 ">
                 </div>
@@ -57,31 +70,31 @@
                         Browse Image
                     </label>
 
-                    <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture</div>
+                    <div class="mx-auto w-48 text-gray-500 dark:text-gray-200 text-xs text-center mt-1">Click to add profile picture</div>
 
-                    <input type="file" name="image[]" id="image" class="w-full  border object-cover rounded-md mt-4" multiple onchange="loadFile(event)">
+                    <input type="file" name="image[]" id="image" class="w-full  hidden border object-cover rounded-md mt-4" multiple onchange="loadFile(event)">
                 </div>
 
                 <div class="mb-5">
-                    <label for="nama" class="font-bold mb-1 text-gray-700 block">Tour Name</label>
+                    <label for="nama" class="font-bold mb-1 text-gray-900 dark:text-white block">Tour Name</label>
                     <input type="text" name="nama"
-                        class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                        class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                         >
                 </div>
 
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="">
-                        <label for="harga" class="font-bold mb-1 text-gray-700 block">Price</label>
+                        <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
                         <input type="number" name="harga"
-                            class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                             >
                     </div>
 
                     <div class="">
-                        <label for="departure" class="font-bold mb-1 text-gray-700 block">Departure</label>
+                        <label for="departure" class="font-bold mb-1 text-gray-900 dark:text-white block">Departure</label>
                         <input type="datetime-local" name="departure"
-                            class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                             >
                     </div>
                 </div>
@@ -90,14 +103,14 @@
 
 
                     <div class="">
-                        <label for="long_tour" class="font-bold mb-1 text-gray-700 block">Long Tour</label>
+                        <label for="long_tour" class="font-bold mb-1 text-gray-900 dark:text-white block">Long Tour</label>
                         <input type="text" name="long_tour"
-                            class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                             >
                     </div>
                     <div class="">
-                        <label for="type" class="font-bold mb-1 text-gray-700 block">Type Tour</label>
-                        <select name="type" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+                        <label for="type" class="font-bold mb-1 text-gray-900 dark:text-white block">Type Tour</label>
+                        <select name="type" id="" class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
                             <option value="single trip" >Single Trip</option>
                             <option value="open trip" >Open Trip</option>
                             <option value="private trip">Private Trip</option>
@@ -109,8 +122,8 @@
                 <div class="grid grid-cols-2 gap-4">
 
                     <div class="">
-                        <label for="kota" class="font-bold mb-1 text-gray-700 block">City</label>
-                        <select name="kota" id="" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+                        <label for="kota" class="font-bold mb-1 text-gray-900 dark:text-white block">City</label>
+                        <select name="kota" id="" class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
                             @foreach ($kota as $kota)
                             <option value="{{ $kota->id }}">{{ $kota->nama_kota }}</option>
                             @endforeach
@@ -118,8 +131,8 @@
                     </div>
           
                     <div class="">
-                        <label for="loacation" class="font-bold mb-1 text-gray-700 block">Location</label>
-                        <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
+                        <label for="loacation" class="font-bold mb-1 text-gray-900 dark:text-white block">Location</label>
+                        <input type="text" name="location" id="loacation" class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
                     </div>
 
                 </div>
@@ -127,8 +140,8 @@
 
 
             <div class="mt-10">
-                <label for="deskripsi" class="font-bold mb-1 text-gray-700 block">Description</label>
-                <textarea type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"></textarea>
+                <label for="deskripsi" class="font-bold mb-1 text-gray-900 dark:text-white block">Description</label>
+                <textarea type="text" name="deskripsi" id="deskripsi" class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"></textarea>
             </div>
 
 
@@ -141,19 +154,19 @@
             <div x-show="slide == 2" >
                 <!-- step 2 -->
                 <div class="flex justify-between mb-10">
-                    <h1 x-text="`Step : ${slide} of ${total}`"></h1>
-                    <h1 class="font-semibold">Upload Tour</h1>
+                    <h1 x-text="`Step : ${slide} of ${total}`" class="text-gray-900 dark:text-white"></h1>
+                    <h1 class="font-semibold text-gray-900 dark:text-white">Upload Tour</h1>
                 </div>
 
 
                 <div class="mb-5">
-                    <h1 class="font-semibold text-lg">Inclusion</h1>
+                    <h1 class="font-semibold text-lg text-gray-900 dark:text-white">Inclusion</h1>
                     <div class="flex flex-wrap gap-4">
                    <div id="inclusion" class="flex flex-wrap gap-4">
 
                                        
                        <div class="flex gap-x-2" id="area_inclusion">
-                       <input type="text" name="inclusion[]" id="inclusion" class="h-12 rounded-md p-2 border"> 
+                       <input type="text" name="inclusion[]" id="inclusion" class="h-12 rounded-md p-2 bg-gray-200 dark:bg-gray-900 border-none text-gray-900 dark:text-white"> 
                        <h1 id="remove_inclusion" class="text-white bg-red-600 py-2 px-4 rounded-md inline-block text-xl font-semibold cursor-pointer">-</h1>
                        </div>
                        
@@ -164,12 +177,12 @@
       
 
             <div class="mb-5">
-                <h1 class="font-semibold text-lg">Exclusion</h1>
+                <h1 class="font-semibold text-lg text-gray-900 dark:text-white">Exclusion</h1>
                 <div class="flex flex-wrap gap-4">
             <div id="exclusion" class="flex flex-wrap gap-4">
                     
                 <div class="flex gap-x-2" id="area_exclusion">
-                    <input type="text" name="exclusion[]" id="exclusion" class="h-12 rounded-md p-2 border" > 
+                    <input type="text" name="exclusion[]" id="exclusion" class="h-12 rounded-md p-2 bg-gray-200 dark:bg-gray-900 border-none text-gray-900 dark:text-white" > 
                     <h1 id="remove_exclusion" class="text-white bg-red-600 py-2 px-4 rounded-md inline-block text-xl font-semibold cursor-pointer">-</h1>
                     </div> 
 
@@ -188,21 +201,22 @@
             <div x-show="slide == 3" >
                 <!-- step 3 -->
                 <div class="flex justify-between mb-10">
-                    <h1 x-text="`Step : ${slide} of ${total}`"></h1>
-                    <h1 class="font-semibold">Upload Tour</h1>
+                    <h1 x-text="`Step : ${slide} of ${total}`" class="text-gray-900 dark:text-white"></h1>
+                    <h1 class="font-semibold text-gray-900 dark:text-white">Upload Tour</h1>
                 </div>
 
 
-                <div class="mb-5 mt-8 border rounded-md p-4" >
-                    <h1 class="font-semibold text-lg">Itenerary</h1>
+                <div class="mb-5 mt-8" >
+                    <h1 class="font-semibold text-lg text-gray-900 dark:text-white">Itenerary</h1>
 
                       <div class="mb-5" id="day">
-                    <h3>Day 1</h3>
-
+                    <h3 class="text-gray-900 dark:text-white">Day 1</h3>
+                    <input type="hidden" id="count_day" value="0">
+                    
                         <div id="itenerary">
                         
-                            <input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 border mt-4 mb-2">
-                            <textarea id="banner-message" class="message w-full h-20 relative" name="itenerary[]" style="">
+                            <input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 mt-4 mb-2 bg-gray-200 dark:bg-gray-900 border-none text-gray-900 dark:text-white">
+                            <textarea id="banner-message" class="message w-full  h-20 relative text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900 border-none" name="itenerary[]" style="">
                             </textarea>
                                 
                     </div>
@@ -210,17 +224,17 @@
                     </div>
                     
                 </div>
-                <h1 id="add_day" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-2 rounded-md inline-block float-right cursor-pointer">Add Day</h1>
+                <h1 id="add_day" class="bg-blue-600 py-2 px-4 text-xl font-semibold text-white mt-4 rounded-md inline-block float-right cursor-pointer">Add Day</h1>
                 
                 
 
-                <div class="mb-5 mt-24 border rounded-md p-4">
+                <div class="mb-5 mt-24">
 
                   <div class="mb-5" id="equipment">
-                    <h1 class="font-semibold text-lg">Equipment </h1>
+                    <h1 class="font-semibold text-lg text-gray-900 dark:text-white">Equipment </h1>
 
                     <div  class="mt-4">
-                        <input type="file" name="images" class="w-full border h-12 rounded-md">
+                        <input type="file" name="images" class="w-full bg-gray-200 dark:bg-gray-900 border-none text-gray-900 dark:text-white rounded-md">
                     </div>
 
                     

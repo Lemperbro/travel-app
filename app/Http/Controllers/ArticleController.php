@@ -68,7 +68,7 @@ class ArticleController extends Controller
             }else{
                 $kota_id = 0;
             }
-             $wisata->where('nama_wisata', 'like', '%' . $search . '%')->orWhere('location', 'like', '%' . $search . '%')->orWhere('deskripsi', 'like', '%' . $search . '%')->orWhere('kota_id', 'like', '%' . $kota_id . '%');
+             $wisata->where('status', true)->where('nama_wisata', 'like', '%' . $search . '%')->orWhere('location', 'like', '%' . $search . '%')->orWhere('deskripsi', 'like', '%' . $search . '%')->orWhere('kota_id', 'like', '%' . $kota_id . '%');
 
         }
         if($wisata->count() === 0){
@@ -77,7 +77,7 @@ class ArticleController extends Controller
         
         return view('article.show', [
             'data' => $data,
-            'wisata' => $wisata->paginate(4),
+            'wisata' => $wisata->where('status', true)->paginate(4),
             'article' => $article->paginate(4)
         ]);
         
