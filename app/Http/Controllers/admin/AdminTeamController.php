@@ -26,7 +26,7 @@ class AdminTeamController extends Controller
         }
         return view('admin.team.about',[
             'data' => $data->get(),
-            'tittle' => 'Kelola Supir'
+            'tittle' => 'Kelola Team'
         ]);
     }
 
@@ -57,16 +57,20 @@ class AdminTeamController extends Controller
             'profile' => 'required',
         ]);
 
+        $image=array();
+    
+
         if($files=$request->file('image')){
             $extension=$files->getClientOriginalExtension();
             $name = hash('sha256',time()) . '.' . $extension;
             $files->move('image',$name);
+            $image[]=$name;
 
         }
 
         Team::create([
             'nama' => $validasi['nama'],
-            'image' => $name,
+            'image' => implode("|",$image),
             'jabatan' => $validasi['jabatan'],
             'profile' => $validasi['profile']
         ]);

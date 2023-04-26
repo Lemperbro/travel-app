@@ -75,23 +75,22 @@
        <a href="/admin/wisata/add" class="bg-orange-600 text-white p-2 rounded-md font-semibold">Add Tour</a>
     </div>
 
+
     <div class="grid grid-cols-4 gap-4 mt-8">
 
         @foreach ($data as $wisata)
 
 
             
-       <div class="rounded-md p-2 bg-white dark:bg-gray-700">
+       <div class="rounded-md p-2 border bg-white dark:bg-gray-700">
 
         <div class="relative inline-block float-right">
             <div>
-
-
-              <button type="button" class="inline-flex justify-center w-full options-menu-wisata{{ $wisata->id }}">
-                <svg class="h-5 w-5 text-gray-900 dark:text-white" viewBox="0 0 20 20" fill="currentColor">
-                   <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                 </svg>
-               </button>
+              <button type="button" class="inline-flex text-gray-900 dark:text-white justify-center w-full options-menu-wisata{{ $wisata->id }}">
+               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                </svg>
+              </button>
             </div>
           
             <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none shadow-best5 hidden dropdown-menu-wisata{{ $wisata->id }}">
@@ -142,11 +141,14 @@
           <img src="../../image/{!! $images[0] !!}" alt="" class="h-48 object-cover w-full">
 
           <div class="mt-4">
-             <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Nama Wisata : {{ $wisata->nama_wisata }}</h1>
-                <h1 class="font-semibold text-xl capitalize mt-2 text-gray-900 dark:text-white">Tour Type : {{ $wisata->tour_type }}</h1>
-                <h1 class="font-semibold text-xl capitalize mt-2 text-gray-900 dark:text-white">Price : Rp.{{ $wisata->harga }} </h1>
+             <h1 class="font-semibold font-mono text-center text-xl text-gray-900 dark:text-white">{{ $wisata->nama_wisata }}</h1>
+            <div class="flex justify-between">
+                <h1 class="font-semibold text-center mt-2 text-gray-900 dark:text-white">{{ $wisata->tour_type }}</h1>
+                <h1 class="font-semibold text-center mt-2 text-gray-900 dark:text-white">Rp.{{ $wisata->harga }} </h1>
 
 
+                {{-- <h4 class="text-center">{{ $wisata->diboking }}</h4> --}}
+            </div>
 
             {{-- @foreach ($wisata->equipment as $equip)
                 @php

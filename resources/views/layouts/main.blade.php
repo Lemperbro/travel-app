@@ -13,5 +13,8 @@
 @include('partials.footer')
 @include('sweetalert::alert')
 
+
+
+
 </body>
 

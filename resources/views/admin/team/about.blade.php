@@ -174,6 +174,7 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
             <label for="alamat">Profile</label>
             <input type="text" name="profile" id="profile" class="w-full h-12 rounded-md p-2 border mt-4" >
           </div>
+
             <div class="flex gap-x-4 mt-4">
             <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Send</button>
             <a href="/team" class="bg-red-600 px-4 py-2 text-white rounded-md">Undo</a>
