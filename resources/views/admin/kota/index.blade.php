@@ -75,8 +75,8 @@
                   
 
                <div class="mt-4">
-                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Kota {{ $query->nama_kota }}</h1>
-                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Harga Pickup : {{ $query->harga }}</h1>
+                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white"> {{ $query->nama_kota }}</h1>
+                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Price: Rp{{ $query->harga }}</h1>
 
 
 
