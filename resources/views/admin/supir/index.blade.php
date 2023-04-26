@@ -104,12 +104,12 @@
 id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
-    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
+    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto dark:bg-slate-800 bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
     <div
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          
          <form action="/admin/supir/edit/{{ $edit->id }}" method="POST" class="w-full px-4" enctype="multipart/form-data">
-            <h1 class="text-center font-semibold text-2xl">EDIT DRIVER</h1>
+            <h1 class="text-center font-semibold text-2xl text-white">EDIT DRIVER</h1>
             @csrf
 
             <img src="{{ asset('image/'.$user->image) }}" alt="" class="flex w-36 h-36 justify-center object-cover">
@@ -119,20 +119,20 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
             </div>
 
             <div class="mt-4">
-                <label for="nama">Name</label>
-                <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->nama }}">
+                <label for="nama" class="dark:text-white">Name</label>
+                <input type="text" name="nama" id="nama" class="dark:bg-gray-600 dark:text-white font-semibold  w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->nama }}">
             </div>
             <div class="mt-4">
-              <label for="no_tlpn">Telephone</label>
-              <input type="number" name="no_tlpn" id="no_tlpn" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->no_tlpn }}">
+              <label for="no_tlpn" class="dark:text-white">Telephone</label>
+              <input type="number" name="no_tlpn" id="no_tlpn" class="dark:bg-gray-600 dark:text-white font-semibold w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->no_tlpn }}">
           </div>
           <div class="mt-4">
-            <label for="alamat">Address</label>
-            <input type="text" name="alamat" id="alamat" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->alamat }}">
+            <label for="alamat" class="dark:text-white">Address</label>
+            <input type="text" name="alamat" id="alamat" class="dark:bg-gray-600 dark:text-white font-semibold w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->alamat }}">
         </div>
         <div class="mt-4">
-          <label for="umur">Age</label>
-          <input type="number" name="umur" id="umur" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->umur }}">
+          <label for="umur" class="dark:text-white">Age</label>
+          <input type="number" name="umur" id="umur" class="dark:bg-gray-600 dark:text-white font-semibold w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->umur }}">
       </div>
     
             <div class="flex gap-x-4 mt-4">
