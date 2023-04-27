@@ -17,13 +17,19 @@
 
 
 
-  <div class="grid grid-cols-4 gap-4 mt-10">
+  <div class="flex flex-wrap gap-4 mt-10">
         
 @foreach ($data as $datas)
     
-    <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $datas->kategori }}</h5>
-    </a>
+    <div data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $datas->id }}" class=" max-w-sm px-6 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 flex gap-x-4">
+        <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white text-center">{{ $datas->kategori }}</h5>
+        <form action="/article/kategori/delete/{{ $datas->id }}" class="flex m-auto" method="post">
+            @csrf
+            <button  type="submit" class="bg-red-700 rounded-md cursor-pointer"> 
+                <svg xmlns="http://www.w3.org/2000/svg" class="m-auto flex justify-center" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg>
+            </button>
+        </form>
+    </div>
 @endforeach
     
 
@@ -34,6 +40,53 @@
 </div>
 
 
+@foreach ($data as $edit)
+    
+<!-- Modal Edit Kategori-->
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+id="staticBackdrop-{{ $edit->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+<div class="modal-dialog relative w-auto pointer-events-none">
+<div
+    class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current justify-center m-auto">
+    <div
+    class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+    <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+        Edit Kategori {{ $edit->kategori }}
+    </h5>
+    <button type="button"
+        class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+        data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body relative p-4">
+    {{-- isi modal --}}
+        <form action="/article/kategori/edit/{{ $edit->id }}" method="POST">
+            @csrf
+            <label for="kategori">Kategori</label>
+            <input type="text" id="kategori" name="kategori" class="w-full rounded-md border-gray-300 border-[1px]" value="{{ $edit->kategori }}">
+
+
+
+            
+    </div>
+
+    <div
+    class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+    <button type="button"
+        class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-bs-dismiss="modal">Close</button>
+    <button type="submit"
+        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Selesai</button>
+
+    </div>
+</form>
+
+</div>
+</div>
+</div>
+{{-- akhir modal --}}
+@endforeach
 
 
   

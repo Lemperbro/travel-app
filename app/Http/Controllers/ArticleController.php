@@ -72,7 +72,7 @@ class ArticleController extends Controller
 
         }
         if($wisata->count() === 0){
-            $wisata = Wisata::latest();
+            $wisata = Wisata::latest(); 
         }
         
         return view('article.show', [
@@ -128,13 +128,13 @@ class ArticleController extends Controller
         ]);
 
         if($up){
-        return redirect('/admin/article')->with('success', 'berhasil upload');
+        return redirect('/admin/article')->with('success', 'successful additional to the Article');
         }else{
-        return redirect('/admin/article')->with('error', 'gagal uplaod');
+        return redirect('/admin/article')->with('error', 'failed additional to the Article');
         }
 
     }
-
+ 
     /**
      * Display the specified resource.
      *
@@ -204,10 +204,12 @@ class ArticleController extends Controller
             'isi' => $validasi['isi']
         ]);
 
+
+
         if($up){
-            return redirect('/admin/article')->with('success', 'berhasil mengupdate');
+            return redirect('/admin/article')->with('success', 'update successful to the Article');
         }else{
-            return redirect('/admin/article')->with('error', 'gagal mengupdate');
+            return redirect('/admin/article')->with('error', 'Failed Update to the Article');
         }
     }
 
@@ -231,10 +233,10 @@ class ArticleController extends Controller
             if(File::exists($storage)){
                 unlink($storage);
 
-                return redirect('/admin/article')->with('success', 'berhasil menghapus');
+                return redirect('/admin/article')->with('success', 'delete successful to the Article');
             }
         }
 
-        return redirect('/admin/article')->with('warning', 'gagal menghapus');
+        return redirect('/admin/article')->with('warning', 'failed delete to the Article');
     }
 }

@@ -92,10 +92,12 @@ class AdminKotaController extends Controller
         ]);
 
         if($proses){
-            return redirect('/admin/kota')->with('success', 'berhasil menambah kota');
+            return redirect('/admin/kota')->with('success', '
+            successful addition to the city');
 
         }else{
-            return redirect('/admin/kota')->with('warning', 'gagal menambah kota');
+            return redirect('/admin/kota')->with('warning', '
+            failed addition to the city');
 
         }
     
@@ -177,11 +179,11 @@ class AdminKotaController extends Controller
             'harga' => $validasi['harga']
         ]);
 
-        return redirect('/admin/kota')->with('success', 'Update Succes');
+        return redirect('/admin/kota')->with('success', '
+        update successful to the city');
 
     
     
-        return redirect('/admin/kota');
 
 
     }
@@ -206,7 +208,7 @@ class AdminKotaController extends Controller
                 unlink($storage);
             }
 
-        return redirect('/admin/kota')->with('success', 'Delete Succes');
+        return redirect('/admin/kota')->with('success', 'delete successful to the city');
 
         }
 

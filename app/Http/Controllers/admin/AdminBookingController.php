@@ -40,6 +40,7 @@ class AdminBookingController extends Controller
 
             }
         }
+        
 
     return view('admin.booking.booking', [
         'tittle' => 'booking',
@@ -47,5 +48,13 @@ class AdminBookingController extends Controller
 
     ]);
 
+    }
+
+    public function confirmation(){
+        $data =  Pemesanan::where('status', 'menunggu')->get();
+
+        return view('admin.booking.request_booking', [
+            'data' => $data,
+        ]);
     }
 }

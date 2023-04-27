@@ -171,7 +171,7 @@ class AdminWisataController extends Controller
             
 
 
-        return redirect('/admin/wisata')->with('success', 'berhasil menambah');
+        return redirect('/admin/wisata')->with('success', 'successful addition to the tour');
 
 
     }
@@ -370,56 +370,6 @@ class AdminWisataController extends Controller
 
 
 
-            // $images=array();
-            // if($files=$request->file('images')){
-            //     foreach($files as $file){
-            //         $extension=$file->getClientOriginalExtension();
-            //         $name = hash('sha256', time()) .'.' . $extension;
-            //         $images[]=$name;
-            //     }
-            // }
-
-            // $equipment = Equipment::where('wisata_id', $id)->pluck('name');
-            // $equip =  $request->equipment;
-            // $hitung_equipment = count($equip);
-            // $hitung_equip = count($equipment);
-            // $gak = 'gak';
-            // if($hitung_equipment < $hitung_equip  ){
-            //     dd($gak);
-            // }
-            // if($request->file('images')){
-
-            //     $jumlah_equipment = count($request->images);
-            //     for($i = 0 ; $i < $jumlah_equipment; $i++){
-            //         Equipment::where('wisata_id', $id)->update([
-            //             'wisata_id' => $id,
-            //             'image' => $images[$i],
-            //             'name' => $request->equipment[$i]
-            //         ]);
-            //     }
-            // }elseif($hitung_equipment > $hitung_equip){
-            //     $jumlah_equipment = count($request->images);
-            //     for($i = 0 ; $i < $jumlah_equipment; $i++){
-            //         Equipment::where('wisata_id', $id)->updateOrCreate([
-            //             'wisata_id' => $id,
-            //             'image' => $images[$i],
-            //             'name' => $request->equipment[$i]
-            //         ]);
-            //     }
-            // }
-            // else{
-            //     $equipment_img = Equipment::where('wisata_id', $id)->pluck('image');
-            //     $equipment_name = Equipment::where('wisata_id', $id)->pluck('name');
-            //     $jumlah_equipment = count($equipment_img);
-            //     for($i = 0 ; $i < $jumlah_equipment; $i++){
-            //         Equipment::where('wisata_id', $id)->updateOrCreate([
-            //             'wisata_id' => $id,
-            //             'image' => $equipment_img[$i],
-            //             'name' => $equipment_name[$i]
-            //         ]);
-            //     }
-            // }
-
 
             if($files=$request->file('images')){
                     $extension=$files->getClientOriginalExtension();
@@ -437,7 +387,7 @@ class AdminWisataController extends Controller
             ]);
 
 
-            return redirect('/admin/wisata');
+            return redirect('/admin/wisata')->with('success', 'update successful to the tour');
         
     }
 
@@ -465,11 +415,11 @@ class AdminWisataController extends Controller
 
                 }
             }
-            return redirect('/admin/wisata')->with('success', 'berhasil menghapus');
+            return redirect('/admin/wisata')->with('success', 'delete successful to the tour');
 
        }
         // Itenerary::with('fasilitas','jemput')->where('wisata_id', $id)->delete();
-        return redirect('/admin/wisata')->with('warning', 'gagal menghapus');
+        return redirect('/admin/wisata')->with('warning', 'failed delete to the tour');
     }
 
 
@@ -528,10 +478,11 @@ class AdminWisataController extends Controller
                 ]);
 
                 }
-                return redirect()->back()->with('success', 'berhasil menambah FAQ');
+                return redirect()->back()->with('success', 'successful additional to the FAQ');
 
             }else if($faq->count() >= 5){
-                return redirect()->back()->with('warning', 'FAQ Sudah mencapai batas');
+                return redirect()->back()->with('warning', '
+                FAQ Reached limit');
             }
 
                     
@@ -576,9 +527,9 @@ class AdminWisataController extends Controller
         ]);
 
         if($proses){
-            return redirect()->back()->with('success', $wisata->nama_wisata.' berhasil di aktifkan');
+            return redirect()->back()->with('success', $wisata->nama_wisata.' activated successfully');
         }else{
-            return redirect()->back()->with('warning', $wisata->nama_wisata.' tidak berhasil di aktifkan');
+            return redirect()->back()->with('warning', $wisata->nama_wisata.' failed to activate');
 
         }
     }
@@ -592,9 +543,9 @@ class AdminWisataController extends Controller
         ]);
 
         if($proses){
-            return redirect()->back()->with('success', $wisata->nama_wisata.' berhasil di non aktifkan');
+            return redirect()->back()->with('success', $wisata->nama_wisata.' deactivated successfully');
         }else{
-            return redirect()->back()->with('warning', $wisata->nama_wisata.' tidak berhasil di non aktifkan');
+            return redirect()->back()->with('warning', $wisata->nama_wisata.' failed to deactivate');
 
         }
     }

@@ -5,7 +5,7 @@
 <div class="px-4 py-6 overflow-hidden">
   
 @if ($data === null)
-<h1 class="text-center font-semibold text-2xl">ADD ABOUT</h1>
+<h1 class="text-center font-semibold text-2xl dark:text-white text-gray-900">ADD ABOUT</h1>
 <form action="/admin/about/add" method="post" enctype="multipart/form-data">
   @csrf
   <div class="mb-6">

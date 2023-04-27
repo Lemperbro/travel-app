@@ -75,7 +75,7 @@ class AdminTeamController extends Controller
             'profile' => $validasi['profile']
         ]);
 
-        return redirect('/team')->with('success', 'Upload Succes');
+        return redirect('/team')->with('success', 'successful additional to the Team');
 
     }
 
@@ -148,7 +148,7 @@ class AdminTeamController extends Controller
         ]);
 
 
-        return redirect('/team')->with('success', 'Update Team Succes');
+        return redirect('/team')->with('success', 'update successful to the Team');
 
     }
 
@@ -170,6 +170,6 @@ class AdminTeamController extends Controller
             unlink($storage);
         }   
 
-        return redirect('/team')->with('success', 'Delete Succes');
+        return redirect('/team')->with('success', 'Delete successful to the Team');
     }
 }
