@@ -10,17 +10,17 @@
         @csrf
         <div class="w-full">
             <label for="image" class="text-gray-900 dark:text-white">Image</label>
-            <input type="file" name="image[]" class="w-full object-cover block rounded-md mt-4 bg-gray-700" multiple>
+            <input type="file" name="image[]" class="w-full object-cover block rounded-md mt-4 bg-gray-700 text-gray-900 dark:text-white" multiple>
            
         </div>
         <div class="mt-4">
             <label for="nama" class="text-gray-900 dark:text-white">City Name</label>
-            <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4 bg-gray-700">
+            <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4 bg-gray-700 text-gray-900 dark:text-white">
         </div>
 
         <div class="mt-4">
             <label for="harga" class="text-gray-900 dark:text-white">Price</label>
-            <input type="text" name="harga" id="harga" class="w-full h-12 rounded-md p-2 border mt-4 bg-gray-700">
+            <input type="text" name="harga" id="harga" class="w-full h-12 rounded-md p-2 border mt-4 bg-gray-700 text-gray-900 dark:text-white">
         </div>
 
         <div class="flex gap-x-4 mt-4">

@@ -163,6 +163,7 @@ Route::middleware('admin')->group(function(){
 
     //booking
     Route::get('/admin/booking', [AdminBookingController::class, 'index']);
+    Route::get('/admin/booking/confirmation', [AdminBookingController::class, 'confirmation']);
 
 
 
@@ -184,6 +185,8 @@ Route::middleware('admin')->group(function(){
 
     Route::get('/article/kategori', [KategoriArticleController::class, 'index']);
     Route::post('/article/kategori', [KategoriArticleController::class, 'store']);
+    Route::post('/article/kategori/edit/{id}', [KategoriArticleController::class, 'update']);
+    Route::post('/article/kategori/delete/{id}', [KategoriArticleController::class, 'destroy']);
 
     Route::post('/article/delete/{slug}', [ArticleController::class, 'destroy']);
 

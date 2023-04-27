@@ -71,7 +71,7 @@ class AdminSupirController extends Controller
             'umur' => $validasi['umur']
         ]);
 
-            return redirect('/supir')->with('success', 'Upload Driver Succes');
+            return redirect('/supir')->with('success', 'successful additional to the Driver');
             
 
     }
@@ -147,7 +147,7 @@ class AdminSupirController extends Controller
         ]);
 
 
-        return redirect('/supir')->with('success', 'Update Driver Succes');
+        return redirect('/supir')->with('success', 'update successful to the Driver');
 
 
     }
@@ -172,7 +172,7 @@ class AdminSupirController extends Controller
         }   
 
         {
-            return redirect('/supir')->with('success', 'Delete Driver Succes');
+            return redirect('/supir')->with('success', 'delete successful to the Driver');
             
 
 

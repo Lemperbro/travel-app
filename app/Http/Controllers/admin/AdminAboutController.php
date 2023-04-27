@@ -74,9 +74,9 @@ class AdminAboutController extends Controller
         ]);
 
         if($proses){
-            return redirect()->back()->with('success', 'Berhasil Menambah About');
+            return redirect()->back()->with('success', 'successful additional to the About');
         }else{
-            return redirect()->back()->with('warning', 'Gagal Menambah About');
+            return redirect()->back()->with('warning', 'Failed additional to the About ');
         }
     }
 
@@ -142,9 +142,9 @@ class AdminAboutController extends Controller
         ]);
 
         if($proses){
-            return redirect()->back()->with('success', 'About Berhasil Di update');
+            return redirect()->back()->with('success', 'update successful to the About');
         }else{
-            return redirect()->back()->with('warning', 'About Gagal Untuk Di Update');
+            return redirect()->back()->with('warning', 'failed update to the About');
         }
 
         

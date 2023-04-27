@@ -51,7 +51,7 @@ class KategoriArticleController extends Controller
             'kategori' => $validasi['kategori']
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('toast_success', 'successful additional to the Kategori');
     }
 
     /**
@@ -83,9 +83,23 @@ class KategoriArticleController extends Controller
      * @param  \App\Models\Kategori_Article  $kategori_Article
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKategori_ArticleRequest $request, Kategori_Article $kategori_Article)
+    public function update(Request $request, Kategori_Article $kategori_Article, $id)
     {
         //
+        $validasi = $request->validate([
+            'kategori' => 'required'
+        ]);
+
+        $proses = Kategori_Article::where('id',$id)->update([
+            'kategori' => $request->kategori
+        ]);
+
+        if($proses){
+            return redirect()->back()->with('toast_success', 'update successful to the Kategori');
+        }else{
+            return redirect()->back()->with('toast_error', 'failed update to the Kategori');
+
+        }
     }
 
     /**
@@ -94,8 +108,17 @@ class KategoriArticleController extends Controller
      * @param  \App\Models\Kategori_Article  $kategori_Article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori_Article $kategori_Article)
+    public function destroy(Kategori_Article $kategori_Article, $id)
     {
         //
+        $data = Kategori_Article::where('id', $id)->first();
+        $proses = Kategori_Article::where('id', $id)->delete();
+
+        if($proses){
+            return redirect()->back()->with('toast_success', 'delete successful to the '.$data->kategori);
+        }else{
+            return redirect()->back()->with('toast_error', 'delete failed to the '.$data->kategori);
+
+        }
     }
 }

@@ -77,6 +77,37 @@
                   </tr>
                   @endforeach
 
+                  <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                    <td class="px-4 py-3 text-sm border text-center">1</td>
+
+                    <td class="px-4 py-3 text-sm text-center border">424242</td>
+
+                    <td class="flex px-4 py-3 justify-center">
+                      <div class="flex items-center text-sm">
+                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                          <img class="object-cover w-full h-full rounded-full" src="{{ asset('ft_user/0f21e83fe55cadee7aa5c55408378010af76cda9a4b9436b2c4ce104fb4a055b.jpg') }}" alt="" loading="lazy" />
+                          <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                        </div>
+                        <div>
+                          <p class="font-semibold text-center">dsadsad dasdasdd</p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td class="px-4 py-3 text-sm border text-center">Rp. 12312123</td>
+
+                    <td class="px-4 py-3 text-sm border text-center">dsada</td>
+
+                    <td class="px-4 py-3 text-sm border text-center">asdasdasd</td>
+                    <td class="px-4 py-3 text-sm border text-center">asdasdsa dasd ada</td>
+
+                    <td class="px-4 py-3 text-xs text-center">
+                      <span class="px-2 py-1 font-semibold leading-tight rounded-full ">dasd</span>
+                    </td>
+
+                  </tr>
+
+
                   
                 </tbody>
               </table>
@@ -87,7 +118,7 @@
                 <h1 class="text-center text-2xl p-4 text-gray-900 dark:text-white">kosong</h1>
               @endif
 
-              {{ $data->links('vendor.pagination.tailwind') }}
+              {{-- {{ $data->links('vendor.pagination.tailwind') }} --}}
             </div>
 
 

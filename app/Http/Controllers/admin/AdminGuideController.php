@@ -26,7 +26,7 @@ class AdminGuideController extends Controller
         }
         return view('admin.guide.index',[
            'data' => $data->get(),
-        'tittle' => 'manage guide'
+           'tittle' => 'manage guide'
         ]);
     }
 
@@ -70,7 +70,7 @@ class AdminGuideController extends Controller
             'alamat' => $validasi['alamat']
         ]);
 
-        return redirect('/guide')->with('success', 'Upload Succes');
+        return redirect('/guide')->with('success', 'successful additional to the Guide');
 
     }
 
@@ -138,7 +138,7 @@ class AdminGuideController extends Controller
             'umur' => $request['umur']
         ]);
 
-        return redirect('/guide')->with('success', 'Update Succes');
+        return redirect('/guide')->with('success', 'Update successful to the Guide');
 
 
     }
@@ -160,7 +160,7 @@ class AdminGuideController extends Controller
             unlink($storage);
         }   
 
-        return redirect('/guide')->with('success', 'Delete Succes');
+        return redirect('/guide')->with('success', 'Delete successful to the Guide');
 
 
     }
