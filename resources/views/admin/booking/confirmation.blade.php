@@ -7,7 +7,7 @@
     <!-- row -->
     <div class="flex flex-wrap flex-row">
       <div class="flex-shrink max-w-full px-4 w-full">   
-        <p class="text-xl font-bold mt-3 mb-5 dark:text-white">Customers</p>
+        <p class="text-xl font-bold mt-3 mb-5">Customers</p>
       </div>                                                 
       <div class="flex-shrink max-w-full px-4 w-full mb-6">
         <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg h-full">
@@ -38,8 +38,7 @@
                   <table class="table-sorter table-bordered w-full ltr:text-left rtl:text-right text-gray-600 dark:text-gray-400">
                     <thead>
                       <tr class="bg-gray-100 dark:bg-gray-900 dark:bg-opacity-40">
-                        <th data-sortable="false"><input id="check_all" type="checkbox" class="form-checkbox w-4 h-4 text-indigo-500 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-700"></th>
-                        <th>Customers</th>
+                        <th class="hidden sm:table-cell border">Customers</th>
                         <th class="hidden sm:table-cell">Email</th>
                         <th class="hidden lg:table-cell">Date added</th>
                         <th class="hidden lg:table-cell">Status</th>
@@ -49,7 +48,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td><input type="checkbox" class="checkedall form-checkbox w-4 h-4 text-indigo-500 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-700"></td>
+      
                         <td>
                           <a href="#">
                             <div class="flex flex-wrap flex-row items-center">
