@@ -282,9 +282,13 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
+Route::get('/coba', function(){
+    return view('admin.booking.confirmation');
+});
 
-
-
+Route::get('/duty', function(){
+    return view('admin.kendaraan.duty');
+});
 
 
 
