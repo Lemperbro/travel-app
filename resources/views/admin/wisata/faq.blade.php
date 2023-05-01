@@ -2,9 +2,9 @@
 
 @section('container')
 
-<div class="mt-20 bg-white p-10 rounded-md shadow-md">
+<div class="px-4 py-6">
 
-    
+
   
 
    <form action="/admin/wisata/faq/{{ $slug }}" method="post" class="">
@@ -15,7 +15,7 @@
 <div class="" id="faq">
 
     <div class="mb-8">
-    <h1 class="text-2xl font-semibold flex justify-center">Type Frequently Asked Questions </h1>
+    <h1 class="text-2xl font-semibold flex justify-center text-gray-900 dark:text-white">Type Frequently Asked Questions </h1>
     </div>
 
 @if ($faq->count() > 0)
@@ -26,14 +26,14 @@
     <div class="mb-14 " id="faq_area">
 
     <div class="flex gap-x-4">
-        <label for="" class="my-auto font-semibold text-xl">Q</label>
-        <input name="question[]" type="text" class="w-full p-2 rounded-md" value="{{ $data_faq->question }}">
+        <label for="" class="my-auto font-semibold text-xl text-gray-900 dark:text-white">Q</label>
+        <input name="question[]" type="text" id="q" class="w-full p-2 rounded-md text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900" value="{{ $data_faq->question }}">
     </div>
 
 
     <div class="flex gap-x-4 mt-2">
-        <label for="" class="my-auto font-semibold text-xl">A</label>
-        <input name="answer[]" type="text" class="w-full p-2 rounded-md" value="{{ $data_faq->answer }}">
+        <label for="" class="my-auto font-semibold text-xl text-gray-900 dark:text-white">A</label>
+        <input name="answer[]" type="text" id="a" class="w-full p-2 rounded-md text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900" value="{{ $data_faq->answer }}">
     </div>
     
     <h1 id="remove_faq" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4  cursor-pointer remove_faq" data-id="{{ $data_faq->id }}">-</h1>
@@ -49,14 +49,14 @@
 <div class="mb-14" id="faq_area">
 
     <div class="flex gap-x-4">
-        <label for="" class="my-auto font-semibold text-xl">Q</label>
-        <input name="question[]" type="text" class="w-full p-2 rounded-md" value="">
+        <label for="" class="my-auto font-semibold text-xl text-gray-900 dark:text-white">Q</label>
+        <input name="question[]" type="text" id="q" class="w-full p-2 rounded-md text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900" value="">
     </div>
     
     
     <div class="flex gap-x-4 mt-2">
-        <label for="" class="my-auto font-semibold text-xl">A</label>
-        <input name="answer[]" type="text" class="w-full p-2 rounded-md" value="">
+        <label for="" class="my-auto font-semibold text-xl text-gray-900 dark:text-white">A</label>
+        <input name="answer[]" type="text" id="a" class="w-full p-2 rounded-md text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900" value="">
     </div>
     <h1 id="remove_faq" class="bg-red-600 text-white rounded-md inline-block py-1 px-3 font-semibold text-2xl float-right mt-4 cursor-pointer">-</h1>
     

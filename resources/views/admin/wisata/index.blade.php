@@ -78,7 +78,7 @@
 
     <div class="grid grid-cols-4 gap-4 mt-8">
 
-        @foreach ($data as $wisata)
+        {{-- @foreach ($data as $wisata)
 
 
             
@@ -143,12 +143,12 @@
           <div class="mt-4">
              <h1 class="font-semibold font-mono text-center text-xl text-gray-900 dark:text-white">{{ $wisata->nama_wisata }}</h1>
             <div class="flex justify-between">
-                <h1 class="font-semibold text-center mt-2 text-gray-900 dark:text-white">{{ $wisata->tour_type }}</h1>
-                <h1 class="font-semibold text-center mt-2 text-gray-900 dark:text-white">Rp.{{ $wisata->harga }} </h1>
+                <h1 class="font-semibold text-center mt-2 text-gray-900 dark:text-white">Type Tour : {{ $wisata->tour_type }}</h1>
+                <h1 class="font-semibold text-center mt-2 text-gray-900 dark:text-white">Price : Rp.{{ $wisata->harga }} </h1>
 
 
                 {{-- <h4 class="text-center">{{ $wisata->diboking }}</h4> --}}
-            </div>
+            {{-- </div> --}}
 
             {{-- @foreach ($wisata->equipment as $equip)
                 @php
@@ -167,11 +167,135 @@
                 
 
 
-       </div>
+       {{-- </div>
 
        </div>
 
-       @endforeach
+       @endforeach  --}}
+
+
+
+       @foreach ($data as $wisata)
+
+
+{{-- card 2 start --}}
+
+
+       <div class="block rounded-lg p-4 shadow-best shadow-indigo-100 dark:bg-gray-700 bg-white relative">
+        <div class="absolute right-6 top-6 dark:bg-white bg-gray-900 rounded-md shadow-best4">
+
+            <div>
+              <button type="button" class="inline-flex justify-center mt-1 mr-2 w-full options-menu-wisata{{ $wisata->id }}">
+               {{-- <svg class="h-5 w-5 " viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                </svg> --}}
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" class="text-white dark:text-gray-900 font-semibold" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+              </button>
+            </div>
+          
+            <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none shadow-best5 hidden dropdown-menu-wisata{{ $wisata->id }}">
+              <div class="py-1" role="none">
+
+               <a href="/admin/wisata/edit/{{ $wisata->id }}"
+               class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
+               Edit
+              </a>
+
+              <a href="/admin/wisata/faq/{{ $wisata->slug }}"
+                class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
+                Manage FAQ
+               </a>      
+
+
+
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $wisata->id }}" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 hover:text-red-900 w-full">
+                     Delete
+                  </button>
+
+
+               @if ($wisata->status == true)
+                   <form method="post" action="/admin/wisata/nonaktif/{{ $wisata->id }}">
+                    @csrf
+                    <button type="submit" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 hover:text-red-900 w-full">Nonaktif</button>
+                   </form>
+
+                @elseif ($wisata->status == false)
+                <form method="post" action="/admin/wisata/aktif/{{ $wisata->id }}">
+                    @csrf
+                    <button type="submit" class="block px-4 py-2 text-sm text-green-700 hover:bg-green-100 hover:text-green-900 w-full">Active</button>
+                   </form>
+               @endif
+              </div>
+            </div>
+          </div>
+
+
+
+          @include('admin.wisata.actionMenu')
+
+          @php
+            $images = explode('|', $wisata->image);
+            @endphp
+
+        <img
+          alt="Home"
+          src="{{ asset('image/'.$images[0]) }}"
+          class="h-56 w-full rounded-md object-cover"
+        />
+      
+        <div class="mt-2">
+          <dl>
+            <div>
+              <dt class="sr-only">Price</dt>
+      
+              <dd class="text-sm text-gray-700 dark:text-gray-200">Rp. {{ number_format($wisata->harga,0,',','.') }}</dd>
+            </div>
+      
+            <div>
+              <dt class="sr-only">Address</dt>
+      
+              <dd class="text-gray-900 dark:text-white font-semibold">{{ $wisata->nama_wisata }}</dd>
+            </div>
+          </dl>
+      
+          <div class="mt-6 grid grid-cols-3 items-center gap-8 text-xs">
+            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="text-gray-900 dark:text-white w-7 h-7" style="transform: ;msFilter:;"><path d="M21 20V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm2-5H5V7h14v2z"></path></svg>
+      
+              <div class="mt-1.5 sm:mt-0">
+                <p class="text-gray-900 dark:text-gray-200 font-semibold">Departure</p>
+      
+                <p class="font-medium text-gray-700 dark:text-gray-300">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y') }}</p>
+              </div>
+            </div>
+      
+            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 96 960 960" fill="currentColor" class="text-gray-900 dark:text-white w-7 h-7"><path d="M480 758q103.95-83.86 156.975-161.43Q690 519 690 452q0-59-21.5-100t-53.009-66.88q-31.51-25.881-68.271-37.5Q510.459 236 480 236q-30.459 0-67.22 11.62-36.761 11.619-68.271 37.5Q313 311 291.5 352T270 452q0 67 53.025 144.57T480 758Zm0 76Q343 731 276.5 636.801q-66.5-94.2-66.5-184.554Q210 384 234.5 332.5T298 246q39-35 86.98-52.5 47.98-17.5 95-17.5T575 193.5q48 17.5 87 52.5t63.5 86.533Q750 384.066 750 452.456 750 543 683.5 637 617 731 480 834Zm.089-318Q509 516 529.5 495.411q20.5-20.588 20.5-49.5Q550 417 529.411 396.5q-20.588-20.5-49.5-20.5Q451 376 430.5 396.589q-20.5 20.588-20.5 49.5Q410 475 430.589 495.5q20.588 20.5 49.5 20.5ZM210 976v-60h540v60H210Zm270-524Z"/></svg>
+      
+              <div class="mt-1.5 sm:mt-0">
+                <p class="text-gray-900 dark:text-gray-200 font-semibold">Location</p>
+      
+                <p class="font-medium text-gray-700 dark:text-gray-300">{{ $wisata->kota->nama_kota }}</p>
+              </div>
+            </div>
+      
+            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-gray-900 dark:text-white w-7 h-7" style="transform: ;msFilter:;"><path d="M19.965 8.521C19.988 8.347 20 8.173 20 8c0-2.379-2.143-4.288-4.521-3.965C14.786 2.802 13.466 2 12 2s-2.786.802-3.479 2.035C6.138 3.712 4 5.621 4 8c0 .173.012.347.035.521C2.802 9.215 2 10.535 2 12s.802 2.785 2.035 3.479A3.976 3.976 0 0 0 4 16c0 2.379 2.138 4.283 4.521 3.965C9.214 21.198 10.534 22 12 22s2.786-.802 3.479-2.035C17.857 20.283 20 18.379 20 16c0-.173-.012-.347-.035-.521C21.198 14.785 22 13.465 22 12s-.802-2.785-2.035-3.479zm-9.01 7.895-3.667-3.714 1.424-1.404 2.257 2.286 4.327-4.294 1.408 1.42-5.749 5.706z"></path></svg>
+      
+              <div class="mt-1.5 sm:mt-0">
+                <p class="text-gray-900 dark:text-gray-200 font-semibold">Type Tour</p>
+      
+                <p class="font-medium text-gray-700 dark:text-gray-300">{{ $wisata->tour_type }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{{-- card 2 akhir       --}}
+@endforeach
+
 
         
     </div>

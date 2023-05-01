@@ -73,10 +73,13 @@
                   </div>
                 </div>
 
+                @if ($tagihan->status == 'menunggu')
+                  <h1 class="bg-yellow-300 text-black font-semibold p-2 rounded-md mt-2">Waiting for confirmation from admin</h1>
+                @endif
 
-
-
+                @if ($tagihan->paymet_status == 'PENDING' && $tagihan->status == 'dikonfirmasi')
                 <a href="{{ $tagihan->payment_link }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none font-semibold">Pay Now</a>
+                @endif
 
 
               </div>

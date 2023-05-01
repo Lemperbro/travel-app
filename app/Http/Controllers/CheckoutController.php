@@ -77,7 +77,7 @@ class CheckoutController extends Controller
             'expired' => $response->expiry_date
         ]);
 
-        return redirect('/tagihan');
+        return redirect('/tagihan')->with('success', 'order is successful, please wait for confirmation from admin');
 
     }
 

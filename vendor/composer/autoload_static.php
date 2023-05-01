@@ -625,6 +625,7 @@ class ComposerStaticInitf337098c25fced8c1b875d8f6e55195a
         'App\\Http\\Controllers\\TestiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestiController.php',
         'App\\Http\\Controllers\\TourtypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/TourtypeController.php',
         'App\\Http\\Controllers\\WisataController' => __DIR__ . '/../..' . '/app/Http/Controllers/WisataController.php',
+        'App\\Http\\Controllers\\admin\\AdminAboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/AdminAboutController.php',
         'App\\Http\\Controllers\\admin\\AdminBookingController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/AdminBookingController.php',
         'App\\Http\\Controllers\\admin\\AdminDashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/AdminDashboardController.php',
         'App\\Http\\Controllers\\admin\\AdminGuideController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/AdminGuideController.php',

@@ -256,7 +256,7 @@
            
   
            <div class="ml-3 mb-3">
-            <button type="submit" class="bg-orange-700 rounded-md px-4 py-2 text-white flex min-h-[3rem] items-center justify-between">Search</button>
+            <button type="submit" class="bg-orange-600 rounded-md px-4 py-2 text-white flex min-h-[3rem] items-center justify-between">Search</button>
            </div>
   
             <div>

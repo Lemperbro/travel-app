@@ -22,6 +22,7 @@ class AdminDashboardController extends Controller
         //
 
 
+
         return view('admin.dashboard.index',[
             'tittle' => 'Dashboard',
             'wisata' => Wisata::count(),

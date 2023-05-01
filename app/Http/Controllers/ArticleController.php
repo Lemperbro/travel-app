@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Kota;
 use App\Models\Wisata;
 use App\Models\Article;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Kategori_Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\UpdateArticleRequest;
-
-
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ArticleController extends Controller
 {
@@ -196,13 +196,25 @@ class ArticleController extends Controller
         }else{
             $img = $image;
         }
-  
+        // $slug = Str::slug($request->judul);
+        // $cari = Article::where('judul',$request->judul)->get();
+        // if($cari !== null){
+        //     $cari_id = Article::where('slug', $slug)->pluck('id')->first();
+        //     $hitung = $cari->count() + 1;
+        //     $slug_fix = $slug.'-'.$hitung;
+        // }else if($cari == null){
+        //  $slug_fix = $slug;   
+        // }
+
         $up = Article::where('slug', $slug)->update([
+            'slug' => SlugService::createSlug(Article::class, 'slug' , $request->judul),
             'judul' => $validasi['judul'],
             'kategori' => $validasi['kategori'],
             'image' => $img,
             'isi' => $validasi['isi']
         ]);
+
+
 
 
 
@@ -233,8 +245,9 @@ class ArticleController extends Controller
             if(File::exists($storage)){
                 unlink($storage);
 
-                return redirect('/admin/article')->with('success', 'delete successful to the Article');
             }
+            return redirect('/admin/article')->with('success', 'delete successful to the Article');
+
         }
 
         return redirect('/admin/article')->with('warning', 'failed delete to the Article');

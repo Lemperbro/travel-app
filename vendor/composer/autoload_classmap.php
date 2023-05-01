@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Controllers\\TestiController' => $baseDir . '/app/Http/Controllers/TestiController.php',
     'App\\Http\\Controllers\\TourtypeController' => $baseDir . '/app/Http/Controllers/TourtypeController.php',
     'App\\Http\\Controllers\\WisataController' => $baseDir . '/app/Http/Controllers/WisataController.php',
+    'App\\Http\\Controllers\\admin\\AdminAboutController' => $baseDir . '/app/Http/Controllers/admin/AdminAboutController.php',
     'App\\Http\\Controllers\\admin\\AdminBookingController' => $baseDir . '/app/Http/Controllers/admin/AdminBookingController.php',
     'App\\Http\\Controllers\\admin\\AdminDashboardController' => $baseDir . '/app/Http/Controllers/admin/AdminDashboardController.php',
     'App\\Http\\Controllers\\admin\\AdminGuideController' => $baseDir . '/app/Http/Controllers/admin/AdminGuideController.php',

@@ -15,6 +15,7 @@ use App\Models\admin\AdminWisata;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminWisataController extends Controller
 {
@@ -321,6 +322,7 @@ class AdminWisataController extends Controller
             'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
+            'slug' => SlugService::createSlug(Wisata::class, 'slug' , $request->nama)
         ]);
 
 
@@ -515,7 +517,7 @@ class AdminWisataController extends Controller
 
 
         return response()->json([
-            'success' => true
+            'success' => true,
         ]);
     }
 

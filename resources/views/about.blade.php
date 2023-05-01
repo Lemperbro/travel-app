@@ -16,6 +16,7 @@
 
 
 <div class="flex grid-cols-2 gap-8">
+@if($data !== null)
 <div class='mb-9 w-[50%] mt-3'>
   {!! $data->isi !!}
 </div>
@@ -23,6 +24,7 @@
 <div class="w-[50%]">
   <img src="{{ asset('about/'.$data->image) }}" alt="" class="object-contain">
 </div>
+@endif
 
 </div>
 

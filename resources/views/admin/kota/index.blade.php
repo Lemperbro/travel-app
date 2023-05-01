@@ -30,17 +30,73 @@
             @php
                $coba = 0;
             @endphp
-            @foreach ($data as $query)
+            {{-- @foreach ($data as $query)
                
-            <div class="rounded-md shadow-best p-2 relative bg-white dark:bg-gray-700">
+            <div class="rounded-md shadow-best p-2 relative bg-white dark:bg-gray-700"> --}}
 
                {{-- action menu start --}}
-               <div class="relative inline-block float-right">
+               {{-- <div class="relative inline-block float-right">
                   <div>
                     <button type="button" class="inline-flex justify-center w-full options-menu{{ $query->id }}">
                      <svg class="h-5 w-5 text-gray-900 dark:text-white" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                       </svg>
+                    </button>
+                  </div>
+                
+                  <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none shadow-best5 hidden dropdown-menu{{ $query->id }}">
+                    <div class="py-1" role="none">
+
+                     <button type="button"
+                     class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full"
+                     data-bs-toggle="modal" data-bs-target="#exampleModalLong-{{ $query->id }}">
+                     Edit
+                     </button>   
+
+
+                     <form action="/kota/delete/{{ $query->id }}" method="POST">
+                        @csrf
+                        <button type="submit" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 hover:text-red-900 w-full">
+                           Delete
+                        </button>
+                     </form>
+
+                    </div>
+                  </div>
+                </div>
+
+                @include('admin.kota.actionMenu') --}}
+                {{-- action menu end  --}}
+
+               {{-- @php
+                  $images = explode('|', $query->image);
+               @endphp
+               <img src="../../image/{!! $images[0] !!}" alt="" class="w-full object-cover h-52 rounded-lg">
+                  
+
+               <div class="mt-4">
+                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">City Name: {{ $query->nama_kota }}</h1>
+                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Price: Rp{{ $query->harga }}</h1>
+
+
+
+         </div>
+
+
+
+            </div>
+            
+            @endforeach --}}
+
+            {{-- card 2 start --}}
+            @foreach ($data as $query)
+
+            <div class="block rounded-lg p-4 shadow-best dark:bg-gray-700 bg-white relative">
+                {{-- action menu start --}}
+               <div class="absolute right-6 top-6 dark:bg-white bg-gray-900 rounded-md shadow-best4">
+                  <div>
+                    <button type="button" class="inline-flex justify-center  mt-1 mr-2 w-full options-menu{{ $query->id }}">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" class="text-white dark:text-gray-900 font-semibold" viewBox="0 0 24 24" style="transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
                     </button>
                   </div>
                 
@@ -71,23 +127,35 @@
                @php
                   $images = explode('|', $query->image);
                @endphp
-               <img src="../../image/{!! $images[0] !!}" alt="" class="w-full object-cover h-52 rounded-lg">
-                  
 
-               <div class="mt-4">
-                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white"> {{ $query->nama_kota }}</h1>
-                  <h1 class="font-semibold font-mono text-xl text-gray-900 dark:text-white">Price: Rp{{ $query->harga }}</h1>
+               <img
+                 alt="Home"
+                 src="{{ asset('image/'.$images[0]) }}"
+                 class="h-56 w-full rounded-md object-cover"
+               />
+             
+               <div class="mt-2">
+                 <dl>
+                   <div>
+                     <dt class="sr-only">Price</dt>
+             
+                     <dd class="text-sm text-gray-700 dark:text-gray-200 font-semibold">Price Pickup Rp. {{ number_format($query->harga,0,',','.') }}</dd>
+                   </div>
+             
+                   <div>
+                     <dt class="sr-only">Address</dt>
+             
+                     <dd class="text-gray-900 dark:text-white font-semibold text-xl">{{ $query->nama_kota }}</dd>
+                   </div>
 
-
-
-         </div>
-
-
-
-            </div>
-            
-            @endforeach
-
+                   </div>
+                 </dl>
+             
+                
+               </div>
+             </div>
+             @endforeach
+             {{-- card 2 end --}}
 
          </div>
 

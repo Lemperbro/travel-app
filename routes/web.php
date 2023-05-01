@@ -156,6 +156,7 @@ Route::middleware('admin')->group(function(){
     Route::post('/admin/supir/add', [AdminSupirController::class, 'store']);
 
     Route::get('/kendaraan', [AdminKendaraanController::class, 'index']);
+    Route::get('/kendaraan/onDuty', [AdminKendaraanController::class, 'onDuty']);
     Route::post('/kendaraan/delete/{id}', [AdminKendaraanController::class, 'destroy']);
     Route::post('/kendaraan/edit/{id}', [AdminKendaraanController::class, 'update']);
     Route::post('/kendaraan/add', [AdminKendaraanController::class, 'store']);

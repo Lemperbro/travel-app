@@ -26,7 +26,17 @@ class AdminKendaraanController extends Controller
         }
         return view('admin.kendaraan.index',[
            'data' => $data->get(),
-            'tittle' => 'Kelola Kendaraan'
+        ]);
+    }
+
+    public function onDuty(){
+        $data = Kendaraan::where('status', 1)->latest();
+
+        if(request('search')){
+            $data->where('status', 1)->where('merek', 'like', '%'. request('search').'%');
+        }
+        return view('admin.kendaraan.onDuty',[
+           'data' => $data->paginate(15),
         ]);
     }
 

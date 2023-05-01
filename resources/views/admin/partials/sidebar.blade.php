@@ -48,11 +48,20 @@
 
               <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/booking/confirmation') || request()->is('admin/booking') ? 'text-orange-500 dark:text-orange-500' : ''}} {{ request()->is('admin/booking/confirmation/*') || request()->is('admin/booking/*') ? 'text-orange-500 dark:text-orange-500' : ''}}" fill="currentColor" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
                 <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Booking</span>
+                @if ($req_booking->count() > 0)                  
+                <span class="p-[5px] bg-red-600 rounded-full animate-fadeIn duration-500 "></span>
+                @endif
+
                 <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <ul id="dropdown-layouts" class="hidden py-2 space-y-2">
-              <li>
-                <a href="/admin/booking/confirmation" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/booking/confirmation') ? 'text-orange-500 dark:text-orange-500' : ''}} {{ request()->is('admin/booking/confirmation/*') ? 'text-orange-500 dark:text-orange-500' : ''}}">Request Confirmation</a>
+              <li class="flex hover:bg-gray-100 rounded-lg dark:hover:bg-gray-700">
+                <a href="/admin/booking/confirmation" class="flex items-center p-2 text-base text-gray-900 transition duration-75  pl-11 group  dark:text-gray-200  {{ request()->is('admin/booking/confirmation') ? 'text-orange-500 dark:text-orange-500' : ''}} {{ request()->is('admin/booking/confirmation/*') ? 'text-orange-500 dark:text-orange-500' : ''}}">Request Confirmation</a>
+                @if ($req_booking->count() > 0)
+                <span class="inline-flex items-center justify-center p-1 w-6 h-6 text-xs font-semibold text-white bg-red-600 rounded-md m-auto">
+                  {{ $req_booking->count() }}
+                </span>
+                @endif
               </li>
               <li>
                 <a href="/admin/booking" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/booking') ? 'text-orange-500 dark:text-orange-500' : ''}}  ">All Booking</a>
