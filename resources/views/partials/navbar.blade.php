@@ -57,7 +57,7 @@
               <div @click="open = !open" class="relative border-b-4 border-transparent " :class="{'border-indigo-700 transform transition duration-300 ': open}" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100">
 
                 <div class="flex justify-center items-center space-x-3 cursor-pointer">
-                  <div class="w-12 h-12 rounded-full overflow-hidden border-2 dark:border-white border-gray-900">
+                  <div class="w-12 h-12 rounded-full overflow-hidden border-[1px] dark:border-white border-gray-600">
                     <img src="{{ asset('ft_user/'. auth()->user()->image) }}" alt="" class="w-full h-full object-cover">
                   </div>
                 </div>

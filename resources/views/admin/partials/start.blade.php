@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('src/style.css') }}">
+    <link rel="icon"  href="{{ asset('img/1.png') }}"/>
     <script src="https://cdn.tiny.cloud/1/4jfwg3ggzlzizqiuux4vs8zext690fbffche2l6rcz3j34do/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
@@ -16,7 +17,7 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
-    <title>Document</title>
+    <title>Admin Grow In</title>
 </head>
 <body class="dark:bg-gray-900 bg-gray-100">
     

@@ -30,11 +30,11 @@
                   <table class="table-sorter table-bordered w-full text-gray-600 dark:text-gray-400">
                     <thead>
                       <tr class="bg-gray-100 dark:bg-gray-900 dark:bg-opacity-40">
-                        <th class="hidden sm:table-cell border">Customers</th>
-                        <th class="hidden sm:table-cell">Email</th>
-                        <th class="hidden lg:table-cell">Date added</th>
-                        <th class="hidden lg:table-cell">Status</th>
-                        <th class="text-center hidden lg:table-cell">Booking Number</th>
+                        <th class="hidden sm:table-cell py-4">Customers</th>
+                        <th class="hidden sm:table-cell py-4">Email</th>
+                        <th class="hidden lg:table-cell py-4">Date added</th>
+                        <th class="hidden lg:table-cell py-4">Status</th>
+                        <th class="text-center hidden lg:table-cell py-4">Booking Number</th>
                         <th data-sortable="false">Actions</th>
                       </tr>
                     </thead>

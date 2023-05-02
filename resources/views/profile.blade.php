@@ -60,11 +60,11 @@
         <!-- <p class="font- text-slate-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p> -->
       </div>
       <hr class="mt-4 mb-8" />
-
       <form method="post" action="/profile/update" enctype="multipart/form-data">
+          <img src="{{ asset('ft_user/'.$data->image) }}" alt="" id="view_image" class="w-20 h-20 object-cover flex justify-center m-auto rounded-full">
         @csrf
         <div class="flex flex-col mx-auto my-4 justify-center gap-y-4 mb-4">
-            <input type="file" name="image" class=" mx-auto w-[10%] rounded-md">
+            <input type="file" name="image" class=" mx-auto w-[10%] rounded-md" id="image">
             <label for="image" class="text-center font-semibold">Change Profile Image</label>
         </div>
 

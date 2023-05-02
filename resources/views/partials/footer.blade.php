@@ -111,6 +111,16 @@
   <script src="{{ asset('js/tap-image.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
 
+
+<script>
+            image.onchange = evt => {
+              const [file] = image.files
+              if (file) {
+                view_image.src = URL.createObjectURL(file)
+              }
+            }
+</script>
+
   
 
 

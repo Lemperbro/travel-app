@@ -310,7 +310,8 @@ class AdminWisataController extends Controller
             $potong_img = str_replace(['[', '"', ']'], '', $img);
             $image = $potong_img;
         }
-        
+        $W = Wisata::where('id', $id)->pluck('slug')->first();
+
 
         $wisata = Wisata::find($id)->update([
             'image'=>  implode("|",$image),
@@ -325,6 +326,15 @@ class AdminWisataController extends Controller
             'slug' => SlugService::createSlug(Wisata::class, 'slug' , $request->nama)
         ]);
 
+        $U = Wisata::where('id', $id)->pluck('slug')->first();
+        
+        if($wisata){
+            Faq::where('wisata', $W)->update([
+                'wisata' => $U
+            ]);
+
+
+        }
 
 
             $inclusions = array();

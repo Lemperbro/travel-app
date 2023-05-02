@@ -48,8 +48,8 @@
   
           @foreach ($data as $tagihan)
               
-          <div class="p-4 w-full hover:scale-105 duration-500 shadow-best5">
-            <div class=" flex items-center  justify-between p-4  rounded-lg bg-white shadow-indigo-50 shadow-md">
+          <div class="w-full hover:scale-105 duration-500">
+            <div class=" flex items-center  justify-between p-4  rounded-lg bg-white shadow-best">
 
               <div>
                 <h2 class="text-gray-900 text-lg font-bold">{{ $tagihan->wisata->nama_wisata }} - {{ $tagihan->wisata->kota->nama_kota }}</h2>

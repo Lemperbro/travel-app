@@ -120,9 +120,8 @@ class ProfileController extends Controller
             'alamat' => $validasi['alamat']
         ]);
         
-        $request->session()->flash('success', 'Your operation was successful.');
-        $request->session()->flash('failed', 'Your Opration Failed');
-        return redirect('/profile');
+
+        return redirect('/profile')->with('toast_success', 'Your operation was successful.');
     }
 
     public function changePassword(Request $request){

@@ -94,10 +94,14 @@
           </div>
           
           @endforeach
+
+
           
           
         </div>
-      
+        @if ($data->count() == 0 || $data == null)
+        <h1 class="text-2xl font-semibold text-center">There are no booking activities at this time</h1>
+      @endif
       
     </div>
 

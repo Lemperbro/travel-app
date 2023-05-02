@@ -53,7 +53,7 @@ class AdminBookingController extends Controller
     public function confirmation(){
         $data =  Pemesanan::where('status', 'menunggu')->get();
 
-        return view('admin.booking.request_booking', [
+        return view('admin.booking.confirmation', [
             'data' => $data,
         ]);
     }
