@@ -56,6 +56,8 @@
 @include('partials.most')
 
 @include('partials.latest')
+
+<h1 class="text-2xl font-bold border-black text-center mt-16 mb-4">Our Guide Team</h1>
 @include('partials.slider')
 
 
