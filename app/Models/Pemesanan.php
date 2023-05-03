@@ -25,4 +25,16 @@ class Pemesanan extends Model
         return $this->belongsTo(Wisata::class);
     }
 
+    public function vehicle(){
+        return $this->belongsTo(Kendaraan::class);
+    }
+
+    public function driver(){
+        return $this->belongsTo(Supir::class);
+    }
+
+    public function guide(){
+        return $this->belongsTo(Guide::class);
+    }
+
 }

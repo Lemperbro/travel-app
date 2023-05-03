@@ -6,10 +6,10 @@
   
 
          <div class="flex my-5">
-         <div class="bg-orange-700 p-2 rounded-md flex">
+         <a href="/admin/kota/add" class="bg-orange-700 p-2 rounded-md flex">
             <svg xmlns="http://www.w3.org/2000/svg" class="my-auto" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
-            <a href="/admin/kota/add" class=" text-white uppercase font-semibold my-auto">Add City</a>
-         </div>
+            <h1  class=" text-white uppercase font-semibold my-auto">Add City</h1>
+         </a>
 
          <form class="w-[80%] mx-auto " action="/admin/kota">   
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

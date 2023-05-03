@@ -165,6 +165,7 @@ Route::middleware('admin')->group(function(){
     //booking
     Route::get('/admin/booking', [AdminBookingController::class, 'index']);
     Route::get('/admin/booking/confirmation', [AdminBookingController::class, 'confirmation']);
+    Route::post('/admin/booking/confirmation/{id}', [AdminBookingController::class, 'confirm']);
 
 
 

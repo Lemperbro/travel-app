@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Supir;
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 use App\Models\admin\AdminWisata;
-use App\Models\Kendaraan;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
 
 class AdminKendaraanController extends Controller
 {
@@ -63,10 +64,23 @@ class AdminKendaraanController extends Controller
             'merek' => 'required|max:255',
             'kapasitas' => 'required',
             'jumlah' => 'required',
+            'plat' => 'required'
             
         ]);
+        if($files=$request->file('image')){
+            $extension=$files->getClientOriginalExtension();
+            $img = hash('sha256', time()) .'.' . $extension;
+            $files->move('vehicle',$img);
 
-        Kendaraan::create($validasi);
+        }
+
+        Kendaraan::create([
+            'merek' => $request->merek,
+            'kapasitas' => $request->kapasitas,
+            'jumlah' => $request->jumlah,
+            'plat' => $request->plat,
+            'image' => $img
+        ]);
         return redirect('/kendaraan')->with('success', 'successful additional to the Vehicle');
 
     }
@@ -104,10 +118,30 @@ class AdminKendaraanController extends Controller
     {
         //
 
-        Kendaraan::find($id)->update([
-            'merek' => $request['merek'],
-            'kapasistas' => $request['kapasitas'],
-            'jumlah' => $request['jumlah']
+
+        $old = Kendaraan::where('id', $id)->pluck('image')->first();
+
+        if($files=$request->file('image')){
+            $extension=$files->getClientOriginalExtension();
+            $img = hash('sha256', time()) .'.' . $extension;
+            $up = $files->move('vehicle',$img);
+            if($up){
+                $storage = public_path('vehicle/'.$old);
+                if(File::exists($storage)){
+                    unlink($storage);
+                }
+            }
+
+        }else{
+            $img = $old;
+        }
+
+        Kendaraan::where('id', $id)->update([
+            'merek' => $request->merek,
+            'kapasitas' => $request->kapasitas,
+            'jumlah' => $request->jumlah,
+            'plat' => $request->plat,
+            'image' => $img
         ]);
 
         return redirect('/kendaraan')->with('success', 'update successful to the Vehicle');

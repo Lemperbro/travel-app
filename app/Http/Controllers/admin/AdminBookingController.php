@@ -6,6 +6,10 @@ use App\Models\User;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Guide;
+use App\Models\Kendaraan;
+use App\Models\Supir;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminBookingController extends Controller
 {
@@ -51,10 +55,41 @@ class AdminBookingController extends Controller
     }
 
     public function confirmation(){
-        $data =  Pemesanan::where('status', 'menunggu')->get();
+        $data =  Pemesanan::with('wisata','user')->where('status', 'menunggu')->get();
+        $driver = Supir::where('status', 0)->get();
+        $vehicle = Kendaraan::where('status', 0)->get();
+        $guide = Guide::where('status', 0)->get();
 
         return view('admin.booking.confirmation', [
             'data' => $data,
+            'driver' => $driver,
+            'vehicle' => $vehicle,
+            'guide' => $guide
         ]);
+    }
+
+    public function confirm(Request $request, $id){
+        $konfirm = Pemesanan::where('id', $id)->update([
+            'driver_id' => $request->driver,
+            'vehicle_id' => $request->vehicle,
+            'guide_id' => $request->guide,
+            'status' => 'dikonfirmasi'
+        ]);
+
+        if($konfirm){
+            Supir::where('id', $request->driver)->update([
+                'status' => 1
+            ]);
+            Kendaraan::where('id', $request->vehicle)->update([
+                'status' => 1
+            ]);
+            Guide::where('id', $request->guide)->update([
+                'status' => 1
+            ]);
+
+            return redirect()->back()->with('toast_success', 'success confirmation');
+        }
+
+        return redirect()->back()->with('toast_error', 'failed confirmation');
     }
 }

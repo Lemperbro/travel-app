@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('invoice_id');
             $table->foreignId('wisata_id');
             $table->foreignId('user_id');
+            $table->foreignId('driver_id')->nullable();
+            $table->foreignId('vehicle_id')->nullable();
+            $table->foreignId('guide_id')->nullable();
             $table->string('pickup_kota');
             $table->string('pickup_point');
             $table->string('drop_kota');

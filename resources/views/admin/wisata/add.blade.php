@@ -94,7 +94,7 @@
                     <div class="">
                         <label for="departure" class="font-bold mb-1 text-gray-900 dark:text-white block">Departure</label>
                         <input type="datetime-local" name="departure"
-                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
+                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white "
                             >
                     </div>
                 </div>

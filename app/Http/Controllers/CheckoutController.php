@@ -77,7 +77,7 @@ class CheckoutController extends Controller
             'expired' => $response->expiry_date
         ]);
 
-        return redirect('/tagihan')->with('success', 'order is successful, please wait for confirmation from admin');
+        return redirect('/tagihan')->with('toast_success', 'order is successful, please wait for confirmation from admin');
 
     }
 
@@ -153,7 +153,7 @@ class CheckoutController extends Controller
     public function tagihan(){
 
         return view('tagihan',[
-            'data' => Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PENDING')->get(),
+            'data' => Pemesanan::with('wisata','user','vehicle', 'driver', 'guide')->where('user_id', Auth()->user()->id)->where('payment_status', 'PENDING')->get(),
         ]);
     }
 

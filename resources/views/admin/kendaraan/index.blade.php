@@ -57,7 +57,7 @@
                         <td class="px-4 py-3 text-sm border text-center">{{ $user->jumlah }}</td>
                         <td class="px-4 py-3 text-sm border text-center">{{ $user->plat }}</td>
                         <td class="px-4 py-3 text-sm border text-center">
-                          <img src=" {{ asset('image/'.$user->image) }}" alt="" class="flex w-28 h-28 object-cover mx-auto">
+                          <img src=" {{ asset('vehicle/'.$user->image) }}" alt="" class="flex w-28 h-28 object-cover mx-auto">
                         </td>
     
                         <td class="px-4 py-8 text-sm flex gap-x-4 justify-center">
