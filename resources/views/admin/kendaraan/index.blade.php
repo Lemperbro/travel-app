@@ -17,7 +17,7 @@
         </form>
 
          <button type="button"
-         class="inline px-6 py-2.5 bg-blue-600 text-white font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
+         class="inline px-6 py-2.5 bg-blue-600 text-white font-bold text-sm  uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
          data-bs-toggle="modal" data-bs-target="#exampleModalLong">
          ADD VEHICLE
          </button>
@@ -95,37 +95,37 @@
 id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
-    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
+    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto dark:bg-slate-800 bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
     <div
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          
          <form action="/kendaraan/edit/{{ $edit->id }}" method="POST" class="w-full px-4" enctype="multipart/form-data">
-            <h1 class="text-center font-semibold text-2xl">EDIT VEHICLE</h1>
+            <h1 class="text-center font-semibold text-2xl dark:text-white">EDIT VEHICLE</h1>
             @csrf
 
 
             <img src="{{ asset('image/'.$edit->image) }}" alt="">
             <div class="mt-4">
-              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
+              <label class="block mb-2 text-sm text-gray-900 dark:text-white font-semibold" for="file_input">Upload Image</label>
               <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image">
             </div>
 
             <div class="mt-4">
-                <label for="merek">Type</label>
-                <input type="text" name="merek" id="merek" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->merek }}">
+                <label class="text-white font-semibold" for="merek">Type</label>
+                <input type="text" name="merek" id="merek" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" value="{{ $edit->merek }}">
             </div>
             <div class="mt-4">
-              <label for="kapasitas">Capacity</label>
-              <input type="number" name="kapasitas" id="kapasitas" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->kapasitas }}">
+              <label class="text-white font-semibold" for="kapasitas">Capacity</label>
+              <input type="number" name="kapasitas" id="kapasitas" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" value="{{ $edit->kapasitas }}">
           </div>
           <div class="mt-4">
-            <label for="jumlah">Unit</label>
-            <input type="text" name="jumlah" id="jumlah" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->jumlah }}">
+            <label class="text-white font-semibold" for="jumlah">Unit</label>
+            <input type="text" name="jumlah" id="jumlah" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" value="{{ $edit->jumlah }}">
           </div>
 
           <div class="mt-4">
-            <label for="plat">Number Plate</label>
-            <input type="text" name="plat" id="plat" class="w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->plat }}">
+            <label class="text-white font-semibold" for="plat">Number Plate</label>
+            <input type="text" name="plat" id="plat" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" value="{{ $edit->plat }}">
           </div>
     
             <div class="flex gap-x-4 mt-4">
@@ -149,12 +149,12 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
 id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
-    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
+    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto dark:bg-slate-800 bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
     <div
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          
          <form action="/kendaraan/add" method="POST" class="w-full px-4" enctype="multipart/form-data" >
-            <h1 class="text-center font-semibold text-2xl">ADD VEHICLE</h1>
+            <h1 class="text-center font-bold text-2xl dark:text-white">ADD VEHICLE</h1>
             @csrf
 
 
@@ -164,27 +164,25 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
           </div>
 
             <div class="mt-4">
-                <label for="merek">Type</label>
-                <input type="text" name="merek" id="merek" class="w-full h-12 rounded-md p-2 border mt-4" >
+                <label class="text-white font-semibold" for="merek">Type</label>
+                <input type="text" name="merek" id="merek" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" >
             </div>
 
             <div class="mt-4">
-              <label for="kapasitas">Capacity</label>
-              <input type="number" name="kapasitas" id="kapasitas" class="w-full h-12 rounded-md p-2 border mt-4" >
+              <label class="text-white font-semibold" for="kapasitas">Capacity</label>
+              <input type="number" name="kapasitas" id="kapasitas" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" >
           </div>
 
           <div class="mt-4">
-            <label for="jumlah">Unit Totals</label>
-            <input type="text" name="jumlah" id="jumlah" class="w-full h-12 rounded-md p-2 border mt-4" >
+            <label class="text-white font-semibold" for="jumlah">Unit Totals</label>
+            <input type="text" name="jumlah" id="jumlah" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" >
           </div>
 
           <div class="mt-4">
-            <label for="plat">Number Plate</label>
-            <input type="text" name="plat" id="plat" class="w-full h-12 rounded-md p-2 border mt-4" >
+            <label class="text-white font-semibold" for="plat">Number Plate</label>
+            <input type="text" name="plat" id="plat" class="w-full h-12 rounded-md p-2 border mt-4 dark:bg-gray-600 dark:text-white" >
           </div>
 
-
-    
             <div class="flex gap-x-4 mt-4">
               <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Send</button>
               <a href="/kendaraan" class="bg-red-600 px-4 py-2 text-white rounded-md">Undo</a>
@@ -196,5 +194,5 @@ id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria
   </div>
 </div>
 </div>
-{{-- modal add end --}}
-   @endsection
+
+@endsection
