@@ -143,6 +143,8 @@ class AdminWisataController extends Controller
                 Itenerary::create([
                     'wisata_id' => $wisata->id,
                     'agenda' => $request->agenda[$i],
+                    'startTime' => $request->startTime[$i],
+                    'endTime' => $request->endTime[$i],
                     'deskripsi' => $request->itenerary[$i]
                 ]);
             }
@@ -367,6 +369,8 @@ class AdminWisataController extends Controller
                     Itenerary::where('wisata_id', $id)->updateOrCreate([
                         'wisata_id' => $id,
                         'agenda' => $request->agenda[$i],
+                        'startTime' => $request->startTime[$i],
+                        'endTime' => $request->endTime[$i],
                         'deskripsi' => $request->itenerary[$i]
                     ]);
                 }
@@ -375,6 +379,8 @@ class AdminWisataController extends Controller
                     Itenerary::where('wisata_id', $id)->where('id', $request->id_itenerary[$i])->update([
                         'wisata_id' => $id,
                         'agenda' => $request->agenda[$i],
+                        'startTime' => $request->startTime[$i],
+                        'endTime' => $request->endTime[$i],
                         'deskripsi' => $request->itenerary[$i]
                     ]);
                 }

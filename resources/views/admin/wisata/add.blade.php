@@ -216,6 +216,16 @@
                         <div id="itenerary">
                         
                             <input type="text" name="agenda[]" id="agenda" class="w-full h-12 rounded-md p-2 mt-4 mb-2 bg-gray-200 dark:bg-gray-900 border-none text-gray-900 dark:text-white">
+                            <div class="grid lg:grid-cols-2 gap-x-4 my-4">
+                                <div class="w-full">
+                                    <h1 class="text-gray-900 dark:text-white">Start Time</h1>
+                                    <input type="time" name="startTime[]" class="bg-gray-900 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white appearance-none w-full">
+                                </div>
+                                <div class="w-full">
+                                    <h1 class="text-gray-900 dark:text-white">End Time</h1>
+                                    <input type="time" name="endTime[]" class="bg-gray-900 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white appearance-none w-full">
+                                </div>
+                            </div>
                             <textarea id="banner-message" class="message w-full  h-20 relative text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900 border-none" name="itenerary[]" style="">
                             </textarea>
                                 

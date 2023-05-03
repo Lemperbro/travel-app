@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('wisata_id')->constrained('wisatas')->onDelete('cascade');
             $table->text('agenda');
+            $table->time('startTime');
+            $table->time('endTime');
             $table->text('deskripsi');
             $table->timestamps();
         });

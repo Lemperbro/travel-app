@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Kota;
+use App\Models\Guide;
 use App\Models\Review;
 use App\Models\Wisata;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,8 @@ class DashboardController extends Controller
             $wisata->where('status', true)->where('tour_type', 'like', '%' . request('type') . '%');
         }
         $article =  Article::paginate(8);
+
+        $guide = Guide::latest()->get();
         return view('dashboard', [
 
             // 'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
@@ -47,7 +50,8 @@ class DashboardController extends Controller
             }])->where('status', true)->orderBy('diboking', 'DESC')->paginate(3),
             'kota' => Kota::limit(4)->get(),
             'latest' => $wisata->where('status', true)->orderBy($price[0],$price[1])->get(),
-            'article' => $article
+            'article' => $article,
+            'guide' => $guide
         ]);
     }
 
