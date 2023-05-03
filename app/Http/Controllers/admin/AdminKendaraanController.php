@@ -53,8 +53,28 @@ class AdminKendaraanController extends Controller
             'merek' => 'required|max:255',
             'kapasitas' => 'required',
             'jumlah' => 'required',
+            'plat' => 'required',
+            'image' => 'required',
+
             
         ]);
+
+        if($files=$request->file('image')){
+            $extension=$files->getClientOriginalExtension();
+            $name = hash('sha256',time()) . '.' . $extension;
+            $files->move('image',$name);
+
+        }
+
+        Kendaraan::create([
+            'merek' => $validasi['merek'],
+            'kapasitas' => $validasi['kapasitas'],
+            'jumlah' => $validasi['jumlah'],
+            'plat' => $validasi['plat'],
+            'image' => $name,
+  
+        ]);
+
 
         Kendaraan::create($validasi);
         return redirect('/kendaraan')->with('success', 'successful additional to the Vehicle');
