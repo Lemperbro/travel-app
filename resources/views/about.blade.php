@@ -27,7 +27,7 @@
 @endif
 
 </div>
-
+<h1 class="font-semibold text-4xl text-center">Our team lineup</h1>
 <!-- component -->
 <div class="flex flex-wrap mt-6 bg-[#FD522C] justify-between">
 

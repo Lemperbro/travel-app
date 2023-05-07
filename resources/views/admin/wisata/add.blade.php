@@ -78,8 +78,7 @@
                 <div class="mb-5">
                     <label for="nama" class="font-bold mb-1 text-gray-900 dark:text-white block">Tour Name</label>
                     <input type="text" name="nama"
-                        class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
-                        >
+                        class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
                 </div>
 
 
@@ -87,7 +86,7 @@
                     <div class="">
                         <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
                         <input type="number" name="harga"
-                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
+                            class="timepicker-icon w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                             >
                     </div>
 
