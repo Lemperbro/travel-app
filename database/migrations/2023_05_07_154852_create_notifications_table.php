@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
+            $table->string('tipe');
             $table->foreignId('user_id');
             $table->foreignId('pemesanan_id')->nullable();
             $table->text('url');
