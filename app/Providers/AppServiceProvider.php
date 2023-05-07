@@ -28,8 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $booking = Pemesanan::where('status', 'menunggu');
-        $new_booking = Pemesanan::where('payment_status', 'PAID')->where('status', 'dikonfirmasi');
-        $comment = Testi::latest();
+
         view()->composer('admin.partials.sidebar', function($req_booking) use ($booking){
             $req_booking->with([
                 'req_booking' => $booking->get(),
@@ -38,11 +37,21 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('admin.partials.navbar', function($notif) {
             $notif->with([
-                'notification' => Notification::latest()->limit(15)->get(),
-                'count' => Notification::where('status', 'belum dibuka')->latest()->limit(15)->get()
+                'notification' => Notification::whereIn('tipe', ['pemesanan','req_pemesanan','coment'])->latest()->limit(15)->get(),
+                'count' => Notification::whereIn('tipe', ['pemesanan','req_pemesanan','coment'])->where('status', 'belum dibuka')->latest()->limit(15)->get()
                 
             ]);
         });
+
+
+        view()->composer('partials.navbar', function($notif) {
+            $notif->with([
+                'notification' => Notification::with('user','pemesanan')->where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->latest()->limit(15)->get(),
+                'count' => Notification::where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->where('status', 'belum dibuka')->latest()->limit(15)->get()
+                
+            ]);
+        });
+
 
 
         

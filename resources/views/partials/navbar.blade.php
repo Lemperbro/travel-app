@@ -48,10 +48,12 @@
                   <button type="button" data-dropdown-toggle="notification-dropdown" class="p-2 text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 relative">
                     <span class="sr-only">View notifications</span>
                     <!-- Bell icon -->
-                    <div class="relative">
+                    <div class="{{ ($count->count() > 0)? 'animate-tada' : '' }} relative">
                     <svg class="w-6 h-6 fill-black" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>
-
+                    @if ($count->count() > 0)
+                    
                     <span class="p-1 rounded-full absolute bg-red-600 top-0"></span>
+                    @endif
                   </div>
                   </button>
                   <!-- Dropdown menu -->
@@ -60,14 +62,29 @@
                         Notifications
                     </div>
                     <div>
-                      <form action="/admin/notification/" method="POST">
-                      <button class="w-full text-left flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600 ">
+                @foreach ($notification as $notifications)
+                    @php
+                    $wisata = App\Models\Wisata::where('id', $notifications->pemesanan->wisata_id)->pluck('nama_wisata')->first();
+                  @endphp
+                      <form action="/notification/{{ $notifications->id }}" method="POST">
+                        @csrf
+                      <button class="w-full text-left flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600 {{ ($notifications->status == 'belum dibuka')? 'bg-gray-100 dark:bg-gray-600' : '' }} {{ ($notifications->status == 'dibuka') ? 'bg-white dark:bg-gray-700' : '' }}">
                         <div class="w-full pl-3">
-                            <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"></div>
+                            <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
+     
+
+                              @if ($notifications->tipe == 'pemesanan')
+
+                              successful payment for {{ $wisata }} tour, please see your ticket
+                              @elseif($notifications->tipe == 'confirmation')
+                                {{ $notifications->judul }}
+                              @endif
+                            </div>
                             <div class="text-xs font-medium text-primary-700 dark:text-primary-400">a few moments ago</div>
                         </div>
                       </button>
                     </form>
+                @endforeach
                       
                       
                     </div>
