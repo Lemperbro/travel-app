@@ -25,6 +25,20 @@
                     </label>
                   </div>
                 </div>
+                @if ($errors->any())
+                  
+
+                @foreach ($errors->all() as $error)
+                <div class="flex mb-1 text-sm text-red-800 dark:text-red-400" role="alert">
+                  <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                  <span class="sr-only">Info</span>
+                  <div>
+                    <span class="font-medium">Error </span>{{ $error }} 
+                  </div>
+                </div>
+                @endforeach
+
+                @endif
               <div class="w-full mb-6">
                 <form action="#">
                   <table class="table-sorter table-bordered w-full text-gray-600 dark:text-gray-400">
@@ -57,7 +71,7 @@
                         <td class="text-center hidden lg:table-cell">{{ $client->doc_no }}</td>
                         <td class="text-center ">
                           <div class="flex justify-center m-auto gap-x-4">
-                          <h1 class="cursor-pointer bg-white rounded-full inline-block ltr:mr-2 rtl:ml-2 hover:text-red-500" data-bs-toggle="modal" data-bs-target="#cancel">
+                          <h1 class="cursor-pointer bg-white rounded-full inline-block ltr:mr-2 rtl:ml-2 hover:text-red-500" data-bs-toggle="modal" data-bs-target="#cancel-{{ $client->id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(220, 20, 60, 1)"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.207 12.793-1.414 1.414L12 13.414l-2.793 2.793-1.414-1.414L10.586 12 7.793 9.207l1.414-1.414L12 10.586l2.793-2.793 1.414 1.414L13.414 12l2.793 2.793z"></path></svg>
                           </h1>
 
@@ -182,29 +196,32 @@ id="exampleModalLong-{{ $confirm->id }}" tabindex="-1" aria-labelledby="exampleM
 
 
 {{-- modal cancel start --}}
-
+@foreach ($data as $cancel)
+  
 <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto "
-id="cancel" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
+id="cancel-{{ $cancel->id }}" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
     class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto dark:bg-slate-700 bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
     <div
-      class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-         
-         <form action="#" method="POST" class="w-full px-4" enctype="multipart/form-data">
-            <h1 class="text-center font-semibold text-2xl dark:text-white">apakah kamu yakin mau menolak Client ?</h1>
-
-            <div class="text-center mt-8 flex gap-x-2 mx-auto justify-center">
-              <button type="button" class="bg-red-600 px-4 py-2 text-white rounded-md" data-bs-dismiss="modal">No</button>
-              <button class="bg-green-600 py-2 px-4 rounded-md text-white">Yes</button>
-          </div>
-        </form>
-
-    </div>
-
+    class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+    
+    <form action="/admin/booking/confirmation/cancel/{{ $cancel->id }}" method="POST" class="w-full px-4">
+      @csrf
+      <h1 class="text-center font-semibold text-2xl dark:text-white">apakah kamu yakin mau menolak Client ?</h1>
+      
+      <div class="text-center mt-8 flex gap-x-2 mx-auto justify-center">
+        <button type="button" class="bg-red-600 px-4 py-2 text-white rounded-md" data-bs-dismiss="modal">No</button>
+        <button type="submit" class="bg-green-600 py-2 px-4 rounded-md text-white">Yes</button>
+      </div>
+    </form>
+    
   </div>
+  
 </div>
 </div>
+</div>
+@endforeach
 {{-- modal cancel end --}}
 
 

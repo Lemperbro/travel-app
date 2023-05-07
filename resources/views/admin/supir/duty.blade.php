@@ -30,32 +30,45 @@
                       <thead>
                         <tr class="bg-gray-100 dark:bg-gray-900 dark:bg-opacity-40">
                           <th class="hidden sm:table-cell">Driver</th>
-                          <th data-sortable="false">Duty</th>
+                          <th data-sortable="false">Order Code</th>
                           <th class="hidden sm:table-cell">Phone</th>
-                          <th class="text-center hidden lg:table-cell">Type Tour</th>
+                          <th class="text-center hidden lg:table-cell">Alamat</th>
                           <th class="hidden lg:table-cell">Status</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($data as $supir)
+                          @if ($data->count() > 0)
+                            @php
+                              $pemesanan = App\Models\Pemesanan::where('driver_id', $supir->id)->where('status', 'dikonfirmasi')->pluck('doc_no')->first();
+                            @endphp
+                          @endif
                         <tr>
-        
+                          
                           <td>
-                              <div class="flex justify-center mt-3 gap-x-6">
-                                <div class="flex justify-center text-center "><img class="h-8 w-8 rounded-full " src="ft_default/fp.png"></div>
-                                <div class="dark:text-gray-300 flex text-center ">  
-                                  Ari Budin
-                                </div>
+                            <div class="flex justify-center mt-3 gap-x-6">
+                              <div class="flex justify-center text-center ">
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('image/'.$supir->image) }}">
+                              </div>
+                              <div class="dark:text-gray-300 flex text-center ">  
+                                {{ $supir->nama }}
+                              </div>
                               </div>
                           </td>
-                          <td class="hidden sm:table-cell text-center">1/08/2023 until 10/09/2023</td>
-                          <td class="text-center hidden lg:table-cell">43.252.106.9</td>
+                          <td class="hidden sm:table-cell text-center">
+                            @if ($data->count() > 0)
+                              {{ $pemesanan }}
+                            @endif
+                          </td>
+                          <td class="text-center hidden lg:table-cell">{{ $supir->no_tlpn }}</td>
                           <td class="text-center">
-                            Private Tour
+                            {{ $supir->alamat }}
                           </td>
                             <td class="hidden lg:table-cell text-center">
                                 <span class="text-sm px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">On Duty</span>
                               </td>
-                        </tr> 
+                            </tr> 
+                            @endforeach
                       </tbody>
                     </table>
   

@@ -2,7 +2,7 @@
 
 <aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width" aria-label="Sidebar">
   <div class="relative flex flex-col flex-1 min-h-0 pt-0 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto scrollbar">
+    <div class="flex flex-col flex-1 pt-5 pb-12 overflow-y-auto scrollbar">
       <div class="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
         <ul class="pb-2 space-y-2">
           <li>
@@ -80,9 +80,9 @@
               <li>
                 <a href="/supir" class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('supir') ? 'text-orange-500 dark:text-orange-500' : '' }}">Drivers</a>
               </li>
-              <li>
-                <a href="" class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700">Drivers On Duty</a>
-              </li>
+              {{-- <li>
+                <a href="/supir/onDuty" class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700">Drivers On Duty</a>
+              </li> --}}
             </ul>
           </li>
 
@@ -100,9 +100,9 @@
               <li>
                 <a href="/kendaraan" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('kendaraan') ? 'text-orange-500 dark:text-orange-500' : '' }}">Vehicle</a>
               </li>
-              <li>
-                <a href="" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Vehicle On Duty</a>
-              </li>
+              {{-- <li>
+                <a href="/kendaraan/onDuty" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Vehicle On Duty</a>
+              </li> --}}
             </ul>
           </li>
           <li class="py-2">
@@ -117,10 +117,10 @@
             <ul id="dropdown-auth" class="hidden py-2 space-y-2">
               <li>
                 <a href="/guide" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('guide') ? 'text-orange-500 dark:text-orange-500' : '' }}">Guide</a>
-              </li>
+              {{-- </li>
               <li>
-                <a href="" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Guide On Duty</a>
-              </li>
+                <a href="/guide/onDuty" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Guide On Duty</a>
+              </li> --}}
 
             </ul>
           </li>
@@ -172,7 +172,17 @@
            
           </li>
           <li class="py-2">
-            <a href="/" class="flex items-center w-full bg-orange-700 p-2 text-base text-white transition duration-75 rounded-lg group dark:hover:bg-orange-800" aria-controls="dropdown-playground" data-collapse-toggle="dropdown-playground">
+            <a href="/" class="flex items-center w-full bg-orange-700 p-2 text-base text-white transition duration-75 rounded-lg group dark:hover:bg-orange-800" >
+
+              <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 " fill="currentColor" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M543.8 287.6c17 0 32-14 32-32.1c1-9-3-17-11-24L512 185V64c0-17.7-14.3-32-32-32H448c-17.7 0-32 14.3-32 32v36.7L309.5 7c-6-5-14-7-21-7s-15 1-22 8L10 231.5c-7 7-10 15-10 24c0 18 14 32.1 32 32.1h32v69.7c-.1 .9-.1 1.8-.1 2.8V472c0 22.1 17.9 40 40 40h16c1.2 0 2.4-.1 3.6-.2c1.5 .1 3 .2 4.5 .2H160h24c22.1 0 40-17.9 40-40V448 384c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32v64 24c0 22.1 17.9 40 40 40h24 32.5c1.4 0 2.8 0 4.2-.1c1.1 .1 2.2 .1 3.3 .1h16c22.1 0 40-17.9 40-40V455.8c.3-2.6 .5-5.3 .5-8.1l-.7-160.2h32z"/></svg>
+              
+              <span class="flex-1 ml-3 text-left whitespace-nowrap text-white" sidebar-toggle-item>Dashboard Client</span>
+
+          </a>
+           
+          </li>
+          <li class="py-2">
+            <a href="/" class="hidden items-center w-full bg-orange-700 p-2 text-base text-white transition duration-75 rounded-lg group dark:hover:bg-orange-800" aria-controls="dropdown-playground" data-collapse-toggle="dropdown-playground">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 " fill="currentColor" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M543.8 287.6c17 0 32-14 32-32.1c1-9-3-17-11-24L512 185V64c0-17.7-14.3-32-32-32H448c-17.7 0-32 14.3-32 32v36.7L309.5 7c-6-5-14-7-21-7s-15 1-22 8L10 231.5c-7 7-10 15-10 24c0 18 14 32.1 32 32.1h32v69.7c-.1 .9-.1 1.8-.1 2.8V472c0 22.1 17.9 40 40 40h16c1.2 0 2.4-.1 3.6-.2c1.5 .1 3 .2 4.5 .2H160h24c22.1 0 40-17.9 40-40V448 384c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32v64 24c0 22.1 17.9 40 40 40h24 32.5c1.4 0 2.8 0 4.2-.1c1.1 .1 2.2 .1 3.3 .1h16c22.1 0 40-17.9 40-40V455.8c.3-2.6 .5-5.3 .5-8.1l-.7-160.2h32z"/></svg>
                 

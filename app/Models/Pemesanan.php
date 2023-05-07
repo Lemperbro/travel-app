@@ -3,7 +3,11 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Guide;
+use App\Models\Supir;
 use App\Models\Wisata;
+use App\Models\Kendaraan;
+use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -35,6 +39,10 @@ class Pemesanan extends Model
 
     public function guide(){
         return $this->belongsTo(Guide::class);
+    }
+
+    public function notification(){
+        return $this->belongsTo(Notification::class);
     }
 
 }
