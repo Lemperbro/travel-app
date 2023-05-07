@@ -20,10 +20,10 @@ class AdminKendaraanController extends Controller
     {
         //
 
-        $data = Kendaraan::latest();
+        $data = Kendaraan::latest()->where('status', 0);
 
         if(request('search')){
-            $data->where('merek', 'like', '%'. request('search').'%');
+            $data->where('status', 0)->where('merek', 'like', '%'. request('search').'%');
         }
         return view('admin.kendaraan.index',[
            'data' => $data->get(),

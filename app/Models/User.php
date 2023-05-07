@@ -5,9 +5,10 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Review;
 use App\Models\Pemesanan;
-use Illuminate\Auth\Passwords\CanResetPassword;
+use App\Models\Notification;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -49,5 +50,9 @@ class User extends Authenticatable
     }
     public function review(){
         return $this->belongsTo(Review::class);
+    }
+
+    public function notification(){
+        return $this->hasMany(Notification::class);
     }
 }

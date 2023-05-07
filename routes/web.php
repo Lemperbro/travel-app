@@ -25,7 +25,8 @@ use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\admin\AdminGuideController;
 use App\Http\Controllers\admin\AdminTeamController;
-
+use App\Http\Controllers\NotificationController;
+use App\Models\Notification;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -94,6 +95,9 @@ Route::get('/abouts', [AdminAboutController::class, 'index_client']);
 
 
 Route::middleware('admin')->group(function(){
+
+    //notification 
+    Route::post('/admin/notification/{id}', [NotificationController::class, 'update_admin']);
     Route::get('/admin', [AdminDashboardController::class, 'index']);
     Route::get('/admin/kota', [AdminKotaController::class, 'index']);
     Route::get('/admin/kota/add', [AdminKotaController::class, 'show']);
@@ -130,6 +134,7 @@ Route::middleware('admin')->group(function(){
 
     //admin guide\
     Route::get('/guide', [AdminGuideController::class, 'index']);
+    Route::get('/guide/onDuty', [AdminGuideController::class, 'onDuty']);
     Route::post('/admin/guide/edit/{id}', [AdminGuideController::class, 'update']);
     Route::post('admin/guide/delete/{id}', [AdminGuideController::class, 'destroy']);
     Route::post('/admin/guide/add',[AdminGuideController::class, 'store']);
@@ -151,6 +156,7 @@ Route::middleware('admin')->group(function(){
 
 
     Route::get('/supir', [AdminSupirController::class, 'index']);
+    Route::get('/supir/onDuty', [AdminSupirController::class, 'onDuty']);
     Route::post('/supir/delete/{id}', [AdminSupirController::class, 'destroy']);
     Route::post('/admin/supir/edit/{id}', [AdminSupirController::class, 'update']);
     Route::post('/admin/supir/add', [AdminSupirController::class, 'store']);
@@ -166,6 +172,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/booking', [AdminBookingController::class, 'index']);
     Route::get('/admin/booking/confirmation', [AdminBookingController::class, 'confirmation']);
     Route::post('/admin/booking/confirmation/{id}', [AdminBookingController::class, 'confirm']);
+    Route::post('/admin/booking/confirmation/cancel/{id}', [AdminBookingController::class, 'cancel']);
 
 
 
@@ -202,6 +209,8 @@ Route::middleware('admin')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
+//notification
+Route::post('/notification/{id}', [NotificationController::class, 'update_client']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);

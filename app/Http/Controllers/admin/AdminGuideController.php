@@ -19,10 +19,10 @@ class AdminGuideController extends Controller
     {
         //
 
-        $data = Guide::latest();
+        $data = Guide::latest()->where('status', 0);
 
         if(request('search')){
-            $data->where('nama', 'like', '%'. request('search') .'%');
+            $data->where('status', 0)->where('nama', 'like', '%'. request('search') .'%');
         }
         return view('admin.guide.index',[
            'data' => $data->get(),
@@ -30,6 +30,10 @@ class AdminGuideController extends Controller
         ]);
     }
 
+    public function onDuty(){
+        $data = Guide::where('status', 1)->latest();
+
+    }
     /**
      * Show the form for creating a new resource.
      *

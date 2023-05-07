@@ -18,7 +18,7 @@
           <img class="m-2 h-24 w-96 rounded-md border object-cover object-center" src="{{ asset('image/'.$img[0]) }}" alt="" />
           <div class="flex w-full flex-col px-4 py-4">
             <span class="font-semibold">{{ $wisata->nama_wisata }}</span>
-            <p class="text-lg font-bold"  >Rp. {{ $wisata->harga }}</p>
+            <p class="text-lg font-bold"  >Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
           </div>
         </div>
 
@@ -39,7 +39,7 @@
 
 
               <tr class="flex flex-col text-left">
-                  <td class="my-2">{{ $wisata->tanggal }}</td>
+                  <td class="my-2">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y , H:i ') . 'WIB'  }}</td>
                   <td class="my-2">{{ $wisata->tour_type }}</td>
               </tr>
           </tbody>
@@ -148,16 +148,16 @@
           <div class="mt-6 border-t border-b py-2 w-full">
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Destination</p>
-              <p class="font-semibold text-gray-900">Rp. <span id="destinationPrice">{{ $wisata->harga }}</span></p>
+              <p class="font-semibold text-gray-900">Rp. <span id="destinationPrice">{{ number_format($wisata->harga,0,',','.') }}</span></p>
             </div>
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Pickup</p>
-              <p class="font-semibold text-gray-900">Rp. <span id="pickupPrice">{{ $firstpricePickup }}</span></p>
+              <p class="font-semibold text-gray-900">Rp. <span id="pickupPrice">{{ number_format($firstpricePickup,0,',','.') }}</span></p>
             </div>
 
             <div class="flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Total</p>
-              <p class="font-semibold text-gray-900">Rp. <span id="total">{{ $wisata->harga + $firstpricePickup  }}</span></p>
+              <p class="font-semibold text-gray-900">Rp. <span id="total">{{  number_format($wisata->harga + $firstpricePickup,0,',','.')  }}</span></p>
             </div>
 
           </div>

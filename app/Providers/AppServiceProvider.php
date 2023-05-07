@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Notification;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Pemesanan;
 use App\Models\Testi;
@@ -35,14 +36,15 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        view()->composer('admin.partials.navbar', function($notif) use ($booking, $new_booking, $comment){
+        view()->composer('admin.partials.navbar', function($notif) {
             $notif->with([
-                'request_booking' => $booking->latest()->limit(4)->get(),
-                'new_booking' => $new_booking->latest()->limit(4)->get(),
-                'comment' => $comment->limit(4)->get()
+                'notification' => Notification::latest()->limit(15)->get(),
+                'count' => Notification::where('status', 'belum dibuka')->latest()->limit(15)->get()
                 
             ]);
         });
+
+
         
     }
 }

@@ -39,7 +39,7 @@
             </div>
             <div class="">
                 <p class="font-bold text-xl">Start Price</p>
-                <p class='font-semibold'>Rp. {{ $wisata->harga }}</p>
+                <p class='font-semibold'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
             </div>
         </div>
 
@@ -59,8 +59,8 @@
                 <img src='/icons/calendar.png' class='object-contain w-10 mx-12'/>
             </div>
             <div class="">
-                <p class="font-bold text-xl">Departure</p>
-                <p class="font-semibold">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d/m/y') }}</p>
+                <p class="font-bold text-xl text-center">Departure</p>
+                <p class="font-semibold text-center">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y , H:i').' WIB' }}</p>
             </div>
             </div>
 
@@ -70,7 +70,7 @@
             </div>
             <div>
                 <p class="font-bold text-xl">Long Tour</p>
-                <p class="font-semibold uppercase">{{ $wisata->long_tour }} Days</p>
+                <p class="font-semibold uppercase">{{ $wisata->long_tour }}</p>
             </div>
         </div>
 

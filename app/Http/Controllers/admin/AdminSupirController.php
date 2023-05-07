@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Supir;
 use Illuminate\Http\Request;
 use App\Models\admin\AdminWisata;
+use App\Models\Pemesanan;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 
@@ -19,14 +20,22 @@ class AdminSupirController extends Controller
     {
         //
 
-        $data = Supir::latest();
+        $data = Supir::latest()->where('status', 0);
 
         if(request('search')){
-            $data->where('nama', 'like', '%'. request('search') .'%');
+            $data->where('status', 0)->where('nama', 'like', '%'. request('search') .'%');
         }
         return view('admin.supir.index',[
            'data' => $data->get(),
             'tittle' => 'Kelola Supir'
+        ]);
+    }
+
+    public function onDuty(){
+        $data = Supir::with('pemesanan')->where('status', 1)->latest();
+
+        return view('admin.supir.duty', [
+            'data' => $data->get()
         ]);
     }
 

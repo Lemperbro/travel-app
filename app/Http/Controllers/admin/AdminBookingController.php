@@ -69,6 +69,15 @@ class AdminBookingController extends Controller
     }
 
     public function confirm(Request $request, $id){
+        $validasi = $request->validate([
+            'driver' => 'numeric',
+            'vehicle' => 'numeric',
+            'guide' => 'numeric',
+        ],[
+            'driver.numeric' => 'please select the driver first',
+            'vehicle.numeric' => 'please select the vehicle first',
+            'guide.numeric' => 'please select the guide first'
+        ]);
         $konfirm = Pemesanan::where('id', $id)->update([
             'driver_id' => $request->driver,
             'vehicle_id' => $request->vehicle,
@@ -77,19 +86,28 @@ class AdminBookingController extends Controller
         ]);
 
         if($konfirm){
-            Supir::where('id', $request->driver)->update([
-                'status' => 1
-            ]);
-            Kendaraan::where('id', $request->vehicle)->update([
-                'status' => 1
-            ]);
-            Guide::where('id', $request->guide)->update([
-                'status' => 1
-            ]);
+            // Supir::where('id', $request->driver)->update([
+            //     'status' => 1
+            // ]);
+            // Kendaraan::where('id', $request->vehicle)->update([
+            //     'status' => 1
+            // ]);
+            // Guide::where('id', $request->guide)->update([
+            //     'status' => 1
+            // ]);
 
             return redirect()->back()->with('toast_success', 'success confirmation');
         }
 
         return redirect()->back()->with('toast_error', 'failed confirmation');
+    }
+
+
+    public function cancel($id){
+        Pemesanan::where('id', $id)->update([
+            'status' => 'ditolak'
+        ]);
+
+        return redirect()->back()->with('success', 'Order Was Successfully Rejected');
     }
 }

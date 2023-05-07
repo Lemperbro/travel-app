@@ -10,6 +10,7 @@ use App\Models\Pemesanan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
@@ -61,7 +62,7 @@ class CheckoutController extends Controller
         $response = $data_request->object();
 
 
-        Pemesanan::create([
+        $proses = Pemesanan::create([
             'invoice_id' => $response->id,
             'wisata_id' => $wisata->id,
             'user_id' => auth()->user()->id,
@@ -76,8 +77,23 @@ class CheckoutController extends Controller
             'payment_link' => $response->invoice_url,
             'expired' => $response->expiry_date
         ]);
+        
+        if($proses){
+            $pemesanan = Pemesanan::with('wisata','user')->where('invoice_id', $response->id)->where('doc_no', $external_id)->first();
 
-        return redirect('/tagihan')->with('toast_success', 'order is successful, please wait for confirmation from admin');
+            Notification::create([
+                'judul' => 'New Confirmation Request From '.$pemesanan->user->username,
+                'tipe' => 'req_pemesanan',
+                'user_id' => Auth()->user()->id,
+                'pemesanan_id' => $pemesanan->id,
+                'url' => '/admin/booking/confirmation',
+            ]);
+
+            return redirect('/tagihan')->with('toast_success', 'order is successful, please wait for confirmation from admin');
+        }else{
+            return redirect('/tagihan')->with('toast_error', 'order is failed');
+        }
+
 
     }
 
@@ -85,7 +101,7 @@ class CheckoutController extends Controller
         $data = request()->all();
         $status = $data['status'];
         $external_id = $data['external_id'];
-        $pemesanan = Pemesanan::with('wisata')->where('doc_no', $external_id)->first();
+        $pemesanan = Pemesanan::with('wisata','user')->where('doc_no', $external_id)->first();
         $count_wisata = $pemesanan->wisata->diboking + 1;
         $count_kota = $pemesanan->wisata->kota->popularitas + 1;
 
@@ -100,6 +116,14 @@ class CheckoutController extends Controller
 
             Kota::where('id', $pemesanan->wisata->kota->id)->first()->update([
                 'popularitas' => $count_kota,
+            ]);
+
+            Notification::create([
+                'judul' => 'New Booking From '.$pemesanan->user->username.'To '.$pemesanan->wisata->nama_wisata,
+                'tipe' => 'pemesanan',
+                'user_id' => Auth()->user()->id,
+                'pemesanan_id' => $pemesanan->id,
+                'url' => '/admin/booking',
             ]);
         }
         return response()->json($data);
@@ -125,6 +149,7 @@ class CheckoutController extends Controller
         ]);
         
     }
+
 
 
     public function payment(Request $request, $slug){
@@ -214,7 +239,7 @@ class CheckoutController extends Controller
         ]);
 
         if($pemesanan){
-            Testi::create([
+           $proses = Testi::create([
                 'user_id' => $pemesanan->user->id,
                 'wisata_id' => $pemesanan->wisata->slug,
                 'doc_no' => $doc_no,
@@ -224,6 +249,15 @@ class CheckoutController extends Controller
             Pemesanan::where('doc_no', $doc_no)->update([
                 'comment' => true,
             ]);
+
+            if($proses){
+                Notification::create([
+                    'judul' => 'new comment from '.$pemesanan->user->username.' for tour '.$pemesanan->wisata->nama_wisata,
+                    'tipe' => 'coment',
+                    'user_id' => Auth()->user()->id,
+                    'url' => '/wisata/'.$pemesanan->wisata->slug,
+                ]);
+            }
 
 
             return Redirect('/wisata/'.$pemesanan->wisata->slug);

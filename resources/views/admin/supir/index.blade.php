@@ -127,7 +127,7 @@ id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModa
             </div>
             <div class="mt-4">
               <label for="no_tlpn" class="dark:text-white">Telephone</label>
-              <input type="number" name="no_tlpn" id="no_tlpn" class="dark:bg-gray-600 dark:text-white font-semibold w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->no_tlpn }}">
+              <input type="number" name="no_tlpn" id="no_tlpn" min="11" class="dark:bg-gray-600 dark:text-white font-semibold w-full h-12 rounded-md p-2 border mt-4" value="{{ $edit->no_tlpn }}">
           </div>
           <div class="mt-4">
             <label for="alamat" class="dark:text-white">Address</label>

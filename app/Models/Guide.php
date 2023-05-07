@@ -12,4 +12,8 @@ class Guide extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function pemesanan(){
+        return $this->belongsTo(Pemesanan::class);
+    }
 }
