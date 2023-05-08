@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\User;
+use App\Models\Guide;
+use App\Models\Supir;
+use App\Models\Kendaraan;
 use App\Models\Pemesanan;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Guide;
-use App\Models\Kendaraan;
-use App\Models\Supir;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminBookingController extends Controller
@@ -95,6 +96,16 @@ class AdminBookingController extends Controller
             // Guide::where('id', $request->guide)->update([
             //     'status' => 1
             // ]);
+
+            $pemesanan = Pemesanan::with('wisata')->where('id', $id)->first();
+
+            Notification::create([
+                'judul' => $pemesanan->wisata->nama_wisata.' has been successfully confirmed by the admin, please make a payment',
+                'tipe' => 'confirmation',
+                'user_id' => $pemesanan->user_id,
+                'pemesanan_id' => $pemesanan->id,
+                'url' => '/admin/booking',
+            ]);
 
             return redirect()->back()->with('toast_success', 'success confirmation');
         }

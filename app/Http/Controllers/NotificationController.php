@@ -86,7 +86,7 @@ class NotificationController extends Controller
             if($notification->pemesanan !== null && $notification->tipe == 'pemesanan' && $notification->pemesanan->payment_status == 'PAID')
             {
                 return redirect('/booking');
-            }else if($notification->pemesanan !== null && $notification->tipe == 'pemesanan' && $notification->pemesanan->status == 'dikonfirmasi'){
+            }else if($notification->pemesanan !== null && $notification->tipe == 'confirmation' && $notification->pemesanan->status == 'dikonfirmasi'){
                 return redirect('/tagihan');
             }else{
                 return redirect()->back()->with('toast_error', 'nothing');
