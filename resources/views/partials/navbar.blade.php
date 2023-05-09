@@ -43,7 +43,8 @@
           <a href="/contact" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 font-semibold text-base md:hover:bg-transparent md:border-0 md:hover:text-orange-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent uppercase">Contact</a>
         </li>
       </ul>
-        @if(Auth())
+
+          @if(Auth()->user())
                   <!-- Notifications start-->
                   <button type="button" data-dropdown-toggle="notification-dropdown" class="p-2 text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 relative">
                     <span class="sr-only">View notifications</span>
@@ -92,7 +93,6 @@
                   </div>
                   <!-- Notifications end-->
                   @endif
-                  @dd($coba)
       <div class="flex">          
         @auth
       

@@ -29,11 +29,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $booking = Pemesanan::where('status', 'menunggu');
 
-        view()->composer('admin.partials.sidebar', function($req_booking) use ($booking){
+        view()->composer('admin.partials.sidebar', function($req_booking){
             $req_booking->with([
-                'req_booking' => $booking->get(),
+                'req_booking' => Pemesanan::where('status', 'menunggu'),
             ]);
         });
 
@@ -45,24 +44,21 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
         
-        if(Auth() !== null){
-            $id = Auth()->user();
-            if($id->count() == null){
-                $id = 0;
-            }else{
-                $id = Auth()->user()->id;
-            }
+
+
             
-            view()->composer('partials.navbar', function($notif) use ($id){
+            view()->composer('partials.navbar', function($notif){
+            if(Auth()->user() !== null){
+
                 $notif->with([
-                    'notification' => Notification::with('user','pemesanan')->where('user_id', $id)->whereIn('tipe', ['pemesanan', 'confirmation'])->latest()->limit(15)->get(),
-                    'count' => Notification::where('user_id', $id)->whereIn('tipe', ['pemesanan', 'confirmation'])->where('status', 'belum dibuka')->latest()->limit(15)->get(),
-                    'coba' => $id
+                    'notification' => Notification::with('user','pemesanan')->where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->latest()->limit(15)->get(),
+                    'count' => Notification::where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->where('status', 'belum dibuka')->latest()->limit(15)->get(),
                     
                 ]);
+            }
+
             });
             
-        }
 
 
         
