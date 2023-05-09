@@ -139,7 +139,7 @@
                    <div>
                      <dt class="sr-only">Price</dt>
              
-                     <dd class="text-sm text-gray-700 dark:text-gray-200 font-semibold">Price Pickup Rp. {{ number_format($query->harga,0,',','.') }}</dd>
+                     <dd class="text-sm text-gray-700 dark:text-gray-200 font-semibold">Start From Rp. {{ number_format($query->harga,0,',','.') }}</dd>
                    </div>
              
                    <div>

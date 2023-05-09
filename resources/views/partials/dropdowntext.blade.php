@@ -22,7 +22,7 @@
    <ul class="p-2 w-full bg-white shadow-best5">
     @foreach ($trik2 as $deskripsi)
       
-    <li class="my-1 list-disc ml-7">
+    <li class="my-1 list-disc ml-7 p-4">
       {{ $deskripsi }}
     </li>
     @endforeach
