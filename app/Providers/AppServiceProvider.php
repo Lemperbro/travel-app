@@ -6,6 +6,8 @@ use App\Models\Notification;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Pemesanan;
 use App\Models\Testi;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\UserProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,16 +44,25 @@ class AppServiceProvider extends ServiceProvider
                 
             ]);
         });
-
-
-        view()->composer('partials.navbar', function($notif) {
-            $notif->with([
-                'notification' => Notification::with('user','pemesanan')->where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->latest()->limit(15)->get(),
-                'count' => Notification::where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->where('status', 'belum dibuka')->latest()->limit(15)->get()
-                
-            ]);
-        });
-
+        
+        if(Auth() !== null){
+            $id = Auth()->user();
+            if($id->count() == null){
+                $id = 0;
+            }else{
+                $id = Auth()->user()->id;
+            }
+            
+            view()->composer('partials.navbar', function($notif) use ($id){
+                $notif->with([
+                    'notification' => Notification::with('user','pemesanan')->where('user_id', $id)->whereIn('tipe', ['pemesanan', 'confirmation'])->latest()->limit(15)->get(),
+                    'count' => Notification::where('user_id', $id)->whereIn('tipe', ['pemesanan', 'confirmation'])->where('status', 'belum dibuka')->latest()->limit(15)->get(),
+                    'coba' => $id
+                    
+                ]);
+            });
+            
+        }
 
 
         
