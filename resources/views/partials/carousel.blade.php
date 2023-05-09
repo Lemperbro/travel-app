@@ -12,7 +12,7 @@
 
         <div
         class="absolute inset-x-[15%] top-[50%]  translate-y-[-50%] py-5 text-center text-white md:block">
-        <h1 class='text-2xl lg:text-6xl font-bold text-white uppercase'>Grow In Travel</h1>
+        <h1 class='text-2xl lg:text-6xl font-bold text-white uppercase'>GrowIn Travel</h1>
         <h1 class='text-2xl lg:text-6xl font-bold text-white uppercase mt-2'>Indonesia</h1>
       </div>
 
