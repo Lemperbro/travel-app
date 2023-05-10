@@ -8,6 +8,7 @@ use App\Models\Supir;
 use App\Models\Wisata;
 use App\Models\Kendaraan;
 use App\Models\Notification;
+use App\Models\CheckoutGroup;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -43,6 +44,10 @@ class Pemesanan extends Model
 
     public function notification(){
         return $this->belongsTo(Notification::class);
+    }
+
+    public function checkoutGroup(){
+        return $this->hasMany(CheckoutGroup::class);
     }
 
 }

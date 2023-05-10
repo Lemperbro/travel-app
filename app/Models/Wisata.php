@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Faq;
 use App\Models\Kota;
+use App\Models\Harga;
 use App\Models\Jemput;
 use App\Models\Equipment;
 use App\Models\Fasilitas;
@@ -51,5 +52,9 @@ class Wisata extends Model
 
     public function faq(){
         return $this->hasMany(Faq::class);
+    }
+
+    public function harga(){
+        return $this->hasMany(Harga::class);
     }
 }

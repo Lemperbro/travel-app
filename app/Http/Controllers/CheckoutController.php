@@ -118,6 +118,9 @@ class CheckoutController extends Controller
                 'popularitas' => $count_kota,
             ]);
 
+            Notification::where('pemesanan_id', $pemesanan->id)->update([
+                'status' => 'dibuka'
+            ]);
             Notification::create([
                 'judul' => 'New Booking From '.$pemesanan->user->username.'To '.$pemesanan->wisata->nama_wisata,
                 'tipe' => 'pemesanan',

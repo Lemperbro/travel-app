@@ -79,7 +79,11 @@
 
         </div>
 
-
+        {{-- const destination = new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: '',
+          minimumFractionDigits: 0
+        }).format(Pricewisata.value); --}}
         <div class="grid grid-cols-2 gap-x-4 mt-2 mb-2">
 
           <div class="w-full">

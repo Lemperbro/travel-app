@@ -29,10 +29,20 @@ pickup.addEventListener('input', function() {
     var destinationPrice = document.getElementById('destinationPrice');
     var total = document.getElementById('total');
     var count  = parseInt(pickupsplit[1])  + parseInt(priceWisata.value);
+   
+    
 
-   destinationPrice.innerHTML = Pricewisata.value;
-   pickupPrice.innerHTML = pickupsplit[1];
-   total.innerHTML = count;
+   destinationPrice.innerHTML = new Intl.NumberFormat('id-ID', {
+      minimumFractionDigits: 0
+    }).format(Pricewisata.value);
+
+   pickupPrice.innerHTML =  new Intl.NumberFormat('id-ID', {
+      minimumFractionDigits: 0
+    }).format(pickupsplit[1]);
+
+   total.innerHTML = new Intl.NumberFormat('id-ID', {
+      minimumFractionDigits: 0
+    }).format(count);
 
     
 });

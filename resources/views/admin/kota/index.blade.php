@@ -153,9 +153,9 @@
              
                 
                </div>
+               @endforeach
+               {{-- card 2 end --}}
              </div>
-             @endforeach
-             {{-- card 2 end --}}
 
          </div>
 

@@ -96,7 +96,9 @@ class AdminBookingController extends Controller
             // Guide::where('id', $request->guide)->update([
             //     'status' => 1
             // ]);
-
+            Notification::where('pemesanan_id', $id)->update([
+                'status' => 'dibuka'
+            ]);
             $pemesanan = Pemesanan::with('wisata')->where('id', $id)->first();
 
             Notification::create([
