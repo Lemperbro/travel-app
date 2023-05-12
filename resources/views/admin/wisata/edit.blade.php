@@ -67,7 +67,51 @@
                         value="{{ $data->nama_wisata }}">
                 </div>
 
+                {{-- percobaan start --}}
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 my-4">
 
+                    <div class="">
+                        <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Date</label>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-2">
+                            <div>
+                            <label for="start_date" class=" text-xs mb-1 text-gray-900 dark:text-white block">Start Date</label>
+                            <input type="date" name="start_date" id="start_date"
+                                class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white border-none font-medium"
+                                value="">
+                            </div>
+
+                            <div>
+                                <label for="end_date" class=" text-xs mb-1 text-gray-900 dark:text-white block">End Date</label>
+                                <input type="date" name="end_date" id="end_date"
+                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white border-none font-medium"
+                                    value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+   
+                    <div class="relative ">
+                        <label for="age" class="font-bold mb-1 text-gray-900 dark:text-white block">Age</label>
+
+                        <select name="age" id="age" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white border-none font-medium absolute bottom-0">
+                            <option value="" selected>Select Age</option>
+                            <option value="">5-10 Th</option>
+                            <option value="">11-20 Th</option>
+                            <option value="">21-30 Th</option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="relative">
+                        <label for="price" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
+                        <input type="number" name="price"
+                            class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white border-none font-medium absolute bottom-0"
+                            value="">
+                    </div>
+   
+                   </div>
+                   {{-- percobaan end --}}
                 <div class="grid grid-cols-2 gap-4">
 
                  <div class="">

@@ -5,8 +5,8 @@
 @foreach ($data as $wisata)
     
 <div class='relative'>
-    <img src='/img/pt.png' class=''/>
-    <h1 class='absolute top-80 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
+    <img src='/img/pt.png' class='w-full'/>
+    <h1 class='absolute text-center text-white left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-3xl font-bold'>{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
   </div>
 
 
@@ -17,7 +17,7 @@
             $img = explode("|", $wisata->image);
         @endphp
 
-        <img src="{{ asset('image/'.$img[0]) }}" alt="" class="object-cover h-[500px] w-full" id="view-image">
+        <img src="{{ asset('image/'.$img[0]) }}" alt="" class="object-cover h-[800px] w-full" id="view-image">
 
         <div class="grid grid-flow-col mt-2 overflow-auto auto-cols-[20%] h-56">
 

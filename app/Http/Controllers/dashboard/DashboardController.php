@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\dashboard;
 
 use App\Models\Kota;
 use App\Models\Guide;
@@ -41,7 +41,7 @@ class DashboardController extends Controller
         $article =  Article::paginate(8);
 
         $guide = Guide::latest()->get();
-        return view('dashboard', [
+        return view('Dashboard.dashboard', [
 
             // 'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
             // 'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
