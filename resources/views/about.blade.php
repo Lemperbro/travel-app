@@ -41,7 +41,7 @@
         <div class="relative p-2 rounded-lg text-gray-800 ">
 
           <div class="flex justify-center ">
-            <img src="{{ asset('image/'.$user->image) }}" class="ease-in-out duration-300 rounded-full -mt-6 border-4 object-center object-cover border-white mr-2 h-44 w-44">
+            <img src="{{ asset('image/'.$user->image) }}" class="ease-in-out rounded-lg duration-300 -mt-6 object-center object-cover mr-2 h-44 w-44">
           </div>
           <div class="py-2 px-2">
             <div class=" text-white text-2xl font-bold font-title text-center">{{ $user->nama }}</div>

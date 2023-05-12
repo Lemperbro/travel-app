@@ -86,7 +86,7 @@
                     <div class="">
                         <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
                         <input type="number" name="harga"
-                            class="timepicker-icon w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
+                            class="ti w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                             >
                     </div>
 

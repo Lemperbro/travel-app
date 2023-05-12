@@ -33,16 +33,16 @@
 
     <div class="mt-11 mb-7 grid grid-cols-4 place-items-center shadow-best5 bg-white p-4 rounded-md">
 
-        <div class="flex gap-0">
-            <div class="w-10 mx-12">
-                <img src='/icons/price.png' class='object-contain'/>
+
+        <div class="flex gap-0 ">
+            <div>
+                <img src='/icons/calendar.png' class='object-contain w-10 mx-12'/>
             </div>
             <div class="">
-                <p class="font-bold text-xl">Start Price</p>
-                <p class='font-semibold'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
+                <p class="font-bold text-xl text-center">Departure</p>
+                <p class="font-semibold text-center">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y , H:i').' WIB' }}</p>
             </div>
         </div>
-
 
         <div class="flex gap-0">
             <div class="w-10 mx-12">
@@ -54,15 +54,17 @@
             </div>
         </div>
 
-        <div class="flex gap-0 ">
-            <div>
-                <img src='/icons/calendar.png' class='object-contain w-10 mx-12'/>
+        <div class="flex gap-0">
+            <div class="w-10 mx-12">
+                <img src='/icons/price.png' class='object-contain'/>
             </div>
             <div class="">
-                <p class="font-bold text-xl text-center">Departure</p>
-                <p class="font-semibold text-center">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y , H:i').' WIB' }}</p>
+                <p class="font-bold text-xl">Start Price</p>
+                <p class='font-semibold'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
             </div>
-            </div>
+        </div>
+
+
 
         <div class="flex gap-0">
             <div>

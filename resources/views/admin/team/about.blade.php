@@ -100,7 +100,7 @@
     id="exampleModalLong-{{ $edit->id }}" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
     <div class="modal-dialog relative w-auto pointer-events-none">
       <div
-        class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
+        class="modal-content border-none  relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto dark:bg-slate-700 shadow-lg">
         <div
           class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
              
@@ -148,30 +148,30 @@
 id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
 <div class="modal-dialog relative w-auto pointer-events-none">
   <div
-    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
+    class="modal-content border-none shadow-lg relative flex flex-col w-[800px] pointer-events-auto dark:bg-slate-700 bg-white bg-clip-padding rounded-md outline-none text-current m-auto">
     <div
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
          
          <form action="admin/team/add" method="POST" class="w-full px-4" enctype="multipart/form-data">
-            <h1 class="text-center font-semibold text-2xl">ADD TEAM</h1>
+            <h1 class="text-center font-semibold text-2xl dark:text-white">ADD TEAM</h1>
 
             @csrf
 
             <div class="mt-4">
               <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Image</label>
-              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image">
+              <input class="block w-full text-sm text-gray-900 font-semibold border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image">
             </div>
 
             <div class="mt-4">
-                <label for="nama">Name</label>
+                <label class="dark:text-white font-semibold" for="nama">Name</label>
                 <input type="text" name="nama" id="nama" class="w-full h-12 rounded-md p-2 border mt-4" >
             </div>
             <div class="mt-4">
-              <label for="no_tlpn">Jabatan</label>
+              <label class="dark:text-white font-semibold" for="no_tlpn">Jabatan</label>
               <input type="text" name="jabatan" id="jabatan" class="w-full h-12 rounded-md p-2 border mt-4" >
           </div>
           <div class="mt-4">
-            <label for="alamat">Profile</label>
+            <label class="dark:text-white font-semibold" for="alamat">Profile</label>
             <input type="text" name="profile" id="profile" class="w-full h-12 rounded-md p-2 border mt-4" >
           </div>
 
