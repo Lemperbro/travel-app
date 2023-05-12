@@ -1,33 +1,30 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\admin\AdminAboutController;
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IsiController;
-use App\Http\Controllers\KotaController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\WisataController;
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\kota\KotaController;
+use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\auth\ProfileController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\wisata\WisataController;
 use App\Http\Controllers\admin\AdminKotaController;
+use App\Http\Controllers\admin\AdminTeamController;
 use App\Http\Controllers\admin\AdminUserController;
-use App\Http\Controllers\KategoriArticleController;
+use App\Http\Controllers\article\ArticleController;
+use App\Http\Controllers\admin\AdminAboutController;
+use App\Http\Controllers\admin\AdminGuideController;
 use App\Http\Controllers\admin\AdminSupirController;
+use App\Http\Controllers\booking\CheckoutController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminBookingController;
+use App\Http\Controllers\auth\ResetPasswordController;
+use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
-use App\Http\Controllers\admin\AdminGuideController;
-use App\Http\Controllers\admin\AdminTeamController;
-use App\Http\Controllers\NotificationController;
-use App\Models\Notification;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\article\KategoriArticleController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -278,7 +275,7 @@ Route::get('/wisata' , [WisataController::class, 'index']);
 Route::get('/wisata/perfect' , [WisataController::class, 'perfect']);
 Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
 Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
-Route::get('/wisata/{id:slug}', [IsiController::class, 'show']);
+Route::get('/wisata/{id:slug}', [WisataController::class, 'isi']);
 
 
 Route::get('/testimoni', [DashboardController::class, 'testi_store']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class ProfileController extends Controller
     {
         //
 
-        return view('profile', [
+        return view('Auth.profile', [
             'data' => auth()->user(),
         ]);
     }
@@ -139,7 +139,7 @@ class ProfileController extends Controller
 
 
 
-        return view('changePassword');
+        return view('Auth.changePassword');
         
 
 

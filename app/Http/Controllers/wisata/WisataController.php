@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\wisata;
 
+use App\Models\Faq;
 use App\Models\Kota;
+use App\Models\Testi;
 use App\Models\Wisata;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWisataRequest;
 use App\Http\Requests\UpdateWisataRequest;
-use Illuminate\Http\Request;
 
 
 class WisataController extends Controller
@@ -33,7 +35,7 @@ class WisataController extends Controller
 
         }
 
-        return view('wisata', [
+        return view('wisata.wisata', [
             'data' => $wisata->where('status', true)->paginate(9)
         ]);
     }
@@ -49,7 +51,7 @@ class WisataController extends Controller
 
         }
 
-        return view('wisata', [
+        return view('wisata.wisata', [
             'data' => $wisata->where('status', true)->paginate(25)
         ]);
     }
@@ -97,7 +99,7 @@ class WisataController extends Controller
 
         
         
-        return view('view',[
+        return view('wisata.view',[
             "data" => $data,
         ]);
     }
@@ -144,7 +146,7 @@ class WisataController extends Controller
             return redirect('/');
 
         }else{
-            return view('destination',[
+            return view('wisata.destination',[
                 'kota' =>  $kota,
                 'wisata' => Wisata::where('kota_id', $kota->id)->get()
             ]);
@@ -162,9 +164,32 @@ class WisataController extends Controller
             $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')
             ->where('status', true)->orWhere('deskripsi', 'like', '%' . request('search') . '%');
         }
-        return view('type', [
+        return view('wisata.type', [
             "data" => $wisata->where('status', true)->paginate(9),
             'type' => $type
         ]);
+    }
+
+
+    public function isi($slug){
+        $wisata = Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get();
+
+
+        $faq = Faq::where('wisata', $slug)->get();
+        $comment = Testi::with('user')->where('wisata_id', $slug)->paginate(6);
+        if($wisata->count() > 0){
+
+            $best = Wisata::where('kota_id', $wisata->first()->kota_id)->where('status', true)->paginate(10);
+
+            return view('wisata.isi', [
+
+                'data' => $wisata,
+                'best' => $best,
+                'comment' => $comment,
+                'faq' => $faq
+            ]);
+        }else{
+            return Redirect('/');
+        }
     }
 }

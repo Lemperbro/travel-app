@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\booking;
 
 use PDF;
 use App\Models\Kota;
@@ -143,7 +143,7 @@ class CheckoutController extends Controller
         //
         
 
-        return view('checkout',[
+        return view('booking.checkout',[
             'wisata' => Wisata::where('slug', $slug)->first(),
             'kota' => Kota::get(),
             'drop' => Kota::get(),
@@ -180,7 +180,7 @@ class CheckoutController extends Controller
 
     public function tagihan(){
 
-        return view('tagihan',[
+        return view('booking.tagihan',[
             'data' => Pemesanan::with('wisata','user','vehicle', 'driver', 'guide')->where('user_id', Auth()->user()->id)->where('payment_status', 'PENDING')->get(),
         ]);
     }
@@ -189,7 +189,7 @@ class CheckoutController extends Controller
         $data = Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->get();
 
 
-        return view('booking',[
+        return view('booking.booking',[
             'data' => $data,
         ]);
     }
@@ -219,7 +219,7 @@ class CheckoutController extends Controller
         $data = Pemesanan::with('wisata', 'user')->where('doc_no', $doc_no)->first();
 
         if($data){
-            return view('tiket', [
+            return view('booking.tiket', [
                 'data' => $data,
             ]);
         }else{

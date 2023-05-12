@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\auth;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class LoginController extends Controller
     //
 
     public function index(){
-        return view('masuk',[
+        return view('Auth.masuk',[
         'tittle' => 'login'
     ]);
     }

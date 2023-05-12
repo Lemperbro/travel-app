@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\kota;
 
 use App\Models\Kota;
 use App\Http\Controllers\Controller;
