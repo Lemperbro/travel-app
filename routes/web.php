@@ -319,8 +319,8 @@ Route::get('/wel', function(){
     return view('welcome');
 });
 
-Route::get('/new', function(){
-    return view('kendaraan');
+Route::get('/kon', function(){
+    return view('admin.terms.terms');
 });
 
 
