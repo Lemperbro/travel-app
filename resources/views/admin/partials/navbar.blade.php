@@ -53,7 +53,18 @@
                 <button class="w-full text-left flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600 {{ ($notifications->status == 'belum dibuka')? 'bg-gray-100 dark:bg-gray-600' : '' }} {{ ($notifications->status == 'dibuka') ? 'bg-white dark:bg-gray-700' : '' }}">
                   <div class="w-full pl-3">
                       <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">{{ $notifications->judul }}</div>
-                      <div class="text-xs font-medium text-primary-700 dark:text-primary-400">a few moments ago</div>
+                      @php
+                        $created_at =  Carbon\Carbon::parse($notifications->created_at);
+                        $now =  Carbon\Carbon::now();
+
+                      @endphp
+                      <div class="text-xs font-medium text-primary-700 dark:text-primary-400">
+                        @if ($created_at->diffInMinutes($now) < 60)
+                          {{ $created_at->diffForHumans() }}
+                          @else
+                          {{ $created_at->format('d F Y') }}
+                        @endif
+                      </div>
                   </div>
                 </button>
               </form>

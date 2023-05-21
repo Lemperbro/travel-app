@@ -26,11 +26,7 @@ use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\article\KategoriArticleController;
-<<<<<<< HEAD
-use App\Models\Event;
-=======
 use App\Http\Controllers\admin\AdminTermsController;
->>>>>>> 1521d611106600b40e7a0a112d9beb4a79bfd765
 
 /*
 |--------------------------------------------------------------------------
@@ -214,7 +210,6 @@ Route::middleware('admin')->group(function(){
 
 
 
-<<<<<<< HEAD
     Route::get('/admin/about', [AdminAboutController::class, 'index']);
     Route::post('/admin/about/add', [AdminAboutController::class, 'store']);
     Route::post('/admin/about/update', [AdminAboutController::class, 'update']);
@@ -236,7 +231,6 @@ Route::middleware('admin')->group(function(){
     Route::get('/extra/edit/{id}', [ExtraController::class, 'edit']);
     Route::post('/extra/edit/{id}', [ExtraController::class, 'update']);
     Route::post('/extra/delete/{id}', [ExtraController::class, 'destroy']);
-=======
 
     //terms
     Route::get('/admin/terms', [AdminTermsController::class, 'index']);
@@ -245,7 +239,6 @@ Route::middleware('admin')->group(function(){
 
 
 
->>>>>>> 1521d611106600b40e7a0a112d9beb4a79bfd765
     
 });
 
@@ -363,10 +356,7 @@ Route::get('/wel', function(){
     return view('welcome');
 });
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 1521d611106600b40e7a0a112d9beb4a79bfd765
 
 
 

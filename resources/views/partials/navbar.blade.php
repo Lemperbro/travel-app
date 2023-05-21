@@ -86,7 +86,19 @@
                       {{ $notifications->judul }}
                     @endif
                   </div>
-                  <div class="text-xs font-medium text-primary-700 dark:text-primary-400">a few moments ago</div>
+
+                  @php
+                  $created_at =  Carbon\Carbon::parse($notifications->created_at);
+                  $now =  Carbon\Carbon::now();
+
+                @endphp
+                  <div class="text-xs font-medium text-primary-700 dark:text-primary-400">
+                    @if ($created_at->diffInMinutes($now) < 60)
+                    {{ $created_at->diffForHumans() }}
+                    @else
+                    {{ $created_at->format('d F Y') }}
+                  @endif
+                  </div>
               </div>
             </button>
           </form>
