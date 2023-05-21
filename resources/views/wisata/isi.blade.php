@@ -115,7 +115,7 @@ $img = explode("|", $wisata->image);
     @include('partials.facility')
 
     <div class="my-8">
-        <h1 class="text-center font-bold text-2xl">Itinerary Start with Bromo</h1>
+        <h1 class="text-center font-bold text-2xl text-[#FD522C]">Itinerary Start with Bromo</h1>
     </div>
 
     @include('partials.dropdowntext')
