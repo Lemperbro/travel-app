@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
-            $table->text('services');
-            $table->text('payment');
-            $table->text('booking_confirm');
-            $table->text('cancelation_refunds');
+            $table->text('terms');
             $table->timestamps();
         });
     }

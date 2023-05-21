@@ -16,6 +16,17 @@ class AdminTermsController extends Controller
     public function index()
     {
         //
+        return view('admin.terms.index', [
+            'data' => Terms::first(),
+        ]);
+
+    }
+
+    public function index_client()
+    {
+        return view('terms', [
+            'data' => Terms::first(),
+        ]);
     }
 
     /**
@@ -37,6 +48,21 @@ class AdminTermsController extends Controller
     public function store(Request $request)
     {
         //
+        $validasi = $request->validate([
+            'terms' => 'required'
+        ]);
+
+
+        $proses = Terms::create([
+            'terms' => $request->terms,
+        ]);
+
+        if($proses){
+            return redirect()->back()->with('success', 'successful additional to the About');
+        }else{
+            return redirect()->back()->with('warning', 'Failed additional to the About ');
+        }
+
     }
 
     /**
@@ -71,6 +97,22 @@ class AdminTermsController extends Controller
     public function update(Request $request, Terms $terms)
     {
         //
+
+
+        $validasi = $request->validate([
+            'terms' => 'required'
+        ]);
+
+        $proses = Terms::first()->update([
+            'terms' => $validasi['isi'],
+        ]);
+
+        if($proses){
+            return redirect()->back()->with('success', 'update successful to the About');
+        }else{
+            return redirect()->back()->with('warning', 'failed update to the About');
+        }
+
     }
 
     /**
