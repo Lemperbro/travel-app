@@ -42,7 +42,7 @@
 
                 <div class="mt-8">
                     <div class="">
-                        <p class="text-xl font-semibold ">Optional extra - {{ $wisata->nama_wisata }} - from titik up </p>
+                        <p class="text-xl font-semibold ">Optional additonal extra on - {{ $wisata->nama_wisata }}</p>
                         <p class="text-xs text-gray-700">The following options are available with this product.</p>
                     </div>
 
