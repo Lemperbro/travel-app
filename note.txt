@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tambahan fitur buat potongan harga {
     - ketika min pembelian harga
     - ketika min jumlah pembelian 
@@ -86,3 +87,15 @@ tambahan di db wisata {
     - price_child
     - price_adult
 }
+=======
+isi dashboard admin {
+    - jumlah user
+    - jumlah kota
+    - jumlah wisata
+    - grafik yang melaporkan pemesanan perbulan
+    - latest booking
+    - wisata terlaris
+    - latest post
+}
+
+>>>>>>> 1521d611106600b40e7a0a112d9beb4a79bfd765
