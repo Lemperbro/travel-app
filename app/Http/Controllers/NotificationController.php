@@ -96,13 +96,11 @@ class NotificationController extends Controller
     }
 
 
-    public function update_admin( $id)
+    public function update_admin($id)
     {
         //
 
         $notification = Notification::with('user','pemesanan')->where('id', $id)->first();
-
-
         $proses = Notification::where('id', $id)->update([
             'status' => 'dibuka'
         ]);

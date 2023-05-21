@@ -76,7 +76,6 @@ class AdminWisataController extends Controller
             'image' => 'required|max:2048',
             'images' => 'required|max:2048',
             'nama' => 'required',
-            'departure' => 'required',
             'long_tour' => 'required',
             'kota' => 'required',
             'type' => 'required',
@@ -106,7 +105,6 @@ class AdminWisataController extends Controller
         $wisata = Wisata::create([
             'image'=>  implode("|",$image),
             'nama_wisata' => $validasi['nama'],
-            'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
             'harga' => $validasi['harga'],
@@ -255,7 +253,6 @@ class AdminWisataController extends Controller
 
         $validasi = $request->validate([
             'nama' => 'required',
-            'departure' => 'required',
             'long_tour' => 'required',
             'type' => 'required',
             'kota' => 'required',
@@ -318,7 +315,6 @@ class AdminWisataController extends Controller
         $wisata = Wisata::find($id)->update([
             'image'=>  implode("|",$image),
             'nama_wisata' => $validasi['nama'],
-            'tanggal' => $validasi['departure'],
             'long_tour' => $validasi['long_tour'],
             'tour_type' => $validasi['type'],
             'harga' => $validasi['harga'],

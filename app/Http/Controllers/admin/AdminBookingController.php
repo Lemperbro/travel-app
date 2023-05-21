@@ -32,6 +32,8 @@ class AdminBookingController extends Controller
             }
 
             }
+        }elseif(request('status')){
+            $data->where('payment_status', 'like' , '%' . request('status') . '%');
         }
         elseif(request('search')){
             $data->where('payment_status', 'like' , '%' . request('search') . '%')

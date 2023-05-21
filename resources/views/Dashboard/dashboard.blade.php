@@ -33,24 +33,59 @@
      <span class='border-r-2 border-black mx-3'></span> Travel Destination</h1>
 </div>
 
-<div class="mt-6 mb-7 grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-8 relative">
 
-  @foreach ($kota as $kota)
-      @php
-      $images = explode('|', $kota->image);
-    @endphp
-      <a href="/destinasi/{{ $kota->slug }}" class='rounded-xl relative shadow-best overflow-hidden'>
-        <h1 class='text-white z-20 font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[50%] md:grid-cols-2'>{{ $kota->nama_kota }}</h1>
-        <img src='{!! asset('image/'.$images[0]) !!}' class='object-cover w-full h-96 rounded-xl'/>
-        <span class="z-10 absolute bg-gradient-to-t from-black to-white/0 inset-0 h-32 top-64"></span>
-      </a>
 
-  @endforeach
 
-      <a href="/kota/" class="p-3 rounded-full bg-orange-500 absolute top-[50%] translate-y-[-50%] -right-9 text-white text-center ">
-        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path fill="#fff" d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/></svg>
-      </a>
-   </div>
+
+
+  <div class="flex items-center justify-center w-full py-24 sm:py-8 px-4 container">
+    <div class="w-full relative flex items-center justify-center">
+      
+        <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev2">
+            <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+{{-- slider area start --}}
+        <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+            <div id="slider2" class="h-full grid grid-flow-col auto-cols-[30%] lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+                @foreach ($kota as $kotas)
+                @php
+                $images = explode('|', $kotas->image);
+              @endphp
+                <a href="/destinasi/{{ $kotas->slug }}" class='rounded-xl relative shadow-best overflow-hidden max-w-xs'>
+                  <h1 class='text-white z-20 font-semibold text-2xl absolute bottom-2 transform translate-x-[-50%] left-[50%] md:grid-cols-2'>{{ $kotas->nama_kota }}</h1>
+                  <img src='{!! asset('image/'.$images[0]) !!}' class='object-cover w-full h-96 rounded-xl'/>
+                  <span class="z-10 absolute bg-gradient-to-t from-black to-white/0 inset-0 h-32 top-64"></span>
+                </a>
+
+                @endforeach
+
+                
+
+                
+
+                    
+
+                    
+                
+            </div>
+        </div>
+{{-- slider area end --}}
+
+
+        <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next2">
+            <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+
+
+
+
 
 
    <h1 class='text-2xl font-bold border-black text-center mt-10 mb-4'>Most Popular</h1>
@@ -95,7 +130,7 @@
             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">{{ $articles->judul }}</h5>
         </a>
 
-        <a href="/article/show/{{ $articles->slug }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 absolute bottom-3">
+        <a href="/article/show/{{ $articles->slug }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 absolute bottom-3">
             Read more
             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </a>

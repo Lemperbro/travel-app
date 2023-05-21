@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('tour_type');
             $table->integer('harga');
             $table->string('long_tour');
-            $table->dateTime('tanggal');
             $table->text('deskripsi');
             $table->string('nama_wisata');
             $table->text('image');

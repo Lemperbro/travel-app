@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use App\Models\About;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
@@ -89,5 +90,9 @@ class AboutController extends Controller
     public function destroy(About $about)
     {
         //
+    }
+
+    public function coba(Request $request){
+        dd($request->event1);
     }
 }

@@ -6,7 +6,7 @@
     
  <!-- component -->
 <!-- This is an example component -->
-<form method="post" action="/admin/wisata/add" enctype="multipart/form-data" class="mx-auto mt-10 w-full container" 
+<form method="post" action="/admin/wisata/add" enctype="multipart/form-data" class="mx-auto mt-10 w-full container " 
     x-data="{
         slide : 1,
         ActiveSlide : 1 ,
@@ -78,11 +78,11 @@
                 <div class="mb-5">
                     <label for="nama" class="font-bold mb-1 text-gray-900 dark:text-white block">Tour Name</label>
                     <input type="text" name="nama"
-                        class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white">
+                        class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white autofill:bg-transparent">
                 </div>
 
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 gap-4">
                     <div class="">
                         <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
                         <input type="number" name="harga"
@@ -90,12 +90,7 @@
                             >
                     </div>
 
-                    <div class="">
-                        <label for="departure" class="font-bold mb-1 text-gray-900 dark:text-white block">Departure</label>
-                        <input type="datetime-local" name="departure"
-                            class="w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white "
-                            >
-                    </div>
+
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 my-4">

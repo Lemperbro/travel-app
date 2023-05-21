@@ -3,38 +3,41 @@
 @include('partials.navbar')
 
 @foreach ($data as $wisata)
-    
+@php
+$img = explode("|", $wisata->image);
+@endphp
+
 <div class='relative'>
-    <img src='/img/pt.png' class='w-full'/>
-    <h1 class='absolute text-center text-white left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-3xl font-bold'>{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
-  </div>
+    <img src='{{ asset('image/'.$img[0]) }}' class='w-full h-[550px] object-cover'/>
+</div>
 
 
 
     @section('container')
 
-        @php
-            $img = explode("|", $wisata->image);
-        @endphp
 
-        <img src="{{ asset('image/'.$img[0]) }}" alt="" class="object-cover h-[800px] w-full" id="view-image">
+        {{-- <img src="{{ asset('image/'.$img[0]) }}" alt="" class="object-cover h-[800px] w-full" id="view-image">
 
         <div class="grid grid-flow-col mt-2 overflow-auto auto-cols-[20%] h-56">
 
         @foreach ($img as $image)
               <img src='{{ asset('image/'.$image ) }}' class='object-cover h-56 w-full' onclick="change(this.src)"/>
         @endforeach
+    </div> --}}
+
+
+
+    <h1 class="text-3xl font-semibold mt-12">{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
+    <div class="flex gap-x-2 mt-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-3 fill-gray-600"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+
+        <h1>{{ $wisata->location }}</h1>
     </div>
 
+    <div class="mt-5 mb-7 grid grid-cols-4 place-items-center border-b-[1px] p-4 rounded-md">
 
 
-
-
-
-    <div class="mt-11 mb-7 grid grid-cols-4 place-items-center shadow-best5 bg-white p-4 rounded-md">
-
-
-        <div class="flex gap-0 ">
+        {{-- <div class="flex gap-0 ">
             <div>
                 <img src='/icons/calendar.png' class='object-contain w-10 mx-12'/>
             </div>
@@ -42,37 +45,52 @@
                 <p class="font-bold text-xl text-center">Departure</p>
                 <p class="font-semibold text-center">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y , H:i').' WIB' }}</p>
             </div>
-        </div>
+        </div> --}}
 
         <div class="flex gap-0">
-            <div class="w-10 mx-12">
-                <img src='/icons/flag.png' class='object-contain'/>
+            <div class="w-10 mx-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-orange-500 w-12 h-12 " style="transform: ;msFilter:;"><path d="M19 4H6V2H4v18H3v2h4v-2H6v-5h13a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zm-1 9H6V6h12v7z"></path></svg>
             </div>
             <div class="">
-                <p class="font-bold text-xl">Type Tour</p>
-                <p class='font-semibold'>{{ $wisata->tour_type }}</p>
+                <p class="font-semibold text-xl">Type Tour</p>
+                <p class='text-gray-500 capitalize'>{{ $wisata->tour_type }}</p>
             </div>
         </div>
 
         <div class="flex gap-0">
-            <div class="w-10 mx-12">
-                <img src='/icons/price.png' class='object-contain'/>
+            <div class="w-10 mx-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-orange-500 w-12 h-12 " style="transform: ;msFilter:;"><path d="M11.707 2.293A.997.997 0 0 0 11 2H6a.997.997 0 0 0-.707.293l-3 3A.996.996 0 0 0 2 6v5c0 .266.105.52.293.707l10 10a.997.997 0 0 0 1.414 0l8-8a.999.999 0 0 0 0-1.414l-10-10zM13 19.586l-9-9V6.414L6.414 4h4.172l9 9L13 19.586z"></path><circle cx="8.353" cy="8.353" r="1.647"></circle></svg>
             </div>
             <div class="">
-                <p class="font-bold text-xl">Start Price</p>
-                <p class='font-semibold'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
+                <p class="font-semibold text-xl">Start Price</p>
+                <p class='text-gray-500 capitalize'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
             </div>
         </div>
 
 
 
         <div class="flex gap-0">
-            <div>
-                <img src='/icons/hotel.png' class='object-contain w-10 mx-12'/>
+            <div class="w-10 mx-5 relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-orange-500 w-12 h-12 " style="transform: ;msFilter:;"><path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="absolute top-6 -right-4"  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12.25 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10-4.486-10-10-10zM18 13h-6.75V6h2v5H18v2z"></path></svg>
+
             </div>
             <div>
-                <p class="font-bold text-xl">Long Tour</p>
-                <p class="font-semibold uppercase">{{ $wisata->long_tour }}</p>
+                <p class="font-semibold text-xl">Long Tour</p>
+                <p class="text-gray-500 capitalize">{{ $wisata->long_tour }}</p>
+            </div>
+        </div>
+
+        <div class="flex gap-0">
+            <div class="w-10 mx-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-orange-500 w-12 h-12 " style="transform: ;msFilter:;"><path d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"></path><path d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"></path></svg>
+
+
+            </div>
+            <div>
+                <p class="font-semibold text-xl">Room Type</p>
+                <p class="text-gray-500 capitalize">4-start Hotel</p>
             </div>
         </div>
 
@@ -81,14 +99,14 @@
     </div>
 
     <a href="/checkout/{{ $wisata->slug }}">
-        <button class='shadow-best px-7 py-4 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto mt-24'>
+        <button class='shadow-best px-4 py-4 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto text-xl'>
             Booking Now
         </button>
     </a>
 
 
-    <div class="my-20">
-        <h1 class="py-5 text-3xl font-bold">Overview</h1>
+    <div class="mb-20">
+        <h1 class="py-5 text-3xl font-bold text-orange-500">Overview</h1>
         <p class="text-justify text-xl">
             {{ $wisata->deskripsi }}
         </p>
@@ -121,8 +139,8 @@
 
 
     <div class="mt-1">
-        <details class="text-justify text-sm font-semibold cursor-pointer">
-            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border">
+        <details class="text-justify text-sm font-semibold cursor-pointer ">
+            <summary class="bg-[#D9D9D9] text-lg font-semibold p-2 border ">
                {{ $faq->question }}
             </summary>
            <p class="p-2">

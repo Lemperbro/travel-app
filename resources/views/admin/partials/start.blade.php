@@ -17,6 +17,17 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+              <style>
+                .checkbox:checked {
+                    /* Apply class right-0 and border-indigo-700*/
+                    right: 0;
+                    border-color: #4c51bf;
+                }
+                .checkbox:checked + .toggle-label {
+                    /* Apply class bg-indigo-700 */
+                    background-color: #4c51bf;
+                }
+    </style>
     <title>Admin Grow In</title>
 </head>
 <body class="dark:bg-gray-900 bg-gray-100">

@@ -111,9 +111,24 @@
   <script src="{{ asset('js/tap-image.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
   <script src="{{ asset('js/carouselCard.js') }}"></script>
+  <script src="{{ asset('js/order-dynamic.js') }}"></script>
+  <script src="{{ asset('js/jquery.js') }}"></script>
 
 
 <script>
+
+
+$(document).ready(function() {
+    $("#addOrder_btn").click(function() {
+        $("#addOrders").append('<div id="Order"><div class="flex gap-4 mt-4"><div class="w-[50%]"><label for="age" class="">Select Age</label><select name="age[]" id="age" class="w-full rounded-md border-[1px] border-gray-400 mt-2"><option value="5-10">5th - 10th</option><option value="11-20">11th - 20th</option><option value="21-30">21th - 30th</option><option value="31-40">31th - 40th</option></select></div><div class="w-[50%]"><label for="nama" class="">Name</label><input type="text" name="nama[]" id="nama" class="w-full rounded-md border-[1px] border-gray-400 p-2 mt-2"></div></div><h1 class="text-center block cursor-pointer bg-red-700 text-white font-semibold p-2 rounded-md my-4" id="deleteOrder_btn">Delete Order</h1></div>');
+    });
+  });
+
+  $("body").on("click", "#deleteOrder_btn", function () {
+            $(this).parents("#Order").remove();
+        });
+
+
             image.onchange = evt => {
               const [file] = image.files
               if (file) {

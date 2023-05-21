@@ -1,9 +1,88 @@
-isi dashboard admin {
-    - jumlah user
-    - jumlah kota
-    - jumlah wisata
-    - grafik yang melaporkan pemesanan perbulan
-    - latest booking
-    - wisata terlaris
-    - latest post
+tambahan fitur buat potongan harga {
+    - ketika min pembelian harga
+    - ketika min jumlah pembelian 
+    - ketika di aktif kan 
+}
+
+
+kategori dewasa dan kecil
+nambah extra dan database nya {
+    - ubah mobile
+    - upgrade kamar 
+    - extra bad
+}
+dinamis session (naik harga)
+
+
+buat setting kalender agar sistem tau height session dan height session
+reschejul dan cancel
+
+
+halaman checkout {
+    - buat group dewasa dan anak kecil 
+    - buat penawaran extra input menggunakan checkbox
+    - buat check box bahwa setuju dengan syarat dan ketentuan 
+    - buat radio button untuk memilih pembayaran lunas atau dp
+}
+
+
+reivisi admin {
+    - buat extra
+    - buat event
+
+}
+
+
+event {
+    - min pembelian
+
+
+    database {
+        - judul
+        - wisata_id []
+        - min_harga default null
+        - min_jumlah default null
+        - potongan
+        - status
+    }
+}
+
+nambah database {
+    - extra {
+        - id 
+        - wisata_id
+        - image
+        - judul
+        - deskripsi
+        - harga
+    }
+    - event {
+        - id
+        - judul
+        - tipe [min_jumlah, min_harga, aktif]
+        - wisata_id [] nullable
+        - min_harga nullable
+        - min_jumlah nullable
+        - potongan
+        - status
+    }
+    - session {
+        - id 
+        - wisata_id
+        - 
+    }
+    - date session
+    - 
+}
+
+tambahan di db pemesanan{
+    - extra_id (untuk menyimpan id extra yang di pilih)
+    - adult
+    - child
+    - 
+}
+
+tambahan di db wisata {
+    - price_child
+    - price_adult
 }

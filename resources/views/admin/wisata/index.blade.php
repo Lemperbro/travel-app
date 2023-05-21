@@ -203,6 +203,15 @@
                Edit
               </a>
 
+              <a href="/extra/{{ $wisata->id }}"
+                class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
+                Extra
+               </a>
+               <a href="/event/{{ $wisata->id }}"
+                class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
+                Event
+               </a>
+
               <a href="/admin/wisata/faq/{{ $wisata->slug }}"
                 class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
                 Manage FAQ
@@ -262,13 +271,15 @@
       
           <div class="mt-6 grid grid-cols-3 items-center gap-8 text-xs">
             <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="text-gray-900 dark:text-white w-7 h-7" style="transform: ;msFilter:;"><path d="M21 20V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm2-5H5V7h14v2z"></path></svg>
-      
-              <div class="mt-1.5 sm:mt-0">
-                <p class="text-gray-900 dark:text-gray-200 font-semibold">Departure</p>
-      
-                <p class="font-medium text-gray-700 dark:text-gray-300">{{ \Carbon\Carbon::parse($wisata->tanggal)->format('d-F-Y') }}</p>
-              </div>
+              @if ($wisata->status == true)
+                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                <h1 class="text-gray-900 dark:text-white font-semibold text-xs uppercase">Active</h1>
+
+              @elseif ($wisata->status == false)
+              <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                <h1 class="text-gray-900 dark:text-white font-semibold text-xs uppercase">Not Active</h1>
+
+              @endif
             </div>
       
             <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">

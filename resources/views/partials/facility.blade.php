@@ -10,7 +10,7 @@
 </div>
 
     <div class="flex gap-x-8">
-    <div class="border w-[50%] shadow-best4 rounded-xl justify-center bg-white p-4">
+    <div class="border w-[50%] rounded-xl justify-center bg-white p-4">
         @foreach ($wisata->fasilitas as $fasilitas)
 
         @php
@@ -34,7 +34,7 @@
 
     
 
-    <div class="border w-[50%] shadow-best4 rounded-xl justify-center bg-white p-4">
+    <div class="border w-[50%] rounded-xl justify-center bg-white p-4">
         @foreach ($wisata->fasilitas as $fasilitas)
         @php
         $exclusions = explode("|", $fasilitas->exclusions)

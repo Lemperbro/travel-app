@@ -3,8 +3,10 @@
 
 @section('container')
 <div class="mb-32">
-  <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+  <div class="grid lg:grid-cols-2 ">
+
     <div class="px-4 pt-8">
+
       <p class="text-xl font-medium">Order Summary</p>
       <p class="text-gray-400">Check your items.</p>
       <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
@@ -47,6 +49,37 @@
 
       </div>
   
+
+      {{-- input jumlah pemesanan  start--}}
+
+      <div class="px-4 pt-8" >
+
+        {{-- element start --}}
+        <div id="addOrders">
+        <div class="flex gap-4 ">
+
+          <div class="w-[50%]">
+            <label for="age" class="">Select Age</label>
+            <select name="age[]" id="age" class="w-full rounded-md border-[1px] border-gray-400 mt-2">
+              <option value="5-10">5th - 10th</option>
+              <option value="11-20">11th - 20th</option>
+              <option value="21-30">21th - 30th</option>
+              <option value="31-40">31th - 40th</option>
+            </select>
+          </div>
+
+          <div class="w-[50%]">
+            <label for="nama" class="">Name</label>
+            <input type="text" name="nama[]" id="nama" class="w-full rounded-md border-[1px] border-gray-400 p-2 mt-2">
+          </div>
+
+        </div>
+      </div>
+        {{-- element end --}}
+
+        <h1 class="text-center block cursor-pointer bg-gray-900 text-white font-semibold p-2 rounded-md mt-8" id="addOrder_btn">Add Order</h1>
+      </div>      
+      {{-- input jumlah pemesanan  end--}}
 
 
 

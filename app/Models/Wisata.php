@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Faq;
 use App\Models\Kota;
+use App\Models\Event;
+use App\Models\Extra;
 use App\Models\Harga;
 use App\Models\Jemput;
 use App\Models\Equipment;
@@ -56,5 +58,13 @@ class Wisata extends Model
 
     public function harga(){
         return $this->hasMany(Harga::class);
+    }
+
+    public function extra(){
+        return $this->hasMany(Extra::class);
+    }
+
+    public function event(){
+        return $this->hasMany(Event::class);
     }
 }

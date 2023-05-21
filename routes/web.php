@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\kota\KotaController;
@@ -22,9 +23,10 @@ use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
+use App\Http\Controllers\admin\EventController;
+use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\article\KategoriArticleController;
-
-
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -202,6 +204,24 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/about', [AdminAboutController::class, 'index']);
     Route::post('/admin/about/add', [AdminAboutController::class, 'store']);
     Route::post('/admin/about/update', [AdminAboutController::class, 'update']);
+
+
+    //event
+    Route::get('/event/{id}', [EventController::class, 'index']);
+    Route::post('/event/aktif/{id}/{tipe}', [EventController::class, 'aktif']);
+    Route::post('/event/nonaktif/{id}/{tipe}', [EventController::class, 'nonaktif']);
+
+    Route::get('/event/edit/{id}/{tipe}', [EventController::class, 'edit']);
+    Route::post('/event/edit/{id}/{tipe}', [EventController::class, 'update']);
+
+    //extra
+    Route::get('/extra/{id}', [ExtraController::class, 'index']);
+    Route::get('/extra/add/{id}', [ExtraController::class, 'create']);
+    Route::post('/extra/add/{id}', [ExtraController::class, 'store']);
+    Route::post('/extra/edit_redirect/{id}', [ExtraController::class, 'edit_redirect']);
+    Route::get('/extra/edit/{id}', [ExtraController::class, 'edit']);
+    Route::post('/extra/edit/{id}', [ExtraController::class, 'update']);
+    Route::post('/extra/delete/{id}', [ExtraController::class, 'destroy']);
     
 });
 
@@ -317,10 +337,6 @@ Route::get('/contact', function(){
 
 Route::get('/wel', function(){
     return view('welcome');
-});
-
-Route::get('/new', function(){
-    return view('kendaraan');
 });
 
 

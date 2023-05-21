@@ -4,6 +4,7 @@ namespace App\Http\Controllers\wisata;
 
 use App\Models\Faq;
 use App\Models\Kota;
+use App\Models\Event;
 use App\Models\Testi;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
@@ -178,7 +179,9 @@ class WisataController extends Controller
         $faq = Faq::where('wisata', $slug)->get();
         $comment = Testi::with('user')->where('wisata_id', $slug)->paginate(6);
         if($wisata->count() > 0){
-
+            $wisata_id = Wisata::where('slug', $slug)->pluck('id')->first();
+            $event = Event::where('wisata_id', $wisata_id)->where('status', true)->get();
+            
             $best = Wisata::where('kota_id', $wisata->first()->kota_id)->where('status', true)->paginate(10);
 
             return view('wisata.isi', [
@@ -186,7 +189,8 @@ class WisataController extends Controller
                 'data' => $wisata,
                 'best' => $best,
                 'comment' => $comment,
-                'faq' => $faq
+                'faq' => $faq,
+                'event' => $event
             ]);
         }else{
             return Redirect('/');

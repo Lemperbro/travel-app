@@ -52,7 +52,7 @@
               <div>
                 <dt class="sr-only">Price</dt>
         
-                <dd class="text-sm text-gray-700 dark:text-gray-200 font-semibold">Start From Rp. {{ number_format($best_wisata->harga,0,',','.') }}</dd>
+                <dd class="text-sm text-orange-600 font-semibold">Start From Rp. {{ number_format($best_wisata->harga,0,',','.') }}</dd>
               </div>
         
               <div>
@@ -70,22 +70,27 @@
         
             <div class="mt-6 grid grid-cols-3 items-center gap-8 text-xs">
               <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="text-orange-600 dark:text-white w-7 h-7" style="transform: ;msFilter:;"><path d="M21 20V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm2-5H5V7h14v2z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="text-orange-600 dark:text-white w-7 h-7" style="transform: ;msFilter:;"><path d="M21 6h-4V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1zM6 18H4v-2h2v2zm0-4H4v-2h2v2zm5 4H9v-2h2v2zm0-4H9v-2h2v2zm0-4H9V8h2v2zm0-4H9V4h2v2zm4 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2zm0-4h-2V4h2v2zm5 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2z"></path></svg>
         
                 <div class="mt-1.5 sm:mt-0">
-                  <p class="text-gray-900 dark:text-gray-200 font-semibold">Departure</p>
+                  <p class="text-gray-900 dark:text-gray-200 font-semibold">City</p>
       
-                  <p class="font-medium text-gray-700 dark:text-gray-300">{{ \Carbon\Carbon::parse($best_wisata->tanggal)->format('d-F-Y') }}</p>
+                  <p class="font-medium text-gray-700 dark:text-gray-300">{{ $best_wisata->kota->nama_kota }}</p>
                 </div>
               </div>
         
               <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" class="text-orange-600 dark:text-white w-7 h-7" fill="currentColor" style="transform: ;msFilter:;"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
+                <div class="relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-orange-600 w-7 h-7 " style="transform: ;msFilter:;"><path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path><path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path></svg>
+  
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="absolute top-3 -right-1 w-4"  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12.25 2c-5.514 0-10 4.486-10 10s4.486 10 10 10 10-4.486 10-10-4.486-10-10-10zM18 13h-6.75V6h2v5H18v2z"></path></svg>
+  
+              </div>
         
                 <div class="mt-1.5 sm:mt-0">
-                  <p class="text-gray-900 dark:text-gray-200 font-semibold">Location</p>
+                  <p class="text-gray-900 dark:text-gray-200 font-semibold">Long Tour</p>
       
-                  <p class="font-medium text-gray-700 dark:text-gray-300">{{ $best_wisata->kota->nama_kota }}</p>
+                  <p class="font-medium text-gray-700 dark:text-gray-300">{{ $best_wisata->long_tour }}</p>
                 </div>
               </div>
         

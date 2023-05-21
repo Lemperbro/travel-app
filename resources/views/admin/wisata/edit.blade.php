@@ -68,7 +68,7 @@
                 </div>
 
                 {{-- percobaan start --}}
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 my-4">
+                {{-- <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 my-4">
 
                     <div class="">
                         <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Date</label>
@@ -110,9 +110,9 @@
                             value="">
                     </div>
    
-                   </div>
+                   </div> --}}
                    {{-- percobaan end --}}
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 gap-4">
 
                  <div class="">
                      <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
@@ -121,12 +121,7 @@
                          value="{{ $data->harga }}">
                  </div>
 
-                 <div class="">
-                     <label for="departure" class="font-bold mb-1 text-gray-900 dark:text-white block">Departure</label>
-                     <input type="datetime-local" name="departure"
-                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white border-none font-medium"
-                         value="{{ $data->tanggal }}">
-                 </div>
+
 
                 </div>
 
