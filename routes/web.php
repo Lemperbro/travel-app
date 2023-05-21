@@ -26,6 +26,10 @@ use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\article\KategoriArticleController;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8066670d291b2dda7848a703611b1b835acd1947
 use App\Http\Controllers\admin\AdminTermsController;
 
 /*
@@ -210,6 +214,10 @@ Route::middleware('admin')->group(function(){
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8066670d291b2dda7848a703611b1b835acd1947
     Route::get('/admin/about', [AdminAboutController::class, 'index']);
     Route::post('/admin/about/add', [AdminAboutController::class, 'store']);
     Route::post('/admin/about/update', [AdminAboutController::class, 'update']);
@@ -356,7 +364,10 @@ Route::get('/wel', function(){
     return view('welcome');
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8066670d291b2dda7848a703611b1b835acd1947
 
 
 
