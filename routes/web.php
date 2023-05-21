@@ -26,10 +26,7 @@ use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\article\KategoriArticleController;
-<<<<<<< HEAD
-=======
 
->>>>>>> 8066670d291b2dda7848a703611b1b835acd1947
 use App\Http\Controllers\admin\AdminTermsController;
 
 /*
@@ -53,22 +50,6 @@ use App\Http\Controllers\admin\AdminTermsController;
 
 
 
-
-Route::get('/privatetrip', function () {
-    return view('privatetrip');
-});
-Route::get('/singletrip', function () {
-    return view('single');
-});
-Route::get('/opentrip', function () {
-    return view('opentrip');
-});
-Route::get('/pdf', function () {
-    return view('pdf');
-});
-Route::get('/blogisi', function () {
-    return view('blogisi');
-});
 
 
 
@@ -214,10 +195,7 @@ Route::middleware('admin')->group(function(){
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 8066670d291b2dda7848a703611b1b835acd1947
     Route::get('/admin/about', [AdminAboutController::class, 'index']);
     Route::post('/admin/about/add', [AdminAboutController::class, 'store']);
     Route::post('/admin/about/update', [AdminAboutController::class, 'update']);
@@ -335,7 +313,7 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 Route::get('/coba', function(){
-    return view('admin.booking.confirmation');
+    return view('partials.calendar');
 });
 
 Route::get('/duty', function(){
@@ -347,27 +325,8 @@ Route::get('/duty', function(){
 
 
 
-Route::get('/home', function(){
-    return view('home');                                                                                                                             
-});
 
 
-Route::get('/pdf', function(){
-    return view('pdf');
-});
-
-Route::get('/contact', function(){
-    return view('contact');
-});
-
-Route::get('/wel', function(){
-    return view('welcome');
-});
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 8066670d291b2dda7848a703611b1b835acd1947
 
 
 
