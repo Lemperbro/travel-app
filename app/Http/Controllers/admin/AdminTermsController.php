@@ -25,7 +25,7 @@ class AdminTermsController extends Controller
     public function index_client()
     {
         return view('terms', [
-            'data' => Terms::first(),
+            'data' => Terms::first(),   
         ]);
     }
 
