@@ -106,6 +106,8 @@ class AdminWisataController extends Controller
             'image'=>  implode("|",$image),
             'nama_wisata' => $validasi['nama'],
             'long_tour' => $validasi['long_tour'],
+            'room_type' => $request->room_type,
+            'nama_hotel' => $request->nama_hotel,
             'tour_type' => $validasi['type'],
             'harga' => $validasi['harga'],
             'kota_id' => $validasi['kota'],
@@ -250,7 +252,6 @@ class AdminWisataController extends Controller
     public function update(Request $request, AdminWisata $adminWisata, $id)
     {
         //
-
         $validasi = $request->validate([
             'nama' => 'required',
             'long_tour' => 'required',
@@ -316,6 +317,8 @@ class AdminWisataController extends Controller
             'image'=>  implode("|",$image),
             'nama_wisata' => $validasi['nama'],
             'long_tour' => $validasi['long_tour'],
+            'room_type' => $request->room_type,
+            'nama_hotel' => $request->nama_hotel,
             'tour_type' => $validasi['type'],
             'harga' => $validasi['harga'],
             'kota_id' => $validasi['kota'],

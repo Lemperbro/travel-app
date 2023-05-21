@@ -90,7 +90,12 @@ $img = explode("|", $wisata->image);
             </div>
             <div>
                 <p class="font-semibold text-xl">Room Type</p>
-                <p class="text-gray-500 capitalize">4-start Hotel</p>
+                @if ($wisata->room_type == null)
+                <p class="text-gray-500 capitalize">not staying</p>
+
+                @else
+                <p class="text-gray-500 capitalize">{{ $wisata->room_type }}</p>
+                @endif
             </div>
         </div>
 
