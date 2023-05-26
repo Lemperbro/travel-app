@@ -112,7 +112,7 @@
    
                    </div> --}}
                    {{-- percobaan end --}}
-                <div class="grid grid-cols-1 gap-4">
+                <div class="grid grid-cols-3 gap-4">
 
                  <div class="">
                      <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
@@ -121,6 +121,25 @@
                          value="{{ $data->harga }}">
                  </div>
 
+                 <div class="">
+                    <label for="room_type" class="font-bold mb-1 text-gray-900 dark:text-white block">Room Type</label>
+                    <input type="text" name="room_type"
+                        class="ti w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
+                         placeholder="4-Star Hotel"
+                         @if ($data->room_type !== null)
+                             value="{{ $data->room_type }}"
+                         @endif>
+                </div>
+
+                <div class="">
+                    <label for="nama_hotel" class="font-bold mb-1 text-gray-900 dark:text-white block">Hotel Name</label>
+                    <input type="text" name="nama_hotel"
+                        class="ti w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
+                        @if ($data->nama_hotel !== null)
+                            value="{{ $data->nama_hotel }}"
+                        @endif
+                        >
+                </div>
 
 
                 </div>

@@ -234,6 +234,7 @@ Route::post('/notification/{id}', [NotificationController::class, 'update_client
 
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);
+Route::post('/checkout/{slug}', [CheckoutController::class, 'show']);
 Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
 
 // Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);

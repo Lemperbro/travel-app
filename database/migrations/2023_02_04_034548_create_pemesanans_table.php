@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('driver_id')->nullable();
             $table->foreignId('vehicle_id')->nullable();
             $table->foreignId('guide_id')->nullable();
-            $table->foreignId('extra_id')->nullable();
+            $table->string('extra_id')->nullable();
             $table->dateTime('departure');
             $table->string('pickup_kota');
             $table->string('pickup_point');
