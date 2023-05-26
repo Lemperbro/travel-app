@@ -107,3 +107,17 @@ function ShowPassword() {
    }
 
    }
+
+
+   const tanggalInput = document.getElementById('tanggal');
+  
+   const today = new Date().toISOString().split('T')[0];
+   
+   tanggalInput.setAttribute('max', today);
+   
+   tanggalInput.addEventListener('change', function() {
+     const selectedDate = new Date(this.value).toISOString().split('T')[0];
+     if (selectedDate < today) {
+       this.value = ''; 
+     }
+   });
