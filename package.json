@@ -20,6 +20,7 @@
     "dependencies": {
         "@popperjs/core": "^2.11.6",
         "daisyui": "^2.51.6",
+        "flowbite-datepicker": "^1.2.2",
         "froala-editor": "^4.0.18",
         "jquery": "^3.6.3",
         "smartwizard": "^6.0.6",

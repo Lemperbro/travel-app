@@ -4,13 +4,14 @@ namespace App\Http\Controllers\booking;
 
 use PDF;
 use App\Models\Kota;
+use App\Models\Event;
 use App\Models\Testi;
 use App\Models\Wisata;
 use App\Models\Pemesanan;
 use Illuminate\Support\Str;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Notification;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
@@ -44,11 +45,56 @@ class CheckoutController extends Controller
      */
     public function store(Request $request, $slug)
     {
-        //
+
+        // dd($request->all());
+        //rumus perhitungan diskon dinamis
+        // hargaTotal - (hargaTotal * diskon / 100)
+
+        $total_pesan = $request->adult + $request->child;
+        $extra_price = 0;
+        if($request->extra !== null){
+            $extra_array = array();
+            foreach($request->extra as $extras){
+                $explode_extra = explode(',', $extras);
+                $extra_array[] = $explode_extra[0];
+                $harga_extra = $explode_extra[1];
+                $extra_price += intval($harga_extra);
+            }
+
+            $extra_id = implode(',', $extra_array);
+
+
+            
+        }elseif($request->extra == null){
+            $extra_id = null;
+        }
+
+        
+        
         $wisata = Wisata::where('slug', $slug)->first();
+        $event = Event::where('wisata_id',$wisata->id)->get();
         $kota = Kota::where('slug', request('kota'))->first();
         $kota_pickup = explode(',', $request->kota);
-        $count = $wisata->harga + $kota_pickup[1];
+        $count_1 = $wisata->harga + $extra_price;
+        $count_2 = $count_1 * $total_pesan;
+        $count_3 = $count_2 + $kota_pickup[1];
+
+        dd($event->where('tipe', 'min_jumlah')->count());
+        if($event->count() > 0){
+            if($event->where('tipe', 'min_jumlah')->count() > 0){
+    
+                // if($total_pesan >= )
+
+            }
+            if($event->where('tipe', 'min_harga')->count() > 0){
+
+            }
+
+            if($event->where('tipe', 'aktif')->count() > 0){
+
+            }
+        }
+
 
         $secret_key = 'Basic '.config('xendit.key_auth');
         $external_id = Str::random(10);
@@ -75,7 +121,8 @@ class CheckoutController extends Controller
             'description' => $request->note,
             'payment_status' => $response->status,
             'payment_link' => $response->invoice_url,
-            'expired' => $response->expiry_date
+            'expired' => $response->expiry_date,
+            'extra_id' => $extra_id
         ]);
         
         if($proses){
@@ -138,17 +185,27 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
         //
+        if($request->all() == null){
+            return redirect('/wisata/'.$slug);
+        }
+        
+        $request->validate([
+            'tanggal' => 'required'
+        ]);
         
 
         return view('booking.checkout',[
-            'wisata' => Wisata::where('slug', $slug)->first(),
+            'wisata' => Wisata::with('extra')->where('slug', $slug)->first(),
             'kota' => Kota::get(),
             'drop' => Kota::get(),
             'firstpricePickup' => Kota::pluck('harga')->first(),
-            'slug' => $slug
+            'slug' => $slug,
+            'adult' => $request->adult,
+            'child' => $request->child,
+            'tanggal' => $request->tanggal
         ]);
         
     }

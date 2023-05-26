@@ -102,20 +102,90 @@ $img = explode("|", $wisata->image);
 
 
     </div>
-
+{{-- 
     <a href="/checkout/{{ $wisata->slug }}">
         <button class='shadow-best px-4 py-4 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto text-xl'>
             Booking Now
         </button>
-    </a>
+    </a> --}}
 
 
-    <div class="mb-20">
+    {{-- <div class="mb-20">
         <h1 class="py-5 text-3xl font-bold text-orange-500">Overview</h1>
         <p class="text-justify text-xl">
             {{ $wisata->deskripsi }}
         </p>
+    </div> --}}
+
+
+    {{-- step 1 input group start --}}
+
+    <div class="flex justify-between mb-20 gap-x-10">
+        <div class="w-full">
+            <h1 class="py-5 text-3xl font-bold text-orange-500">Overview</h1>
+            <p class="text-justify text-xl">
+                {{ $wisata->deskripsi }}
+            </p>
+        </div>
+
+        <form action="/checkout/{{ $wisata->slug }}" method="POST" class="border w-[30%] h-full relative rounded-lg p-2">
+            @csrf
+            <p class="text-sm text-center p-2 font-bold">Enter Number of Participants </p>
+            <div class="flex justify-between p-2">
+                <div class="">
+                    <h1 for="first_name" class="block text-sm font-bold text-gray-900 dark:text-white capitalize">child Group
+                    </h1>
+                    <span class="text-xs text-red-600">5-12 years old</span>
+                </div>
+
+                <div class="">
+                    <input type="number" id="child" name="child" min="0"
+                        class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
+                </div>
+            </div>
+
+            <div class="flex justify-between p-2">
+                <div class="">
+                    <h1 for="first_name" class="block text-sm text-gray-900 font-bold capitalize">adult Group
+                    </h1>
+                    <span class="text-xs text-red-600">5-12 years old</span>
+                </div>
+
+                <div class="">
+                    <input type="number" id="adult" name="adult" min="0"
+                        class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="relative max-w-sm p-2">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                </div>
+
+                <input datepicker datepicker-format="mm/dd/yyyy" type="text" autocomplete="off" id="date" name="tanggal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Select date">
+
+
+
+              </div>
+
+              
+                <button type="submits" class='shadow-best m-2 px-2 py-2 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto text-sm'>
+                    Booking Now
+                </button>
+        
+
+
+
+
+        </form>
     </div>
+
+    {{-- step 1 input group end --}}
+
 
     @include('partials.facility')
 

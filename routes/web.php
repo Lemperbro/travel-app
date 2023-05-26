@@ -51,22 +51,6 @@ use App\Http\Controllers\admin\AdminTermsController;
 
 
 
-Route::get('/privatetrip', function () {
-    return view('privatetrip');
-});
-Route::get('/singletrip', function () {
-    return view('single');
-});
-Route::get('/opentrip', function () {
-    return view('opentrip');
-});
-Route::get('/pdf', function () {
-    return view('pdf');
-});
-Route::get('/blogisi', function () {
-    return view('blogisi');
-});
-
 
 
 
@@ -250,6 +234,7 @@ Route::post('/notification/{id}', [NotificationController::class, 'update_client
 
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);
+Route::post('/checkout/{slug}', [CheckoutController::class, 'show']);
 Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
 
 // Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);
@@ -329,7 +314,7 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 Route::get('/coba', function(){
-    return view('admin.booking.confirmation');
+    return view('partials.calendar');
 });
 
 Route::get('/duty', function(){
@@ -341,22 +326,6 @@ Route::get('/duty', function(){
 
 
 
-Route::get('/home', function(){
-    return view('home');                                                                                                                             
-});
-
-
-Route::get('/pdf', function(){
-    return view('pdf');
-});
-
-Route::get('/contact', function(){
-    return view('contact');
-});
-
-Route::get('/wel', function(){
-    return view('welcome');
-});
 
 
 

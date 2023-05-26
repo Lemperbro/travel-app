@@ -66,5 +66,9 @@ select:-webkit-autofill:focus {
   transform: translateY(-50%);
 }
 
+.datepicker-header{
+  background-color: transparent;
+  height: 40px;
+}
 
 
