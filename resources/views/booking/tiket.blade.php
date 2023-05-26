@@ -26,7 +26,7 @@
 			<div class="flex items-center my-5 text-sm justify-between">
 				<div class="flex flex-col text-center">
 					<span class="text-sm text-orange-600 font-semibold">Name Of Passanger</span>
-					<h1 class="font-semibold text-base">{{ $data->user->username }}</h1>
+					<h1 class="text-xs">{{ $data->user->username }} with (6 pax)</h1>
 				</div>
 
 
@@ -88,6 +88,25 @@
 								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -left-2"></div>
 								<div class="absolute rounded-full w-5 h-5 bg-orange-500 -mt-2 -right-2"></div>
 							</div>
+
+							<h1 class=" text-xs font-semibold mb-2">Additional Extra</h1>
+
+							<div class="flex gap-x-8 mb-2">
+
+								<div class="text-xs">
+									<h1>hallo</h1>
+								</div>
+
+								<div class="text-xs">
+									<p>:</p>
+								</div>
+
+								<div class="text-xs">
+									<p>400 x 2</p>
+								</div>
+							</div>
+
+							
 							<div class="flex items-center mb-4">
 								<div class="flex flex-col text-sm">
 									<span class="text-orange-600 font-semibold">Type Tour</span>
@@ -99,8 +118,8 @@
 
 								</div>
 								<div class="flex flex-col text-sm">
-									<span class="text-orange-600 font-semibold">Price</span>
-                 				 <div class="font-semibold">Rp. {{ $data->amount }}</div>
+									<span class="text-orange-600 font-semibold">Price status</span>
+                 				 <div class="font-semibold">Rp. {{ $data->amount }} / DP</div>
 
 
 
