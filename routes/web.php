@@ -313,8 +313,8 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
-Route::get('/coba', function(){
-    return view('partials.calendar');
+Route::get('/histori', function(){
+    return view('booking.histori');
 });
 
 Route::get('/duty', function(){
