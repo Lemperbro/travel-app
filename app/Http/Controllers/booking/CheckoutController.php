@@ -51,6 +51,9 @@ class CheckoutController extends Controller
         // hargaTotal - (hargaTotal * diskon / 100)
 
         $total_pesan = $request->adult + $request->child;
+
+
+
         $extra_price = 0;
         if($request->extra !== null){
             $extra_array = array();
@@ -79,32 +82,66 @@ class CheckoutController extends Controller
         $count_2 = $count_1 * $total_pesan;
         $count_3 = $count_2 + $kota_pickup[1];
 
-        dd($event->where('tipe', 'min_jumlah')->count());
+
+        //logic event start
         if($event->count() > 0){
+            $count_4 = $count_3;
             if($event->where('tipe', 'min_jumlah')->count() > 0){
-    
-                // if($total_pesan >= )
+                $min_jumlah = Event::where('id', $wisata->id)->where('tipe', 'min_jumlah')->first();
+                if($total_pesan >= $min_jumlah->min_jumlah){
+                    $count_3 = $count_3 - ($count_3 * $min_jumlah->potongan/100);
+                }
 
             }
-            if($event->where('tipe', 'min_harga')->count() > 0){
 
+            if($event->where('tipe', 'min_harga')->count() > 0){
+                $min_harga = Event::where('id',$wisata->id)->where('tipe', 'min_harga')->first();
+                if($count_4 >= $min_harga->min_harga){
+                    $count_3 = $count_3 - ($count_3 * $min_harga->potongan/100);
+                }
             }
 
             if($event->where('tipe', 'aktif')->count() > 0){
+                $event_aktif = Event::where('id', $wisata->id)->where('tipe', 'aktif')->first();
+                $count_3 = $count_3 - ($count_3 * $event_aktif->potongan/100);
 
             }
         }
+        //logic event end
+        
+
+        //logic dp start
+        $price_diskon = null;
+        if($request->payment_type == 'dp'){
+            $price_diskon = $count_3 - ($count_3 * 50/100);
+        }
+        //logic dp end
+   
+
+
 
 
         $secret_key = 'Basic '.config('xendit.key_auth');
         $external_id = Str::random(10);
 
-        $data_request = Http::withHeaders([
-            'Authorization' => $secret_key
-        ])->post('https://api.xendit.co/v2/invoices', [
-            'external_id' => $external_id,
-            'amount' => $count
-        ]);
+        if($request->payment_type == 'dp'){
+
+            $data_request = Http::withHeaders([
+                'Authorization' => $secret_key
+                ])->post('https://api.xendit.co/v2/invoices', [
+                    'external_id' => $external_id,
+                    'amount' => $price_diskon
+                ]);
+        }elseif($request->payment_type == 'full'){
+
+            $data_request = Http::withHeaders([
+                'Authorization' => $secret_key
+                ])->post('https://api.xendit.co/v2/invoices', [
+                    'external_id' => $external_id,
+                    'amount' => $count_3
+                ]);
+        }
+
         $response = $data_request->object();
 
 
@@ -117,12 +154,16 @@ class CheckoutController extends Controller
             'pickup_point' => $request->pickup,
             'drop_kota' => $request->drop_kota,
             'drop_point' => $request->dropout,
-            'amount' => $count,
+            'amount' => $count_3,
+            'dp' => $price_diskon,
+            'departure' => $request->departure,
             'description' => $request->note,
             'payment_status' => $response->status,
             'payment_link' => $response->invoice_url,
             'expired' => $response->expiry_date,
-            'extra_id' => $extra_id
+            'extra_id' => $extra_id,
+            'child' => $request->child,
+            'adult' => $request->adult
         ]);
         
         if($proses){
@@ -196,7 +237,7 @@ class CheckoutController extends Controller
             'tanggal' => 'required'
         ]);
         
-
+        $wisata_id = Wisata::where('slug', $slug)->pluck('id')->first();
         return view('booking.checkout',[
             'wisata' => Wisata::with('extra')->where('slug', $slug)->first(),
             'kota' => Kota::get(),
@@ -205,7 +246,8 @@ class CheckoutController extends Controller
             'slug' => $slug,
             'adult' => $request->adult,
             'child' => $request->child,
-            'tanggal' => $request->tanggal
+            'tanggal' => $request->tanggal,
+            'event' => Event::where('wisata_id', $wisata_id)->get()
         ]);
         
     }

@@ -44,7 +44,7 @@
       <hr class="mt-4 mb-8" />
 
       <div class="container px-5 mx-auto">
-        <div class="grid grid-cols-2 gap-8">
+        {{-- <div class="grid grid-cols-2 gap-8">
   
           @foreach ($data as $tagihan)
               
@@ -120,13 +120,168 @@
     
           </div>
           
-          @endforeach
+          @endforeach --}}
           
+        {{-- </div> --}}
+      
+
+        {{-- percobaan start --}}
+        <div class="grid grid-cols-1 gap-y-4 mt-4">
+          @foreach ($data as $tagihan)
+            <div class="border-[2px] rounded-md w-full p-4">
+              <h1 class="text-gray-600">{{ \Carbon\Carbon::parse($tagihan->created_at)->format('d F Y') }}</h1>
+              <div class="flex justify-between">
+                <div>
+                  <h1 class="font-semibold text-xl">{{ $tagihan->wisata->nama_wisata }}</h1>
+                  @if ($tagihan->status == 'menunggu')
+                  <h1 class="bg-yellow-200 text-black font-semibold py-1 px-2 rounded-md mt-2">Waiting for confirmation from admin</h1>
+                  @elseif ($tagihan->status == 'dikonfirmasi')
+                  <h1 class="bg-yellow-200 text-black font-semibold py-1 px-2 rounded-md mt-2">Waiting for Payment</h1>
+                  @endif
+                </div>
+
+                <div class="font-semibold">
+                  <h1>Order Quantity</h1>
+                  <h1 class="text-center">
+                    @if ($tagihan->adult !== null || $tagihan->child !== null)
+                      {{ $tagihan->adult + $tagihan->child }}
+                      @else
+                      1
+                    @endif
+                  </h1>
+                </div>
+
+                
+
+              </div>
+
+              <div class="grid grid-cols-4 gap-4 mt-4 ">
+
+                <div class="text-left">
+                  <h1 class="font-semibold">Departure</h1>
+                  <h1>{{ \Carbon\Carbon::parse($tagihan->departure)->format('d F Y') }}</h1>
+                </div>
+
+                <div class="text-left">
+                  <h1 class="font-semibold">Payment Type</h1>
+                  <h1>
+                    @if ($tagihan->dp !== null )
+                      Pay Dp
+                    @elseif($tagihan->dp == null)
+                      Pay Full
+                    @endif
+                  </h1>
+                </div>
+
+                <div class="text-left">
+                  <h1 class="font-semibold">Tour Type</h1>
+                  <h1>
+                    {{ $tagihan->wisata->tour_type }}
+                  </h1>
+                </div>
+
+                <div class="text-left">
+                  <h1 class="font-semibold">Driver</h1>
+                  <h1>
+                  @if ($tagihan->driver == null)
+                    {{ 'Waiting' }}
+                  @elseif ($tagihan->driver !== null)
+                    {{ $tagihan->driver->nama }}
+                  @endif
+                  </h1>
+                </div>
+
+                <div class="text-left">
+                  <h1 class="font-semibold">Guide</h1>
+                  <h1>
+                  @if ($tagihan->guide == null)
+                    {{ 'Waiting' }}
+                  @elseif ($tagihan->guide !== null)
+                    {{ $tagihan->guide->nama }}
+                  @endif
+                  </h1>
+                </div>
+
+                <div class="text-left">
+                  <h1 class="font-semibold">Vehicle</h1>
+                  <h1>
+                  @if ($tagihan->vehicle == null)
+                    {{ 'Waiting' }}
+                  @elseif ($tagihan->vehicle !== null)
+                    {{ $tagihan->vehicle->merek }}
+                  @endif
+                  </h1>
+                </div>
+
+                @if ($tagihan->adult !== null)
+                <div class="text-left">
+                  <h1 class="font-semibold">Adult</h1>
+                  <h1>
+                    {{ $tagihan->adult }}
+                  </h1>
+                </div>
+                @endif
+                
+                @if ($tagihan->child !== null)
+                <div class="text-left">
+                  <h1 class="font-semibold">Child</h1>
+                  <h1>
+                    {{ $tagihan->child }}
+                  </h1>
+                </div>
+                @endif
+
+              </div>
+
+              <div class="mt-4">
+
+                  <div class="flex">
+                    <h1 class="font-semibold">Total</h1>
+                    <h1 class="mx-2">:</h1>
+                    <h1>Rp. {{ number_format($tagihan->amount,0,',','.') }}</h1>
+                  </div>
+
+                  @if ($tagihan->dp !== null)
+                  <div class="flex">
+                    <h1 class="font-semibold">Dp</h1>
+                    <h1 class="ml-6 mr-2">:</h1>
+                    <h1>Rp. {{ number_format($tagihan->dp,0,',','.') }}</h1>
+                  </div>
+                  @endif
+
+                </div>
+
+
+                <div class="flex float-right gap-x-4">
+
+                  <form action="" method="POST">
+                    @csrf
+                    <button class="px-2 py-2 bg-red-600 text-white font-semibold rounded-md">Cancel</button>
+                  </form>
+
+                  @if ($tagihan->status == 'dikonfirmasi')
+                  <a href="{{ $tagihan->payment_link }}" class="px-2 py-2 bg-green-600 text-white font-semibold rounded-md">
+                    Pay Now
+                  </a>
+                  @endif
+                </div>
+
+
+
+
+            </div>
+          @endforeach
         </div>
-      
-      
+        {{-- percobaan end --}}
+
+
     </div>
 
   </div>
+
+
+
+
+
 </div>
 @endsection

@@ -9,6 +9,7 @@
 @yield('container')
 
 </div>
+</div>
 
 @include('partials.footer')
 @include('sweetalert::alert')

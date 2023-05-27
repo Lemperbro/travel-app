@@ -2,11 +2,12 @@
 
 
 @section('container')
-    <form action="/checkout/{{ $slug }}/payment" method="post" class="mb-32 mt-28" onclick="checkout()">
-        <div class="grid lg:grid-cols-2">
-            <div class="px-4 pt-2">
+    <form action="/checkout/{{ $slug }}/payment" method="post" class="mb-32 mt-28  grid lg:grid-cols-2" onclick="checkout()">
+        <div class="">
+            <div class="px-4 pt-2 ">
                 <p class="text-xl font-medium">Order Summary</p>
                 <p class="text-gray-400">Check your items.</p>
+
                 <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
 
                     @php
@@ -25,16 +26,12 @@
                         </div>
                     </div>
 
-                    <table class="flex gap-x-4">
-
-                        <tbody>
-
-                        </tbody>
-                    </table>
 
 
                 </div>
 
+                @if ($wisata->extra->count() > 0)
+                    
                 {{-- addittional extra start --}}
                 <div class="mt-8">
                     <div class="">
@@ -68,255 +65,276 @@
 
                         </div>
                     </div>
-
+                    
                 </div>
                 @endforeach
+                
+                
+                
+            </div>
+            {{-- addittional extra end --}}
+            @endif
+            
 
-            {{-- order details start--}}
-                <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-                    @csrf
-                    <p class="text-xl font-medium">Order Details</p>
-                    <p class="text-gray-400">Complete your order by providing your payment details.</p>
-    
-                    <div class="">
-    
-                        <div class="grid grid-cols-2 gap-x-4 mt-2">
-    
-                            <div class="w-full">
-                                <label for="kota">Select City for pickup point </label>
-                                <select name="kota" id="pickup" onclick="piickup()" class="w-full rounded-md ">
-                                    @foreach ($kota as $kota)
-                                        <option value="{{ $kota->slug }},{{ $kota->harga }}">{{ $kota->nama_kota }}</option>
-                                    @endforeach
-    
-                                </select>
-    
-                            </div>
-    
-                            <div class="w-full">
-                                <label for="pickup">Pickup Point</label>
-                                <textarea type="text" name="pickup" cols="1" rows="1" class="w-full rounded-md"></textarea>
-                            </div>
-    
-                        </div>
-    
-    
-                        <div class="grid grid-cols-2 gap-x-4 mt-2 mb-2">
-    
-                            <div class="w-full">
-                                <label for="kota">Select City For Dropout Point</label>
-                                <select name="drop_kota" id="dropout" class="w-full rounded-md ">
-                                    @foreach ($drop as $drop)
-                                        <option value="{{ $drop->slug }}">{{ $drop->nama_kota }}</option>
-                                    @endforeach
-    
-                                </select>
-    
-                            </div>
-    
-                            <div class="w-full">
-                                <label for="pickup">Dropout Point</label>
-                                <textarea type="text" name="dropout" cols="1" rows="1" class="w-full rounded-md"></textarea>
-    
-                            </div>
-    
-                        </div>
-                        <input type="hidden" id="destinasi" value="{{ $wisata->harga }}">
-                        <label for="note" class="">Note</label>
-                        <textarea name="note" id="note" class="w-full h-20 mt-2 rounded-md">
-    
-          </textarea>
-                        @php
-                        $adults = $wisata->harga * $adult;
-                        $childs = $wisata->harga * $child;
-                        $price_count = $childs + $adults;
-                    @endphp
-                        @if ($adult > 1 || $child > 1)
-                        <input type="hidden" id="priceWisata" value="{{$price_count}}">
-                        
-                        @else
-                        <input type="hidden" id="priceWisata" value="{{$wisata->harga}}">
-    
-                                            
-                        @endif
-    
-                        <div id="hasil" class="mt-4 bg-yellow-100">
-    
-                        </div>
-                        <div class="mt-5 grid gap-6">
-                            <div class="relative border rounded-md p-4">
-    
-                                <table class="flex gap-x-4">
-                                    <thead>
-                                        <tr class="flex flex-col text-left">
-                                            <th class="my-1">Nama Pembeli</th>
-                                            <th class="my-1">No Telephone</th>
-                                            <th class="my-1">Order Quantity</th>
-                                            <th class="my-1">Departure</th>
-                                            <input type="hidden" name="departure" value="{{ $tanggal }}">
-                                        </tr>
-                                    </thead>
-    
-                                    <tr class="flex flex-col text-left">
-                                        <td class="my-1">:</td>
-                                        <td class="my-1">:</td>
-                                        <td class="my-1">:</td>
-                                        <td class="my-1">:</td>
-                                    </tr>
-    
-                                    <tbody>
-    
-    
-                                        <tr class="flex flex-col text-left">
-                                            <td class="my-1">{{ auth()->user()->username }}</td>
-                                            <td class="my-1">{{ auth()->user()->no_tlpn }}</td>
-                                            <td class="my-1">{{ $child + $adult }}</td>
-                                            <td class="my-1">{{ $tanggal }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-    
-                            </div>
-    
-    
-                        </div>
-    
-    
-                        <div class="flex items-center p-2 mt-4">
-                            <input id="link-checkbox" type="checkbox" value=""
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                data-modal-target="popup-modal" data-modal-toggle="popup-modal">I agree with the <a
-                                    href="#" class="text-blue-600 dark:text-blue-500 hover:underline">terms and
-                                    conditions</a>.</label>
-                        </div>
-    
-    
-                        <div id="popup-modal" tabindex="-1"
-                            class="fixed border top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative w-full max-w-md max-h-full">
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                    <button type="button"
-                                        class="absolute top-3 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                        data-modal-hide="popup-modal">
-                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                    <div class="p-6 text-center">
-                                        <h3 class="text-lg font-normal text-gray-500 dark:text-gray-400 mt-3">Are you sure you
-                                            want to delete this product?</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-    
-                        <h1 class="font-semibold mt-4">Select Your payment type</h1>
-                        <div class="flex justify-between">
-                            <div class="flex items-center pl-2 w-[40%] rounded dark:border-gray-700">
-                                <input checked id="payment_type" type="radio" value="full" name="payment_type"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="bordered-radio-1"
-                                    class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Payy
-                                    Full</label>
-                            </div>
-                            <div class="flex items-center pl-4 w-[40%] rounded dark:border-gray-700">
-                                <input id="payment_type" type="radio" value="dp" name="payment_type"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="bordered-radio-2"
-                                    class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DP
-                                    50%</label>
-                            </div>
-                        </div>
-    
-    
-                        <!-- Total -->
-    
-                        <div class="flex items-center justify-between">
-    
-                            <div class="mt-6 border-t border-b py-2 w-full">
-    
-                                <div class="flex items-center justify-between">
-                                    <p class="text-sm font-semibold text-gray-900">Destination</p>
-                                    <p class="font-semibold text-gray-900">Rp. <span
-                                            id="destinationPrice">
-                                            @if ($adult > 1 || $child > 1)
-                                            {{ number_format($price_count , 0, ',', '.') }}
-                                            @else
-                                            {{ number_format($wisata->harga , 0, ',', '.') }}
-                                            @endif
-                                        </span></p>
-                                </div>
-                                
-                                <div class="ml-4">
-                                    @if ($adult > 1)
-                                    <div class="flex items-center justify-between">
-                                        <p class="text-sm font-medium text-gray-900">Adult</p>
-                                        <p class="text-sm font-medium text-gray-900" >{{ number_format($wisata->harga, 0, ',', '.') }} x {{ $adult }}</p>
-                                        <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($wisata->harga * $adult, 0, ',', '.') }}</p>
-                                    </div>
-                                    <input type="hidden" name="adult" value="{{ $adult }}">
-                                    @endif
-                                    @if ($child > 1)
-                                    
-                                    <div class="flex items-center justify-between">
-                                        <p class="text-sm font-medium text-gray-900">Child</p>
-                                        <p class="text-sm font-medium text-gray-900">{{ number_format($wisata->harga, 0, ',', '.') }} x {{ $child }} </p>
-                                        <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($wisata->harga * $child, 0, ',', '.') }}</p>
-                                    </div>
-                                    <input type="hidden" name="child" value="{{ $child }}">
 
-                                    @endif
-                                </div>
+        </div>
+        @if ($wisata->extra->count() == 0)
+        </div>    
+        @endif
 
-                                <div class="flex items-center justify-between" id="extra">
-                                    <p class="text-sm font-semibold text-gray-900" id="extra_nama"></p>
-                                    <p class="font-semibold text-gray-900" id="extra_jumlah"></p>
-                                    <p class="font-semibold text-gray-900" id="extra_harga"></p>
-                                    <div id="jumlah_pesanan" class="hidden" data-data="{{ json_encode($child + $adult) }}"></div>
-                                </div>
+              {{-- order details start--}}
+              <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+                @csrf
+                <p class="text-xl font-medium">Order Details</p>
+                <p class="text-gray-400">Complete your order by providing your payment details.</p>
 
-                                <div class="flex items-center justify-between">
-                                    <p class="text-sm font-semibold text-gray-900">Pickup</p>
-                                    <p class="font-semibold text-gray-900">Rp. <span
-                                            id="pickupPrice">{{ number_format($firstpricePickup, 0, ',', '.') }}</span></p>
-                                </div>
-    
-                                <div class="flex items-center justify-between">
-                                    <p class="text-sm font-semibold text-gray-900">Total</p>
-                                    <p class="font-semibold text-gray-900">Rp. <span
-                                            id="total">
-                                            @if ($adult > 1 || $child > 1)
-                                            {{ number_format($price_count + $firstpricePickup, 0, ',', '.') }}</span>
-                                            @else
-                                            {{ number_format($wisata->harga + $firstpricePickup, 0, ',', '.') }}</span>
-                                            
-                                            @endif
-                                    </p>
-                                </div>
-    
-                            </div>
+                <div class="">
+
+                    <div class="grid grid-cols-2 gap-x-4 mt-2">
+
+                        <div class="w-full">
+                            <label for="kota">Select City for pickup point </label>
+                            <select name="kota" id="pickup" onclick="piickup()" class="w-full rounded-md ">
+                                @foreach ($kota as $kota)
+                                    <option value="{{ $kota->slug }},{{ $kota->harga }}">{{ $kota->nama_kota }}</option>
+                                @endforeach
+
+                            </select>
+
                         </div>
-    
+
+                        <div class="w-full">
+                            <label for="pickup">Pickup Point</label>
+                            <textarea type="text" name="pickup" cols="1" rows="1" class="w-full rounded-md"></textarea>
+                        </div>
+
                     </div>
-    
-                    <button type="submit"
-                        class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
+
+
+                    <div class="grid grid-cols-2 gap-x-4 mt-2 mb-2">
+
+                        <div class="w-full">
+                            <label for="kota">Select City For Dropout Point</label>
+                            <select name="drop_kota" id="dropout" class="w-full rounded-md ">
+                                @foreach ($drop as $drop)
+                                    <option value="{{ $drop->slug }}">{{ $drop->nama_kota }}</option>
+                                @endforeach
+
+                            </select>
+
+                        </div>
+
+                        <div class="w-full">
+                            <label for="pickup">Dropout Point</label>
+                            <textarea type="text" name="dropout" cols="1" rows="1" class="w-full rounded-md"></textarea>
+
+                        </div>
+
+                    </div>
+                    <input type="hidden" id="destinasi" value="{{ $wisata->harga }}">
+                    <label for="note" class="">Note</label>
+                    <textarea name="note" id="note" class="w-full h-20 mt-2 rounded-md">
+
+              </textarea>
+                    @php
+                    
+                    $adults = $wisata->harga * $adult;
+                    $childs = $wisata->harga * $child;
+                    $price_count = $childs + $adults;
+                    @endphp
+                    @if ($adult > 1 || $child > 1)
+                    <input type="hidden" id="priceWisata" value="{{$price_count}}">
+                    
+                    @else
+                    <input type="hidden" id="priceWisata" value="{{$wisata->harga}}">
+
+                                        
+                    @endif
+
+                    <div id="hasil" class="mt-4 bg-yellow-100">
+
+                    </div>
+                    <div class="mt-5 grid gap-6">
+                        <div class="relative border rounded-md p-4">
+
+                            <table class="flex gap-x-4">
+                                <thead>
+                                    <tr class="flex flex-col text-left">
+                                        <th class="my-1">Nama Pembeli</th>
+                                        <th class="my-1">No Telephone</th>
+                                        <th class="my-1">Order Quantity</th>
+                                        <th class="my-1">Departure</th>
+                                        <input type="hidden" name="departure" value="{{ $tanggal }}">
+                                    </tr>
+                                </thead>
+
+                                <tr class="flex flex-col text-left">
+                                    <td class="my-1">:</td>
+                                    <td class="my-1">:</td>
+                                    <td class="my-1">:</td>
+                                    <td class="my-1">:</td>
+                                </tr>
+
+                                <tbody>
+
+
+                                    <tr class="flex flex-col text-left">
+                                        <td class="my-1">{{ auth()->user()->username }}</td>
+                                        <td class="my-1">{{ auth()->user()->no_tlpn }}</td>
+                                        <td class="my-1">
+                                            @if ($child > 0 || $adult > 0)
+                                            {{ $child + $adult }}
+                                            @else
+                                            1
+                                            @endif
+                                        </td>
+                                        <td class="my-1">{{ $tanggal }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="flex items-center p-2 mt-4">
+                        <input id="link-checkbox" type="checkbox" value=""
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            data-modal-target="popup-modal" data-modal-toggle="popup-modal">I agree with the <a
+                                href="#" class="text-blue-600 dark:text-blue-500 hover:underline">terms and
+                                conditions</a>.</label>
+                    </div>
+
+
+                    <div id="popup-modal" tabindex="-1"
+                        class="fixed border top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button"
+                                    class="absolute top-3 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                    data-modal-hide="popup-modal">
+                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-6 text-center">
+                                    <h3 class="text-lg font-normal text-gray-500 dark:text-gray-400 mt-3">Are you sure you
+                                        want to delete this product?</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h1 class="font-semibold mt-4">Select Your payment type</h1>
+                    <div class="flex justify-between">
+                        <div class="flex items-center pl-2 w-[40%] rounded dark:border-gray-700">
+                            <input checked id="payment_type" type="radio" value="full" name="payment_type"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="bordered-radio-1"
+                                class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Payy
+                                Full</label>
+                        </div>
+                        <div class="flex items-center pl-4 w-[40%] rounded dark:border-gray-700">
+                            <input id="payment_type" type="radio" value="dp" name="payment_type"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="bordered-radio-2"
+                                class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">DP
+                                50%</label>
+                        </div>
+                    </div>
+
+
+                    <!-- Total -->
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="mt-6 border-t border-b py-2 w-full">
+
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm font-semibold text-gray-900">Destination</p>
+                                <p class="font-semibold text-gray-900">Rp. <span
+                                        id="destinationPrice">
+                                        @if ($adult > 1 || $child > 1)
+                                        {{ number_format($price_count , 0, ',', '.') }}
+                                        @else
+                                        {{ number_format($wisata->harga , 0, ',', '.') }}
+                                        @endif
+                                    </span></p>
+                            </div>
+                            
+                            <div class="ml-4">
+                                @if ($adult > 1)
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-gray-900">Adult</p>
+                                    <p class="text-sm font-medium text-gray-900" >{{ number_format($wisata->harga, 0, ',', '.') }} x {{ $adult }}</p>
+                                    <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($wisata->harga * $adult, 0, ',', '.') }}</p>
+                                </div>
+                                <input type="hidden" name="adult" value="{{ $adult }}">
+                                @endif
+                                @if ($child > 1)
+                                
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-medium text-gray-900">Child</p>
+                                    <p class="text-sm font-medium text-gray-900">{{ number_format($wisata->harga, 0, ',', '.') }} x {{ $child }} </p>
+                                    <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($wisata->harga * $child, 0, ',', '.') }}</p>
+                                </div>
+                                <input type="hidden" name="child" value="{{ $child }}">
+
+                                @endif
+                            </div>
+
+                            <div class="flex items-center justify-between" id="extra">
+                                <p class="text-sm font-semibold text-gray-900" id="extra_nama"></p>
+                                <p class="font-semibold text-gray-900" id="extra_jumlah"></p>
+                                <p class="font-semibold text-gray-900" id="extra_harga"></p>
+                                <div id="jumlah_pesanan" class="hidden" data-data="{{ json_encode($child + $adult) }}"></div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm font-semibold text-gray-900">Pickup</p>
+                                <p class="font-semibold text-gray-900">Rp. <span
+                                        id="pickupPrice">{{ number_format($firstpricePickup, 0, ',', '.') }}</span></p>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm font-semibold text-gray-900">Total</p>
+                                <p class="font-semibold text-gray-900">Rp. <span
+                                        id="total">
+                                        @if ($adult > 1 || $child > 1)
+                                        {{ number_format($price_count + $firstpricePickup, 0, ',', '.') }}</span>
+                                        @else
+                                        {{ number_format($wisata->harga + $firstpricePickup, 0, ',', '.') }}</span>
+                                        
+                                        @endif
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-    
-    
+
+                <button type="submit"
+                    class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
             </div>
 
-            {{-- order details end --}}
 
-            </div>
-                {{-- addittional extra end --}}
+        </div>
+
+        {{-- order details end --}}
 
            
     </form>
+
+
+
+
 @endsection
