@@ -22,8 +22,11 @@ function checkout(){
 
     if(additionalTotal > 0){
        document.getElementById('extra_nama').innerHTML = "Extra";
-
-      document.getElementById('extra_jumlah').innerHTML = 'x '+data_jumlah;
+      if(data_jumlah > 0){
+         document.getElementById('extra_jumlah').innerHTML = 'x '+data_jumlah;
+      }else{
+         document.getElementById('extra_jumlah').innerHTML = 'x '+ '1';
+      }
       document.getElementById('extra_harga').innerHTML = new Intl.NumberFormat('id-ID', {
          minimumFractionDigits: 0
        }).format(additionalTotal);
