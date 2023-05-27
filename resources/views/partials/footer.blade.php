@@ -41,9 +41,9 @@
       <div class="">
         <h1 class="text-white text-3xl font-semibold">Our Service</h1>
         <ul class=" text-white mt-2 text-xl font-semibold pl-1">
-          <li class="mt-2"><a href="/wisata/type/open trip">Open Trip</a></li>
-          <li class="mt-2"><a href="/wisata/type/single trip">Single Trip</a></li>
-          <li class="mt-2"><a href="/wisata/type/private trip">Private Trip</a></li>
+          <li class="mt-2"><a href="/wisata/type/open trip">OPEN TRIP</a></li>
+          <li class="mt-2"><a href="/wisata/type/single trip">SINGLE TRIP</a></li>
+          <li class="mt-2"><a href="/wisata/type/private trip">PRIVATE TRIP</a></li>
         </ul>
       </div>
 
@@ -104,6 +104,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://unpkg.com/alpinejs" defer=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -25,13 +25,13 @@
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow border w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                   <li>
-                    <a href="/wisata/type/{{ "private trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Private Trip</a>
+                    <a href="/wisata/type/{{ "private trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PRIVATE TRIP</a>
                   </li>
                   <li>
-                    <a href="/wisata/type/{{ "single trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Single Trip</a>
+                    <a href="/wisata/type/{{ "single trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">SINGLE TRIP</a>
                   </li>
                   <li>
-                    <a href="/wisata/type/{{ "open trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Open Trip</a>
+                    <a href="/wisata/type/{{ "open trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">OPEN TRIP</a>
                   </li>
                 </ul>
             </div>
