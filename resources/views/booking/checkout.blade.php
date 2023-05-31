@@ -123,8 +123,8 @@
             
 
 
-        </div>
         @if ($wisata->extra->count() == 0)
+        </div>
         </div>    
         @endif
 

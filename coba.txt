@@ -549,3 +549,4 @@ INSERT INTO `kotas` (`id`, `nama_kota`) VALUES
 (473, 'SORONG'),
 (474, 'TELUK WONDAMA'),
 (475, 'TELUK BINTUNI');
+

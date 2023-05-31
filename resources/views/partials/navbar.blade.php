@@ -25,13 +25,13 @@
             <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow border w-44 dark:bg-gray-700 dark:divide-gray-600">
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                   <li>
-                    <a href="/wisata/type/{{ "private trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Private Trip</a>
+                    <a href="/wisata/type/{{ "private trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PRIVATE TRIP</a>
                   </li>
                   <li>
-                    <a href="/wisata/type/{{ "single trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Single Trip</a>
+                    <a href="/wisata/type/{{ "single trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">SINGLE TRIP</a>
                   </li>
                   <li>
-                    <a href="/wisata/type/{{ "open trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Open Trip</a>
+                    <a href="/wisata/type/{{ "open trip" }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">OPEN TRIP</a>
                   </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
         </button>
         <!-- Dropdown menu -->
         <div class="z-50 hidden max-w-lg w-full h-[620px] my-4 overflow-y-scroll scrollbar text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700 " id="notification-dropdown">
-          <div class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <div class="block px-4 py-2 text-lg text-center font-semibold bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               Notifications
           </div>
           <div>
@@ -76,7 +76,7 @@
               @csrf
             <button class="w-full text-left flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600 {{ ($notifications->status == 'belum dibuka')? 'bg-gray-100 dark:bg-gray-600' : '' }} {{ ($notifications->status == 'dibuka') ? 'bg-white dark:bg-gray-700' : '' }}">
               <div class="w-full pl-3">
-                  <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
+                  <div class="font-normal text-base mb-1.5 dark:text-gray-400">
 
 
                     @if ($notifications->tipe == 'pemesanan')
@@ -92,7 +92,7 @@
                   $now =  Carbon\Carbon::now();
 
                 @endphp
-                  <div class="text-xs font-medium text-primary-700 dark:text-primary-400">
+                  <div class="text-sm font-semibold text-primary-700 dark:text-primary-400">
                     @if ($created_at->diffInMinutes($now) < 60)
                     {{ $created_at->diffForHumans() }}
                     @else
