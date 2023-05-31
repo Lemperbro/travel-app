@@ -312,7 +312,7 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
-Route::get('/generate-pdf', [PDFController::class]);
+Route::get('/pdf', [PDFController::class]);
 
 
 
