@@ -1,4 +1,3 @@
-
 function checkout(){
    var pickup = document.getElementById('pickup');
    var pickupValue = pickup.value;
@@ -149,8 +148,11 @@ console.log(document.getElementById('submit').attributes('disabled'));
 
 
 var viewBookingButtons = document.querySelectorAll('.view_booking');
+
+
 viewBookingButtons.forEach(function(button) {
     button.addEventListener('click', function() {
+
         var targetId = this.getAttribute('data-target');
         var viewBookingArea = document.getElementById(targetId);
         var eye_open = document.querySelector('.eye_open_'+targetId);   
