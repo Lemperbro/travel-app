@@ -170,6 +170,7 @@ $img = explode("|", $wisata->image);
 
 
 
+
             <div class="relative max-w-sm p-2">
 
 
