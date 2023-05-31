@@ -50,10 +50,8 @@ class CheckoutController extends Controller
         //rumus perhitungan diskon dinamis
         // hargaTotal - (hargaTotal * diskon / 100)
 
-        $total_pesan = $request->adult + $request->child;
-
-
-
+        
+        
         $extra_price = 0;
         if($request->extra !== null){
             $extra_array = array();
@@ -63,52 +61,59 @@ class CheckoutController extends Controller
                 $harga_extra = $explode_extra[1];
                 $extra_price += intval($harga_extra);
             }
-
+            
             $extra_id = implode(',', $extra_array);
-
-
+            
+            
             
         }elseif($request->extra == null){
             $extra_id = null;
         }
-
+        
         
         
         $wisata = Wisata::where('slug', $slug)->first();
-        $event = Event::where('wisata_id',$wisata->id)->get();
+        $event = Event::where('wisata_id',$wisata->id)->where('status',1)->get();
         $kota = Kota::where('slug', request('kota'))->first();
         $kota_pickup = explode(',', $request->kota);
-        $count_1 = $wisata->harga + $extra_price;
-        $count_2 = $count_1 * $total_pesan;
-        $count_3 = $count_2 + $kota_pickup[1];
+        if($request->adult > 0 || $request->child > 0){
+            $total_pesan = $request->adult + $request->child;
+            $priceWisata = $wisata->harga * $request->adult + $wisata->price_child * $request->child;
+        }else {
+            $total_pesan = 1;
+            $priceWisata = $wisata->harga;
+        }
+        $extra_price = $extra_price * $total_pesan;
+        // $count_3 = $priceWisata + $kota_pickup[1];
 
-
+        // dd($event);
         //logic event start
         if($event->count() > 0){
-            $count_4 = $count_3;
+            $count_4 = $priceWisata;
             if($event->where('tipe', 'min_jumlah')->count() > 0){
-                $min_jumlah = Event::where('id', $wisata->id)->where('tipe', 'min_jumlah')->first();
+                $min_jumlah = Event::where('wisata_id', $wisata->id)->where('tipe', 'min_jumlah')->first();
                 if($total_pesan >= $min_jumlah->min_jumlah){
-                    $count_3 = $count_3 - ($count_3 * $min_jumlah->potongan/100);
+                    $count_3 = $priceWisata - ($priceWisata * $min_jumlah->potongan/100);
                 }
-
+                
             }
-
+            
             if($event->where('tipe', 'min_harga')->count() > 0){
-                $min_harga = Event::where('id',$wisata->id)->where('tipe', 'min_harga')->first();
+                $min_harga = Event::where('wisata_id', $wisata->id)->where('tipe', 'min_harga')->first();
                 if($count_4 >= $min_harga->min_harga){
                     $count_3 = $count_3 - ($count_3 * $min_harga->potongan/100);
                 }
             }
 
             if($event->where('tipe', 'aktif')->count() > 0){
-                $event_aktif = Event::where('id', $wisata->id)->where('tipe', 'aktif')->first();
+                $event_aktif = Event::where('wisata_id', $wisata->id)->where('tipe', 'aktif')->first();
                 $count_3 = $count_3 - ($count_3 * $event_aktif->potongan/100);
 
             }
         }
         //logic event end
-        
+        $count_3 = $count_3 + $extra_price;
+        $count_3 = $count_3 + $kota_pickup[1];
 
         //logic dp start
         $price_diskon = null;
@@ -150,7 +155,7 @@ class CheckoutController extends Controller
             'wisata_id' => $wisata->id,
             'user_id' => auth()->user()->id,
             'doc_no' => $external_id,
-            'pickup_kota' => $request->kota,
+            'pickup_kota' => $kota_pickup[0],
             'pickup_point' => $request->pickup,
             'drop_kota' => $request->drop_kota,
             'drop_point' => $request->dropout,
@@ -237,9 +242,11 @@ class CheckoutController extends Controller
             'tanggal' => 'required'
         ]);
         
-        $wisata_id = Wisata::where('slug', $slug)->pluck('id')->first();
+        $wisata = Wisata::with('extra','event')->where('slug', $slug)->first();
+
+
         return view('booking.checkout',[
-            'wisata' => Wisata::with('extra')->where('slug', $slug)->first(),
+            'wisata' => $wisata,
             'kota' => Kota::get(),
             'drop' => Kota::get(),
             'firstpricePickup' => Kota::pluck('harga')->first(),
@@ -247,12 +254,23 @@ class CheckoutController extends Controller
             'adult' => $request->adult,
             'child' => $request->child,
             'tanggal' => $request->tanggal,
-            'event' => Event::where('wisata_id', $wisata_id)->get()
         ]);
         
     }
 
 
+    public function cancel($doc_no){
+        $pemesanan = Pemesanan::where('doc_no',$doc_no)->first();
+        if($pemesanan->payment_status == 'PENDING'){
+            Pemesanan::where('doc_no',$doc_no)->delete();
+            return redirect()->back()->with('toast_success','success cancel this destination');
+        }elseif($pemesanan->payment_status == 'PAID'){
+            Pemesanan::where('doc_no',$doc_no)->update([
+                'status' => 'cancel'
+            ]);
+            return redirect()->back()->with('toast_success','success cancel this destination');
+        }
+    }
 
     public function payment(Request $request, $slug){
             

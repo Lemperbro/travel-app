@@ -26,8 +26,12 @@ $img = explode("|", $wisata->image);
     </div> --}}
 
 
-
-    <h1 class="text-3xl font-semibold mt-12">{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
+    <div class="flex gap-x-2">
+        <h1 class="text-3xl font-semibold mt-12">{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
+        @if ($event_aktif !== null)
+        <h1 class="bg-orange-600 p-[2px] px-1 text-[14px] rounded-md text-white my-auto justify-center">{{ $event_aktif->judul }}</h1>
+        @endif
+    </div>
     <div class="flex gap-x-2 mt-2">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-3 fill-gray-600"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
 
@@ -63,7 +67,10 @@ $img = explode("|", $wisata->image);
             </div>
             <div class="">
                 <p class="font-semibold text-xl">Start Price</p>
-                <p class='text-gray-500 capitalize'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
+                <p class='text-gray-500 capitalize'>
+                    Rp. {{ number_format($wisata->harga ,0,',','.') }}
+                </p>
+                
             </div>
         </div>
 
@@ -131,6 +138,7 @@ $img = explode("|", $wisata->image);
         <form action="/checkout/{{ $wisata->slug }}" method="POST" class="border w-[30%] h-full relative rounded-lg p-2">
             @csrf
             <p class="text-sm text-center p-2 font-bold">Enter Number of Participants </p>
+            @if ($wisata->price_child !== null)
             <div class="flex justify-between p-2">
                 <div class="">
                     <h1 for="first_name" class="block text-sm font-bold text-gray-900 dark:text-white capitalize">child Group
@@ -143,6 +151,7 @@ $img = explode("|", $wisata->image);
                         class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
                 </div>
             </div>
+            @endif
 
             <div class="flex justify-between p-2">
                 <div class="">
@@ -150,13 +159,13 @@ $img = explode("|", $wisata->image);
                     </h1>
                     <span class="text-xs text-red-600">5-12 years old</span>
                 </div>
-
+                
                 <div class="">
                     <input type="number" id="adult" name="adult" min="0"
-                        class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
+                    class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
                 </div>
             </div>
-
+            
 
 
 
@@ -184,43 +193,12 @@ $img = explode("|", $wisata->image);
         </form>
     </div>
 
-<<<<<<< HEAD
     {{-- step 1 input group end --}}
-=======
-                <div class="relative max-w-sm p-2">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <input datepicker datepicker-format="mm/dd/yyyy" type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Select date">
-                </div>
 
-                <a href="/checkout/{{ $wisata->slug }}">
-                    <button
-                        class='shadow-best m-2 px-2 py-2 rounded-xl bg-[#FD522C] text-white flex font-semibold mx-auto text-sm'>
-                        Booking Now
-                    </button>
-                </a>
-                
-                <div class="border-b-2">
-                    <p class="text-xs p-2">
-                        <span class="font-semibold text-xs">Please note:</span>
-                        After your purchase is confirmed we will email you a confirmation.
-                    </p>
-                </div>
->>>>>>> ee67057b59bf361170297f8753032e9cde4d0a08
+    <p class="text-xs p-2">
+        The prices are indicated above depending on the number of people
+     </p>
 
-                    <p class="text-xs p-2">
-                        The prices are indicated above depending on the number of people
-                    </p>
-
-<<<<<<< HEAD
     @include('partials.facility')
 
     <div class="my-8">
@@ -245,11 +223,6 @@ $img = explode("|", $wisata->image);
 
     @foreach ($faq as $faq)
         
-=======
-                    <p class="text-xs p-2">
-                        The prices are indicated above depending on the number of peopleIf you are organising for bigger groups over 15 pax, chat with us and we are able to assist you.
-                    </p>
->>>>>>> ee67057b59bf361170297f8753032e9cde4d0a08
 
 
     <div class="mt-1">

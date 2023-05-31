@@ -42,7 +42,8 @@
         @foreach ($latest->take(6) as $latest_post)
         @php
         $images = explode('|', $latest_post->image);
-      @endphp
+        $event = app\Models\Event::where('wisata_id', $latest_post->id)->where('tipe', 'aktif')->where('status', 1)->first();
+        @endphp
         <a href="/wisata/{{ $latest_post->slug }}" class="block rounded-lg p-4 shadow-best dark:bg-gray-700 bg-white">
           <img
             alt="Home"
@@ -54,8 +55,14 @@
             <dl>
               <div>
                 <dt class="sr-only">Price</dt>
-        
-                <dd class="text-sm text-orange-600 font-semibold">Start From Rp. {{ number_format($latest_post->harga,0,',','.') }}</dd>
+                <dd class="text-sm text-orange-600 font-semibold flex gap-x-2">
+                  Start From
+                  Rp. {{ number_format($latest_post->harga,0,',','.') }}
+                  @if ($event !== null)
+                  <h1 class="bg-orange-600 p-[2px] px-1 text-[10px] my-auto rounded-md text-white ml">{{ $event->judul }}</h1>
+                @endif
+
+                </dd>
               </div>
         
               <div>

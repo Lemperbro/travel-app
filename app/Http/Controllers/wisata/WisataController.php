@@ -173,7 +173,7 @@ class WisataController extends Controller
 
 
     public function isi($slug){
-        $wisata = Wisata::with('fasilitas','equipment', 'itenerary')->where('slug', $slug)->get();
+        $wisata = Wisata::with('fasilitas','equipment', 'itenerary','event')->where('slug', $slug)->get();
 
 
         $faq = Faq::where('wisata', $slug)->get();
@@ -190,7 +190,8 @@ class WisataController extends Controller
                 'best' => $best,
                 'comment' => $comment,
                 'faq' => $faq,
-                'event' => $event
+                'event' => $event,
+                'event_aktif' => Event::where('tipe', 'aktif')->where('status', 1)->where('wisata_id',$wisata_id)->first()
             ]);
         }else{
             return Redirect('/');

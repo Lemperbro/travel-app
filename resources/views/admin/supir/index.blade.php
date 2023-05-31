@@ -33,38 +33,38 @@
 
                   <table class="w-full">
                     <thead>
-                      <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
-                        <th class="border px-4 py-3">No</th>
-                        <th class="border px-4 py-3">profil</th>
-                        <th class="border px-4 py-3">Name</th>
-                        <th class="border px-4 py-3">Telephone</th>
-                        <th class="px-2 border">Address</th>
-                        <th class="px-2 border">Age</th>
-                        <th class="px-2 border">Action</th>
+                      <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b-2 dark:border-gray-400 bg-gray-300 dark:text-white dark:bg-gray-800 text-center">
+                        <th class=" px-4 py-3">No</th>
+                        <th class=" px-4 py-3">profil</th>
+                        <th class=" px-4 py-3">Name</th>
+                        <th class=" px-4 py-3">Telephone</th>
+                        <th class="px-2 ">Address</th>
+                        <th class="px-2 ">Age</th>
+                        <th class="px-2 ">Action</th>
                       </tr>
                     </thead>
     
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border ">
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border-b-[1px] dark:border-gray-500 ">
 
                       @foreach ($data as $no => $user)
                         
                       <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                        <td class="px-4 py-3 text-sm border text-center">{{ $no+1 }}</td>
+                        <td class="px-4 py-3 text-sm text-center">{{ $no+1 }}</td>
 
-                        <td class="px-4 py-3 text-sm border text-center w-32 h-32 object-cover"> 
+                        <td class="px-4 py-3 text-sm text-center w-32 h-32 object-cover"> 
                           <img src="{{ asset('image/'.$user->image) }}" alt=""> 
                         </td>
 
 
-                        <td class="px-4 py-3 text-sm text-center border"> {{ $user->nama }}</td>
+                        <td class="px-4 py-3 text-sm text-center"> {{ $user->nama }}</td>
     
-                        <td class="px-4 py-3 text-sm border text-center">
+                        <td class="px-4 py-3 text-sm text-center">
                           {{ $user->no_tlpn }}
                         </td>
     
-                        <td class="px-4 py-3 text-sm border text-center">{{ $user->alamat }}</td>
+                        <td class="px-4 py-3 text-sm text-center">{{ $user->alamat }}</td>
     
-                        <td class="px-4 py-3 text-sm border text-center">{{ $user->umur }} Th</td>
+                        <td class="px-4 py-3 text-sm text-center">{{ $user->umur }} Th</td>
     
                         <td class="px-4 py-10 text-sm text-center flex gap-x-4 justify-center">
                           <button type="button"

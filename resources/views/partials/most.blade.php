@@ -39,7 +39,9 @@
         @foreach ($best as $best_wisata)
         @php
         $images = explode('|', $best_wisata->image);
-      @endphp
+        $event = app\Models\Event::where('wisata_id', $best_wisata->id)->where('tipe', 'aktif')->where('status', 1)->first();
+
+        @endphp
         <a href="/wisata/{{ $best_wisata->slug }}" class="block rounded-lg p-4 shadow-best dark:bg-gray-700 bg-white">
           <img
             alt="Home"
@@ -52,7 +54,13 @@
               <div>
                 <dt class="sr-only">Price</dt>
         
-                <dd class="text-sm text-orange-600 font-semibold">Start From Rp. {{ number_format($best_wisata->harga,0,',','.') }}</dd>
+                <dd class="text-sm text-orange-600 font-semibold flex gap-x-2">
+                  Start From Rp. {{ number_format($best_wisata->harga,0,',','.') }}
+                  @if ($event !== null)
+                    <h1 class="bg-orange-600 p-[2px] px-1 text-[10px] my-auto rounded-md text-white ml">{{ $event->judul }}</h1>
+                  @endif
+                </dd>
+                                
               </div>
         
               <div>

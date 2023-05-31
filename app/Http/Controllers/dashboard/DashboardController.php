@@ -24,7 +24,7 @@ class DashboardController extends Controller
 
         // dd(request('search'));
 
-        $wisata = Wisata::with('kota');
+        $wisata = Wisata::with('kota','event');
         $price = ['id','desc'];
         if(request('search')){
             $wisata->where('status', true)->where('nama_wisata', 'like', '%' . request('search') . '%')
