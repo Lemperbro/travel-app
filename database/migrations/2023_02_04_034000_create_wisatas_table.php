@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('kota_id');
             $table->string('tour_type');
             $table->integer('harga');
+            $table->integer('price_child');
             $table->string('long_tour');
             $table->string('room_type')->nullable();
             $table->string('nama_hotel')->nullable();

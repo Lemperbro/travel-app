@@ -50,6 +50,12 @@ class CheckoutController extends Controller
         //rumus perhitungan diskon dinamis
         // hargaTotal - (hargaTotal * diskon / 100)
 
+        $validasi = $request->validate([
+            'kota' => 'required',
+            'pickup' => 'required',
+            'drop_kota' => 'required',
+            'dropout' => 'required'
+        ]);
         
         
         $extra_price = 0;
@@ -90,6 +96,7 @@ class CheckoutController extends Controller
         //logic event start
         if($event->count() > 0){
             $count_4 = $priceWisata;
+            $count_3 = $priceWisata;
             if($event->where('tipe', 'min_jumlah')->count() > 0){
                 $min_jumlah = Event::where('wisata_id', $wisata->id)->where('tipe', 'min_jumlah')->first();
                 if($total_pesan >= $min_jumlah->min_jumlah){

@@ -46,7 +46,7 @@
                       <tr class="bg-gray-100 dark:bg-gray-900 dark:bg-opacity-40">
                         <th class="hidden sm:table-cell py-4">Customers</th>
                         <th class="hidden sm:table-cell py-4">Email</th>
-                        <th class="hidden lg:table-cell py-4">Date added</th>
+                        <th class="hidden lg:table-cell py-4">Departure</th>
                         <th class="hidden lg:table-cell py-4">Status</th>
                         <th class="text-center hidden lg:table-cell py-4">Booking Number</th>
                         <th data-sortable="false">Actions</th>
@@ -67,7 +67,7 @@
                             </div>
                         </td>
                         <td class="hidden sm:table-cell text-center">{{ $client->user->email }}</td>
-                        <td class="hidden lg:table-cell text-center">{{ \Carbon\Carbon::parse($client->created_at)->format('d-F-y') }}</td>
+                        <td class="hidden lg:table-cell text-center">{{ \Carbon\Carbon::parse($client->created_at)->format('d-F-Y') }}</td>
                         <td class="hidden lg:table-cell text-center">
                           <span class="text-sm px-2 py-1 font-semibold leading-tight {{ ($client->status == 'menunggu') ? 'text-yellow-700 bg-yellow-100' : '' }} {{ ($client->status == 'ditolak') ? 'bg-red-600 text-white' : '' }} rounded-full">{{ $client->status }}</span>
                         </td>

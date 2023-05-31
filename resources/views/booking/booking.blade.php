@@ -103,7 +103,7 @@
                             <div class="flex justify-between">
                                 <div>
                                     <h2 class="text-gray-900 text-lg font-bold">{{ $tagihan->wisata->nama_wisata }}</h2>
-                                    <h1 class="text-xl text-white bg-green-400 font-bold px-2 rounded-md">
+                                    <h1 class="text-xl text-white bg-green-400 font-bold px-2 rounded-md text-center">
                                         {{ $tagihan->payment_status }}</h1>
                                 </div>
 
@@ -240,13 +240,13 @@
                     @endforeach
                 </div>
 
+                @if ($data->count() == 0 || $data == null)
+                    <h1 class="text-2xl font-semibold text-center">There are no booking activities at this time</h1>
+                @endif
 
 
 
             </div>
-            @if ($data->count() == 0 || $data == null)
-                <h1 class="text-2xl font-semibold text-center">There are no booking activities at this time</h1>
-            @endif
 
         </div>
 

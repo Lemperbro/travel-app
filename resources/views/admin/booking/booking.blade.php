@@ -63,7 +63,7 @@
                       </div>
                     </td>
 
-                    <td class="px-4 py-3 text-sm text-center">Rp. {{ $datas->amount }}</td>
+                    <td class="px-4 py-3 text-sm text-center">Rp. {{ number_format($datas->amount,0,',','.') }}</td>
 
                     <td class="px-4 py-3 text-sm text-center">{{ $datas->wisata->nama_wisata }}</td>
 

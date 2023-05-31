@@ -25,26 +25,28 @@
 
         }
 
-        $price_count = $priceWisata ;//jika ada diskon maka ini harga setelah dapat diskon
+        $priceWisata1 = $priceWisata ;//jika ada diskon maka ini harga setelah dapat diskon
 
         if($wisata->event->where('tipe','min_jumlah')->where('status',1)->count() > 0){
             $event_min_jumlah = App\Models\Event::where('wisata_id', $wisata->id)->where('tipe','min_jumlah')->where('status',1)->first();
             if($total_pesanan >= $event_min_jumlah->min_jumlah){
-                $price_count = $price_count - ($price_count * $event_min_jumlah->potongan/100);
-                $diskon_minjumlah = $priceDiskon - $price_count ;
+                $priceWisata = $priceWisata1 - ($priceWisata1 * $event_min_jumlah->potongan/100);
+                $diskon_minjumlah = $priceWisata1 - $priceWisata ;
             }
         }
 
+        $priceWisata2 = $priceWisata ;//jika ada diskon maka ini harga setelah dapat diskon
 
 
         if($wisata->event->where('tipe','min_harga')->where('status',1)->count() > 0){
             $event_min_harga = App\Models\Event::where('wisata_id', $wisata->id)->where('tipe','min_harga')->where('status',1)->first();
-            if($price_count >= $event_min_harga->min_harga){
-                $price_count = $price_count - ($price_count * $event_min_harga->potongan/100);
-                $diskon_minharga = $diskon_minjumlah - $price_count ;
+            if($priceWisata1 >= $event_min_harga->min_harga){
+                $priceWisata = $priceWisata2 - ($priceWisata2 * $event_min_harga->potongan/100);
+                $diskon_minharga = $priceWisata2 - $priceWisata ;
             }
         }
 
+        $price_count = $priceWisata
 
         @endphp
         <div class="">
@@ -241,9 +243,9 @@
 
 
                     <div class="flex items-center p-2 mt-4">
-                        <input id="link-checkbox" type="checkbox" value=""
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        <input id="agree" type="checkbox" value=""
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onclick="Agree()">
+                        <label for="agree" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                             data-modal-target="popup-modal" data-modal-toggle="popup-modal">I agree with the <a
                                 href="#" class="text-blue-600 dark:text-blue-500 hover:underline">terms and
                                 conditions</a>.</label>
@@ -347,21 +349,28 @@
                             @endif
 
                             @if ($wisata->event->where('tipe','min_jumlah')->where('status',1)->count() > 0)
+                                @if ($total_pesanan >= $event_min_jumlah->min_jumlah)
+                                
                             <div class="flex items-center justify-between">
                                 <p class="text-sm font-semibold text-gray-900">{{ $event_min_jumlah->judul }}</p>
                                 <p class="font-semibold text-gray-900">- Rp. <span>
                                     {{ number_format($diskon_minjumlah, 0, ',', '.') }}
                                 </span></p>
                             </div>
+                                @endif
                             @endif
 
                             @if ($wisata->event->where('tipe','min_harga')->where('status',1)->count() > 0)
+
+                            @if ($event_min_harga->min_harga >= $priceWisata1)
+                                
                             <div class="flex items-center justify-between">
                                 <p class="text-sm font-semibold text-gray-900">{{ $event_min_harga->judul }}</p>
                                 <p class="font-semibold text-gray-900">- Rp. <span>
                                     {{ number_format($diskon_minharga, 0, ',', '.') }}
                                 </span></p>
                             </div>
+                            @endif
                             @endif
 
                             <div class="flex items-center justify-between">
@@ -397,7 +406,7 @@
                 </div>
 
                 <button type="submit"
-                    class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
+                    class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white disabled:bg-gray-500" id="submit" disabled>Place Order</button>
             </div>
 
 
