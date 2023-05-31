@@ -62,13 +62,22 @@ function checkout(){
     var payment_type = document.querySelector('input[name="payment_type"]:checked');
 
     if(payment_type.value == 'dp'){
-      count = count * 0.5;
+      dp = count * 0.5;
+      document.getElementById('payment_title').innerHTML = 'Dp';
+
+      document.getElementById('payment_value').innerHTML = 'Rp. ' + new Intl.NumberFormat('id-ID', {
+         minimumFractionDigits: 0
+       }).format(dp);
+
+    }else if(payment_type.value == 'full'){
+      document.getElementById('payment_title').innerHTML = '';
+      document.getElementById('payment_value').innerHTML = '';
     }
    
 
-   destinationPrice.innerHTML = new Intl.NumberFormat('id-ID', {
-      minimumFractionDigits: 0
-    }).format(Pricewisata.value);
+   // destinationPrice.innerHTML = new Intl.NumberFormat('id-ID', {
+   //    minimumFractionDigits: 0
+   //  }).format(Pricewisata.value);
 
    pickupPrice.innerHTML =  new Intl.NumberFormat('id-ID', {
       minimumFractionDigits: 0
@@ -123,6 +132,30 @@ dropout.addEventListener('input', function() {
 
 
 //show password
+
+
+var viewBookingButtons = document.querySelectorAll('.view_booking');
+viewBookingButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        var targetId = this.getAttribute('data-target');
+        var viewBookingArea = document.getElementById(targetId);
+        var eye_open = document.querySelector('.eye_open_'+targetId);   
+        var eye_close = document.querySelector('.eye_close_'+targetId);   
+
+        if (viewBookingArea.classList.contains('hidden')) {
+            viewBookingArea.classList.remove('hidden');
+            viewBookingArea.classList.add('open');
+            eye_open.classList.add('hidden');
+            eye_close.classList.remove('hidden');
+
+        } else if (viewBookingArea.classList.contains('open')) {
+            viewBookingArea.classList.add('hidden');
+            viewBookingArea.classList.remove('open');
+            eye_open.classList.remove('hidden');
+            eye_close.classList.add('hidden');
+        }
+    });
+});
 
 
 function ShowPassword() {

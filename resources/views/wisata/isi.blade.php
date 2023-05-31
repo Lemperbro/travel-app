@@ -26,8 +26,12 @@ $img = explode("|", $wisata->image);
     </div> --}}
 
 
-
-    <h1 class="text-3xl font-semibold mt-12">{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
+    <div class="flex gap-x-2">
+        <h1 class="text-3xl font-semibold mt-12">{{ $wisata->nama_wisata }} - {{ $wisata->kota->nama_kota }}</h1>
+        @if ($event_aktif !== null)
+        <h1 class="bg-orange-600 p-[2px] px-1 text-[14px] rounded-md text-white my-auto justify-center">{{ $event_aktif->judul }}</h1>
+        @endif
+    </div>
     <div class="flex gap-x-2 mt-2">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-3 fill-gray-600"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
 
@@ -63,7 +67,10 @@ $img = explode("|", $wisata->image);
             </div>
             <div class="">
                 <p class="font-semibold text-xl">Start Price</p>
-                <p class='text-gray-500 capitalize'>Rp. {{ number_format($wisata->harga,0,',','.') }}</p>
+                <p class='text-gray-500 capitalize'>
+                    Rp. {{ number_format($wisata->harga ,0,',','.') }}
+                </p>
+                
             </div>
         </div>
 
@@ -131,6 +138,7 @@ $img = explode("|", $wisata->image);
         <form action="/checkout/{{ $wisata->slug }}" method="POST" class="border w-[30%] h-full relative rounded-lg p-2">
             @csrf
             <p class="text-sm text-center p-2 font-bold">Enter Number of Participants </p>
+            @if ($wisata->price_child !== null)
             <div class="flex justify-between p-2">
                 <div class="">
                     <h1 for="first_name" class="block text-sm font-bold text-gray-900 dark:text-white capitalize">child Group
@@ -143,6 +151,7 @@ $img = explode("|", $wisata->image);
                         class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
                 </div>
             </div>
+            @endif
 
             <div class="flex justify-between p-2">
                 <div class="">
@@ -150,13 +159,13 @@ $img = explode("|", $wisata->image);
                     </h1>
                     <span class="text-xs text-red-600">5-12 years old</span>
                 </div>
-
+                
                 <div class="">
                     <input type="number" id="adult" name="adult" min="0"
-                        class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
+                    class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 h-8  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0">
                 </div>
             </div>
-
+            
 
 
 
@@ -219,7 +228,6 @@ $img = explode("|", $wisata->image);
 
     @foreach ($faq as $faq)
         
-
 
 
     <div class="mt-1">

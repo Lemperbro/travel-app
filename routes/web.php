@@ -241,6 +241,7 @@ Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
 // Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);
 Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
+Route::post('/tagihan/cancel/{doc_no}', [CheckoutController::class, 'cancel']);
 Route::get('/booking', [CheckoutController::class, 'booking']);
 Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
 Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);

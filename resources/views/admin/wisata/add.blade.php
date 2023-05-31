@@ -82,7 +82,7 @@
                 </div>
 
 
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-2 gap-4 mb-4">
                     <div class="">
                         <label for="harga" class="font-bold mb-1 text-gray-900 dark:text-white block">Price</label>
                         <input type="number" name="harga"
@@ -90,6 +90,20 @@
                             >
                     </div>
 
+                    <div class="">
+                        <label for="price_child" class="font-bold mb-1 text-gray-900 dark:text-white block">Price Child</label>
+                        <input type="number" name="price_child"
+                            class="ti w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
+                            >
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="grid grid-cols-2 gap-4">
                     <div class="">
                         <label for="room_type" class="font-bold mb-1 text-gray-900 dark:text-white block">Room Type</label>
                         <input type="text" name="room_type"
@@ -103,8 +117,6 @@
                             class="ti w-full px-4 py-3 rounded-lg border-none  font-medium bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-white"
                             >
                     </div>
-
-
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 my-4">

@@ -26,30 +26,30 @@
             </form>
 
 
-              <table class="w-full">
+              <table class="w-full my-10">
                 <thead>
-                  <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
-                    <th class="border px-4 py-3">No</th>
-                    <th class="border px-4 py-3">No Order</th>
-                    <th class="border px-4 py-3">Client</th>
-                    <th class="px-2 border">Amount</th>
-                    <th class="px-2 border">Destination</th>
-                    <th class="px-2 border">Type Tour</th>
-                    <th class="px-4 py-3 border">Date</th>
-                    <th class="px-4 py-3 border">Status</th>
+                  <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b-2 dark:border-gray-400 bg-gray-300 dark:text-white dark:bg-gray-800 text-center">
+                    <th class="px-4 py-3">No</th>
+                    <th class="px-4 py-3">No Order</th>
+                    <th class="px-4 py-3">Client</th>
+                    <th class="px-2 ">Amount</th>
+                    <th class="px-2 ">Destination</th>
+                    <th class="px-2 ">Type Tour</th>
+                    <th class="px-4 py-3 ">Date</th>
+                    <th class="px-4 py-3 ">Status</th>
                   </tr>
                 </thead>
 
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border ">
-                  @php
-                    $no = 1;
-                  @endphp
-                  @foreach ($data as $datas)
+                @php
+                  $no = 1;
+                @endphp
+                @foreach ($data as $datas)
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border-b-[1px] dark:border-gray-500">
                     
                   <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3 text-sm border text-center">{{ $no++ }}</td>
+                    <td class="px-4 py-3 text-sm text-center">{{ $no++ }}</td>
 
-                    <td class="px-4 py-3 text-sm text-center border">{{ $datas->doc_no }}</td>
+                    <td class="px-4 py-3 text-sm text-center">{{ $datas->doc_no }}</td>
 
                     <td class="flex px-4 py-3 justify-center">
                       <div class="flex items-center text-sm">
@@ -63,22 +63,22 @@
                       </div>
                     </td>
 
-                    <td class="px-4 py-3 text-sm border text-center">Rp. {{ $datas->amount }}</td>
+                    <td class="px-4 py-3 text-sm text-center">Rp. {{ $datas->amount }}</td>
 
-                    <td class="px-4 py-3 text-sm border text-center">{{ $datas->wisata->nama_wisata }}</td>
+                    <td class="px-4 py-3 text-sm text-center">{{ $datas->wisata->nama_wisata }}</td>
 
-                    <td class="px-4 py-3 text-sm border text-center">{{ $datas->wisata->tour_type }}</td>
-                    <td class="px-4 py-3 text-sm border text-center">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-Y ') }}</td>
+                    <td class="px-4 py-3 text-sm text-center">{{ $datas->wisata->tour_type }}</td>
+                    <td class="px-4 py-3 text-sm text-center">{{ \Carbon\Carbon::parse($datas->created_at)->format('d-F-Y ') }}</td>
 
                     <td class="px-4 py-3 text-xs text-center">
                       <span class="px-2 py-1 font-semibold leading-tight rounded-full {{ ($datas->payment_status === 'PENDING') ? 'text-yellow-700 bg-yellow-100' : ''}}  {{ ($datas->payment_status === 'PAID') ? 'text-green-700 bg-green-100' : ''}}">{{ $datas->payment_status }}</span>
                     </td>
 
                   </tr>
-                  @endforeach
-
+                  
                   
                 </tbody>
+                @endforeach
               </table>
 
               
