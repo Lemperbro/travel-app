@@ -108,6 +108,20 @@ dropout.addEventListener('input', function() {
 }
 
 
+
+function Agree(){
+
+   var Agree = document.querySelectorAll('#agree:checked');
+   if (Agree.length === 1) {
+      document.getElementById('submit').removeAttribute('disabled');
+   } else if (Agree.length === 0) {
+      document.getElementById('submit').setAttribute('disabled', 'disabled');
+   }
+}
+
+console.log(document.getElementById('submit').attributes('disabled'));
+
+
 // var destinationPrice = document.getElementById('destinationPrice');
 // var pickupPrice = document.getElementById('pickupPrice');
 // var Pricewisata = document.getElementById('priceWisata');
