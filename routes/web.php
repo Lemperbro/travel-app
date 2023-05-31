@@ -28,6 +28,7 @@ use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\article\KategoriArticleController;
 
 use App\Http\Controllers\admin\AdminTermsController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -310,6 +311,7 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
+Route::get('/generate-pdf', [PDFController::class]);
 
 
 
@@ -317,9 +319,6 @@ Route::get('/histori', function(){
     return view('booking.histori');
 });
 
-Route::get('/duty', function(){
-    return view('admin.kendaraan.duty');
-});
 
 
 

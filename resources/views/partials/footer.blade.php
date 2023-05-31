@@ -47,6 +47,8 @@
         </ul>
       </div>
 
+      
+
 {{-- 
       <div class="">
         <h1 class="text-white text-3xl font-semibold">Type Tour</h1>
