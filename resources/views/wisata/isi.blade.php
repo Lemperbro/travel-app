@@ -206,13 +206,14 @@ $img = explode("|", $wisata->image);
 
 
     @include('partials.facility')
+    @include('partials.barang')
+
 
     <div class="my-8">
         <h1 class="text-center font-bold text-2xl text-[#FD522C]">Itinerary Start with Bromo</h1>
     </div>
 
     @include('partials.dropdowntext')
-    @include('partials.barang')
 
     
     <div class="mt-8">
@@ -226,6 +227,8 @@ $img = explode("|", $wisata->image);
             About {{ $wisata->nama_wisata }}
         </h1>
     </div>
+
+    
 
     @foreach ($faq as $faq)
         
