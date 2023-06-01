@@ -6,7 +6,7 @@
     
     <form action="/event/edit/{{ $id }}/{{ $tipe }}" method="POST" class="mx-10">
         @csrf
-        <h1 class="text-gray-900 dark:text-white text-2xl font-semibold mt-4 mb-10">Edit Event</h1>
+        <h1 class="text-gray-900 dark:text-white text-2xl font-semibold mt-4 mb-10">Edit Event </h1>
         <div>
             <label for="judul" class="text-gray-900 dark:text-white mb-2">Judul</label>
             <input type="text" name="judul" id="judul" class="w-full p-2 rounded-md bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white" @if ($data !== null)

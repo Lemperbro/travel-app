@@ -60,7 +60,7 @@
                   Rp. {{ number_format($latest_post->harga,0,',','.') }}
                   @if ($event !== null)
                   <h1 class="bg-orange-600 p-[2px] px-1 text-[10px] my-auto rounded-md text-white ml">{{ $event->judul }}</h1>
-                @endif
+                  @endif
 
                 </dd>
               </div>
