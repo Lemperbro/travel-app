@@ -17,7 +17,7 @@
             $total_pesanan = 1;
         }
 
-        
+        $total = $priceWisata; //harga sebelum diskon
         if($wisata->event->where('tipe','aktif')->where('status',1)->count() > 0 ){
             $event_aktif = App\Models\Event::where('wisata_id', $wisata->id)->where('tipe','aktif')->where('status',1)->first();
             $priceWisata = $priceWisata - ($priceWisata * $event_aktif->potongan/100);
@@ -49,7 +49,7 @@
         $price_count = $priceWisata
 
         @endphp
-        <div class="">
+        <div class="border border-red-600">
             <div class="px-4 pt-2 ">
                 <p class="text-xl font-medium">Order Summary</p>
                 <p class="text-gray-400">Check your items.</p>
@@ -131,7 +131,7 @@
         @endif
 
               {{-- order details start--}}
-              <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+              <div class="mt-10 bg-gray-50 px-4 pt-8 border  border-red-400">
                 @csrf
                 <p class="text-xl font-medium">Order Details</p>
                 <p class="text-gray-400">Complete your order by providing your payment details.</p>
@@ -305,7 +305,7 @@
                                 <p class="text-sm font-semibold text-gray-900">Destination</p>
                                 <p class="font-semibold text-gray-900">Rp. <span
                                         id="destinationPrice">
-                                        {{ number_format($priceWisata1 , 0, ',', '.') }}
+                                        {{ number_format($total , 0, ',', '.') }}
                                         
                                     </span></p>
                             </div>

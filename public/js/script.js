@@ -119,7 +119,8 @@ function Agree(){
    }
 }
 
-console.log(document.getElementById('submit').attributes('disabled'));
+
+
 
 
 // var destinationPrice = document.getElementById('destinationPrice');

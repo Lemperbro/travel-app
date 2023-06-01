@@ -198,6 +198,29 @@
                                     </div>
                                 @endif
 
+                                <div class="">
+                                    @if ($tagihan->extra_id !== null)
+                                    
+                                    @php
+                                    $explode_extra = explode(',', $tagihan->extra_id);
+                                    $array_map = array_map('intval', $explode_extra);
+                                    
+                                    $extra = App\Models\Extra::whereIn('id',$array_map)->get();
+                                    @endphp
+                                    <div class="flex">
+                                    <h1 class="text-gray-900 dark:text-white font-semibold">Extra:</h1>
+                                      <ul class="gap-4">
+
+                                        @foreach ($extra as $extras)
+                                        <li class="">{{ $extras->judul }}</li>
+                                        @endforeach
+                                      </ul>
+                                    </div>
+                                    @else
+                                    Nothing
+                                    @endif
+                                  </div>
+
                             </div>
 
                             <div class="mt-4">

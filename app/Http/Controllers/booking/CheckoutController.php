@@ -94,9 +94,9 @@ class CheckoutController extends Controller
 
         // dd($event);
         //logic event start
+        $count_3 = $priceWisata;
         if($event->count() > 0){
             $count_4 = $priceWisata;
-            $count_3 = $priceWisata;
             if($event->where('tipe', 'min_jumlah')->count() > 0){
                 $min_jumlah = Event::where('wisata_id', $wisata->id)->where('tipe', 'min_jumlah')->first();
                 if($total_pesan >= $min_jumlah->min_jumlah){
@@ -343,7 +343,7 @@ class CheckoutController extends Controller
         $data = Pemesanan::with('wisata', 'user')->where('doc_no', $doc_no)->first();
 
         if($data){
-            return view('booking.tiket', [
+            return view('new', [
                 'data' => $data,
             ]);
         }else{
