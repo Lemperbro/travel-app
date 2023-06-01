@@ -54,9 +54,16 @@ class CheckoutController extends Controller
             'kota' => 'required',
             'pickup' => 'required',
             'drop_kota' => 'required',
-            'dropout' => 'required'
+            'dropout' => 'required',
+            'agree' => 'required',
+
         ]);
         
+        if($request->agree !== null){
+            $agree = true;
+        }else if($request->agree == null){
+            $agree = false;
+        }
         
         $extra_price = 0;
         if($request->extra !== null){
@@ -167,6 +174,8 @@ class CheckoutController extends Controller
             'drop_kota' => $request->drop_kota,
             'drop_point' => $request->dropout,
             'amount' => $count_3,
+            'agree' => $agree,
+            'note' => $request->note,
             'dp' => $price_diskon,
             'departure' => $request->departure,
             'description' => $request->note,
@@ -279,6 +288,7 @@ class CheckoutController extends Controller
         }
     }
 
+
     public function payment(Request $request, $slug){
             
         $coba = explode("," , $request->kota);
@@ -310,11 +320,15 @@ class CheckoutController extends Controller
     }
 
     public function booking(){
-        $data = Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->get();
+        $data = Pemesanan::with('wisata','user')->where('user_id', Auth()->user()->id)->where('payment_status', 'PAID')->latest();
+
+        if(request('filter')){
+            $data->where('status', request('filter'));
+        }
 
 
         return view('booking.booking',[
-            'data' => $data,
+            'data' => $data->get(),
         ]);
     }
 

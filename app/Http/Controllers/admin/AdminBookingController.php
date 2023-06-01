@@ -118,7 +118,26 @@ class AdminBookingController extends Controller
     }
 
 
-    public function cancel($id){
+    public function cancel(){
+        $data =  Pemesanan::with('wisata','user')->where('status', 'cancel')->where('payment_status', 'PAID')->get();
+
+
+        return view('admin.booking.cancel', [
+            'data' => $data,
+        ]);
+    }
+
+
+    public function cancel_action($id){
+        dd($id);
+        Pemesanan::where('id', $id)->update([
+            'status' => 'refund'
+        ]);
+
+        return redirect()->back()->with('toast_success', 'success refund');
+    }
+
+    public function tolak($id){
         Pemesanan::where('id', $id)->update([
             'status' => 'ditolak'
         ]);

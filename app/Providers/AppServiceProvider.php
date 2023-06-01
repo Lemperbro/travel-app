@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('admin.partials.sidebar', function($req_booking){
             $req_booking->with([
                 'req_booking' => Pemesanan::where('status', 'menunggu'),
+                'cancel' => Pemesanan::where('status', 'cancel')
             ]);
         });
 

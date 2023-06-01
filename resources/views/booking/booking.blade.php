@@ -41,9 +41,9 @@
 
                     <h1 class="py-2 text-2xl font-semibold">Booking</h1>
 
-                    <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
+                    <form action="/booking" method="get" class="hidden lg:block lg:pl-3.5">
 
-                        <div class="flex gap-x-8">
+                        {{-- <div class="flex gap-x-8 hidden">
 
                             <label for="topbar-search" class="sr-only">Search</label>
                             <div class="relative w-[40%]">
@@ -55,7 +55,7 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <input type="text" name="email" id="topbar-search"
+                                <input type="text" name="search " id="topbar-search"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="search">
 
@@ -73,24 +73,21 @@
                                     placeholder="Select date" autocomplete="off" />
                             </div>
 
-                        </div>
+                        </div> --}}
 
-                    </form>
+                        
+                        
+                        <div class="flex items-center md:py-8 flex-wrap">
+                            <button type="submit" name="filter" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == null) bg-orange-600 text-white @endif">All Transaction</button>
+                            
+                            <button type="submit" name="filter" value="cancel" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == 'cancel') bg-orange-600 text-white @endif">CANCEL</button>
+                            
+                            <button type="submit" name="filter" value="refund" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == 'refund') bg-orange-600 text-white @endif">REFUND</button>
 
-
-                    <div class="flex items-center md:py-8 flex-wrap">
-
-                      <button type="button" class="hover:text-white border border-orange-400 bg-white hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3">All categories</button>
-
-                      <button type="button" class="hover:text-white border border-orange-400 bg-white hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3">Shoes</button>
-
-                      <button type="button" class="hover:text-white border border-orange-400 bg-white hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3">Bags</button>
-
-                      <button type="button" class="hover:text-white border border-orange-400 bg-white hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3">Electronics</button>
-
-
-
-                  </div>
+                      
+                      
+                      </div>
+                </form>
 
                 </div>
                 <hr class="mt-4 mb-8" />
@@ -103,8 +100,20 @@
                             <div class="flex justify-between">
                                 <div>
                                     <h2 class="text-gray-900 text-lg font-bold">{{ $tagihan->wisata->nama_wisata }}</h2>
+                                    @if ($tagihan->status == 'cancel' || $tagihan->status == 'refund' || $tagihan->status == 'ditolak')
+                                    <h1 class="text-xl text-white bg-red-400 font-bold px-2 rounded-md text-center inline-block">
+                                      {{ $tagihan->status }}
+                                    </h1>
+                                        @else
+
                                     <h1 class="text-xl text-white bg-green-400 font-bold px-2 rounded-md text-center">
-                                        {{ $tagihan->payment_status }}</h1>
+                                        {{ $tagihan->payment_status }}
+                                    </h1>
+                                        @endif
+
+                                        @if ($tagihan->status == 'cancel')
+                                            <h1 class="my-2 text-green-600 font-semibold text-lg">please wait for a refund from the admin, the admin will contact you as soon as possible</h1>
+                                        @endif
                                 </div>
 
                                 <div class="font-semibold">
@@ -218,19 +227,31 @@
 
                             </div>
 
-                            <div class="float-right">
-                                <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank"
-                                    class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none font-bold">Look
-                                    Ticket</a>
+                            <div class="float-right flex gap-x-4">
+                                <form action="/booking/cancel/{{ $tagihan->doc_no }}" method="POST" class="my-auto">
+                                    @csrf
+                                    <button type="submit" class="text-sm  px-4 py-2 bg-red-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none font-bold">
+                                        Cancel
+                                    </button>
+                                </form>
 
+                                <div class="my-auto">
+                                    <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank"
+                                        class="text-sm px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none font-bold">Look
+                                        Ticket
+                                    </a>
+                                </div>
+                                    
                                 {{-- <a href="/comment/{{ $tagihan->doc_no }}" target="_blank" class="text-sm mt-6 px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none">Comment</a> --}}
                                 @if ($tagihan->comment === 0)
                                     <!-- Modal toggle -->
-                                    <h1 data-modal-target="defaultModal-{{ $tagihan->doc_no }}"
-                                        data-modal-toggle="defaultModal-{{ $tagihan->doc_no }}"
-                                        class="text-white bg-orange-600 hover:bg-orange-700 text-sm mt-6 px-4 py-2 rounded-lg  inline-block tracking-wider font-bold outline-none cursor-pointer">
-                                        Comment
-                                    </h1>
+                                    <div class="my-auto">
+                                        <h1 data-modal-target="defaultModal-{{ $tagihan->doc_no }}"
+                                            data-modal-toggle="defaultModal-{{ $tagihan->doc_no }}"
+                                            class="text-white bg-orange-600 hover:bg-orange-700 text-sm px-4 py-2 rounded-lg  inline-block tracking-wider font-bold outline-none cursor-pointer">
+                                            Comment
+                                        </h1>
+                                    </div>
                                 @endif
 
 

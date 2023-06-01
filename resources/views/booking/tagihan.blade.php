@@ -254,7 +254,7 @@
 
                 <div class="flex float-right gap-x-4">
 
-                  <form action="/tagihan/cancel/{{ $tagihan->doc_no }}" method="POST">
+                  <form action="/booking/cancel/{{ $tagihan->doc_no }}" method="POST">
                     @csrf
                     <button type="submit" class="px-2 py-2 bg-red-600 text-white font-semibold rounded-md">Cancel</button>
                   </form>
