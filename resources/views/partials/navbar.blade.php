@@ -82,7 +82,7 @@
                     @if ($notifications->tipe == 'pemesanan')
 
                     successful payment for {{ $wisata }} tour, please see your ticket
-                    @elseif($notifications->tipe == 'confirmation')
+                    @elseif($notifications->tipe == 'confirmation' || $notifications->tipe == 'refund')
                       {{ $notifications->judul }}
                     @endif
                   </div>

@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 
-<div class="">
+<div class="relative">
 <img src='/gambar/op.png' class=''/>
-<h1 class='absolute top-40 text-center text-white left-[50%] -translate-x-[50%] text-3xl font-bold'>ABOUT GROWIN TRAVEL INDONESIA</h1>
+<h1 class='absolute text-center text-white left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-3xl font-bold'>ABOUT GROWIN TRAVEL INDONESIA</h1>
 </div>
 
 
@@ -19,12 +19,12 @@
 
 <div class="flex grid-cols-2 gap-8">
 @if($data !== null)
-<div class='mb-9 w-[50%] mt-3 text-justify font-semibold'>
+<div class='mb-9 w-[50%] mt-10'>
   {!! $data->isi !!}
 </div>
 
-<div class="w-[50%]">
-  <img src="{{ asset('about/'.$data->image) }}" alt="" class="object-contain">
+<div class="w-[50%] mt-10">
+  <img src="{{ asset('about/'.$data->image) }}" alt="" class="object-cover h-full w-full">
 </div>
 @endif
 
@@ -99,13 +99,6 @@
 
 
 
-<h1 class='text-center font-bold text-3xl mt-16 '>
- Location Growin Travel Indonesia
-</h1>
-<p class='text-center text-xl font-normal mt-8'>
-Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso, 
-Kabupaten Malang, Jawa Timur 65152
-</p>
 
 
     

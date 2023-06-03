@@ -129,10 +129,20 @@ class AdminBookingController extends Controller
 
 
     public function cancel_action($id){
-        dd($id);
-        Pemesanan::where('id', $id)->update([
+        $pemesanan = Pemesanan::with('wisata')->where('id',$id)->first();
+        $proses =  Pemesanan::where('id', $id)->update([
             'status' => 'refund'
         ]);
+
+        if($proses){
+            Notification::create([
+                'judul' => 'Admin has made a refund for Bromo tour bookings '.$pemesanan->wisata->nama_wisata,
+                'tipe' => 'refund',
+                'user_id' => $pemesanan->user_id,
+                'pemesanan_id' => $pemesanan->id,
+                'url' => '/admin/booking'
+            ]);
+        }
 
         return redirect()->back()->with('toast_success', 'success refund');
     }

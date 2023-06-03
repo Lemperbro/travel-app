@@ -18,6 +18,7 @@
     <div class="flex flex-col justify-between p-4 leading-normal w-[65%]">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $data->judul }}</h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $data->deskripsi }}</p>
+            <h1 class="text-white font-semibold mb-2">Rp. {{ number_format($data->harga,0,',','.') }}</h1>
 
             <div class="flex gap-x-2">
                 <form action="/extra/edit_redirect/{{ $data->id }}" method="POST">

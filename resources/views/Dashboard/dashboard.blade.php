@@ -48,7 +48,7 @@
         </button>
 {{-- slider area start --}}
         <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-            <div id="slider2" class="h-full grid grid-flow-col auto-cols-[30%] lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+            <div id="slider2" class="h-full grid grid-flow-col auto-cols-[25%] lg:gap-4 md:gap-2 items-center justify-start transition ease-out duration-700">
                 @foreach ($kota as $kotas)
                 @php
                 $images = explode('|', $kotas->image);

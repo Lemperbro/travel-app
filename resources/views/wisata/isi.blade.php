@@ -38,7 +38,7 @@ $img = explode("|", $wisata->image);
         <h1>{{ $wisata->location }}</h1>
     </div>
 
-    <div class="mt-5 mb-7 grid grid-cols-4 place-items-center border-b-[1px] p-4 rounded-md">
+    <div class="mt-5 mb-7 flex justify-between place-items-center border-b-[1px] p-4 rounded-md">
 
 
         {{-- <div class="flex gap-0 ">
@@ -68,12 +68,20 @@ $img = explode("|", $wisata->image);
             <div class="">
                 <p class="font-semibold text-xl">Start Price</p>
                 <p class='text-gray-500 capitalize'>
+                    @php
+                    $session = App\Models\Session::where('wisata_id',$wisata->id)->where('startDate', '<=',Carbon\Carbon::now()->format('Y-m-d'))->where('endDate', '>=',Carbon\Carbon::now()->format('Y-m-d'))->first();
+                        
+                    @endphp
+                    @if ($session !== null)
+                    Rp. {{ number_format($session->price ,0,',','.') }}
+                    @else
                     Rp. {{ number_format($wisata->harga ,0,',','.') }}
+                    @endif
                 </p>
                 
             </div>
         </div>
-
+        
 
 
         <div class="flex gap-0">
@@ -166,6 +174,7 @@ $img = explode("|", $wisata->image);
                 </div>
             </div>
             
+
 
 
 

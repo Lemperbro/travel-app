@@ -80,9 +80,9 @@
                         <div class="flex items-center md:py-8 flex-wrap">
                             <button type="submit" name="filter" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == null) bg-orange-600 text-white @endif">All Transaction</button>
                             
-                            <button type="submit" name="filter" value="cancel" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == 'cancel') bg-orange-600 text-white @endif">CANCEL</button>
+                            <button type="submit" name="filter" value="cancel" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == 'cancel') bg-orange-600 text-white @endif">Cancel</button>
                             
-                            <button type="submit" name="filter" value="refund" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == 'refund') bg-orange-600 text-white @endif">REFUND</button>
+                            <button type="submit" name="filter" value="refund" class="hover:text-white border border-orange-400 hover:bg-orange-600 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 @if(request('filter') == 'refund') bg-orange-600 text-white @endif">Refund</button>
 
                       
                       
@@ -207,6 +207,29 @@
                                     </div>
                                 @endif
 
+                                <div class="">
+                                    @if ($tagihan->extra_id !== null)
+                                    
+                                    @php
+                                    $explode_extra = explode(',', $tagihan->extra_id);
+                                    $array_map = array_map('intval', $explode_extra);
+                                    
+                                    $extra = App\Models\Extra::whereIn('id',$array_map)->get();
+                                    @endphp
+                                    <div class="flex">
+                                    <h1 class="text-gray-900 dark:text-white font-semibold">Extra:</h1>
+                                      <ul class="gap-4">
+
+                                        @foreach ($extra as $extras)
+                                        <li class="">{{ $extras->judul }}</li>
+                                        @endforeach
+                                      </ul>
+                                    </div>
+                                    @else
+                                    Nothing
+                                    @endif
+                                  </div>
+
                             </div>
 
                             <div class="mt-4">
@@ -228,15 +251,18 @@
                             </div>
 
                             <div class="float-right flex gap-x-4">
+                                @if ($tagihan->status !== 'cancel' && $tagihan->status !== 'refund')
+                                    
                                 <form action="/booking/cancel/{{ $tagihan->doc_no }}" method="POST" class="my-auto">
                                     @csrf
                                     <button type="submit" class="text-sm  px-4 py-2 bg-red-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none font-bold">
                                         Cancel
                                     </button>
                                 </form>
+                                @endif
 
                                 <div class="my-auto">
-                                    <a href="/cobadownload/{{ $tagihan->doc_no }}" target="_blank"
+                                    <a href="/tiket/{{ $tagihan->doc_no }}" target="_blank"
                                         class="text-sm px-4 py-2 bg-orange-600  text-white rounded-lg  inline-block tracking-wider hover:bg-orange-700 outline-none font-bold">Look
                                         Ticket
                                     </a>

@@ -16,10 +16,11 @@ class PDFController extends Controller
         $dompdf = new Dompdf($options);
 
 
-        $additionalHtml = file_get_contents('resources/views/new.blade.php');
+        $additionalHtml = file_get_contents( resource_path('views/new.blade.php'));
         $html = $additionalHtml;
         $dompdf->loadHtml($html);
 
+        
         $dompdf->setPaper('A4', 'landscape');
 
         $dompdf->render();

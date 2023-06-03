@@ -212,6 +212,11 @@
                 Event
                </a>
 
+               <a href="/admin/wisata/{{ $wisata->slug }}/session"
+                class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
+                Session
+               </a>  
+
               <a href="/admin/wisata/faq/{{ $wisata->slug }}"
                 class="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-center">
                 Manage FAQ

@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\Extra;
 use App\Models\Harga;
 use App\Models\Jemput;
+use App\Models\Session;
 use App\Models\Equipment;
 use App\Models\Fasilitas;
 use App\Models\Itenerary;
@@ -66,5 +67,9 @@ class Wisata extends Model
 
     public function event(){
         return $this->hasMany(Event::class);
+    }
+
+    public function session(){
+        return $this->hasMany(Session::class);
     }
 }

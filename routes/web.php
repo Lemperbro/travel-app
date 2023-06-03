@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\kota\KotaController;
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\admin\EventController;
+use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\auth\ProfileController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\admin\SessionController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\wisata\WisataController;
 use App\Http\Controllers\admin\AdminKotaController;
@@ -16,19 +20,16 @@ use App\Http\Controllers\article\ArticleController;
 use App\Http\Controllers\admin\AdminAboutController;
 use App\Http\Controllers\admin\AdminGuideController;
 use App\Http\Controllers\admin\AdminSupirController;
+use App\Http\Controllers\admin\AdminTermsController;
 use App\Http\Controllers\booking\CheckoutController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\dashboard\DashboardController;
+
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
-use App\Http\Controllers\admin\EventController;
-use App\Http\Controllers\admin\ExtraController;
 use App\Http\Controllers\article\KategoriArticleController;
-
-use App\Http\Controllers\admin\AdminTermsController;
-use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +120,13 @@ Route::middleware('admin')->group(function(){
 
     Route::post('/admin/wisata/aktif/{id}', [AdminWisataController::class, 'aktif']);
     Route::post('/admin/wisata/nonaktif/{id}', [AdminWisataController::class, 'nonaktif']);
+
+    //session
+    Route::get('/admin/wisata/{slug}/session', [SessionController::class, 'index']);
+    Route::post('/admin/wisata/{slug}/session/deleteAll', [SessionController::class, 'delete_all']);
+    Route::post('/admin/wisata/{id}/session/delete', [SessionController::class, 'destroy']);
+    Route::get('/admin/wisata/{slug}/session/add', [SessionController::class, 'create']);
+    Route::post('/admin/wisata/{slug}/session/add', [SessionController::class, 'store']);
 
 
     //admin guide\
@@ -245,7 +253,7 @@ Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
 Route::post('/booking/cancel/{doc_no}', [CheckoutController::class, 'cancel']);
 Route::get('/booking', [CheckoutController::class, 'booking']);
-Route::get('/cobadownload/{doc_no}', [CheckoutController::class, 'ticket']);
+Route::get('/tiket/{doc_no}', [CheckoutController::class, 'ticket']);
 Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);
  
 
@@ -314,7 +322,6 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
-Route::get('/pdf', [PDFController::class]);
 
 
 

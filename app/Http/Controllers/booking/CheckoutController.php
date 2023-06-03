@@ -7,6 +7,7 @@ use App\Models\Kota;
 use App\Models\Event;
 use App\Models\Testi;
 use App\Models\Wisata;
+use App\Models\Session;
 use App\Models\Pemesanan;
 use Illuminate\Support\Str;
 use App\Models\Notification;
@@ -89,21 +90,33 @@ class CheckoutController extends Controller
         $event = Event::where('wisata_id',$wisata->id)->where('status',1)->get();
         $kota = Kota::where('slug', request('kota'))->first();
         $kota_pickup = explode(',', $request->kota);
+        $session = Session::where('wisata_id',$wisata->id)->where('startDate', '<=',$request->departure)->where('endDate', '>=',$request->departure)->first();
+        if($session !== null){
+            $harga = $session->price;
+            $harga_child = $session->price_child;
+            if($session->price_child == null){
+                $harga_child = $wisata->price_child;
+
+            }
+        }elseif($session == null){
+            $harga = $wisata->harga;
+            $harga_child = $wisata->price_child;
+        }
         if($request->adult > 0 || $request->child > 0){
             $total_pesan = $request->adult + $request->child;
-            $priceWisata = $wisata->harga * $request->adult + $wisata->price_child * $request->child;
+            $priceWisata = $harga * $request->adult + $harga_child * $request->child;
         }else {
             $total_pesan = 1;
-            $priceWisata = $wisata->harga;
+            $priceWisata = $harga;
         }
         $extra_price = $extra_price * $total_pesan;
         // $count_3 = $priceWisata + $kota_pickup[1];
 
         // dd($event);
         //logic event start
+        $count_3 = $priceWisata;
         if($event->count() > 0){
             $count_4 = $priceWisata;
-            $count_3 = $priceWisata;
             if($event->where('tipe', 'min_jumlah')->count() > 0){
                 $min_jumlah = Event::where('wisata_id', $wisata->id)->where('tipe', 'min_jumlah')->first();
                 if($total_pesan >= $min_jumlah->min_jumlah){
@@ -162,7 +175,6 @@ class CheckoutController extends Controller
         }
 
         $response = $data_request->object();
-
 
         $proses = Pemesanan::create([
             'invoice_id' => $response->id,
@@ -259,7 +271,7 @@ class CheckoutController extends Controller
         ]);
         
         $wisata = Wisata::with('extra','event')->where('slug', $slug)->first();
-
+        $session = Session::where('wisata_id',$wisata->id)->where('startDate', '<=',$request->tanggal)->where('endDate', '>=',$request->tanggal)->first();
 
         return view('booking.checkout',[
             'wisata' => $wisata,
@@ -270,20 +282,31 @@ class CheckoutController extends Controller
             'adult' => $request->adult,
             'child' => $request->child,
             'tanggal' => $request->tanggal,
+            'session' => $session
         ]);
         
     }
 
 
     public function cancel($doc_no){
-        $pemesanan = Pemesanan::where('doc_no',$doc_no)->first();
+        $pemesanan = Pemesanan::with('wisata')->where('doc_no',$doc_no)->first();
         if($pemesanan->payment_status == 'PENDING'){
             Pemesanan::where('doc_no',$doc_no)->delete();
             return redirect()->back()->with('toast_success','success cancel this destination');
         }elseif($pemesanan->payment_status == 'PAID'){
-            Pemesanan::where('doc_no',$doc_no)->update([
+            $proses = Pemesanan::where('doc_no',$doc_no)->update([
                 'status' => 'cancel'
             ]);
+
+            if($proses){
+                Notification::create([
+                    'judul' => Auth()->user()->username.' canceled the booking for the tour '.$pemesanan->wisata->nama_wisata,
+                    'tipe' => 'cancel',
+                    'user_id' => Auth()->user()->id,
+                    'pemesanan_id' => $pemesanan->id,
+                    'url' => '/admin/booking/cancel'
+                ]);
+            }
             return redirect()->back()->with('toast_success','success cancel this destination');
         }
     }
@@ -357,7 +380,7 @@ class CheckoutController extends Controller
         $data = Pemesanan::with('wisata', 'user')->where('doc_no', $doc_no)->first();
 
         if($data){
-            return view('booking.tiket', [
+            return view('booking.ticket', [
                 'data' => $data,
             ]);
         }else{

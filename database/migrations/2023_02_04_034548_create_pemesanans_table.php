@@ -37,7 +37,9 @@ return new class extends Migration
             $table->string('payment_link');
             $table->string('expired');
             $table->boolean('comment')->default(false);
-            $table->enum('status',['dikonfirmasi','ditolak','menunggu'])->default('menunggu');
+            $table->boolean('agree');
+            $table->text('note')->nullable();
+            $table->enum('status',['dikonfirmasi','ditolak','menunggu','cancel','refund'])->default('menunggu');
             $table->timestamps();
         });
     }

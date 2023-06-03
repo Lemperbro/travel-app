@@ -2,17 +2,27 @@
 
 
 @section('container')
-    <form action="/checkout/{{ $slug }}/payment" method="post" class="mb-32 mt-28  grid lg:grid-cols-2" onclick="checkout()">
+    <form action="/checkout/{{ $slug }}/payment" method="post" class="mb-32 mt-28  grid lg:grid-cols-2 " onclick="checkout()">
         @php
 
+        if($session !== null){
+            $harga = $session->price;
+            $harga_child = $session->price_child;
+            if($session->price_child == null){
+                $harga_child = $wisata->price_child;
 
+            }
+        }elseif($session == null){
+            $harga = $wisata->harga;
+            $harga_child = $wisata->price_child;
+        }
 //harga normal di kurangi harga diskon
         if($child > 0 || $adult > 0){
             $total_pesanan = $adult + $child;
-            $priceWisata = $wisata->harga * $adult + $wisata->price_child * $child;
+            $priceWisata = $harga * $adult + $harga_child * $child;
             $priceWisata1 = $priceWisata;
         }else{
-            $priceWisata = $wisata->harga;
+            $priceWisata = $harga;
             $priceWisata1 = $priceWisata;
             $total_pesanan = 1;
         }
@@ -26,7 +36,6 @@
         }
 
         $priceWisata1 = $priceWisata ;//jika ada diskon maka ini harga setelah dapat diskon
-
         if($wisata->event->where('tipe','min_jumlah')->where('status',1)->count() > 0){
             $event_min_jumlah = App\Models\Event::where('wisata_id', $wisata->id)->where('tipe','min_jumlah')->where('status',1)->first();
             if($total_pesanan >= $event_min_jumlah->min_jumlah){
@@ -36,8 +45,6 @@
         }
 
         $priceWisata2 = $priceWisata ;//jika ada diskon maka ini harga setelah dapat diskon
-
-
         if($wisata->event->where('tipe','min_harga')->where('status',1)->count() > 0){
             $event_min_harga = App\Models\Event::where('wisata_id', $wisata->id)->where('tipe','min_harga')->where('status',1)->first();
             if($priceWisata1 >= $event_min_harga->min_harga){
@@ -45,7 +52,6 @@
                 $diskon_minharga = $priceWisata2 - $priceWisata ;
             }
         }
-
         $price_count = $priceWisata
 
         @endphp
@@ -68,7 +74,7 @@
                             <span class="font-semibold text-xl">{{ $wisata->nama_wisata }}</span>
                             <p class="font-semibold text-base text-gray-500">{{ $wisata->tour_type }}</p>
                             <p class="text-base font-semibold">
-                                Rp. {{ number_format($wisata->harga, 0, ',', '.') }}
+                                Rp. {{ number_format($harga, 0, ',', '.') }}
                             </p>
 
                         </div>
@@ -126,12 +132,11 @@
 
 
         @if ($wisata->extra->count() == 0)
-        </div>
         </div>    
         @endif
 
               {{-- order details start--}}
-              <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+              <div class="mt-10 bg-gray-50 px-4 pt-8">
                 @csrf
                 <p class="text-xl font-medium">Order Details</p>
                 <p class="text-gray-400">Complete your order by providing your payment details.</p>
@@ -179,7 +184,7 @@
                         </div>
 
                     </div>
-                    <input type="hidden" id="destinasi" value="{{ $wisata->harga }}">
+                    <input type="hidden" id="destinasi" value="{{ $priceWisata }}">
                     <label for="note" class="">Note</label>
                     <textarea name="note" id="note" class="w-full h-20 mt-2 rounded-md">
 
@@ -284,8 +289,8 @@
                                 <div class="flex items-center justify-between">
                                     <p class="text-sm font-medium text-gray-900">Adult</p>
                                     <p class="text-sm font-medium text-gray-900" >
-                                        {{ number_format($wisata->harga, 0, ',', '.') }} x {{ $adult }}</p>
-                                    <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($wisata->harga * $adult, 0, ',', '.') }}</p>
+                                        {{ number_format($harga, 0, ',', '.') }} x {{ $adult }}</p>
+                                    <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($harga * $adult, 0, ',', '.') }}</p>
                                 </div>
                                 <input type="hidden" name="adult" value="{{ $adult }}">
                                 @endif
@@ -293,8 +298,8 @@
                                 
                                 <div class="flex items-center justify-between">
                                     <p class="text-sm font-medium text-gray-900">Child</p>
-                                    <p class="text-sm font-medium text-gray-900">{{ number_format($wisata->price_child, 0, ',', '.') }} x {{ $child }} </p>
-                                    <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($wisata->price_child * $child, 0, ',', '.') }}</p>
+                                    <p class="text-sm font-medium text-gray-900">{{ number_format($harga_child, 0, ',', '.') }} x {{ $child }} </p>
+                                    <p class="text-sm font-medium text-gray-900">Rp. {{ number_format($harga_child * $child, 0, ',', '.') }}</p>
                                 </div>
                                 <input type="hidden" name="child" value="{{ $child }}">
 
@@ -320,18 +325,18 @@
                             @if ($wisata->event->where('tipe','min_jumlah')->where('status',1)->count() > 0)
                                 @if ($total_pesanan >= $event_min_jumlah->min_jumlah)
                                 
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-semibold text-gray-900">{{ $event_min_jumlah->judul }}</p>
-                                <p class="font-semibold text-gray-900">- Rp. <span>
-                                    {{ number_format($diskon_minjumlah, 0, ',', '.') }}
-                                </span></p>
-                            </div>
+                                <div class="flex items-center justify-between">
+                                    <p class="text-sm font-semibold text-gray-900">{{ $event_min_jumlah->judul }}</p>
+                                    <p class="font-semibold text-gray-900">- Rp. <span>
+                                        {{ number_format($diskon_minjumlah, 0, ',', '.') }}
+                                    </span></p>
+                                </div>
                                 @endif
                             @endif
 
                             @if ($wisata->event->where('tipe','min_harga')->where('status',1)->count() > 0)
 
-                            @if ($event_min_harga->min_harga >= $priceWisata1)
+                            @if ($priceWisata1 >= $event_min_harga->min_harga)
                                 
                             <div class="flex items-center justify-between">
                                 <p class="text-sm font-semibold text-gray-900">{{ $event_min_harga->judul }}</p>
@@ -355,7 +360,7 @@
                                         @if ($adult > 1 || $child > 1)
                                         {{ number_format($price_count + $firstpricePickup, 0, ',', '.') }}</span>
                                         @else
-                                        {{ number_format($wisata->harga + $firstpricePickup, 0, ',', '.') }}</span>
+                                        {{ number_format($price_count + $firstpricePickup, 0, ',', '.') }}</span>
                                         
                                         @endif
                                 </p>

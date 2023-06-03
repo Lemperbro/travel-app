@@ -39,8 +39,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('admin.partials.navbar', function($notif) {
             $notif->with([
-                'notification' => Notification::whereIn('tipe', ['pemesanan','req_pemesanan','coment'])->latest()->limit(15)->get(),
-                'count' => Notification::whereIn('tipe', ['pemesanan','req_pemesanan','coment'])->where('status', 'belum dibuka')->latest()->limit(15)->get()
+                'notification' => Notification::whereIn('tipe', ['pemesanan','req_pemesanan','coment','cancel'])->latest()->limit(15)->get(),
+                'count' => Notification::whereIn('tipe', ['pemesanan','req_pemesanan','coment','cancel'])->where('status', 'belum dibuka')->latest()->limit(15)->get()
                 
             ]);
         });
@@ -52,8 +52,8 @@ class AppServiceProvider extends ServiceProvider
             if(Auth()->user() !== null){
 
                 $notif->with([
-                    'notification' => Notification::with('user','pemesanan')->where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->latest()->limit(15)->get(),
-                    'count' => Notification::where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation'])->where('status', 'belum dibuka')->latest()->limit(15)->get(),
+                    'notification' => Notification::with('user','pemesanan')->where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation','refund'])->latest()->limit(15)->get(),
+                    'count' => Notification::where('user_id', Auth()->user()->id)->whereIn('tipe', ['pemesanan', 'confirmation','refund'])->where('status', 'belum dibuka')->latest()->limit(15)->get(),
                     
                 ]);
             }

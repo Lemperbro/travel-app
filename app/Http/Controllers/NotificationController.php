@@ -88,6 +88,8 @@ class NotificationController extends Controller
                 return redirect('/booking');
             }else if($notification->pemesanan !== null && $notification->tipe == 'confirmation' && $notification->pemesanan->status == 'dikonfirmasi'){
                 return redirect('/tagihan');
+            }else if($notification->tipe == 'refund'){
+                return redirect('/booking');
             }else{
                 return redirect()->back()->with('toast_error', 'nothing');
             }
@@ -114,6 +116,8 @@ class NotificationController extends Controller
             }else if($notification->pemesanan !== null && $notification->tipe == 'pemesanan'){
                 return redirect('/admin/booking');
             }else if ($notification->tipe == 'coment'){
+                return redirect($notification->url);
+            }else if($notification->tipe == 'cancel'){
                 return redirect($notification->url);
             }else{
                 return redirect()->back()->with('toast_error', 'nothing');

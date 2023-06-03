@@ -120,6 +120,8 @@ function Agree(){
 
 
 
+
+
 // var destinationPrice = document.getElementById('destinationPrice');
 // var pickupPrice = document.getElementById('pickupPrice');
 // var Pricewisata = document.getElementById('priceWisata');
