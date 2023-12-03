@@ -36,24 +36,24 @@
 // }
 
 
-var loadFile = function(event) {
+var loadFile = function (event) {
   var imgCont = document.getElementById("previewContainer");
   console.log(event.target.files);
   for (let i = 0; i < event.target.files.length; i++) {
-      var divElm = document.createElement('div');
-      divElm.id = "rowdiv" + i;
-      var spanElm = document.createElement('span');
-      var image = document.createElement('img');
-      image.src = URL.createObjectURL(event.target.files[i]);
-      image.id = "output" + i;
-      image.width = "200";
-      spanElm.appendChild(image);
-      var deleteImg = document.createElement('p');
-      deleteImg.innerHTML = "x";
-      deleteImg.onclick = function() {this.parentNode.remove()};
-      divElm.appendChild(spanElm);
-      divElm.appendChild(deleteImg);
-      imgCont.appendChild(divElm);
+    var divElm = document.createElement('div');
+    divElm.id = "rowdiv" + i;
+    var spanElm = document.createElement('span');
+    var image = document.createElement('img');
+    image.src = URL.createObjectURL(event.target.files[i]);
+    image.id = "output" + i;
+    image.width = "200";
+    spanElm.appendChild(image);
+    var deleteImg = document.createElement('p');
+    deleteImg.innerHTML = "x";
+    deleteImg.onclick = function () { this.parentNode.remove() };
+    divElm.appendChild(spanElm);
+    divElm.appendChild(deleteImg);
+    imgCont.appendChild(divElm);
   }
 };
 

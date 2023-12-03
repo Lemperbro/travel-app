@@ -1,8 +1,9 @@
 @extends('layouts.main')
 
 @section('container')
-
-<form class="w-[80%] mx-auto my-5" action="/article">   
+<section class="h-full mb-[390px] px-4 md:px-0 pt-20">
+<h1 class="text-center font-semibold text-4xl mb-8">Article</h1>
+<form class="w-[100%] md:w-[80%] mx-auto" action="/article">   
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -14,15 +15,16 @@
   </form>
 
 
-<div class="flex gap-4 py-4 my-10 border-b-[1px]">
+<div class="flex gap-4 py-4 mb-10 mt-5 border-b-[1px] overflow-x-auto">
 
     <a href="/article" class="{{ (request('kategori') === null ) ? 'text-orange-600' : '' }}">All</a>
 
     @foreach ($kategori as $kategoris)
         <a href="/article?kategori={{ $kategoris->kategori }}" class="{{ (request('kategori') === $kategoris->kategori ) ? 'text-orange-600' : '' }}">{{ $kategoris->kategori }}</a>
     @endforeach
+
 </div>
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
     @foreach ($data as $articles)
         
           
@@ -56,4 +58,7 @@
 </div>
 
 {{ $data->links('vendor.pagination.tailwind') }}
+
+</section>
+
 @endsection

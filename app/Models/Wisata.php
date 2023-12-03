@@ -7,6 +7,7 @@ use App\Models\Kota;
 use App\Models\Event;
 use App\Models\Extra;
 use App\Models\Harga;
+use App\Models\Hotel;
 use App\Models\Jemput;
 use App\Models\Session;
 use App\Models\Equipment;
@@ -16,10 +17,11 @@ use App\Models\Pemesanan;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Wisata extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, SoftDeletes;
 
     protected $guarded = [
         'id'
@@ -71,5 +73,9 @@ class Wisata extends Model
 
     public function session(){
         return $this->hasMany(Session::class);
+    }
+
+    public function hotel(){
+        return $this->hasMany(Hotel::class);
     }
 }

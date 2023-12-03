@@ -1,0 +1,19 @@
+{
+    "carousel": [
+        {
+            "id": 0,
+            "image": "image1.jpg",
+            "text": "GrowIn Travel Indonesia"
+        },
+        {
+            "id": 1,
+            "image": "fc51400c06b870366a3f0b1026aaaaa45dc936ada10b62869a632c1f33e0c1e7.jpg",
+            "text": "Travel is not reward for working, it's education for living."
+        },
+        {
+            "id": 2,
+            "image": "8a89124182d582fa4badc5a7884ead5a0c3b0cb84cbab69f47c59a8fb52a9229.jpg",
+            "text": "Wherever you go, go with all your heart"
+        }
+    ]
+}

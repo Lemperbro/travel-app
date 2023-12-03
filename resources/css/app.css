@@ -23,6 +23,25 @@
       background: #444444;
     }
 
+
+    .scrollbar_client::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    
+    .scrollbar_client::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: #ffffff;
+    }
+    
+    .scrollbar_client::-webkit-scrollbar-thumb {
+      background: #a8a8a8;
+      border-radius: 100vh;
+    }
+    
+    .scrollbar_client::-webkit-scrollbar-thumb:hover {
+      background: #444444;
+    }
     
   }
 
@@ -71,4 +90,7 @@ select:-webkit-autofill:focus {
   height: 40px;
 }
 
+.dark ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
 

@@ -8,7 +8,7 @@
         What Ours Customers Say ?
     </h1>
 
-    <section class="text-neutral-700 dark:text-neutral-300 mb-32">
+    <section class="text-neutral-700 dark:text-neutral-300 mb-96 h-full mt-16 px-4 md:px-0">
         <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
           <h3 class="mb-6 text-3xl font-bold">Testimonials</h3>
           <p class="mb-6 pb-2 md:mb-12 md:pb-0 text-lg">
@@ -16,7 +16,7 @@
           </p>
         </div>
       
-        <div class="grid gap-6 text-center md:grid-cols-3">
+        <div class="grid gap-6 text-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
           @foreach ($data as $testi)
           <div>
@@ -57,6 +57,8 @@
           @endforeach
 
           
+
+
 
         </div>
       </section>

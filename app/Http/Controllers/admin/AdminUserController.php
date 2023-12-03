@@ -25,12 +25,24 @@ class AdminUserController extends Controller
         }
         return view('admin.user.index', [
            'data' => $user->paginate(10),
-           'tittle' => 'User'
+           'tittle' => 'User',
+           'count_user' => User::get(),
 
         ]);
       
     }
 
+    public function MakeAdmin($id){
+        $proses = User::where('id',$id)->update([
+            'posisi' => true
+        ]);
+
+        if($proses){
+            return redirect()->back()->with('toast_success', 'Success Make Admin');
+        }else{
+            return redirect()->back()->with('toast_error', 'Failed Make Admin');
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -95,6 +107,13 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::where('id',$id)->first();
+        $count_admin = User::where('posisi', true)->get();
+        if($count_admin->count() == 1){
+            if($user->posisi == true){
+                return redirect()->back()->with('toast_error', 'Failed Delete, Because You is admin');
+            }
+        }
         User::find($id)->delete();
 
         return redirect('/user');

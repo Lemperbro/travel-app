@@ -108,6 +108,7 @@ class EventController extends Controller
         ]);
           
         $event = Event::where('wisata_id',$id)->where('tipe', $tipe)->get();
+        $potongan = str_replace('%', '',$request->potongan);
 
         if($event->count() == null){
             $proses = Event::create([
@@ -116,7 +117,7 @@ class EventController extends Controller
                 'tipe' => $tipe,
                 'min_harga' => $min_harga,
                 'min_jumlah' => $min_jumlah,
-                'potongan' => $request->potongan
+                'potongan' => $potongan
             ]);
 
             if($proses){
@@ -130,7 +131,7 @@ class EventController extends Controller
                 'tipe' => $tipe,
                 'min_harga' => $min_harga,
                 'min_jumlah' => $min_jumlah,
-                'potongan' => $request->potongan
+                'potongan' => $potongan
             ]);
 
             if($proses){

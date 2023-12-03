@@ -42,7 +42,7 @@ class ResetPasswordController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8',
         ]);
 
      
@@ -60,7 +60,7 @@ class ResetPasswordController extends Controller
         );
      
         return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
-                    : back()->withErrors(['email' => [__($status)]]);
+                    ? redirect()->route('login')->with('toast_success', 'Password Updated Successfully')
+                    : back()->withErrors(['error' => [__($status)]]);
     }
 }

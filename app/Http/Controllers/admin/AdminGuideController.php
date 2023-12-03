@@ -55,7 +55,7 @@ class AdminGuideController extends Controller
         //
         $validasi = $request->validate([
             'nama' => 'required|max:255',
-            'image' => 'required',
+            'image' => 'required|max:2048',
             'no_tlpn' => 'required',
             'alamat' => 'required',
         ]);

@@ -34,7 +34,7 @@
         </div>
         
         <div class="mb-6">
-            <textarea name="isi" id="isi" cols="30" rows="10">
+            <textarea name="isi" id="isi" cols="30" rows="10" >
               {!! $data->isi !!}
             </textarea>
         </div>

@@ -14,20 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kendaraans', function (Blueprint $table) {
-
-                        //tambah db supir + kendaraan
-            //merek
-            //kapasitas
-            //
-
             $table->id();
             $table->string('merek');
             $table->integer('kapasitas');
+            $table->integer('harga');
             $table->integer('jumlah');
             $table->string('plat');
             $table->text('image');
             $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

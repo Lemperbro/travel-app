@@ -2,58 +2,26 @@
 
 @section('container')
 
-<div>
-    <img src="{{ asset('image/'.$data->image) }}" alt="" class="w-full h-[500px] object-cover">
+<div class="px-4 md:px-0">
+    <img src="{{ asset('image/'.$data_article->image) }}" alt="" class="w-full h-[500px] object-cover">
 
-    <h1 class="mt-10 font-semibold text-2xl">{{ $data->judul }}</h1>
+    <h1 class="mt-10 font-semibold text-2xl">{{ $data_article->judul }}</h1>
     <div class="mt-5">
-    {!! $data->isi !!}
+    {!! $data_article->isi !!}
     </div>
     
 </div>
 
 
-<div class="mt-5">
+<div class="mt-5 px-4 md:px-0">
 
     <div class="flex justify-between border-b-[1px] mt-10 container py-4">
         <h1 class="font-semibold text-2xl">Wisata Terkait</h1>
       </div>
 
-    <div class="grid grid-cols-4 gap-4 my-10">
-
-
-        @foreach ($wisata as $wisatas)
-
-        @php
-        $images = explode('|', $wisatas->image);
-      @endphp
-                <!--Card 1-->
-    <a href="/wisata/{{ $wisatas->slug }}" class="rounded overflow-hidden shadow-best4">
-      <img class="w-full h-64 object-cover" src="/image/{!! $images[0] !!}" alt="Mountain">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2 capitalize">{{ $wisatas->nama_wisata }}</div>
-        <h1 class="text-lg">Start From <span class="font-semibold">Rp. {{ $wisatas->harga }}</span></h1>
-        <p class="text-gray-700 text-base line-clamp-4">
-          {{ $wisatas->deskripsi }}
-        </p>
-      </div>
-      @php
-        $booking = $wisatas->diboking;
-
-        if($booking === null){
-          $booking = 0;
-        }
-      @endphp
-      <div class="px-6 pt-4 pb-2">
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $wisatas->tour_type }}</span>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $wisatas->long_tour }}</span>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $wisatas->kota->nama_kota }}</span>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $booking }} On Booking</span>
-      </div>
-    </a>
-    @endforeach
-
-    </div>
+      @include('partials.card')
+      {{ $data->links('vendor.pagination.tailwind') }}
+  
 </div>
 
 <div class="mt-5">
@@ -63,7 +31,7 @@
       </div>
 
 
-      <div class="grid grid-cols-4 gap-4 container my-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4  my-10">
 
 
         @foreach ($article as $articles)

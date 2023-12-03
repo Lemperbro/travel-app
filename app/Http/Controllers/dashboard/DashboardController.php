@@ -24,34 +24,36 @@ class DashboardController extends Controller
 
         // dd(request('search'));
 
-        $wisata = Wisata::with('kota','event');
-        $price = ['id','desc'];
-        if(request('search')){
-            $wisata->where('status', true)->where('nama_wisata', 'like', '%' . request('search') . '%')
-            ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
-        }elseif(request('type') && request('price')){
+        $wisata = Wisata::with('kota', 'event');
+        $price = ['id', 'desc'];
 
-            if(request('price') === 'termurah'){
-                $price = ['harga','asc'];
-            }elseif(request('price') === 'termahal'){
-                $price = ['harga','desc'];
+        if (request('filter') == 'private trip' || request('filter') == 'open trip' || request('filter') == 'single trip') {
+            $wisata->where('status', true)->where('tour_type', request('filter'));
+        } elseif (request('filter') == 'termurah' || request('filter') == 'mahal') {
+            if (request('filter') == 'termurah') {
+                $price = ['harga', 'asc'];
+            } elseif (request('filter') == 'mahal') {
+                $price = ['harga', 'desc'];
             }
-            $wisata->where('status', true)->where('tour_type', 'like', '%' . request('type') . '%');
         }
+
+
         $article =  Article::paginate(8);
 
         $guide = Guide::latest()->get();
+
+        $carouselFile = public_path('carousel/carousel.json');
+        $carousel = json_decode(file_get_contents($carouselFile), true);
         return view('Dashboard.dashboard', [
 
             // 'best' => Wisata::orderBy('diboking', 'DESC')->limit(3)->get(),
             // 'best_kota' => Kota::orderBy('popularitas', 'DESC')->limit(3)->get(),
-            'best' => Wisata::with(['kota' => function($query){
-                $query->orderBy('popularitas', 'DESC')->limit(25)->get();
-            }])->where('status', true)->orderBy('diboking', 'DESC')->paginate(3),
-            'kota' => Kota::limit(4)->get(),
-            'latest' => $wisata->where('status', true)->orderBy($price[0],$price[1])->get(),
+            'best' => Wisata::with('kota')->where('status', true)->orderBy('diboking', 'DESC')->paginate(4),
+            'kota' => Kota::get(),
+            'latest' => $wisata->where('status', true)->orderBy($price[0], $price[1])->get(),
             'article' => $article,
-            'guide' => $guide
+            'guide' => $guide,
+            'carousel' => $carousel
         ]);
     }
 
@@ -121,38 +123,33 @@ class DashboardController extends Controller
         //
     }
 
-    public function review(Request $request){
+    public function review(Request $request)
+    {
 
         $testi = Review::where('user_id', Auth()->user()->id)->first();
         $validasi = $request->validate([
             'description' => 'required'
         ]);
 
-        if($testi === null){
+        if ($testi === null) {
 
             Review::create([
                 'user_id' => Auth()->user()->id,
                 'description' => $request->description
             ]);
-    
-            return redirect('/testimoni');
-        }else{
 
-            return redirect('/');
-            
+            return redirect('/testimoni')->with('toast_success', 'Successfuly Add Testimonial');
+        } else {
 
-
+            return redirect()->back()->with('toast_error', 'You Have Already Made a Testimony');
         }
-
     }
 
-    public function testi_store(){
+    public function testi_store()
+    {
+        $user_id = Auth()->user()->id;
         return view('/testimoni', [
-            'data' => Review::with('user')->get()
+            'data' => Review::with('user')->orderByRaw("user_id = {$user_id} desc")->get()
         ]);
     }
-
-
-      
-      
 }

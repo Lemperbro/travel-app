@@ -6,10 +6,11 @@ use App\Models\Wisata;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kota extends Model
 {
-    use HasFactory , Sluggable;
+    use HasFactory , Sluggable,SoftDeletes;
 
     protected $guarded = [
         'id',

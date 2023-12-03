@@ -7,7 +7,10 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('src/style.css') }}">
     <link rel="icon"  href="{{ asset('img/1.png') }}"/>
-    <script src="https://cdn.tiny.cloud/1/4jfwg3ggzlzizqiuux4vs8zext690fbffche2l6rcz3j34do/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="{{ asset('froala/css/froala_editor.pkgd.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/listFroala.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC

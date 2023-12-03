@@ -21,18 +21,20 @@ class ContactController extends Controller
 
     public function sendEmail(Request $request)
     {
+
         
             $data = array(
                 'name' => $request->name,
                 'email' => $request->email,
                 'subject' => $request->subject,
-                'pesan' => $request->message
+                'pesan' => $request->message,
+                'email_growin' => config('services.layanan.email')
             );
             $send = Mail::send('email.index', $data, function($message) use ($data){
 
                 $message->from($data['email'], 'To Grow In Travel Indonesia');
 
-                $message->to('sihdobleh@gmail.com')->subject($data['subject']);
+                $message->to($data['email_growin'])->subject($data['subject']);
             });
 
             if($send){

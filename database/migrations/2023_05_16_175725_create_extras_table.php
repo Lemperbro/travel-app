@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('extras', function (Blueprint $table) {
             $table->id();
             $table->foreignId('wisata_id');
+            $table->string('type');
             $table->text('image');
             $table->string('judul');
             $table->text('deskripsi');
-            $table->integer('harga');
+            $table->integer('harga')->nullable();
             $table->timestamps();
         });
     }

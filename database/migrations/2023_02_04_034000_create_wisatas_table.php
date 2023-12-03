@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('kota_id');
             $table->string('tour_type');
             $table->integer('harga');
+            $table->time('time_departure');
             $table->integer('price_child')->nullable();
             $table->string('long_tour');
             $table->string('room_type')->nullable();
@@ -30,6 +31,8 @@ return new class extends Migration
             $table->integer('diboking')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

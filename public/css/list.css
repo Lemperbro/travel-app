@@ -1,0 +1,18 @@
+.mce-content-body ol[align="center"],
+.mce-content-body ol li[align="center"],
+.mce-content-body ul[align="center"],
+.mce-content-body ul li[align="center"] {
+    text-align: center;
+}
+.mce-content-body ol[align="left"],
+.mce-content-body ol li[align="left"],
+.mce-content-body ul[align="left"],
+.mce-content-body ul li[align="left"] {
+    text-align: left;
+}
+.mce-content-body ol[align="right"],
+.mce-content-body ol li[align="right"],
+.mce-content-body ul[align="right"],
+.mce-content-body ul li[align="right"] {
+    text-align: right;
+}

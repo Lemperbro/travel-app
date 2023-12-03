@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
+use Carbon\Carbon;
 use App\Models\Faq;
 use App\Models\Kota;
 use App\Models\Jemput;
 use App\Models\Wisata;
+use App\Models\Session;
 use App\Models\Equipment;
 use App\Models\Fasilitas;
 use App\Models\Itenerary;
@@ -27,19 +29,25 @@ class AdminWisataController extends Controller
     public function index()
     {
         //
-
-        $wisata = Wisata::latest();
+        $date = Carbon::now()->format('Y-m-d');
+        $wisata = Wisata::with('session')->latest();
         $kota = Kota::where('slug', request('pilihDaerah'))->first();
 
-        if(request('pilihDaerah')){
+        if (request('pilihDaerah')) {
             $wisata->where('kota_id', $kota->id);
         }
 
-        return view('admin.wisata.index',[
+        if (request('search')) {
+            $wisata->where('nama_wisata', 'like', '%' . request('search') . '%');
+        }
+
+        return view('admin.wisata.index', [
             'tittle' => 'Kelola Wisata',
             'data' => $wisata->paginate(8),
-            'kota' => Kota::get()
-            
+            'kota' => Kota::get(),
+            'date_now' => $date,
+            'day_now' => Carbon::now()->format('l'),
+
         ]);
     }
 
@@ -51,11 +59,10 @@ class AdminWisataController extends Controller
     public function create()
     {
         //
-        return view('admin.wisata.add',[
+        return view('admin.wisata.add', [
             'tittle' => 'Kelola Wisata',
-            'kota' => Kota::all() 
+            'kota' => Kota::all()
         ]);
-
     }
 
     /**
@@ -66,11 +73,11 @@ class AdminWisataController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         // $jajal2 = str_replace('>', '',$request->itenerary);
         // $jajal = preg_split('/\n|\r\n?/',$jajal2);
         // dd($jajal);
-        
+
 
         $validasi = $request->validate([
             'image' => 'required|max:2048',
@@ -84,26 +91,43 @@ class AdminWisataController extends Controller
             'deskripsi' => 'required',
             'inclusion' => 'required',
             'exclusion' => 'required',
-            
-        ]);       
+            'time' => 'required'
 
-        
-        $image=array();
-        $no = 1;
+        ]);
 
-        if($files=$request->file('image')){
-            foreach($files as $file){
-                $extension=$file->getClientOriginalExtension();
-                $name = hash('sha256', time()) .$no++.'.' . $extension;
-                $file->move('image',$name);
-                $image[]=$name;
+        if ($request->hasFile('image')) {
+            foreach ($request->image as $image_valid) {
+                $image = $image_valid->getClientOriginalExtension();
+                if (!in_array($image, ['jpg', 'png', 'jpeg'])) {
+                    return redirect()->back()->with('toast_error', 'The image you entered is invalid');
+                }
             }
         }
-        
+
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images')->getClientOriginalExtension();
+            if (!in_array($images, ['jpg', 'png', 'jpeg'])) {
+                return redirect()->back()->with('toast_error', 'The image you entered is invalid');
+            }
+        }
+
+        $image = array();
+        $no = 1;
+
+        if ($files = $request->file('image')) {
+            foreach ($files as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $name = hash('sha256', time()) . $no++ . '.' . $extension;
+                $file->move('image', $name);
+                $image[] = $name;
+            }
+        }
+
 
 
         $wisata = Wisata::create([
-            'image'=>  implode("|",$image),
+            'image' =>  implode("|", $image),
             'nama_wisata' => $validasi['nama'],
             'long_tour' => $validasi['long_tour'],
             'room_type' => $request->room_type,
@@ -114,73 +138,65 @@ class AdminWisataController extends Controller
             'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
+            'time_departure' => $request->time
         ]);
 
 
+        $inclusion_first = explode('|', $request->inclusion);
+        $inclusion_trim = array_map('trim', $inclusion_first);
 
-            $inclusions = array();
-            if($inclusion = $request->inclusion){
-                foreach($inclusion as $inclusion){
-                    $inclusions[] = $inclusion;
-                }
-            }
-            
-            $exclusions = array();
-            if($inclusion = $request->exclusion){
-                foreach($inclusion as $inclusion){
-                    $exclusions[] = $inclusion;
-                }
-            }
 
-            Fasilitas::create([
+        $exclusion_first = explode('|', $request->exclusion);
+        $exclusion_trim = array_map('trim', $exclusion_first);
+
+        Fasilitas::create([
+            'wisata_id' => $wisata->id,
+            'inclusion' => implode(" | ", $inclusion_trim),
+            'exclusions' => implode(" | ", $exclusion_trim)
+        ]);
+
+
+        $jumlah_agenda = count($request->agenda);
+        for ($i = 0; $i < $jumlah_agenda; $i++) {
+            Itenerary::create([
                 'wisata_id' => $wisata->id,
-                'inclusion' => implode("|", $inclusions),
-                'exclusions' => implode("|", $exclusions)
+                'agenda' => $request->agenda[$i],
+                'startTime' => $request->startTime[$i],
+                'endTime' => $request->endTime[$i],
+                'deskripsi' => $request->itenerary[$i]
             ]);
-
-
-            $jumlah_agenda = count($request->agenda);
-            for($i = 0 ; $i < $jumlah_agenda; $i++){
-                Itenerary::create([
-                    'wisata_id' => $wisata->id,
-                    'agenda' => $request->agenda[$i],
-                    'startTime' => $request->startTime[$i],
-                    'endTime' => $request->endTime[$i],
-                    'deskripsi' => $request->itenerary[$i]
-                ]);
-            }
+        }
 
 
 
 
-            if($files=$request->file('images')){
-                    $extension=$files->getClientOriginalExtension();
-                    $name = hash('sha256', time()) . '.' . $extension;
-                    $files->move('image',$name);
-            }
-            Equipment::create([
-                'wisata_id' => $wisata->id,
-                'image' => $name,
-            ]);
+        if ($files = $request->file('images')) {
+            $extension = $files->getClientOriginalExtension();
+            $name = hash('sha256', time()) . '.' . $extension;
+            $files->move('image', $name);
+        }
+        Equipment::create([
+            'wisata_id' => $wisata->id,
+            'image' => $name,
+        ]);
 
 
-            // $jumlah_equipment = count($request->equipment);
-            // for($i = 0 ; $i < $jumlah_equipment; $i++){
-            //     Equipment::create([
-            //         'wisata_id' => $wisata->id,
-            //         'image' => $images[$i],
-            //         'name' => $request->equipment[$i]
-            //     ]);
-            // }
-            
+        // $jumlah_equipment = count($request->equipment);
+        // for($i = 0 ; $i < $jumlah_equipment; $i++){
+        //     Equipment::create([
+        //         'wisata_id' => $wisata->id,
+        //         'image' => $images[$i],
+        //         'name' => $request->equipment[$i]
+        //     ]);
+        // }
+
 
 
         return redirect('/admin/wisata')->with('success', 'successful addition to the tour');
-
-
     }
 
-    public function addJemput(Request $request, $id){
+    public function addJemput(Request $request, $id)
+    {
 
         $validasi = $request->validate([
             'titik_jemput' => 'required',
@@ -192,7 +208,6 @@ class AdminWisataController extends Controller
             'harga' => $validasi['harga']
         ]);
         return redirect('/admin/wisata');
-
     }
 
     /**
@@ -216,27 +231,23 @@ class AdminWisataController extends Controller
     {
         //
 
-        $wisata = Wisata::with(['kota','equipment', 'fasilitas', 'itenerary'  => function($query) use ($id){
+        $wisata = Wisata::with(['kota', 'equipment', 'fasilitas', 'itenerary'  => function ($query) use ($id) {
             $query->where('wisata_id', $id)->get();
         }])->where('id', $id)->get();
 
-        foreach($wisata as $wisatas){
+        // foreach ($wisata as $wisatas) {
 
-        foreach($wisatas->fasilitas as $fasilitas){
+        //     foreach ($wisatas->fasilitas as $fasilitas) {
 
-            $inclusion = explode('|', $fasilitas->inclusion);
-            $exclusion = explode('|', $fasilitas->exclusions);
-            
-        }
-
-
-
-    }
+        //         $inclusion = explode('|', $fasilitas->inclusion);
+        //         $exclusion = explode('|', $fasilitas->exclusions);
+        //     }
+        // }
 
         return view('admin.wisata.edit', [
             'data' => $wisata,
-            'inclusion' => $inclusion,
-            'exclusion' => $exclusion,
+            // 'inclusion' => $inclusion,
+            // 'exclusion' => $exclusion,
             'tittle' => 'Kelola Wisata',
             'kota' => Kota::all(),
 
@@ -265,57 +276,72 @@ class AdminWisataController extends Controller
             'exclusion' => 'required',
             'image' => 'max:2048',
             'images' => 'max:2048',
-
-
-
+            'time' => 'required'
         ]);
-        
 
-        if($request->hasFile('image') && $request->image != ''){
-
-
-           
-
-            $image=array();
-            $no = 1;
-            foreach($request->image as $file){
-                $extension=$file->getClientOriginalExtension();
-                $name = hash('sha256', time()) .$no++.'.' . $extension;
-                $storage2 = public_path("image/".$name);
-
-                while(File::exists($storage2)){
-
-                $name = $no+2;
-
+        if ($request->hasFile('image')) {
+            foreach ($request->image as $image_valid) {
+                $image = $image_valid->getClientOriginalExtension();
+                if (!in_array($image, ['jpg', 'png', 'jpeg'])) {
+                    return redirect()->back()->with('toast_error', 'The image you entered is invalid');
                 }
-                $up = $file->move('image',$name);
-                $image[]=$name;
-                if($up){
+            }
+        }
+
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images')->getClientOriginalExtension();
+            if (!in_array($images, ['jpg', 'png', 'jpeg'])) {
+                return redirect()->back()->with('toast_error', 'The image you entered is invalid');
+            }
+        }
+
+
+        if ($request->hasFile('image') && $request->image != '') {
+
+
+
+
+            $image = array();
+            $no = 1;
+            foreach ($request->image as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $name = hash('sha256', time()) . $no++ . '.' . $extension;
+                $storage2 = public_path("image/" . $name);
+
+                while (File::exists($storage2)) {
+
+                    $name = $no + 2;
+                }
+                $up = $file->move('image', $name);
+                $image[] = $name;
+                if ($up) {
                     $images_db = Wisata::where('id', $id)->pluck('image');
                     $img_explode = explode('|', $images_db);
                     $potong_img = str_replace(['[', '"', ']'], '', $img_explode);
-        
-                    foreach($potong_img as $img){
-                        $storage = public_path("image/".$img);
-                        if(File::exists($storage)){
-                            unlink($storage);                       
+
+                    foreach ($potong_img as $img) {
+                        $storage = public_path("image/" . $img);
+                        if (File::exists($storage)) {
+                            unlink($storage);
                         }
-                    }   
+                    }
                 }
             }
-        }else{
-            $image=array();
+        } else {
+            $image = array();
 
             $images_db = Wisata::where('id', $id)->pluck('image');
             $img = explode("|", $images_db);
             $potong_img = str_replace(['[', '"', ']'], '', $img);
             $image = $potong_img;
         }
+
         $W = Wisata::where('id', $id)->pluck('slug')->first();
 
 
         $wisata = Wisata::find($id)->update([
-            'image'=>  implode("|",$image),
+            'image' =>  implode("|", $image),
             'nama_wisata' => $validasi['nama'],
             'long_tour' => $validasi['long_tour'],
             'room_type' => $request->room_type,
@@ -326,88 +352,79 @@ class AdminWisataController extends Controller
             'kota_id' => $validasi['kota'],
             'location' => $validasi['location'],
             'deskripsi' => $validasi['deskripsi'],
-            'slug' => SlugService::createSlug(Wisata::class, 'slug' , $request->nama)
+            'time_departure' => $request->time,
+            'slug' => SlugService::createSlug(Wisata::class, 'slug', $request->nama)
         ]);
 
         $U = Wisata::where('id', $id)->pluck('slug')->first();
-        
-        if($wisata){
+
+        if ($wisata) {
             Faq::where('wisata', $W)->update([
                 'wisata' => $U
             ]);
-
-
         }
 
 
-            $inclusions = array();
-            if($inclusion = $request->inclusion){
-                foreach($inclusion as $inclusion){
-                    $inclusions[] = $inclusion;
-                }
+        $inclusion_first = explode('|', $request->inclusion);
+        $inclusion_trim = array_map('trim', $inclusion_first);
+
+
+        $exclusion_first = explode('|', $request->exclusion);
+        $exclusion_trim = array_map('trim', $exclusion_first);
+
+
+        Fasilitas::where('wisata_id', $id)->update([
+            'wisata_id' => $id,
+            'inclusion' => implode(' | ', $inclusion_trim),
+            'exclusions' => implode(' | ', $exclusion_trim)
+        ]);
+
+
+
+        $jumlah_agenda = count($request->agenda);
+        $itenerary_count = Itenerary::where('wisata_id', $id)->count();
+
+        if ($jumlah_agenda > $itenerary_count) {
+            for ($i = 0; $i < $jumlah_agenda; $i++) {
+                Itenerary::where('wisata_id', $id)->updateOrCreate([
+                    'wisata_id' => $id,
+                    'agenda' => $request->agenda[$i],
+                    'startTime' => $request->startTime[$i],
+                    'endTime' => $request->endTime[$i],
+                    'deskripsi' => $request->itenerary[$i]
+                ]);
             }
-            
-            $exclusions = array();
-            if($inclusion = $request->exclusion){
-                foreach($inclusion as $inclusion){
-                    $exclusions[] = $inclusion;
-                }
+        } else if ($jumlah_agenda <= $itenerary_count) {
+            for ($i = 0; $i < $jumlah_agenda; $i++) {
+                Itenerary::where('wisata_id', $id)->where('id', $request->id_itenerary[$i])->update([
+                    'wisata_id' => $id,
+                    'agenda' => $request->agenda[$i],
+                    'startTime' => $request->startTime[$i],
+                    'endTime' => $request->endTime[$i],
+                    'deskripsi' => $request->itenerary[$i]
+                ]);
             }
-
-            Fasilitas::where('wisata_id', $id)->update([
-                'wisata_id' => $id,
-                'inclusion' => implode("|", $inclusions),
-                'exclusions' => implode("|", $exclusions)
-            ]);
-
-
-
-            $jumlah_agenda = count($request->agenda);
-            $itenerary_count = Itenerary::where('wisata_id', $id)->count();
-
-            if ($jumlah_agenda > $itenerary_count){
-                for($i = 0 ; $i < $jumlah_agenda; $i++){
-                    Itenerary::where('wisata_id', $id)->updateOrCreate([
-                        'wisata_id' => $id,
-                        'agenda' => $request->agenda[$i],
-                        'startTime' => $request->startTime[$i],
-                        'endTime' => $request->endTime[$i],
-                        'deskripsi' => $request->itenerary[$i]
-                    ]);
-                }
-            } else if($jumlah_agenda <= $itenerary_count){
-                for($i = 0 ; $i < $jumlah_agenda; $i++){
-                    Itenerary::where('wisata_id', $id)->where('id', $request->id_itenerary[$i])->update([
-                        'wisata_id' => $id,
-                        'agenda' => $request->agenda[$i],
-                        'startTime' => $request->startTime[$i],
-                        'endTime' => $request->endTime[$i],
-                        'deskripsi' => $request->itenerary[$i]
-                    ]);
-                }
-            }
+        }
 
 
 
 
-            if($files=$request->file('images')){
-                    $extension=$files->getClientOriginalExtension();
-                    $img = hash('sha256', time()) .'.' . $extension;
-                    $files->move('image',$img);
+        if ($files = $request->file('images')) {
+            $extension = $files->getClientOriginalExtension();
+            $img = hash('sha256', time()) . '.' . $extension;
+            $files->move('image', $img);
+        } else {
+            $equipment = Equipment::where('wisata_id', $id)->pluck('image')->first();
+            $img = $equipment;
+        }
 
-            }else{
-                $equipment = Equipment::where('wisata_id', $id)->pluck('image')->first();
-                $img = $equipment;
-            }
-
-            Equipment::where('wisata_id', $id)->update([
-                'wisata_id' => $id,
-                'image' => $img
-            ]);
+        Equipment::where('wisata_id', $id)->update([
+            'wisata_id' => $id,
+            'image' => $img
+        ]);
 
 
-            return redirect('/admin/wisata')->with('success', 'update successful to the tour');
-        
+        return redirect('/admin/wisata')->with('success', 'update successful to the tour');
     }
 
     /**
@@ -421,49 +438,47 @@ class AdminWisataController extends Controller
 
         $img = Wisata::where('id', $id)->pluck('image')->first();
         //
-       $proses = Wisata::find($id)->delete();
+        $proses = Wisata::find($id)->delete();
 
-       if($proses){
-            $data = explode('|',$img);
+        if ($proses) {
+            $data = explode('|', $img);
 
-            foreach($data as $datas){
-                $storage = public_path('image/'.$datas);
+            foreach ($data as $datas) {
+                $storage = public_path('image/' . $datas);
 
-                if(File::exists($storage)){
+                if (File::exists($storage)) {
                     unlink($storage);
-
                 }
             }
             return redirect('/admin/wisata')->with('success', 'delete successful to the tour');
-
-       }
+        }
         // Itenerary::with('fasilitas','jemput')->where('wisata_id', $id)->delete();
         return redirect('/admin/wisata')->with('warning', 'failed delete to the tour');
     }
 
 
-    public function destroy_itenerary($id){
+    public function destroy_itenerary($id)
+    {
         Itenerary::where('id', $id)->delete();
 
         return response()->json([
             'success' => true
         ]);
-
-
     }
-    public function delete(Request $request){
-            $id = $request->id;
-            
-            Jemput::find($id)->delete();
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+
+        Jemput::find($id)->delete();
 
 
-            return response()->json(['status'=>'200']);
-
+        return response()->json(['status' => '200']);
     }
 
 
 
-    public function faq($slug){
+    public function faq($slug)
+    {
         $faq = Faq::where('wisata', $slug)->get();
 
 
@@ -474,39 +489,45 @@ class AdminWisataController extends Controller
         ]);
     }
 
-    public function addFaq(Request $request, $slug){
+    public function addFaq(Request $request, $slug)
+    {
+
+
         $faq = Faq::where('wisata', $slug)->get();
 
-        if($request->question < 1 && $request->answer < 1){
+        if ($request->question < 1 && $request->answer < 1) {
             return redirect('/admin/wisata');
-        }else if($request->question > 0 && $request->answer > 0){
+        } else if ($request->question > 0 && $request->answer > 0) {
 
             $hitung_request = count($request->question);
-            
-            if($hitung_request > $faq->count()){
 
-                if($faq->count() < 5){
-
-                for($i = 0 ; $i < $hitung_request; $i++){
-
-
-               $add = Faq::where('wisata', $slug)->updateOrCreate([
-                    'wisata' => $slug,
-                    'question' => $request->question[$i],
-                    'answer' => $request->answer[$i],
-                ]);
-
+            for ($i = 0; $i < $hitung_request; $i++) {
+                $validasi = $request->question[$i];
+                if ($validasi == null) {
+                    return redirect()->back()->with('toast_error', 'Faq Cannot Be Empty');
                 }
-                return redirect()->back()->with('success', 'successful additional to the FAQ');
-
-            }else if($faq->count() >= 5){
-                return redirect()->back()->with('warning', '
-                FAQ Reached limit');
             }
 
-                    
-            }else if($hitung_request <= $faq->count()){
-                for($i = 0 ; $i < $hitung_request; $i++){
+            if ($hitung_request > $faq->count()) {
+
+                if ($faq->count() < 5) {
+
+                    for ($i = 0; $i < $hitung_request; $i++) {
+
+
+                        $add = Faq::where('wisata', $slug)->updateOrCreate([
+                            'wisata' => $slug,
+                            'question' => $request->question[$i],
+                            'answer' => $request->answer[$i],
+                        ]);
+                    }
+                    return redirect()->back()->with('success', 'successful additional to the FAQ');
+                } else if ($faq->count() >= 5) {
+                    return redirect()->back()->with('warning', '
+                FAQ Reached limit');
+                }
+            } else if ($hitung_request <= $faq->count()) {
+                for ($i = 0; $i < $hitung_request; $i++) {
 
 
                     Faq::where('wisata', $slug)->where('id', $request->id[$i])->update([
@@ -514,22 +535,16 @@ class AdminWisataController extends Controller
                         'question' => $request->question[$i],
                         'answer' => $request->answer[$i],
                     ]);
-
-
-
-                    }
-                    
-
-                    
+                }
             }
-
         }
 
 
-        return redirect('/admin/wisata/faq/'.$slug);
+        return redirect('/admin/wisata/faq/' . $slug);
     }
 
-    public function deleteFaq($id){
+    public function deleteFaq($id)
+    {
         Faq::where('id', $id)->delete();
 
 
@@ -538,34 +553,34 @@ class AdminWisataController extends Controller
         ]);
     }
 
-    public function aktif($id){
-        
+    public function aktif($id)
+    {
+
         $wisata = Wisata::where('id', $id)->first();
         $proses = Wisata::where('id', $id)->update([
             'status' => true
         ]);
 
-        if($proses){
-            return redirect()->back()->with('success', $wisata->nama_wisata.' activated successfully');
-        }else{
-            return redirect()->back()->with('warning', $wisata->nama_wisata.' failed to activate');
-
+        if ($proses) {
+            return redirect()->back()->with('success', $wisata->nama_wisata . ' activated successfully');
+        } else {
+            return redirect()->back()->with('warning', $wisata->nama_wisata . ' failed to activate');
         }
     }
 
 
-    public function nonaktif($id){
-        
+    public function nonaktif($id)
+    {
+
         $wisata = Wisata::where('id', $id)->first();
         $proses = Wisata::where('id', $id)->update([
             'status' => false
         ]);
 
-        if($proses){
-            return redirect()->back()->with('success', $wisata->nama_wisata.' deactivated successfully');
-        }else{
-            return redirect()->back()->with('warning', $wisata->nama_wisata.' failed to deactivate');
-
+        if ($proses) {
+            return redirect()->back()->with('success', $wisata->nama_wisata . ' deactivated successfully');
+        } else {
+            return redirect()->back()->with('warning', $wisata->nama_wisata . ' failed to deactivate');
         }
     }
 }

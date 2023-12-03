@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('posisi')->default(false);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

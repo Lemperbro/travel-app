@@ -8,6 +8,7 @@ use App\Http\Controllers\kota\KotaController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\admin\EventController;
 use App\Http\Controllers\admin\ExtraController;
+use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\auth\ProfileController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\admin\SessionController;
@@ -25,8 +26,9 @@ use App\Http\Controllers\booking\CheckoutController;
 use App\Http\Controllers\admin\AdminWisataController;
 use App\Http\Controllers\admin\AdminBookingController;
 use App\Http\Controllers\auth\ResetPasswordController;
-use App\Http\Controllers\dashboard\DashboardController;
 
+use App\Http\Controllers\admin\AdminCarouselController;
+use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AdminKendaraanController;
 use App\Http\Controllers\article\KategoriArticleController;
@@ -57,18 +59,10 @@ use App\Http\Controllers\article\KategoriArticleController;
 
 
 
-Route::get('/step', function () {
-    return view('step');
-});
 
 
 
-
-Route::get('/ticket', function () {
-    return view('tiket');
-});
-
-
+Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 
 
 
@@ -84,9 +78,11 @@ Route::get('/terms', [AdminTermsController::class, 'index_client']);
 
 
 
-Route::middleware('admin')->group(function(){
+Route::middleware('admin')->group(function () {
 
     //notification 
+    Route::post('/admin/notification/read_all', [NotificationController::class, 'read_all_admin']);
+    Route::post('/notification/read_all', [NotificationController::class, 'read_all']);
     Route::post('/admin/notification/{id}', [NotificationController::class, 'update_admin']);
     Route::get('/admin', [AdminDashboardController::class, 'index']);
     Route::get('/admin/kota', [AdminKotaController::class, 'index']);
@@ -116,7 +112,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/wisata/faq/{slug}', [AdminWisataController::class, 'faq']);
     Route::post('/admin/wisata/faq/{slug}', [AdminWisataController::class, 'addFaq']);
 
-    Route::delete('/admin/wisata/faq/delete/{id}', [AdminWisataController::class, 'deleteFaq']);
+    Route::post('/admin/wisata/faq/delete/{id}', [AdminWisataController::class, 'deleteFaq']);
 
     Route::post('/admin/wisata/aktif/{id}', [AdminWisataController::class, 'aktif']);
     Route::post('/admin/wisata/nonaktif/{id}', [AdminWisataController::class, 'nonaktif']);
@@ -124,9 +120,12 @@ Route::middleware('admin')->group(function(){
     //session
     Route::get('/admin/wisata/{slug}/session', [SessionController::class, 'index']);
     Route::post('/admin/wisata/{slug}/session/deleteAll', [SessionController::class, 'delete_all']);
-    Route::post('/admin/wisata/{id}/session/delete', [SessionController::class, 'destroy']);
-    Route::get('/admin/wisata/{slug}/session/add', [SessionController::class, 'create']);
-    Route::post('/admin/wisata/{slug}/session/add', [SessionController::class, 'store']);
+    Route::post('/admin/wisata/{id}/{type}/delete', [SessionController::class, 'destroy']);
+    Route::get('/admin/wisata/{slug}/{type}/add', [SessionController::class, 'create']);
+    Route::post('/admin/wisata/{slug}/{type}/add', [SessionController::class, 'store']);
+    Route::get('/admin/wisata/{slug}/{type}/edit', [SessionController::class, 'edit']);
+    Route::post('/admin/wisata/{slug}/{type}/{id}/edit', [SessionController::class, 'update']);
+
 
 
     //admin guide\
@@ -134,7 +133,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/guide/onDuty', [AdminGuideController::class, 'onDuty']);
     Route::post('/admin/guide/edit/{id}', [AdminGuideController::class, 'update']);
     Route::post('admin/guide/delete/{id}', [AdminGuideController::class, 'destroy']);
-    Route::post('/admin/guide/add',[AdminGuideController::class, 'store']);
+    Route::post('/admin/guide/add', [AdminGuideController::class, 'store']);
 
 
     //admin teams
@@ -156,6 +155,7 @@ Route::middleware('admin')->group(function(){
 
     Route::get('/user', [AdminUserController::class, 'index']);
     Route::post('/user/delete/{id}', [AdminUserController::class, 'destroy']);
+    Route::post('/user/MakeAdmin/{id}', [AdminUserController::class, 'MakeAdmin']);
 
 
     Route::get('/supir', [AdminSupirController::class, 'index']);
@@ -172,23 +172,24 @@ Route::middleware('admin')->group(function(){
 
 
     //booking
+    Route::post('/admin/reschedule/{doc_no}', [AdminBookingController::class, 'reschedule']);
     Route::get('/admin/booking', [AdminBookingController::class, 'index']);
     Route::get('/admin/booking/confirmation', [AdminBookingController::class, 'confirmation']);
     Route::get('/admin/booking/cancel', [AdminBookingController::class, 'cancel']);
     Route::post('/admin/booking/cancel/{id}', [AdminBookingController::class, 'cancel_action']);
     Route::post('/admin/booking/confirmation/{id}', [AdminBookingController::class, 'confirm']);
+    Route::get('/admin/booking/confirmation/{id}', [AdminBookingController::class, 'confirm']);
     Route::post('/admin/booking/confirmation/cancel/{id}', [AdminBookingController::class, 'tolak']);
 
 
 
 
-  
 
 
-    Route::post('/upload_image_tiny', [ArticleController::class, 'upload_image_tiny']);
+    Route::post('/upload_image_froala', [ArticleController::class, 'upload_image_froala']);
 
 
-    
+
 
     Route::get('/admin/article', [ArticleController::class, 'index']);
     Route::get('/article/add', [ArticleController::class, 'create']);
@@ -235,81 +236,74 @@ Route::middleware('admin')->group(function(){
     Route::post('/admin/terms/update', [AdminTermsController::class, 'update']);
 
 
+    //report
+    Route::get('/admin/report', [ReportController::class, 'index']);
 
-    
+    //carousel
+    Route::get('/carousels',[AdminCarouselController::class, 'index']);
+    Route::get('/carousels/edit/{index}',[AdminCarouselController::class, 'edit']);
+    Route::post('/carousels/edit/{index}',[AdminCarouselController::class, 'update']);
 });
 
-Route::middleware('auth')->group(function(){
-//notification
-Route::post('/notification/{id}', [NotificationController::class, 'update_client']);
+Route::middleware('auth')->group(function () {
 
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);
-Route::post('/checkout/{slug}', [CheckoutController::class, 'show']);
-Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
+    Route::get('/reschedule/{doc_no}', [CheckoutController::class, 'reschedule'])->name('reschedule.redirect');
+    //notification
+    Route::post('/notification/{id}', [NotificationController::class, 'update_client']);
 
-// Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);
-Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
-Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
-Route::post('/booking/cancel/{doc_no}', [CheckoutController::class, 'cancel']);
-Route::get('/booking', [CheckoutController::class, 'booking']);
-Route::get('/tiket/{doc_no}', [CheckoutController::class, 'ticket']);
-Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);
- 
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('/checkout/{slug}', [CheckoutController::class, 'show']);
+    Route::post('/checkout/{slug}', [CheckoutController::class, 'show']);
+    Route::post('/checkout/{slug}/payment', [CheckoutController::class, 'store']);
 
-//contact
-Route::get('/contact', [ContactController::class, 'index']);
-// Route::post('/contacts', [ContactController::class, 'Email']);
-Route::post('/contacts', [ContactController::class, 'sendEmail']);
-Route::get('/contacts', [ContactController::class, 'sendEmail']);
+    // Route::get('/checkout/{slug}/payment', [CheckoutController::class, 'payment']);
+    Route::get('/tagihan', [CheckoutController::class, 'tagihan']);
+    Route::post('/booking/cancel/{doc_no}', [CheckoutController::class, 'cancel']);
+    Route::get('/booking', [CheckoutController::class, 'booking']);
+    Route::get('/tiket/{doc_no}', [CheckoutController::class, 'ticket']);
+    Route::post('/comment/{doc_no}', [CheckoutController::class, 'Sendtesti']);
 
 
-//profile
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::post('/profile/update', [ProfileController::class, 'update']);
-Route::get('/profile/change-password', [ProfileController::class, 'changePassword']);
-Route::post('/profile/change-password', [ProfileController::class, 'changePassword']);
+    //contact
+    Route::get('/contact', [ContactController::class, 'index']);
+    // Route::post('/contacts', [ContactController::class, 'Email']);
+    Route::post('/contacts', [ContactController::class, 'sendEmail']);
+    Route::get('/contacts', [ContactController::class, 'sendEmail']);
 
 
-//review
-Route::post('/review/send', [DashboardController::class, 'review']);
+    //profile
+    Route::get('/profile', [ProfileController::class, 'index']);
+    Route::post('/profile/update', [ProfileController::class, 'update']);
+    Route::get('/profile/change-password', [ProfileController::class, 'changePassword']);
+    Route::post('/profile/change-password', [ProfileController::class, 'changePassword']);
 
 
-
-
+    //review
+    Route::post('/review/send', [DashboardController::class, 'review']);
 });
 
-Route::middleware('guest')->group(function(){
+Route::middleware('guest')->group(function () {
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/register', [RegisterController::class, 'store']);
-
-
-Route::get('/forgot-password',[ResetPasswordController::class, 'index'])->name('password.request');
-Route::post('/forgot-password', [ResetPasswordController::class, 'store'])->name('password.email');
-Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])->name('password.reset');
-Route::post('/reset-password', [ResetPasswordController::class, 'update_password'])->name('password.update');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [RegisterController::class, 'create']);
+    Route::post('/register', [RegisterController::class, 'store']);
 
 
-
-
-
-
+    Route::get('/forgot-password', [ResetPasswordController::class, 'index'])->name('password.request');
+    Route::post('/forgot-password', [ResetPasswordController::class, 'store'])->name('password.email');
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'update_password'])->name('password.update');
 });
 
 
-Route::middleware('guest', 'auth' , 'admin')->group(function(){
-
-
-
+Route::middleware('guest', 'auth', 'admin')->group(function () {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/wisata' , [WisataController::class, 'index']);
-Route::get('/wisata/perfect' , [WisataController::class, 'perfect']);
-Route::get('/wisata/type/{type}' , [WisataController::class, 'type']);
+Route::get('/wisata', [WisataController::class, 'index']);
+Route::get('/wisata/perfect', [WisataController::class, 'perfect']);
+Route::get('/wisata/type/{type}', [WisataController::class, 'type']);
 Route::get('/destinasi/{id:slug}', [WisataController::class, 'showDestination']);
 Route::get('/wisata/{id:slug}', [WisataController::class, 'isi']);
 
@@ -324,20 +318,6 @@ Route::get('/kota', [KotaController::class, 'index']);
 
 
 
-
-Route::get('/histori', function(){
-    return view('booking.histori');
+Route::get('jajal1', function(){
+    return view('admin.booking.emailRefund');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
