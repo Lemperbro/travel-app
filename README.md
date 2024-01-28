@@ -97,7 +97,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     npm install
     ```
 
-6. Run migrations and seed the database:
+6. Run migrations:
 
     ```bash
     php artisan migrate
