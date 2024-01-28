@@ -1,8 +1,12 @@
 @extends('layouts.two')
 
 
+<<<<<<< HEAD
 {{-- @section('container')
     <img src="{{ asset('img/bg-login.jpg') }}" alt="" class="absolute inset-0 -z-20 h-screen w-full">
+=======
+    {{-- <img src="{{ asset('img/bg-login.jpg') }}" alt="" class="absolute inset-0 -z-20 h-screen w-full">
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
     <div class="backdrop-blur-[2px] absolute inset-0 -z-10"></div>
 
     <div class='mt-4 lg:flex  gap-x-4 mx-auto  shadow-best4 bg-white'>
@@ -117,8 +121,12 @@
         <img src='/img/pp.jpg' class='w-full h-full object-cover' />
     </div>
 
+<<<<<<< HEAD
     </div>
 @endsection --}}
+=======
+    </div> --}}
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
 
 <div class="lg:h-screen bg-indigo-100 flex justify-center items-center">
     <div class="lg:w-2/5 md:w-1/2 w-[90%] my-5">
@@ -182,6 +190,74 @@
                     placeholder="Jl......" />
             </div>
 
+<<<<<<< HEAD
+=======
+@section('container')
+
+
+<div class="lg:h-screen bg-indigo-100 flex justify-center items-center">
+    <div class="lg:w-2/5 md:w-1/2 w-[90%] my-5">
+        <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="/register" method="post">
+            @csrf
+            <img src="/img/logo.png" class='w-40 mx-auto mb-6' />
+            <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Form Register</h1>
+            <div>
+                <label class="text-gray-800 font-semibold block my-3 text-md" for="username">Username</label>
+                <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none  @error('username') peer @enderror" value="{{ old('username') }}" type="text" name="username" id="username" placeholder="username" />
+                @error('username')
+                    <p class="peer-invalid:visible text-red-700 font-light">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div>
+                <label class="text-gray-800 font-semibold block my-3 text-md" for="email">Email</label>
+                <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none @error('email') peer @enderror"
+                    value="{{ old('email') }}" type="email" name="email" id="email" placeholder="@email" />
+                @error('email')
+                    <p class="peer-invalid:visible text-red-700 font-light">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div>
+                <label class="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
+                <input
+                    class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none @error('password') peer @enderror"
+                    type="password" name="password" id="password" placeholder="password" />
+                @error('password')
+                    <p class="peer-invalid:visible text-red-700 font-light">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div>
+                <label class="text-gray-800 font-semibold block my-3 text-md" for="confirm">Confirm password</label>
+                <input
+                    class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none @error('password') peer @enderror"
+                    type="password" name="password_confirmation" id="confirm" placeholder="confirm password" />
+                @error('password')
+                    <p class="peer-invalid:visible text-red-700 font-light">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div>
+                <label class="text-gray-800 font-semibold block my-3 text-md" for="confirm">Number Phone</label>
+                <input
+                    class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none @error('no_tlpn') peer @enderror"
+                    value="{{ old('no_tlpn') }}" type="number" name="no_tlpn" id="no_tlpn"
+                    placeholder="08......" />
+            </div>
+            <div>
+                <label class="text-gray-800 font-semibold block my-3 text-md" for="confirm">Address</label>
+                <input
+                    class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none @error('alamat') peer @enderror"
+                    value="{{ old('alamat') }}" type="text" name="alamat" id="alamat"
+                    placeholder="Jl......" />
+            </div>
+
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
             <button type="submit"
                 class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Register</button>
             <h1 class="text-center font-semibold my-4">OR</h1>
@@ -190,3 +266,7 @@
         </form>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+@endsection
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0

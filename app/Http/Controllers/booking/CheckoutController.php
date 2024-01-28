@@ -28,6 +28,14 @@ use Illuminate\Support\Facades\Redirect;
 
 class CheckoutController extends Controller
 {
+
+    private $CheckoutPartialController;
+
+
+    public function __construct(CheckoutPartialController $checkout)
+    {   
+        $this->CheckoutPartialController = $checkout;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -82,6 +90,7 @@ class CheckoutController extends Controller
         }
         //agreement end
 
+<<<<<<< HEAD
         //price extra start
         $extra_price = 0;
         if ($request->extra !== null) {
@@ -190,6 +199,42 @@ class CheckoutController extends Controller
         //logic event end
 
         $count_3 = $count_3 + $extra_price;
+=======
+        // //price extra start
+
+            $extra = $this->CheckoutPartialController->extra($request->extra); 
+
+
+        //extra kendaraan dan hotels start
+
+        $kendaraanHotel = $this->CheckoutPartialController->kendaraanHotel($request->kendaraan,$request->hotels);
+        //extra kendaraan dan hotels end
+
+
+        $kota = Kota::where('slug', request('kota'))->first();
+        
+        
+        //logic session start
+        $session = $this->CheckoutPartialController->session($wisata->id,$wisata->harga,$wisata->price_child,$request->departure);
+        //logic session end
+        
+        //count quantity order start
+        $quantity = $this->CheckoutPartialController->quantity($request->adult,$request->child,$session['harga'],$session['price_child']);
+        //count quantity order start
+
+
+        $extra_price = $extra['extra_price'] * $quantity['total_pesan'];
+
+        //logic event start
+        $eventGet = Event::where('wisata_id', $wisata->id)->where('status', 1)->get();
+        $event = $this->CheckoutPartialController->event($quantity['priceWisata'],$eventGet,$quantity['total_pesan'],$wisata->id);
+        
+        
+        //logic event end
+        
+        $kota_pickup = explode(',', $request->kota);
+        $count_3 = $event['hargaEvent'] + $extra_price;
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
         $count_3 = $count_3 + $kota_pickup[1];
 
         //logic dp start
@@ -205,6 +250,10 @@ class CheckoutController extends Controller
         //payment api start
         $secret_key = 'Basic ' . config('xendit.key_auth');
         $external_id = Str::random(10) . Carbon::now()->format('ymd');
+<<<<<<< HEAD
+=======
+        // dd($count_3);
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
         if ($request->payment_type == 'dp') {
 
             $data_request = Http::withHeaders([
@@ -245,9 +294,15 @@ class CheckoutController extends Controller
             'payment_status' => $response->status,
             'payment_link' => $response->invoice_url,
             'expired' => $response->expiry_date,
+<<<<<<< HEAD
             'extra_id' => $extra_id_fix,
             'hotel_id' => $hotels,
             'kendaraan_id' => $kendaraan,
+=======
+            'extra_id' => $extra['extra_id_fix'],
+            'hotel_id' => $kendaraanHotel['hotel'],
+            'kendaraan_id' => $kendaraanHotel['kendaraan'],
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
             'child' => $request->child,
             'adult' => $request->adult
         ]);

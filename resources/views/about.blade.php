@@ -32,8 +32,11 @@
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3f432bf1a8c679df0d4c4e7ed523e2a5d8ab63c0
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 @foreach ($team as $user)
                     <div class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer bg-[#FF2E00]"
