@@ -8,21 +8,28 @@ use App\Models\Pemesanan;
 use App\Models\Notification;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ResetPasswordEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
+    use HasApiTokens, HasFactory, Notifiable, CanResetPassword, SoftDeletes;
 
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordEmail($token));
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
- 
-     protected $guarded = [
+
+    protected $guarded = [
         'id'
     ];
 
@@ -45,14 +52,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function pemesanan(){
+    public function pemesanan()
+    {
         return $this->hasMany(Pemesanan::class);
     }
-    public function review(){
+    public function review()
+    {
         return $this->belongsTo(Review::class);
     }
 
-    public function notification(){
+    public function notification()
+    {
         return $this->hasMany(Notification::class);
     }
 }

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('umur');
             $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

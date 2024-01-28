@@ -227,6 +227,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         'PDF' => Barryvdh\DomPDF\ServiceProvider::class,
 
+        //layanan
+
 
 
     ],

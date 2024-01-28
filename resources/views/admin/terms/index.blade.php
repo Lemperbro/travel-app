@@ -1,11 +1,11 @@
 @extends('admin.layouts.main')
 
 @section('container')
-<div class="px-4 py-6 overflow-hidden">
+<div class="px-16 py-6 overflow-hidden">
   
     @if ($data === null)
     <h1 class="text-center font-semibold text-2xl dark:text-white text-gray-900">ADD TERMS</h1>
-    <form action="/admin/terms/add" method="post" enctype="multipart/form-data">
+    <form action="/admin/terms/add" method="post" enctype="multipart/form-data" class="mt-10">
       @csrf
     
       <div class="mb-6">
@@ -19,7 +19,7 @@
     @else
     
     <h1 class="text-center font-semibold text-2xl dark:text-white">UPDATE TERMS</h1>
-    <form action="/admin/terms/add" method="post" enctype="multipart/form-data">
+    <form action="/admin/terms/update" method="post" enctype="multipart/form-data" class="mt-10">
       @csrf
     
       <div class="mb-6">
@@ -32,4 +32,10 @@
     </form>
     @endif
 
+
+
+
+
+
+   
 @endsection

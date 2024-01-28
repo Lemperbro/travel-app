@@ -6,24 +6,6 @@
         <div class="flex flex-col flex-1 pt-5 pb-12 overflow-y-auto scrollbar">
             <div class="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                 <ul class="pb-2 space-y-2">
-                    <li>
-                        <form action="#" method="GET" class="lg:hidden">
-                            <label for="mobile-search" class="sr-only">Search</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <input type="text" name="email" id="mobile-search"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Search">
-                            </div>
-                        </form>
-                    </li>
                     <li class="py-2">
                         <a href="/admin"
                             class="flex items-center p-2 text-base text-gray-500 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin') ? 'dark:bg-gray-700 bg-gray-200' : '' }} ">
@@ -72,10 +54,6 @@
                             <li>
                                 <a href="/admin/article"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->is('admin/article') ? 'text-orange-500 dark:text-orange-500' : '' }} {{ request()->is('admin/article/*') ? 'text-orange-500 dark:text-orange-500' : '' }}">Article</a>
-                            </li>
-                            <li>
-                                <a href="/admin/terms"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Terms</a>
                             </li>
                         </ul>
                     </li>
@@ -126,12 +104,12 @@
                                 <a href="/admin/booking/cancel"
                                     class="flex justify-between gap-x-2 items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/booking/cancel') ? 'text-orange-500 dark:text-orange-500' : '' }}  ">Cancel
                                     @if ($cancel->count() > 0)
-                                    <span
-                                    class="inline-flex items-center justify-center p-1 w-6 h-6 text-xs font-semibold text-white bg-red-600 rounded-md m-auto">
-                                    {{ $cancel->count() }}
-                                </span>
-                                @endif
-                            </a>
+                                        <span
+                                            class="inline-flex items-center justify-center p-1 w-6 h-6 text-xs font-semibold text-white bg-red-600 rounded-md m-auto">
+                                            {{ $cancel->count() }}
+                                        </span>
+                                    @endif
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -295,12 +273,12 @@
 
                     <li class="py-2">
                         <a href="/admin/terms"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('/admin/terms') ? 'bg-gray-100 dark:bg-gray-700' : '' }} {{ request()->is('/admin/terms*') ? 'bg-gray-100 dark:bg-gray-700' : '' }}"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/terms') ? 'bg-gray-100 dark:bg-gray-700' : '' }} {{ request()->is('admin/terms*') ? 'bg-gray-100 dark:bg-gray-700' : '' }}"
                             aria-controls="dropdown-playground" data-collapse-toggle="dropdown-playground">
 
 
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('/admin/terms') ? 'text-orange-500 dark:text-orange-500' : '' }} {{ request()->is('/admin/terms*') ? 'text-orange-500 dark:text-orange-500' : '' }}"
+                                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/terms') ? 'text-orange-500 dark:text-orange-500' : '' }} {{ request()->is('admin/terms*') ? 'text-orange-500 dark:text-orange-500' : '' }}"
                                 fill="currentColor" viewBox="0 0 448 512">
                                 <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path
@@ -314,13 +292,13 @@
                     </li>
 
                     <li class="py-2">
-                        <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                        <a href="/admin/report"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/report') ? 'bg-gray-100 dark:bg-gray-700' : '' }} {{ request()->is('admin/report*') ? 'bg-gray-100 dark:bg-gray-700' : '' }}"
                             aria-controls="dropdown-playground" data-collapse-toggle="dropdown-playground">
 
 
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->is('admin/report') ? 'text-orange-500 dark:text-orange-500' : '' }} {{ request()->is('admin/report*') ? 'text-orange-500 dark:text-orange-500' : '' }}"
                                 fill="currentColor" viewBox="0 0 512 512">
                                 <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path
@@ -330,7 +308,18 @@
 
                             <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Report</span>
 
-                        </button>
+                        </a>
+
+                    </li>
+                    <li class="py-2">
+                        <a href="/carousels"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->is('admin/report') ? 'bg-gray-100 dark:bg-gray-700' : '' }} {{ request()->is('admin/report*') ? 'bg-gray-100 dark:bg-gray-700' : '' }}"
+                            aria-controls="dropdown-playground" data-collapse-toggle="dropdown-playground">
+
+
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Manage Carousel</span>
+
+                        </a>
 
                     </li>
                     <li class="py-2">

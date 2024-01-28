@@ -22,13 +22,6 @@ class AdminTermsController extends Controller
 
     }
 
-    public function index_client()
-    {
-        return view('terms', [
-            'data' => Terms::first(),   
-        ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -104,13 +97,13 @@ class AdminTermsController extends Controller
         ]);
 
         $proses = Terms::first()->update([
-            'terms' => $validasi['isi'],
+            'terms' => $validasi['terms'],
         ]);
 
         if($proses){
-            return redirect()->back()->with('success', 'update successful to the About');
+            return redirect()->back()->with('success', 'update successful to the Terms');
         }else{
-            return redirect()->back()->with('warning', 'failed update to the About');
+            return redirect()->back()->with('warning', 'failed update to the Terms');
         }
 
     }

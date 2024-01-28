@@ -3,7 +3,7 @@
 <body>
 
 
-<div class="container">
+<div class="lg:container">
 
 @yield('container')
 

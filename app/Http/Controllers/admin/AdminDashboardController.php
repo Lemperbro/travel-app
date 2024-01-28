@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\admin;
 
+use Carbon\Carbon;
 use App\Models\Kota;
 use App\Models\User;
 use App\Models\Wisata;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Models\admin\AdminDashboard;
-use App\Models\Pemesanan;
 
 class AdminDashboardController extends Controller
 {
@@ -21,7 +23,25 @@ class AdminDashboardController extends Controller
     {
         //
 
+        $data = Pemesanan::latest();
+        $year = Carbon::now()->format('Y'); // Tahun yang ingin Anda hitung
+        $pemesananPerBulan = Pemesanan::select(DB::raw('MONTH(departure) as bulan'), DB::raw('COUNT(*) as jumlah_pemesanan'))
+        ->whereYear('departure', $year)
+        ->groupBy(DB::raw('MONTH(departure)'))
+        ->get();
 
+        $labels = ['January', 'February','March','April','May','June','July','August','September','October','November','December'];
+        $data = [0,0,0,0,0,0,0,0,0,0,0,0];
+    
+        foreach ($pemesananPerBulan as $pemesanan) {
+            $bulan = date('F', mktime(0, 0, 0, $pemesanan->bulan, 1)); // Mengubah nomor bulan menjadi nama bulan
+            $index = $pemesanan->bulan - 1;
+            $jumlahPemesanan = $pemesanan->jumlah_pemesanan;
+    
+            $labels[$index] = $bulan;
+            $data[$index] = $jumlahPemesanan;
+        }
+        
 
         return view('admin.dashboard.index',[
             'tittle' => 'Dashboard',
@@ -30,6 +50,10 @@ class AdminDashboardController extends Controller
             'kota' => Kota::count(),
             'user' => User::where('posisi', 0)->count(),
             'latest_booking' => Pemesanan::with('user', 'wisata')->limit(10)->get(),
+            'labels' => $labels,
+            'dataChart' => $data,
+            'year' => $year,
+            'date' => Carbon::now()->format('Y_m_d')
         ]);
     }
 

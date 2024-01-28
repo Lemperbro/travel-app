@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('wisata_id');
-            $table->date('startDate');
+            $table->date('startDate')->nullable();
             $table->date('endDate')->nullable();
             $table->integer('price');
             $table->integer('price_child')->nullable();
+            $table->string('type');
             $table->timestamps();
         });
     }

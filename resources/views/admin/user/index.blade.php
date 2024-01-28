@@ -31,38 +31,52 @@
 
                   <table class="w-full">
                     <thead>
-                      <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b dark:border-gray-700 bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
-                        <th class="border px-4 py-3">No</th>
-                        <th class="border px-4 py-3">Name</th>
-                        <th class="border px-4 py-3">Email</th>
-                        <th class="px-2 border">Phone Number</th>
-                        <th class="px-2 border">Address</th>
-                        <th class="px-2 border">Action</th>
+                      <tr class="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b-2  bg-gray-300 dark:text-gray-400 dark:bg-gray-800 text-center">
+                        <th class=" px-4 py-3">No</th>
+                        <th class=" px-4 py-3">Name</th>
+                        <th class=" px-4 py-3">Email</th>
+                        <th class="px-2 ">Phone Number</th>
+                        <th class="px-2 ">Address</th>
+                        <th class="px-2 ">Role</th>
+                        <th class="px-2 ">Action</th>
                       </tr>
                     </thead>
     
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 border ">
+                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800  ">
 
                    @foreach ($data as $no => $user)
                         
                       <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                        <td class="px-4 py-3 text-sm border text-center">{{ $no+1 }}</td>
+                        <td class="px-4 py-3 text-sm  text-center">{{ $no+1 }}</td>
     
-                        <td class="px-4 py-3 text-sm text-center border">{{ $user->username }}</td>
+                        <td class="px-4 py-3 text-sm text-center ">{{ $user->username }}</td>
     
                         <td class="flex px-4 py-3 justify-center">
                           {{ $user->email }}
                         </td>
     
-                        <td class="px-4 py-3 text-sm border text-center">{{ $user->no_tlpn }}</td>
+                        <td class="px-4 py-3 text-sm  text-center">{{ $user->no_tlpn }}</td>
     
-                        <td class="px-4 py-3 text-sm border text-center">{{ $user->alamat }}</td>
+                        <td class="px-4 py-3 text-sm  text-center">{{ $user->alamat }}</td>
+                        <td class="px-4 py-3 text-sm  text-center">
+                          @if ($user->posisi == true)
+                            Admin
+                          @else
+                            User
+                          @endif
+                        </td>
     
-                        <td class="px-4 py-3 text-sm border text-center">
-                          <form action="/user/delete/{{ $user->id }}" method="post">
-                            @csrf
-                            <button type="submit" class="bg-red-600 p-2 rounded-md text-white">Hapus</button>
-                         </form>
+                        <td class="px-4 py-3 text-sm  text-center ">
+                          <div class="flex gap-x-2 justify-center">
+                            @if ($user->posisi == false)
+                            <button type="button" class="bg-green-600 p-2 rounded-md text-white" data-bs-toggle="modal" data-bs-target="#makeadmin-{{ $user->id }}">Make Admin</button>
+                          @endif
+
+                          @if ($count_user->count() > 1)
+                          <button type="button" class="bg-red-600 p-2 rounded-md text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $user->id }}">Delete</button>
+                          @endif
+                        </div>
+
                         </td>
     
                       </tr>
@@ -127,5 +141,104 @@
    </div>
 
 
+   @foreach ($data as $delete)
 
+ <!-- Modal cancel start-->
+ <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="staticBackdrop-{{ $delete->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+ 
+  <div class="modal-dialog relative w-auto pointer-events-none">
+  <div
+      class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white dark:bg-gray-700 bg-clip-padding rounded-md outline-none text-current">
+      <div
+      class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+ 
+ 
+      <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+          
+      </div>
+      <div class="modal-body relative p-4">
+      {{-- isi model --}}
+          <form action="/user/delete/{{ $delete->id }}" method="POST">
+              @csrf
+ 
+ 
+ 
+              
+              <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Are you sure you want to Delete this User?</h3>
+         <div class="flex flex-wrap gap-x-2 mx-auto justify-center">
+ 
+           <button  type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+             Yes, I'm sure
+           </button>
+           <button data-bs-dismiss="modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+           
+         </div>
+           
+           </div>
+ 
+ 
+  </form>
+ 
+  </div>
+  </div>
+  </div>
+  {{--modal cancel end--}}
+  @endforeach
+
+
+
+  @foreach ($data as $delete)
+
+  <!-- Modal makeAdmin start-->
+  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+   id="makeadmin-{{ $delete->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  
+   <div class="modal-dialog relative w-auto pointer-events-none">
+   <div
+       class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white dark:bg-gray-700 bg-clip-padding rounded-md outline-none text-current">
+       <div
+       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+  
+  
+       <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+           data-bs-dismiss="modal" aria-label="Close"></button>
+           
+       </div>
+       <div class="modal-body relative p-4">
+       {{-- isi model --}}
+           <form action="/user/MakeAdmin/{{ $delete->id }}" method="POST">
+               @csrf
+  
+  
+  
+               
+               <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400 text-center">Are you sure you want to Make Admin this User?</h3>
+          <div class="flex flex-wrap gap-x-2 mx-auto justify-center">
+  
+            <button  type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+              Yes, I'm sure
+            </button>
+            <button data-bs-dismiss="modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+            
+          </div>
+            
+            </div>
+  
+  
+   </form>
+  
+   </div>
+   </div>
+   </div>
+   {{--modal makeAdmin end--}}
+   @endforeach
+
+
+  
    @endsection

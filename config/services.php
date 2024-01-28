@@ -35,6 +35,10 @@ return [
         'url' => env('SENDINBLUE_API_URL'),
         'key' => env('SENDINBLUE_API_KEY'),
     ],
+    'layanan' => [
+        'email' => 'yuliantoryan64@gmail.com',
+        'number_phone' => '82230736205',
+    ]
     
 
 ];

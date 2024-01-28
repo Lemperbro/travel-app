@@ -4,8 +4,7 @@
 @section('container')
 
 <div>
-    
-    <form action="/admin/kota/add" method="POST" class="w-full p-10 rounded-md  shadow-best" enctype="multipart/form-data">
+    <form action="/admin/kota/add" method="POST" class="w-full px-4 py-10 md:px-10 md:py-10 rounded-md  shadow-best" enctype="multipart/form-data">
         <h1 class="text-center font-semibold text-2xl text-gray-900 dark:text-white">ADD CITY</h1>
         @csrf
         <div class="w-full">
@@ -20,7 +19,7 @@
 
         <div class="mt-4">
             <label for="harga" class="text-gray-900 dark:text-white">Price</label>
-            <input type="text" name="harga" id="harga" class="w-full h-12 rounded-md p-2 border mt-4 bg-gray-700 text-gray-900 dark:text-white">
+            <input type="number" name="harga" id="harga" class="w-full h-12 rounded-md p-2 border mt-4 bg-gray-700 text-gray-900 dark:text-white">
         </div>
 
         <div class="flex gap-x-4 mt-4">

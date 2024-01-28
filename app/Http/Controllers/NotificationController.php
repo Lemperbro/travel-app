@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNotificationRequest;
 use App\Http\Requests\UpdateNotificationRequest;
@@ -60,6 +61,26 @@ class NotificationController extends Controller
     public function edit(Notification $notification)
     {
         //
+    }
+
+    public function read_all_admin(Request $request){
+        Notification::whereIn('tipe',['pemesanan','req_pemesanan','coment','cancel'])->where('status','belum dibuka')->update([
+            'status' => 'dibuka'
+        ]);
+
+        return redirect()->back();
+
+
+    }
+
+    public function read_all(Request $request){
+        Notification::whereIn('tipe',['pemesanan', 'confirmation', 'refund'])->where('status','belum dibuka')->update([
+            'status' => 'dibuka'
+        ]);
+
+        return redirect()->back();
+
+
     }
 
     /**
@@ -125,6 +146,8 @@ class NotificationController extends Controller
 
         }
     }
+
+
 
     /**
      * Remove the specified resource from storage.

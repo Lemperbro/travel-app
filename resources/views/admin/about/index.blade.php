@@ -27,7 +27,7 @@
 
 @else
 
-<h1 class="text-center font-semibold text-2xl">UPDATE ABOUT</h1>
+<h1 class="text-center font-semibold text-2xl dark:text-white text-gray-900">UPDATE ABOUT</h1>
 <form action="/admin/about/update" method="post" enctype="multipart/form-data">
   @csrf
   <div class="mb-6">

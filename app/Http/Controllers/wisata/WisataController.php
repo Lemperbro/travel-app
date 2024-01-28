@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\wisata;
 
+use Carbon\Carbon;
 use App\Models\Faq;
 use App\Models\Kota;
 use App\Models\Event;
@@ -16,8 +17,7 @@ use App\Http\Requests\UpdateWisataRequest;
 class WisataController extends Controller
 {
 
-
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -28,11 +28,15 @@ class WisataController extends Controller
         //
         $wisata = Wisata::latest();
         if(request('search')){
+            $kota = Kota::where('nama_kota', request('search'))->first();
+
             $wisata->where('nama_wisata', 'like', '%' . request('search') . '%')->where('status', true)
             ->orWhere('deskripsi', 'like', '%' . request('search') . '%')
             ->orWhere('long_tour', 'like', '%' . request('search') . '%')
             ->orWhere('tour_type', 'like', '%'. request('search'). '%');
-            
+            if($kota !== null){
+                $wisata->orWhere('kota_id', $kota->id);
+            }
 
         }
 
@@ -149,7 +153,7 @@ class WisataController extends Controller
         }else{
             return view('wisata.destination',[
                 'kota' =>  $kota,
-                'wisata' => Wisata::where('kota_id', $kota->id)->get()
+                'wisata' => Wisata::where('kota_id', $kota->id)->get(),
             ]);
 
         }
@@ -175,7 +179,7 @@ class WisataController extends Controller
     public function isi($slug){
         $wisata = Wisata::with('fasilitas','equipment', 'itenerary','event')->where('slug', $slug)->get();
 
-
+        
         $faq = Faq::where('wisata', $slug)->get();
         $comment = Testi::with('user')->where('wisata_id', $slug)->paginate(6);
         if($wisata->count() > 0){
@@ -183,6 +187,7 @@ class WisataController extends Controller
             $event = Event::where('wisata_id', $wisata_id)->where('status', true)->get();
             
             $best = Wisata::where('kota_id', $wisata->first()->kota_id)->where('status', true)->paginate(10);
+            
 
             return view('wisata.isi', [
 
@@ -190,11 +195,15 @@ class WisataController extends Controller
                 'best' => $best,
                 'comment' => $comment,
                 'faq' => $faq,
+                'day' => Carbon::now()->format('l'),
                 'event' => $event,
-                'event_aktif' => Event::where('tipe', 'aktif')->where('status', 1)->where('wisata_id',$wisata_id)->first()
+                'event_aktif' => Event::where('tipe', 'aktif')->where('status', 1)->where('wisata_id',$wisata_id)->first(),
             ]);
         }else{
             return Redirect('/');
         }
     }
+
+
+
 }

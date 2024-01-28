@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('image');
             $table->integer('popularitas')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

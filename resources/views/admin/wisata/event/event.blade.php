@@ -5,7 +5,7 @@
 <div class="px-4 py-6">
     <h1 class="text-gray-900 dark:text-white text-2xl font-semibold">Event</h1>
 
-    <div class="grid grid-cols-3 gap-4 mt-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-10">
 
 
             

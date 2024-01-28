@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Guide;
 use App\Models\Supir;
+use App\Models\Refund;
 use App\Models\Wisata;
 use App\Models\Kendaraan;
 use App\Models\Notification;
@@ -50,4 +51,7 @@ class Pemesanan extends Model
         return $this->hasMany(CheckoutGroup::class);
     }
 
+    public function refund(){
+        return $this->belongsTo(Refund::class);
+    }
 }

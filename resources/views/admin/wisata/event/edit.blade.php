@@ -4,7 +4,7 @@
 
 <div class="px-4 py-6">
     
-    <form action="/event/edit/{{ $id }}/{{ $tipe }}" method="POST" class="mx-10">
+    <form action="/event/edit/{{ $id }}/{{ $tipe }}" method="POST" class="md:mx-4 lg:mx-10">
         @csrf
         <h1 class="text-gray-900 dark:text-white text-2xl font-semibold mt-4 mb-10">Edit Event </h1>
         <div>

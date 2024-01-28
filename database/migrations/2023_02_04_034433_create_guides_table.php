@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('alamat');
             $table->boolean('status')->default(false);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

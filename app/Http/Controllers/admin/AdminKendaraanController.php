@@ -63,8 +63,10 @@ class AdminKendaraanController extends Controller
         $validasi = $request->validate([
             'merek' => 'required|max:255',
             'kapasitas' => 'required',
+            'harga' => 'required',
             'jumlah' => 'required',
-            'plat' => 'required'
+            'plat' => 'required',
+            'image' => 'required'
             
         ]);
         if($files=$request->file('image')){
@@ -79,6 +81,7 @@ class AdminKendaraanController extends Controller
             'kapasitas' => $request->kapasitas,
             'jumlah' => $request->jumlah,
             'plat' => $request->plat,
+            'harga' => $request->harga,
             'image' => $img
         ]);
         return redirect('/kendaraan')->with('success', 'successful additional to the Vehicle');
@@ -119,6 +122,16 @@ class AdminKendaraanController extends Controller
         //
 
 
+        $validasi = $request->validate([
+            'merek' => 'required|max:255',
+            'kapasitas' => 'required',
+            'harga' => 'required',
+            'jumlah' => 'required',
+            'plat' => 'required'
+            
+        ]);
+
+
         $old = Kendaraan::where('id', $id)->pluck('image')->first();
 
         if($files=$request->file('image')){
@@ -141,6 +154,7 @@ class AdminKendaraanController extends Controller
             'kapasitas' => $request->kapasitas,
             'jumlah' => $request->jumlah,
             'plat' => $request->plat,
+            'harga' => $request->harga,
             'image' => $img
         ]);
 

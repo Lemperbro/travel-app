@@ -12,6 +12,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\UpdateArticleRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use FroalaEditor\Image;
+use Illuminate\Support\Facades\Storage;
+use SendinBlue\Client\Model\GetClient;
 
 class ArticleController extends Controller
 {
@@ -76,20 +79,34 @@ class ArticleController extends Controller
         }
         
         return view('article.show', [
-            'data' => $data,
-            'wisata' => $wisata->where('status', true)->paginate(4),
+            'data_article' => $data,
+            'data' => $wisata->where('status', true)->paginate(4),
             'article' => $article->paginate(4)
         ]);
         
     }
 
-    public function upload_image_tiny(Request $request){
-        $fileName=$request->file('file')->getClientOriginalName();
-        $path=$request->file('file')->storeAs('uploads', $fileName, 'public');
-        return response()->json(['location'=>"/storage/$path"]); 
-        
-        /*$imgpath = request()->file('file')->store('uploads', 'public'); 
-        return response()->json(['location' => "/storage/$imgpath"]);*/
+
+
+    public function upload_image_froala(Request $request){
+    // Validasi request dan pastikan ada file yang diunggah
+            $request->validate([
+                'file' => 'required|image|max:2048', // Atur batasan ukuran dan tipe file sesuai kebutuhan
+            ]);
+
+
+            $extension=$request->file('file')->getClientOriginalExtension();
+            $name = hash('sha256', time()) . '.' . $extension;
+            // Simpan gambar ke storage dengan nama unik
+            $uploadedImage = $request->file('file')->move('froala_image',$name);
+
+            // Dapatkan URL gambar yang diunggah
+            $imageUrl = asset('froala_image/' . $name);
+
+            // Kembalikan URL gambar sebagai respons
+            return response()->json([
+                'link' => $imageUrl
+            ]);
     }
     /**
      * Show the form for creating a new resource.
