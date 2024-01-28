@@ -100,7 +100,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 6. Run migrations and seed the database:
 
     ```bash
-    php artisan migrate --seed
+    php artisan migrate
     ```
 
 7. Start the development server:
