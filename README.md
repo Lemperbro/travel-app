@@ -64,3 +64,49 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Getting Started
+
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/your-username/your-repo.git
+    ```
+
+2. Copy the `.env.example` file to create a new `.env` file:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+3. Generate the application key:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+4. Update Composer dependencies:
+
+    ```bash
+    composer update
+    ```
+
+5. Update NPM dependencies:
+
+    ```bash
+    npm install
+    ```
+
+6. Run migrations and seed the database:
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+7. Start the development server:
+
+    ```bash
+    php artisan serve
+    ```
+
+You're all set! Visit [http://localhost:8000](http://localhost:8000) in your browser to view the application.
