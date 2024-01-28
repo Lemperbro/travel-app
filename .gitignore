@@ -1,5 +1,4 @@
-node_modules
-vendor
+/node_modules
 # /public/build
 # /public/hot
 # /public/storage
@@ -18,4 +17,3 @@ vendor
 /.idea
 /.vscode
 note.txt
-node_modules
